@@ -1,6 +1,6 @@
 # Parça Avcısı — MVP Yol Haritası
 
-## DURUM — 13 Ağustos 2026
+## DURUM — 14 Ağustos 2026
 - [x] Ana sayfa ve marka dili
 - [x] Responsive mobil/masaüstü arayüz
 - [x] Arama ve hızlı arama etkileşimleri
@@ -15,11 +15,13 @@
 
 ## 01 — Gerçek veri katmanı
 - [ ] Supabase projesi oluşturulması
-- [ ] `@supabase/supabase-js` dependency kurulumu
-- [ ] Environment variables (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`)
-- [ ] Supabase JS client entegrasyonu uygulama akışlarına
-- [ ] Auth akışı
-- [ ] Gerçek ilan sorguları
+- [x] `@supabase/supabase-js` dependency eklendi
+- [x] Environment variable şablonu (`.env.example`)
+- [x] Supabase JS client ve servis katmanı
+- [x] Auth servis temeli
+- [x] Aktif ilanların Supabase'den okunması (yapılandırma yoksa demo fallback)
+- [x] İlan oluşturma servis temeli
+- [x] Favorilerin kullanıcı verisine bağlanması
 - [ ] Storage / ilan fotoğrafları
 
 ## 02 — Akıllı parça arama
@@ -38,10 +40,10 @@
 - [ ] Favori ve paylaşım
 
 ## 04 — Üyelik ve kullanıcı profili
-- [ ] Kayıt / giriş / çıkış
+- [ ] Kayıt / giriş / çıkış ekranları
 - [ ] Alıcı ve satıcı profili
 - [ ] Kayıtlı araçlar
-- [ ] Favoriler
+- [x] Favori servis altyapısı
 - [ ] Kullanıcının ilanları
 
 ## 05 — İlan verme
@@ -50,6 +52,7 @@
 - [ ] Araç ve parça bilgileri
 - [ ] OEM numarası
 - [ ] Fiyat / konum
+- [x] Taslak ilan oluşturma servisi
 - [ ] Önizleme ve yayınlama
 
 ## 06 — Alıcı-satıcı iletişimi
