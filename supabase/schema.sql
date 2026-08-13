@@ -1,5 +1,5 @@
 -- Parça Avcısı MVP database schema
--- Run this in Supabase SQL Editor after creating a project.
+-- Run this in Supabase SQL Editor after creating the project.
 
 create extension if not exists pgcrypto;
 
@@ -90,7 +90,7 @@ create table if not exists public.messages (
   listing_id uuid not null references public.listings(id) on delete cascade,
   sender_id uuid not null references auth.users(id) on delete cascade,
   receiver_id uuid not null references auth.users(id) on delete cascade,
-  body text not null check (length(trim(body)) > 0),
+  body text not null check (length(trim(body)) > 0 and length(body) <= 4000),
   read_at timestamptz,
   created_at timestamptz not null default now()
 );
@@ -99,7 +99,8 @@ create index if not exists listings_status_created_idx on public.listings(status
 create index if not exists listings_seller_idx on public.listings(seller_id);
 create index if not exists listings_condition_idx on public.listings(condition);
 create index if not exists listings_city_idx on public.listings(city);
-create index if not exists parts_oem_idx on public.parts(oem_number);
+create index if not exists listings_oem_idx on public.listings(oem_number);
+create index if not exists listings_part_idx on public.listings(part_id);
 create index if not exists messages_listing_created_idx on public.messages(listing_id, created_at);
 
 alter table public.profiles enable row level security;
@@ -112,34 +113,70 @@ alter table public.favorites enable row level security;
 alter table public.saved_searches enable row level security;
 alter table public.messages enable row level security;
 
--- Public catalogue/listing reads. Write policies should be added only after the auth flow is connected.
-create policy if not exists "public can read active listings" on public.listings
+-- Policies are dropped/recreated so this script can be safely rerun.
+drop policy if exists "public can read active listings" on public.listings;
+create policy "public can read active listings" on public.listings
   for select using (status = 'active');
 
-create policy if not exists "public can read vehicles" on public.vehicles
+drop policy if exists "public can read vehicles" on public.vehicles;
+create policy "public can read vehicles" on public.vehicles
   for select using (true);
 
-create policy if not exists "public can read parts" on public.parts
+drop policy if exists "public can read parts" on public.parts;
+create policy "public can read parts" on public.parts
   for select using (true);
 
--- Authenticated users manage their own profile/favorites/saved searches.
-create policy if not exists "users read own profile" on public.profiles
+drop policy if exists "users read own profile" on public.profiles;
+create policy "users read own profile" on public.profiles
   for select using (auth.uid() = id);
-create policy if not exists "users update own profile" on public.profiles
+
+drop policy if exists "users update own profile" on public.profiles;
+create policy "users update own profile" on public.profiles
   for update using (auth.uid() = id) with check (auth.uid() = id);
-create policy if not exists "users read own favorites" on public.favorites
+
+drop policy if exists "users read own favorites" on public.favorites;
+create policy "users read own favorites" on public.favorites
   for select using (auth.uid() = user_id);
-create policy if not exists "users manage own favorites" on public.favorites
-  for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy if not exists "users manage own saved searches" on public.saved_searches
+
+drop policy if exists "users manage own favorites" on public.favorites;
+create policy "users manage own favorites" on public.favorites
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
--- Seller ownership for listings.
-create policy if not exists "sellers manage own listings" on public.listings
+drop policy if exists "users manage own saved searches" on public.saved_searches;
+create policy "users manage own saved searches" on public.saved_searches
+  for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+drop policy if exists "sellers manage own listings" on public.listings;
+create policy "sellers manage own listings" on public.listings
   for all using (auth.uid() = seller_id) with check (auth.uid() = seller_id);
 
--- Message participants can read/write their own conversations.
-create policy if not exists "message participants read" on public.messages
+drop policy if exists "message participants read" on public.messages;
+create policy "message participants read" on public.messages
   for select using (auth.uid() = sender_id or auth.uid() = receiver_id);
-create policy if not exists "message sender creates" on public.messages
+
+drop policy if exists "message sender creates" on public.messages;
+create policy "message sender creates" on public.messages
   for insert with check (auth.uid() = sender_id);
+
+drop policy if exists "message participants update" on public.messages;
+create policy "message participants update" on public.messages
+  for update using (auth.uid() = sender_id or auth.uid() = receiver_id);
+
+-- Automatically create a profile row after a new auth user signs up.
+create or replace function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  insert into public.profiles (id, full_name)
+  values (new.id, coalesce(new.raw_user_meta_data->>'full_name', ''))
+  on conflict (id) do nothing;
+  return new;
+end;
+$$;
+
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created
+after insert on auth.users
+for each row execute procedure public.handle_new_user();
