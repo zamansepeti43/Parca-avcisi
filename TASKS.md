@@ -10,11 +10,14 @@
 - [x] Demo ilan kartları ve favori etkileşimi
 - [x] AGENTS.md ile coding-agent çalışma kuralları
 - [x] Supabase/Postgres MVP şeması (`supabase/schema.sql`)
+- [x] Supabase client foundation (`src/lib/supabase.js`)
+- [x] Supabase şemasında rerunnable RLS policy + auth profile trigger
 
 ## 01 — Gerçek veri katmanı
 - [ ] Supabase projesi oluşturulması
+- [ ] `@supabase/supabase-js` dependency kurulumu
 - [ ] Environment variables (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`)
-- [ ] Supabase JS client entegrasyonu
+- [ ] Supabase JS client entegrasyonu uygulama akışlarına
 - [ ] Auth akışı
 - [ ] Gerçek ilan sorguları
 - [ ] Storage / ilan fotoğrafları
