@@ -18,7 +18,7 @@ export function toListingCard(listing) {
     price: Number(listing.price),
     city: listing.city || 'Türkiye',
     vehicle: vehicleLabel(listing.listing_vehicles),
-    seller: listing.profiles?.full_name || 'Satıcı',
+    seller: listing.seller?.full_name || 'Satıcı',
     tone: 'engine',
   };
 }
@@ -27,7 +27,7 @@ export async function getActiveListings() {
   if (!supabaseConfigured) return null;
   const { data, error } = await requireSupabase()
     .from('listings')
-    .select('id, title, condition, price, city, created_at, part:parts(name, category), profiles:seller_id(full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine))')
+    .select('id, title, condition, price, city, created_at, part:parts(name, category), seller:profiles!listings_seller_id_fkey(full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine))')
     .eq('status', 'active')
     .order('created_at', { ascending: false });
   if (error) throw error;
