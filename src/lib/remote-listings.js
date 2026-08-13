@@ -1,4 +1,3 @@
-import '../app.js';
 import { getActiveListings } from './listings.js';
 import { getFavoriteListingIds, toggleFavorite } from './favorites.js';
 import { supabaseConfigured } from './supabase.js';
