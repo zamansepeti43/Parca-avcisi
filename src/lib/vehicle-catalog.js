@@ -18,6 +18,7 @@ export const vehicleCatalog = [
 ];
 
 export function optionsFor(selection, field) {
+  if (field === 'type') return vehicleTypes;
   const rows = vehicleCatalog.filter((item) =>
     (!selection.type || item.type === selection.type) &&
     (!selection.make || item.make === selection.make) &&
