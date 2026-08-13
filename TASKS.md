@@ -9,6 +9,9 @@
 - [x] Araç katalog sağlayıcı/adaptör altyapısı; VIN çözümleme kasıtlı olarak kapalı
 - [x] Üyelik gerektiren ilan verme ve ilan detay akışları
 - [x] İlan önizleme ve taslak oluşturma akışı
+- [x] Fotoğraftan/toplu ilan taslağı için provider tabanlı altyapı
+- [x] AI tahminleri için kullanıcı kontrolü ve düşük güven uyarısı
+- [x] GitHub Actions uzak build doğrulaması (run #28)
 - [x] Araç verisi kaynak/lisans dokümantasyonu ve Supabase katalog migrasyonu
 
 ## 01 — Gerçek veri katmanı
