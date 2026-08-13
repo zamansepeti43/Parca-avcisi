@@ -11,7 +11,9 @@
 - [x] İlan önizleme ve taslak oluşturma akışı
 - [x] Fotoğraftan/toplu ilan taslağı için provider tabanlı altyapı
 - [x] AI tahminleri için kullanıcı kontrolü ve düşük güven uyarısı
-- [x] GitHub Actions uzak build doğrulaması (run #28)
+- [x] GitHub Actions uzak build doğrulaması (run #28, #37)
+- [x] Ücretsiz Tesseract.js OCR ve tarayıcı barkod/QR algılama
+- [x] OCR/katalog güven skoru ve güvenli fallback modu
 - [x] Araç verisi kaynak/lisans dokümantasyonu ve Supabase katalog migrasyonu
 
 ## 01 — Gerçek veri katmanı
