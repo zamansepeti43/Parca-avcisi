@@ -12,6 +12,7 @@
 - [x] Supabase/Postgres MVP şeması (`supabase/schema.sql`)
 - [x] Supabase client foundation (`src/lib/supabase.js`)
 - [x] Supabase şemasında rerunnable RLS policy + auth profile trigger
+- [x] GitHub Actions uzak doğrulaması: `npm install` ve `npm run build` başarılı
 
 ## 01 — Gerçek veri katmanı
 - [ ] Supabase projesi oluşturulması
