@@ -1,0 +1,1 @@
+document.querySelector('#root').innerHTML='<h1>PARÇA AVCISI</h1><p>Oto parça pazaryeri yakında.</p>';
