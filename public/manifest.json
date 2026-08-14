@@ -1,0 +1,16 @@
+{
+  "name": "Parça Avcısı | Oto Parça Pazaryeri",
+  "short_name": "Parça Avcısı",
+  "description": "Sıfır, 2. el ve çıkma oto parçalarını tek yerde bul.",
+  "lang": "tr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

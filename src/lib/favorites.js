@@ -33,3 +33,17 @@ export async function toggleFavorite(listingId) {
   if (error) throw error;
   return true;
 }
+
+export async function getMyFavorites() {
+  if (!supabaseConfigured) return [];
+  const client = requireSupabase();
+  const { data: authData } = await client.auth.getUser();
+  if (!authData.user) return [];
+  const { data, error } = await client
+    .from('favorites')
+    .select('created_at, listing:listings!inner(id, title, condition, price, city, status, part:parts(name, category), seller:profiles!listings_seller_id_fkey(full_name))')
+    .eq('user_id', authData.user.id)
+    .order('created_at', { ascending: false });
+  if (error) throw error;
+  return data || [];
+}

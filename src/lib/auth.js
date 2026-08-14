@@ -28,3 +28,21 @@ export async function signOut() {
   const { error } = await requireSupabase().auth.signOut();
   if (error) throw error;
 }
+
+export async function resetPassword(email) {
+  const { error } = await requireSupabase().auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin,
+  });
+  if (error) throw error;
+}
+
+export async function updatePassword(password) {
+  const { error } = await requireSupabase().auth.updateUser({ password });
+  if (error) throw error;
+}
+
+export function onAuthStateChange(callback) {
+  if (!supabaseConfigured) return () => {};
+  const { data } = requireSupabase().auth.onAuthStateChange(callback);
+  return () => data.subscription.unsubscribe();
+}
