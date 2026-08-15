@@ -270,7 +270,8 @@ function openSellChoice() {
   openModal('<span class="eyebrow">PARÇA AVCISI</span><h2>Ne yapmak istiyorsun?</h2><div class="sell-choice-grid">'
     + '<button type="button" class="sell-choice" data-choice-sell><b>🔧</b><strong>Parça Satıyorum</strong><span>Sıfır, 2. el veya çıkma parçanı ilanla.</span></button>'
     + '<button type="button" class="sell-choice" data-choice-request><b>🔎</b><strong>Parça Arıyorum</strong><span>Bulamadığın parçayı talep et; satıcılar sana ulaşsın.</span></button>'
-    + '</div>');
+    + '</div>'
+    + '<button type="button" class="sell-choice-alt" data-easy-listing>📸 Fotoğraftan ilan oluşturmayı tercih ediyorsan burayı kullan</button>');
 }
 function openListingForm() {
   selectedPhotos = [];
@@ -364,6 +365,7 @@ function openDetail(id) {
   }
 }
 window.__openListingDetail = openDetail;
+window.__openListingForm = openListingForm;
 window.__requireMember = requireMember;
 window.__showToast = showToast;
 window.__closeModal = closeModal;
@@ -389,6 +391,7 @@ document.addEventListener('click', async (event) => {
     else showToast('Talep oluşturma ekranı yüklenemedi.');
     return;
   }
+  if (event.target.closest('[data-easy-listing]')) { event.preventDefault(); closeModal(); if (window.__openEasyListing) window.__openEasyListing(); return; }
   const detail = event.target.closest('[data-detail]');
   if (detail) { event.preventDefault(); event.stopImmediatePropagation(); openDetail(detail.dataset.detail); }
   const contact = event.target.closest('[data-contact]');

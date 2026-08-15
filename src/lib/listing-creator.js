@@ -37,12 +37,9 @@ function renderDrafts(drafts, bulk, files = []) {
   };
 }
 document.addEventListener('click', (event) => {
-  if (window.__openManualListing) { window.__openManualListing = false; return; }
-  if (!event.target.closest('#sellBtn,#mobileSell')) return;
-  event.preventDefault(); event.stopImmediatePropagation(); openChoices();
-}, true);
-document.addEventListener('click', (event) => {
   if (event.target.closest('[data-photo-flow]')) upload(false);
   if (event.target.closest('[data-bulk-flow]')) upload(true);
-  if (event.target.closest('[data-manual-flow]')) { modal.classList.remove('show'); window.__openManualListing = true; document.querySelector('#sellBtn').click(); }
+  if (event.target.closest('[data-manual-flow]')) { modal.classList.remove('show'); if (window.__openListingForm) window.__openListingForm(); }
 });
+
+window.__openEasyListing = openChoices;

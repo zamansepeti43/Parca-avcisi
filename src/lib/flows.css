@@ -37,4 +37,6 @@
 .sell-choice b{font-size:28px;line-height:1}
 .sell-choice strong{font-size:15px}
 .sell-choice span{color:#6e747c;font-size:12px;line-height:1.55}
+.sell-choice-alt{display:block;width:100%;margin-top:14px;border:0;background:transparent;color:#6e747c;font-size:12px;text-align:center;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.sell-choice-alt:hover{color:var(--gold)}
 @media(max-width:640px){.sell-choice-grid{grid-template-columns:1fr}.sell-choice{padding:16px}}
