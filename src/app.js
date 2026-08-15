@@ -20,16 +20,43 @@ root.innerHTML = `
     <section class="hero"><div class="container hero-grid"><div class="hero-copy">
       <span class="eyebrow">SIFIR • 2. EL • ÇIKMA</span><h1>Aradığın her parça<br><em>burada.</em></h1>
       <p>Aracına uygun oto parçalarını tek yerde bul. Fiyatları karşılaştır, satıcıyı incele ve doğru parçayı avla.</p>
+      <div class="search-mode-tabs" role="tablist" aria-label="Arama modu">
+        <button type="button" class="search-mode-tab active" data-search-mode="listings" role="tab" aria-selected="true">🔧 PARÇA BUL</button>
+        <button type="button" class="search-mode-tab" data-search-mode="requests" role="tab" aria-selected="false">👤 PARÇA ARAYANI BUL</button>
+      </div>
       <form class="search-box" id="searchForm"><span aria-hidden="true">⌕</span><input id="searchInput" autocomplete="off" placeholder="Parça, marka, model veya parça no ara..." aria-label="Parça ara"><button type="submit">Parça Bul</button></form>
       <div class="quick-tags"><button data-query="Far">Far</button><button data-query="Motor">Motor</button><button data-query="Tampon">Tampon</button><button data-query="Fren">Fren</button><button data-query="Tofaş">Tofaş</button><button data-query="Ford">Ford</button></div>
       <div class="hero-trust"><span>✓ Binlerce parça</span><span>✓ Türkiye geneli</span><span>✓ Sıfır & 2. el</span></div>
     </div><div class="hero-visual" aria-hidden="true"><div class="car-glow"></div><div class="hero-car">◖<span>◗</span></div><div class="visual-label"><b>DOĞRU PARÇA</b><small>DOĞRU FİYAT</small></div></div></div></section>
 
+    <section class="section marketplace-cta" id="piyasa"><div class="container marketplace-grid">
+      <article class="marketplace-card request"><span class="eyebrow">ARADIN, BULAMADIN MI?</span><div class="marketplace-icon">🔎</div><h2>Parça Arıyorum</h2><p>Bulamadığın parçayı talep et; sende olan satıcılar sana ulaşsın.</p><button class="marketplace-btn" data-open-request>Parça Talebi Oluştur</button></article>
+      <article class="marketplace-card sell"><span class="eyebrow">ELİNDE FAZLA PARÇA MI VAR?</span><div class="marketplace-icon">🔧</div><h2>Parça Satıyorum</h2><p>Sıfır, 2. el veya çıkma parçanı ilanla; arayan alıcılarla buluş.</p><button class="marketplace-btn" data-open-sell>İlan Ver</button></article>
+      <article class="marketplace-card browse"><span class="eyebrow">SATICI HESABINLA</span><div class="marketplace-icon">👀</div><h2>Müşteri Taleplerini Gör</h2><p>Alıcıların şu an aradığı parçaları incele; sende olanlara "Bende Var" ile cevap ver.</p><button class="marketplace-btn" data-open-customer-requests>Müşteri Taleplerini Gör</button></article>
+    </div></section>
+
     <section class="section vehicle-section" id="aracini-sec"><div class="container vehicle-card"><div><span class="eyebrow">ARACINI SEÇ</span><h2>Aracına uygun parçayı daha hızlı bul.</h2><p>Marka, model ve yılı seç; uyumlu parçaları keşfet.</p></div><form class="vehicle-form" id="vehicleForm"><select id="make"><option value="">Marka Seçiniz</option></select><select id="model" disabled><option value="">Model Seçiniz</option></select><select id="year" disabled><option value="">Yıl Seçiniz</option></select><button type="submit">Parçaları Göster</button></form></div></section>
 
     <section class="section" id="kategoriler"><div class="container"><div class="section-head"><div><span class="eyebrow">POPÜLER KATEGORİLER</span><h2>Parçayı kategoriden bul</h2></div><button class="text-btn" data-show-all="true">Tümünü Gör →</button></div><div class="category-grid" id="categoryGrid"></div></div></section>
 
-    <section class="section listings-section" id="ilanlar"><div class="container"><div class="section-head"><div><span class="eyebrow">YENİ EKLENENLER</span><h2>Öne çıkan ilanlar</h2></div><div class="filters"><button class="filter active" data-condition="Tümü">Tümü</button><button class="filter" data-condition="Sıfır">Sıfır</button><button class="filter" data-condition="2. El">2. El</button><button class="filter" data-condition="Çıkma">Çıkma</button></div></div><div class="listing-grid" id="listingGrid"></div><div class="center-action"><button class="dark-btn" id="allListings">Tüm ilanları gör</button></div></div></section>
+    <section class="section listings-section" id="ilanlar"><div class="container"><div class="section-head"><div><span class="eyebrow">SATILAN PARÇALAR · YENİ EKLENENLER</span><h2>Yeni eklenen parçalar</h2></div><div class="filters"><button class="filter active" data-condition="Tümü">Tümü</button><button class="filter" data-condition="Sıfır">Sıfır</button><button class="filter" data-condition="2. El">2. El</button><button class="filter" data-condition="Çıkma">Çıkma</button></div></div><div class="listing-grid" id="listingGrid"></div><div class="center-action"><button class="dark-btn" id="allListings">Tüm ilanları gör</button></div></div></section>
+
+    <section class="section requests-section arayan-bul-section" id="arayan-bul" hidden>
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">PARÇA ARAYANI BUL</span><h2>Bu parçayı arayan müşteriler</h2></div><button class="text-btn" id="arayanBack">← İlanlara Dön</button></div>
+        <p class="requests-intro">Alıcıların aktif taleplerini ara; elindeki parçaya "Bende Var" de ve mesajlaşmaya başla.</p>
+        <div id="arayanFilters"></div>
+        <div class="listing-grid request-grid" id="arayanGrid"></div>
+        <div class="center-action" id="arayanAction"></div>
+      </div>
+    </section>
+
+    <section class="section requests-section" id="talep-market"><div class="container">
+      <div class="section-head"><div><span class="eyebrow">MÜŞTERİLERİN ARADIĞI PARÇALAR</span><h2>Alıcılar bu parçaları arıyor</h2></div><button class="text-btn" id="allRequestsBtn">Hepsini Gör →</button></div>
+      <p class="requests-intro">Aradığın parça burada yoksa, başka bir müşteri de senin elindeki parçayı arıyor olabilir. Sende olan parçaya "Bende Var" de, alıcıyla mesajlaşmayı başlat.</p>
+      <div class="listing-grid request-grid" id="requestMarketGrid"></div>
+      <div class="center-action"><button class="dark-btn" data-open-request>Parça ARIYORUM — Talep Oluştur</button></div>
+    </div></section>
 
     <section class="section benefits"><div class="container benefit-grid"><article><b>⌕</b><strong>Kolay arama</strong><span>Aradığın parçayı hızlıca bul.</span></article><article><b>◇</b><strong>Geniş ürün yelpazesi</strong><span>0, 2. el ve çıkma seçenekleri.</span></article><article><b>₺</b><strong>Uygun fiyat</strong><span>Farklı satıcıları karşılaştır.</span></article><article><b>✓</b><strong>Güvenli alışveriş</strong><span>Satıcı profillerini incele.</span></article><article><b>⚡</b><strong>Hızlı iletişim</strong><span>Satıcıya doğrudan ulaş.</span></article></div></section>
 
@@ -51,11 +78,48 @@ categoryGrid.innerHTML = categories.map(([icon, name, desc]) => `<button class="
 function escapeHtml(value) { return String(value || '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char])); }
 
 const listingView = () => window.__listingView;
+let searchMode = 'listings';
+
+const SEARCH_MODE_KEY = 'pa:searchMode';
+
+function setSearchMode(mode) {
+  searchMode = mode === 'requests' ? 'requests' : 'listings';
+  try { window.localStorage.setItem(SEARCH_MODE_KEY, searchMode); } catch { /* depolama kapalıysa mod oturum içinde geçerli kalır */ }
+  document.querySelectorAll('.search-mode-tab').forEach((tab) => {
+    const active = tab.dataset.searchMode === searchMode;
+    tab.classList.toggle('active', active);
+    tab.setAttribute('aria-selected', String(active));
+  });
+  const submit = document.querySelector('#searchForm button');
+  if (submit) submit.textContent = searchMode === 'requests' ? 'Arayanı Bul' : 'Parça Bul';
+  const input = document.querySelector('#searchInput');
+  if (input) input.placeholder = searchMode === 'requests' ? 'Aranan parça, araç veya şehir ara...' : 'Parça, marka, model veya parça no ara...';
+  if (window.__setRequestSearchMode) window.__setRequestSearchMode(searchMode);
+}
+
 function search(query) {
   searchInput.value = query;
+  if (searchMode === 'requests') {
+    if (window.__searchRequests) {
+      window.__searchRequests(query);
+      return;
+    }
+    setSearchMode('listings');
+  }
+  if (window.__hideArayanSection) window.__hideArayanSection();
   if (listingView()) listingView().search(query);
   document.querySelector('#ilanlar').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+document.querySelectorAll('[data-search-mode]').forEach((tab) => {
+  tab.addEventListener('click', () => setSearchMode(tab.dataset.searchMode));
+});
+
+(function restoreSearchMode() {
+  try {
+    if (window.localStorage.getItem(SEARCH_MODE_KEY) === 'requests') setSearchMode('requests');
+  } catch { /* depolama kapalıysa varsayılan PARÇA BUL kullanılır */ }
+})();
 
 // ---- Hero vehicle form: Marka → Model → Yıl (dependent selects) ----
 makeSelect.innerHTML = '<option value="">Marka Seçiniz</option>' + getMakes().map((name) => `<option>${escapeHtml(name)}</option>`).join('');
@@ -108,3 +172,18 @@ document.querySelector('#allListings').addEventListener('click', () => {
   if (listingView()) { listingView().setCondition('Tümü'); listingView().search(''); }
 });
 document.querySelector('[data-show-all]').addEventListener('click', () => document.querySelector('#ilanlar').scrollIntoView({ behavior: 'smooth' }));
+
+document.querySelector('[data-open-customer-requests]').addEventListener('click', () => {
+  if (!window.__requireMember) return;
+  window.__requireMember(() => {
+    if (window.__openAccountCenter) window.__openAccountCenter('musteri-talepleri');
+  });
+});
+
+const arayanBack = document.querySelector('#arayanBack');
+if (arayanBack) {
+  arayanBack.addEventListener('click', () => {
+    setSearchMode('listings');
+    search(searchInput.value);
+  });
+}

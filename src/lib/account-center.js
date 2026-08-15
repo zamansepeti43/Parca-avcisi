@@ -8,12 +8,14 @@ import { getMyMessages, sendMessage, markConversationRead } from './messages.js'
 import { getNotifications, getUnreadNotificationsCount, markNotificationsRead, markAllNotificationsRead } from './notifications.js';
 import { getSavedSearches, createSavedSearch, updateSavedSearch, deleteSavedSearch } from './saved-searches.js';
 import { getMyProfile, getProfilesByIds, updateProfile } from './profile.js';
+import { getMyPartRequests, getActivePartRequests, getPartRequestById, setPartRequestStatus, respondToRequest, REQUEST_STATUS_LABELS, REQUEST_CONDITION_LABELS } from './part-requests.js';
 
 const modal = document.querySelector('#appModal');
 const content = document.querySelector('#modalContent');
 
 let currentPane = 'profilim';
 let currentTab = 'all';
+let requestTab = 'all';
 let me = '';
 let conversations = [];
 let profilesCache = [];
@@ -49,10 +51,12 @@ function profileName(id) {
 const menuItems = [
   ['profilim', 'Profilim'],
   ['ilanlarim', 'İlanlarım'],
+  ['taleplerim', 'Taleplerim'],
   ['mesajlarim', 'Mesajlarım'],
   ['favorilerim', 'Favorilerim'],
   ['kayitli-aramalar', 'Kayıtlı Aramalarım'],
   ['bildirimler', 'Bildirimler'],
+  ['musteri-talepleri', 'Müşterilerin Aradığı Parçalar'],
   ['hesap-bilgileri', 'Hesap Bilgileri'],
   ['ayarlar', 'Ayarlar'],
   ['yardim', 'Yardım & Destek'],
@@ -90,10 +94,12 @@ async function openAccountCenter(pane) {
   const handlers = {
     profilim: renderProfil,
     ilanlarim: () => renderIlanlar(currentTab),
+    taleplerim: () => renderTaleplerim(requestTab),
     mesajlarim: renderMesajlar,
     favorilerim: renderFavoriler,
     'kayitli-aramalar': renderKayitliAramalar,
     bildirimler: renderBildirimler,
+    'musteri-talepleri': renderMusteriTalepleri,
     'hesap-bilgileri': renderHesapBilgileri,
     ayarlar: renderAyarlar,
     yardim: renderYardim,
@@ -277,13 +283,62 @@ async function renderEditListing(id) {
   wireEditPhotos(document.querySelector('#editListingForm'));
 }
 
+// ---- Taleplerim ----
+async function renderTaleplerim(tab) {
+  requestTab = tab || requestTab;
+  const requests = (await getMyPartRequests()) || [];
+  const filtered = requestTab === 'all' ? requests : requests.filter((r) => r.status === requestTab);
+  const tabsHtml = [['all', 'Tümü'], ['active', 'Aktif'], ['answered', 'Cevap Geldi'], ['closed', 'Kapalı']]
+    .map(([key, label]) => '<button class="' + (requestTab === key ? 'active' : '') + '" data-request-tab="' + key + '">' + label + '</button>').join('');
+  const rows = filtered.length ? '<div class="pane-list">' + filtered.map((r) => {
+    const statusActions = r.status === 'closed'
+      ? '<button class="primary" data-reactivate-my-request="' + esc(r.id) + '">Tekrar Aktif Et</button>'
+      : '<button data-close-my-request="' + esc(r.id) + '">Talebi Kapat</button>';
+    return '<div class="pane-row request-row"><div class="grow"><strong>' + esc(r.partName) + '</strong><small>' + esc(r.vehicleLabel) + ' · ⌖ ' + esc(r.city) + ' · ' + timeLabel(r.createdAt) + '</small></div>' +
+      '<span class="status-badge ' + esc(r.status) + '">' + esc(REQUEST_STATUS_LABELS[r.status] || r.status) + '</span>' +
+      '<div class="pane-actions"><button data-open-request-detail="' + esc(r.id) + '">İncele</button><button data-edit-my-request="' + esc(r.id) + '">Düzenle</button>' + statusActions + '</div></div>';
+  }).join('') + '</div>' : '<div class="pane-empty"><strong>Henüz talep oluşturmadın</strong><span>Bulamadığın parça için "Parça Talebi Oluştur" ile talep ekleyebilirsin.</span></div>';
+  render(shell('taleplerim',
+    '<div class="account-pane-head"><h2>Taleplerim</h2><button class="pane-btn primary" data-open-request>+ Yeni Talep</button></div>' +
+    '<div class="pane-tabs">' + tabsHtml + '</div>' + rows));
+}
+
+// ---- Müşterilerin Aradığı Parçalar ----
+let requestFilters = {};
+
+function requestFilterFormHtml() {
+  const categoryOptions = '<option value="">Tüm Kategoriler</option>' + PART_CATEGORY_LIST.map((name) => '<option value="' + name + '"' + (requestFilters.category === name ? ' selected' : '') + '>' + name + '</option>').join('');
+  return '<form id="requestFilterForm" class="pane-form request-filters">' +
+    '<div class="field-row"><input name="make" placeholder="Marka" value="' + esc(requestFilters.make || '') + '"><input name="model" placeholder="Model" value="' + esc(requestFilters.model || '') + '"></div>' +
+    '<div class="field-row"><input name="year" inputmode="numeric" placeholder="Yıl" value="' + esc(requestFilters.year || '') + '"><select name="category">' + categoryOptions + '</select></div>' +
+    '<div class="field-row"><input name="city" placeholder="Şehir" value="' + esc(requestFilters.city || '') + '"><button>Filtrele</button></div>' +
+    '</form>';
+}
+
+async function renderMusteriTalepleri() {
+  const requests = (await getActivePartRequests(requestFilters)) || [];
+  const rows = requests.length ? '<div class="pane-list">' + requests.map((r) => {
+    const responded = r.responses.some((resp) => resp.sellerId === me);
+    const respondAction = responded
+      ? '<span class="responded-badge">✓ Cevap verildi</span>'
+      : '<button class="primary" data-pane-respond="' + esc(r.id) + '">BENDE VAR</button>';
+    return '<div class="pane-row request-row"><div class="grow"><strong>' + esc(r.partName) + '</strong><small>' + esc(r.vehicleLabel) + ' · ' + esc(REQUEST_CONDITION_LABELS[r.condition] || r.condition) + ' · ⌖ ' + esc(r.city) + '</small></div>' +
+      '<span class="status-badge ' + esc(r.status) + '">' + esc(REQUEST_STATUS_LABELS[r.status] || r.status) + '</span>' +
+      '<div class="pane-actions">' + respondAction + '<button data-open-request-detail="' + esc(r.id) + '">İncele</button></div></div>';
+  }).join('') + '</div>' : '<div class="pane-empty"><strong>Şu an aktif talep yok</strong><span>Alıcılar parça talep ettikçe burada görünür.</span></div>';
+  render(shell('musteri-talepleri',
+    '<div class="account-pane-head"><h2>Müşterilerin Aradığı Parçalar</h2></div>' +
+    '<p class="pane-hint">Bunlardan birini sende varsa "Bende Var" de; alıcıya haber verip mesajlaşmayı başlat.</p>' +
+    requestFilterFormHtml() + rows));
+}
+
 // ---- Mesajlarım ----
 function buildConversations(messages, meId) {
   const map = new Map();
   for (const m of messages) {
     const other = m.sender_id === meId ? m.receiver_id : m.sender_id;
-    const key = other + '::' + m.listing_id;
-    if (!map.has(key)) map.set(key, { key, other, listing: m.listing, messages: [], unread: 0 });
+    const key = m.request_id ? (other + '::r' + m.request_id) : (other + '::' + m.listing_id);
+    if (!map.has(key)) map.set(key, { key, other, listing: m.listing, request: m.request, messages: [], unread: 0 });
     const conv = map.get(key);
     conv.messages.push(m);
     if (m.sender_id !== meId && !m.read_at) conv.unread++;
@@ -294,13 +349,19 @@ function buildConversations(messages, meId) {
   return list;
 }
 
+function conversationTitle(conv) {
+  if (conv.request) return (conv.request.part_name || 'Parça Talebi') + ' · Talep';
+  return conv.listing?.title || 'İlan';
+}
+
 function conversationsHtml() {
   if (!conversations.length) {
     return '<div class="pane-empty"><strong>Henüz mesajın yok</strong><span>Bir ilan detayından satıcıyla iletişim başlattığında konuşmaların burada görünür.</span></div>';
   }
   return '<div class="pane-list">' + conversations.map((c) => {
     const last = c.messages[0];
-    return '<div class="pane-row conv-row" data-open-conversation="' + esc(c.key) + '" role="button" tabindex="0"><div class="grow"><strong>' + esc(profileName(c.other)) + ' · ' + esc(c.listing?.title || 'İlan') + '</strong><small>' + esc(last?.body || '') + ' · ' + timeLabel(last?.created_at) + '</small></div>' + (c.unread ? '<span class="conv-unread">' + c.unread + '</span>' : '') + '</div>';
+    const requestBtn = c.request ? '<button class="pane-btn" data-open-request-detail="' + esc(c.request.id) + '">Talebi gör</button>' : '';
+    return '<div class="pane-row conv-row" data-open-conversation="' + esc(c.key) + '" role="button" tabindex="0"><div class="grow"><strong>' + esc(profileName(c.other)) + ' · ' + esc(conversationTitle(c)) + '</strong><small>' + esc(last?.body || '') + ' · ' + timeLabel(last?.created_at) + '</small></div>' + requestBtn + (c.unread ? '<span class="conv-unread">' + c.unread + '</span>' : '') + '</div>';
   }).join('') + '</div>';
 }
 
@@ -313,19 +374,50 @@ async function renderMesajlar() {
 }
 
 async function renderThread(key) {
-  const conv = conversations.find((c) => c.key === key);
-  if (!conv) return renderMesajlar();
+  let conv = conversations.find((c) => c.key === key);
+  if (!conv) {
+    const [other, idPart] = key.split('::');
+    const requestId = idPart && idPart.startsWith('r') ? idPart.slice(1) : null;
+    if (!requestId) return renderMesajlar();
+    conv = { key, other, listing: null, request: { id: requestId }, messages: [], unread: 0 };
+  }
   try {
-    if (conv.listing?.id) await markConversationRead({ listingId: conv.listing.id, senderId: conv.other });
+    if (conv.request?.id) await markConversationRead({ requestId: conv.request.id, senderId: conv.other });
+    else if (conv.listing?.id) await markConversationRead({ listingId: conv.listing.id, senderId: conv.other });
   } catch { /* okunma işaretleme isteğe bağlı */ }
   if (window.__refreshNotifBadge) window.__refreshNotifBadge();
   const messages = [...conv.messages].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+  const detailBtn = conv.request
+    ? '<button class="pane-btn" data-open-request-detail="' + esc(conv.request.id) + '">Talebi gör</button>'
+    : (conv.listing ? '<button class="pane-btn" data-detail="' + esc(conv.listing.id) + '">İlanı gör</button>' : '');
   render(shell('mesajlarim',
     '<div class="account-pane-head"><h2>Mesajlaşma</h2><button class="pane-btn" data-back-messages>← Konuşmalara dön</button></div>' +
-    '<div class="pane-row conv-head"><div class="grow"><strong>' + esc(profileName(conv.other)) + '</strong><small>' + esc(conv.listing?.title || 'İlan') + (conv.listing ? ' · ' + money(conv.listing.price) : '') + '</small></div>' + (conv.listing ? '<button class="pane-btn" data-detail="' + esc(conv.listing.id) + '">İlanı gör</button>' : '') + '</div>' +
+    '<div class="pane-row conv-head"><div class="grow"><strong>' + esc(profileName(conv.other)) + '</strong><small>' + esc(conversationTitle(conv)) + (conv.listing ? ' · ' + money(conv.listing.price) : '') + '</small></div>' + detailBtn + '</div>' +
     '<div class="chat-thread">' + messages.map((m) => '<div class="chat-bubble ' + (m.sender_id === me ? 'sent' : 'received') + '">' + esc(m.body) + '<small>' + timeLabel(m.created_at) + '</small></div>').join('') + '</div>' +
     '<form id="chatForm" class="chat-form" data-conv="' + esc(key) + '"><input name="body" required placeholder="Mesajını yaz..." autocomplete="off"><button>Gönder</button></form>'));
 }
+
+async function openRequestThread(requestId, sellerId) {
+  const user = await getCurrentUser().catch(() => null);
+  if (!user) { if (window.__openAuth) window.__openAuth(); return; }
+  currentPane = 'mesajlarim';
+  me = user.id;
+  try {
+    const messages = (await getMyMessages()) || [];
+    const otherIds = [...new Set(messages.map((m) => (m.sender_id === me ? m.receiver_id : m.sender_id)))];
+    profilesCache = await getProfilesByIds(otherIds);
+    conversations = buildConversations(messages, me);
+  } catch (error) {
+    showToast(error.message || 'Mesajlar yüklenemedi.');
+  }
+  if (!modal.classList.contains('show')) {
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.querySelector('.modal-card').classList.add('account-wide');
+  }
+  await renderThread(sellerId + '::r' + requestId);
+}
+window.__openRequestThread = openRequestThread;
 
 // ---- Favorilerim ----
 async function renderFavoriler() {
@@ -380,9 +472,10 @@ async function renderBildirimler() {
   const notifications = (await getNotifications()) || [];
   const listHtml = notifications.length ? '<div class="pane-list">' + notifications.map((n) => {
     const listingBtn = n.related_listing_id ? '<button class="pane-btn" data-detail="' + esc(n.related_listing_id) + '">İlanı gör</button>' : '';
+    const requestBtn = n.related_request_id ? '<button class="pane-btn" data-open-request-detail="' + esc(n.related_request_id) + '">Talebi gör</button>' : '';
     return '<div class="pane-row notif-row ' + (n.read_at ? '' : 'unread') + '" data-notif="' + esc(n.id) + '"><div class="grow"><strong>' + esc(n.title) + '</strong><small>' + timeLabel(n.created_at) + '</small><div class="notif-body">' + esc(n.body || '') + '</div></div>' +
-      '<div class="pane-actions">' + (n.body ? '<button data-notif-expand>' + (n.read_at ? 'İçeriği göster' : 'Aç') + '</button>' : '') + listingBtn + '</div></div>';
-  }).join('') + '</div>' : '<div class="pane-empty"><strong>Bildirimin yok</strong><span>Yeni mesaj, ilan durumu ve favori bildirimleri burada görünür.</span></div>';
+      '<div class="pane-actions">' + (n.body ? '<button data-notif-expand>' + (n.read_at ? 'İçeriği göster' : 'Aç') + '</button>' : '') + listingBtn + requestBtn + '</div></div>';
+  }).join('') + '</div>' : '<div class="pane-empty"><strong>Bildirimin yok</strong><span>Yeni mesaj, talep cevabı ve ilan durumu bildirimleri burada görünür.</span></div>';
   render(shell('bildirimler',
     '<div class="account-pane-head"><h2>Bildirimler</h2><button class="pane-btn" data-mark-all-read>Tümünü okundu işaretle</button></div>' + listHtml));
 }
@@ -435,6 +528,54 @@ function renderYardim() {
 document.addEventListener('click', async (event) => {
   const paneBtn = event.target.closest('[data-pane]');
   if (paneBtn) { event.preventDefault(); openAccountCenter(paneBtn.dataset.pane); return; }
+
+  if (event.target.closest('[data-open-request-detail]')) return;
+
+  const requestTabBtn = event.target.closest('[data-request-tab]');
+  if (requestTabBtn) { renderTaleplerim(requestTabBtn.dataset.requestTab); return; }
+
+  const editMyRequest = event.target.closest('[data-edit-my-request]');
+  if (editMyRequest) {
+    try {
+      const request = await getPartRequestById(editMyRequest.dataset.editMyRequest);
+      if (request && window.__openRequestForm) window.__openRequestForm(null, request);
+      else showToast('Talep bulunamadı.');
+    } catch (error) { showToast(error.message || 'Talep yüklenemedi.'); }
+    return;
+  }
+
+  const closeMyRequest = event.target.closest('[data-close-my-request]');
+  if (closeMyRequest) {
+    try {
+      await setPartRequestStatus(closeMyRequest.dataset.closeMyRequest, 'closed');
+      showToast('Talep kapatıldı. Artık satıcılara gösterilmiyor.');
+    } catch (error) { showToast(error.message || 'Talep kapatılamadı.'); }
+    renderTaleplerim(requestTab);
+    window.dispatchEvent(new CustomEvent('parca:requests-updated'));
+    return;
+  }
+
+  const reactivateMyRequest = event.target.closest('[data-reactivate-my-request]');
+  if (reactivateMyRequest) {
+    try {
+      await setPartRequestStatus(reactivateMyRequest.dataset.reactivateMyRequest, 'active');
+      showToast('Talep yeniden aktif edildi.');
+    } catch (error) { showToast(error.message || 'Talep aktifleştirilemedi.'); }
+    renderTaleplerim(requestTab);
+    window.dispatchEvent(new CustomEvent('parca:requests-updated'));
+    return;
+  }
+
+  const paneRespond = event.target.closest('[data-pane-respond]');
+  if (paneRespond) {
+    try {
+      await respondToRequest(paneRespond.dataset.paneRespond);
+      showToast('Alıcıya bildirim gönderildi. Mesajlaşma başlatıldı.');
+    } catch (error) { showToast(error.message || 'Cevap oluşturulamadı.'); }
+    renderMusteriTalepleri();
+    window.dispatchEvent(new CustomEvent('parca:requests-updated'));
+    return;
+  }
 
   if (event.target.closest('[data-back-listings]')) { renderIlanlar(currentTab); return; }
   if (event.target.closest('[data-back-searches]')) { renderKayitliAramalar(); return; }
@@ -571,12 +712,19 @@ document.addEventListener('submit', async (event) => {
     const input = event.target.elements.body;
     const body = input.value.trim();
     if (!body) return;
-    const conv = conversations.find((c) => c.key === event.target.dataset.conv);
-    if (!conv || !conv.listing) return;
+    const convKey = event.target.dataset.conv;
+    let conv = conversations.find((c) => c.key === convKey);
+    if (!conv) {
+      const [other, idPart] = convKey.split('::');
+      const requestId = idPart && idPart.startsWith('r') ? idPart.slice(1) : null;
+      if (requestId) conv = { key: convKey, other, listing: null, request: { id: requestId }, messages: [], unread: 0 };
+    }
+    if (!conv) return;
     try {
-      await sendMessage({ listingId: conv.listing.id, receiverId: conv.other, body });
+      if (conv.request) await sendMessage({ requestId: conv.request.id, receiverId: conv.other, body });
+      else if (conv.listing) await sendMessage({ listingId: conv.listing.id, receiverId: conv.other, body });
       await renderMesajlar();
-      renderThread(conv.key);
+      renderThread(convKey);
     } catch (error) { showToast(error.message || 'Mesaj gönderilemedi.'); }
   }
   if (event.target.id === 'accountSearchForm') {
@@ -597,6 +745,18 @@ document.addEventListener('submit', async (event) => {
       showToast('Kayıtlı arama kaydedildi.');
       renderKayitliAramalar();
     } catch (error) { showToast(error.message || 'Kaydedilemedi.'); }
+  }
+  if (event.target.id === 'requestFilterForm') {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    requestFilters = {
+      make: data.get('make') || null,
+      model: data.get('model') || null,
+      year: data.get('year') || null,
+      category: data.get('category') || null,
+      city: data.get('city') || null,
+    };
+    renderMusteriTalepleri();
   }
   if (event.target.id === 'accountPasswordForm') {
     event.preventDefault();
@@ -628,3 +788,8 @@ window.__refreshNotifBadge = refreshBadge;
 setInterval(refreshBadge, 30000);
 onAuthStateChange(() => { refreshBadge(); });
 refreshBadge();
+
+window.addEventListener('parca:requests-updated', () => {
+  if (currentPane === 'taleplerim') renderTaleplerim(requestTab).catch(() => {});
+  else if (currentPane === 'musteri-talepleri') renderMusteriTalepleri().catch(() => {});
+});

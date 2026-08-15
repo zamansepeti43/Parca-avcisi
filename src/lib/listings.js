@@ -31,6 +31,7 @@ export function toListingCard(listing) {
     seller: listing.seller?.full_name || 'Satıcı',
     sellerId: listing.seller?.id || null,
     status: listing.status || 'active',
+    delivery: listing.delivery || '',
     tone: 'engine',
     oem: listing.oem_number || listing.part?.oem_number || '',
     description: listing.description || '',
@@ -38,7 +39,7 @@ export function toListingCard(listing) {
   };
 }
 
-const listingSelect = 'id, title, description, condition, price, city, district, oem_number, category, subcategory, vehicle, stock_count, status, created_at, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
+const listingSelect = 'id, title, description, condition, price, city, district, oem_number, category, subcategory, vehicle, stock_count, status, delivery, created_at, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
 
 export async function getActiveListings() {
   if (!supabaseConfigured) return null;
@@ -109,7 +110,7 @@ export async function getSellerActiveListings(sellerId, { excludeId } = {}) {
   return data.map(toListingCard);
 }
 
-export async function createListing({ title, description, condition, price, city, district, oemNumber, stockCount = 1, partId, vehicleIds = [], category, subcategory, vehicle, status = 'draft' }) {
+export async function createListing({ title, description, condition, price, city, district, oemNumber, stockCount = 1, partId, vehicleIds = [], category, subcategory, vehicle, delivery, status = 'draft' }) {
   const client = requireSupabase();
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
@@ -130,6 +131,7 @@ export async function createListing({ title, description, condition, price, city
       category: category || null,
       subcategory: subcategory || null,
       vehicle: vehicle || null,
+      delivery: delivery || null,
       stock_count: stockCount,
       status,
     })
@@ -162,6 +164,7 @@ export async function updateListing(id, fields) {
   if (fields.category !== undefined) payload.category = fields.category || null;
   if (fields.subcategory !== undefined) payload.subcategory = fields.subcategory || null;
   if (fields.vehicle !== undefined) payload.vehicle = fields.vehicle || null;
+  if (fields.delivery !== undefined) payload.delivery = fields.delivery || null;
 
   const { error } = await client.from('listings').update(payload).eq('id', id).eq('seller_id', authData.user.id);
   if (error) throw error;

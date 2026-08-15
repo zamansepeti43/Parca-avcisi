@@ -50,6 +50,7 @@ create table if not exists public.listings (
   category text,
   subcategory text,
   vehicle text,
+  delivery text,
   stock_count int not null default 1 check (stock_count >= 0),
   status text not null default 'active' check (status in ('draft','active','sold','paused','removed')),
   created_at timestamptz not null default now(),
@@ -93,7 +94,8 @@ create table if not exists public.saved_searches (
 
 create table if not exists public.messages (
   id uuid primary key default gen_random_uuid(),
-  listing_id uuid not null references public.listings(id) on delete cascade,
+  listing_id uuid references public.listings(id) on delete cascade,
+  request_id uuid references public.part_requests(id) on delete cascade,
   sender_id uuid not null references auth.users(id) on delete cascade,
   receiver_id uuid not null references auth.users(id) on delete cascade,
   body text not null check (length(trim(body)) > 0 and length(body) <= 4000),
@@ -101,13 +103,53 @@ create table if not exists public.messages (
   created_at timestamptz not null default now()
 );
 
+create table if not exists public.part_requests (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references public.profiles(id) on delete cascade,
+  vehicle_make text,
+  vehicle_model text,
+  vehicle_year text,
+  vehicle_version text,
+  vehicle_type text,
+  part_category text,
+  part_subcategory text,
+  part_name text not null,
+  oem_number text,
+  description text,
+  city text,
+  condition text not null default 'any' check (condition in ('new','used','salvage','any')),
+  delivery text,
+  status text not null default 'active' check (status in ('active','answered','closed')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.part_request_responses (
+  id uuid primary key default gen_random_uuid(),
+  request_id uuid not null references public.part_requests(id) on delete cascade,
+  seller_id uuid not null references public.profiles(id) on delete cascade,
+  status text not null default 'active',
+  created_at timestamptz not null default now(),
+  unique (request_id, seller_id)
+);
+
+create table if not exists public.part_request_images (
+  id uuid primary key default gen_random_uuid(),
+  request_id uuid not null references public.part_requests(id) on delete cascade,
+  storage_path text not null,
+  sort_order int not null default 0,
+  is_cover boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
 create table if not exists public.notifications (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
-  type text not null check (type in ('message','listing_status','favorite','saved_search','system')),
+  type text not null check (type in ('message','listing_status','favorite','saved_search','system','request_response','part_request')),
   title text not null,
   body text,
   related_listing_id uuid references public.listings(id) on delete cascade,
+  related_request_id uuid references public.part_requests(id) on delete cascade,
   read_at timestamptz,
   created_at timestamptz not null default now()
 );
@@ -123,6 +165,14 @@ create index if not exists messages_listing_created_idx on public.messages(listi
 create index if not exists messages_participants_idx on public.messages(sender_id, receiver_id, created_at);
 create index if not exists notifications_user_created_idx on public.notifications(user_id, created_at desc);
 create index if not exists listing_images_listing_order_idx on public.listing_images(listing_id, sort_order);
+create index if not exists part_requests_status_idx on public.part_requests(status, created_at desc);
+create index if not exists part_requests_user_idx on public.part_requests(user_id);
+create index if not exists part_requests_category_idx on public.part_requests(part_category);
+create index if not exists part_requests_city_idx on public.part_requests(city);
+create index if not exists part_requests_make_idx on public.part_requests(vehicle_make);
+create index if not exists part_request_responses_request_idx on public.part_request_responses(request_id);
+create index if not exists part_request_images_request_idx on public.part_request_images(request_id, sort_order);
+create index if not exists messages_request_idx on public.messages(request_id);
 
 alter table public.profiles enable row level security;
 alter table public.vehicles enable row level security;
@@ -134,6 +184,9 @@ alter table public.favorites enable row level security;
 alter table public.saved_searches enable row level security;
 alter table public.messages enable row level security;
 alter table public.notifications enable row level security;
+alter table public.part_requests enable row level security;
+alter table public.part_request_responses enable row level security;
+alter table public.part_request_images enable row level security;
 
 -- Policies are dropped/recreated so this script can be safely rerun.
 drop policy if exists "public can read active listings" on public.listings;
@@ -194,6 +247,13 @@ drop policy if exists "public can read seller profiles" on public.profiles;
 create policy "public can read seller profiles" on public.profiles
   for select using (
     id in (select seller_id from public.listings where status = 'active')
+  );
+
+drop policy if exists "part request parties read profiles" on public.profiles;
+create policy "part request parties read profiles" on public.profiles
+  for select using (
+    id in (select seller_id from public.part_request_responses where request_id in (select id from public.part_requests where user_id = auth.uid()))
+    or id in (select user_id from public.part_requests where id in (select request_id from public.part_request_responses where seller_id = auth.uid()))
   );
 
 drop policy if exists "users read own favorites" on public.favorites;
@@ -269,6 +329,73 @@ create policy "sellers manage own listing images" on public.listing_images
     )
   );
 
+-- ============================= Part request policies =============================
+drop policy if exists "users read own part requests" on public.part_requests;
+create policy "users read own part requests" on public.part_requests
+  for select using (auth.uid() = user_id);
+
+drop policy if exists "public can read open part requests" on public.part_requests;
+create policy "public can read open part requests" on public.part_requests
+  for select using (status in ('active','answered'));
+
+drop policy if exists "users create own part requests" on public.part_requests;
+create policy "users create own part requests" on public.part_requests
+  for insert with check (auth.uid() = user_id);
+
+drop policy if exists "users manage own part requests" on public.part_requests;
+create policy "users manage own part requests" on public.part_requests
+  for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+drop policy if exists "parties read request responses" on public.part_request_responses;
+create policy "parties read request responses" on public.part_request_responses
+  for select using (
+    auth.uid() = seller_id
+    or auth.uid() = (select user_id from public.part_requests where id = request_id)
+  );
+
+drop policy if exists "sellers respond to open requests" on public.part_request_responses;
+create policy "sellers respond to open requests" on public.part_request_responses
+  for insert to authenticated
+  with check (
+    auth.uid() = seller_id
+    and exists (
+      select 1
+      from public.part_requests pr
+      where pr.id = request_id
+        and pr.user_id <> auth.uid()
+        and pr.status in ('active','answered')
+    )
+  );
+
+drop policy if exists "public can read open request images" on public.part_request_images;
+create policy "public can read open request images" on public.part_request_images
+  for select using (
+    exists (
+      select 1
+      from public.part_requests pr
+      where pr.id = request_id
+        and (pr.user_id = auth.uid() or pr.status in ('active','answered'))
+    )
+  );
+
+drop policy if exists "owners manage own request images" on public.part_request_images;
+create policy "owners manage own request images" on public.part_request_images
+  for all using (
+    exists (
+      select 1
+      from public.part_requests pr
+      where pr.id = request_id
+        and pr.user_id = auth.uid()
+    )
+  ) with check (
+    exists (
+      select 1
+      from public.part_requests pr
+      where pr.id = request_id
+        and pr.user_id = auth.uid()
+    )
+  );
+
 -- Automatically create a profile row after a new auth user signs up.
 create or replace function public.handle_new_user()
 returns trigger
@@ -299,6 +426,9 @@ declare
   v_title text;
 begin
   if new.sender_id = new.receiver_id then
+    return new;
+  end if;
+  if new.request_id is not null then
     return new;
   end if;
   if coalesce(
@@ -445,6 +575,119 @@ drop trigger if exists notify_saved_search_match_update on public.listings;
 create trigger notify_saved_search_match_update
 after update on public.listings
 for each row execute procedure public.notify_saved_search_match();
+
+-- Seller "Bende Var" -> notify the request owner + mark the request "answered".
+create or replace function public.notify_request_response()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+declare
+  v_requester uuid;
+  v_part text;
+  v_seller text;
+begin
+  select user_id, coalesce(part_name, 'parça')
+    into v_requester, v_part
+    from public.part_requests where id = new.request_id;
+
+  update public.part_requests
+    set status = 'answered', updated_at = now()
+    where id = new.request_id and status = 'active';
+
+  if v_requester is null then
+    return new;
+  end if;
+
+  select coalesce(full_name, 'Bir satıcı')
+    into v_seller
+    from public.profiles where id = new.seller_id;
+
+  insert into public.notifications (user_id, type, title, body, related_request_id)
+  values (
+    v_requester,
+    'request_response',
+    'Parça talebine cevap geldi',
+    v_seller || ', aradığınız "' || v_part || '" parçasına sahip olduğunu belirtti.',
+    new.request_id
+  );
+  return new;
+end;
+$$;
+
+drop trigger if exists notify_request_response_trigger on public.part_request_responses;
+create trigger notify_request_response_trigger
+after insert on public.part_request_responses
+for each row execute procedure public.notify_request_response();
+
+-- New part_request -> notify matching sellers (Faz 12). See
+-- 20260817_notify_part_request_created.sql for the matching rule.
+create or replace function public.notify_part_request_created()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+declare
+  r record;
+  v_settings jsonb;
+begin
+  if new.status <> 'active' then
+    return new;
+  end if;
+
+  for r in
+    select distinct l.seller_id as seller_id
+    from public.listings l
+    where l.status = 'active'
+      and l.seller_id <> new.user_id
+      and (
+        (new.part_category is not null and l.category = new.part_category)
+        or (new.part_category is null and new.city is not null and l.city = new.city)
+        or (new.part_category is null and new.city is null)
+      )
+  loop
+    select settings into v_settings from public.profiles where id = r.seller_id;
+    if coalesce((v_settings ->> 'notify_requests')::boolean, true) then
+      insert into public.notifications (user_id, type, title, body, related_request_id)
+      values (
+        r.seller_id,
+        'part_request',
+        'Yeni parça talebi',
+        coalesce(new.part_name, 'Parça') || ' için yeni bir talep var.',
+        new.id
+      );
+    end if;
+  end loop;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists notify_part_request_created_trigger on public.part_requests;
+create trigger notify_part_request_created_trigger
+after insert on public.part_requests
+for each row execute procedure public.notify_part_request_created();
+
+-- Realtime (Faz 13): part_requests / part_request_responses on the publication.
+do $$
+begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'part_requests'
+  ) then
+    execute 'alter publication supabase_realtime add table public.part_requests';
+  end if;
+end $$;
+
+do $$
+begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'part_request_responses'
+  ) then
+    execute 'alter publication supabase_realtime add table public.part_request_responses';
+  end if;
+end $$;
 
 -- Listing photos storage bucket (public read, authenticated owner write).
 insert into storage.buckets (id, name, public)

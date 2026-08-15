@@ -3,6 +3,7 @@ import { getListingById, getSellerActiveListings } from './listings.js';
 import { getProfileById, getActiveListingCount } from './profile.js';
 import { getFavoriteListingIds, toggleFavorite } from './favorites.js';
 import { getCurrentUser } from './auth.js';
+import { deliveryLabel } from './delivery.js';
 import { supabaseConfigured } from './supabase.js';
 import { demoListings } from './demo-listings.js';
 
@@ -245,6 +246,7 @@ function renderPage(sectionEl, listing, profile, sellerCount, otherListings, isO
     ['Parça Adı', titleCase(listing.partName)],
     ['OEM / Parça No', listing.oemNumber || listing.oem],
     ['Şehir', titleCase(listing.city)],
+    ['Teslimat', deliveryLabel(listing.delivery)],
     ['İlan Tarihi', fmtDate(listing.createdAt)],
     ['İlan No', listingNumber(listing.id)],
   ];

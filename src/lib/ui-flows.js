@@ -3,7 +3,8 @@ import { VehicleResolver } from './vehicle-resolver.js';
 import { getCurrentUser, onAuthStateChange, signIn, signUp, signOut, resetPassword, updatePassword } from './auth.js';
 import { createListing, getListingById, getMyListings } from './listings.js';
 import { attachImagesToListing } from './listing-images.js';
-import { PART_CATEGORY_LIST, subcategoriesFor } from './part-categories.js';
+import { getMainCategories, getSubcategories } from './part-catalog.js';
+import { DELIVERY_OPTIONS, deliveryLabel } from './delivery.js';
 import { sendMessage } from './messages.js';
 import { supabaseConfigured } from './supabase.js';
 
@@ -203,33 +204,49 @@ function wirePhotoPicker(form) {
 function vehicleFieldsHtml() {
   const sel = (field, value) => selection[field] === String(value);
   const opt = (values, field) => values.map((value) => '<option value="' + escapeHtml(String(value)) + '"' + (sel(field, value) ? ' selected' : '') + '>' + escapeHtml(String(value)) + '</option>').join('');
-  const makes = resolver.getOptions({}, 'make');
-  const models = selection.make ? resolver.getOptions(selection, 'model') : [];
-  const years = selection.make && selection.model ? resolver.getOptions(selection, 'year') : [];
-  const engines = selection.make && selection.model ? resolver.getOptions(selection, 'engine') : [];
-  return '<div class="field-row"><label>Araç Markası<select name="formMake" data-form-vehicle="make"><option value="">Marka Seçiniz</option>' + opt(makes, 'make') + '</select></label>'
-    + '<label>Araç Modeli<select name="formModel" data-form-vehicle="model"' + (selection.make ? '' : ' disabled') + '><option value="">Model Seçiniz</option>' + opt(models, 'model') + '</select></label></div>'
-    + '<div class="field-row"><label>Yıl<select name="formYear" data-form-vehicle="year"' + (selection.model ? '' : ' disabled') + '><option value="">Yıl Seçiniz</option>' + opt(years, 'year') + '</select></label>'
-    + '<label>Versiyon<select name="formEngine" data-form-vehicle="engine"' + (selection.model ? '' : ' disabled') + '><option value="">Versiyon (opsiyonel)</option>' + opt(engines, 'engine') + '</select></label></div>';
+  const types = resolver.getOptions({}, 'type');
+  const makes = selection.type ? resolver.getOptions({ type: selection.type }, 'make') : [];
+  const models = selection.type && selection.make ? resolver.getOptions(selection, 'model') : [];
+  const years = selection.type && selection.make && selection.model ? resolver.getOptions(selection, 'year') : [];
+  const engines = selection.type && selection.make && selection.model ? resolver.getOptions(selection, 'engine') : [];
+  const modelDisabled = !selection.make;
+  const yearDisabled = !selection.model;
+  const engineDisabled = !selection.model;
+  return '<label>Araç Tipi<select name="formType" data-form-vehicle="type"><option value="">Araç Tipi Seçiniz</option>' + opt(types, 'type') + '</select></label>'
+    + '<div class="field-row"><label>Araç Markası<select name="formMake" data-form-vehicle="make"' + (selection.type ? '' : ' disabled') + '><option value="">Marka Seçiniz</option>' + opt(makes, 'make') + '</select></label>'
+    + '<label>Araç Modeli<select name="formModel" data-form-vehicle="model"' + (modelDisabled ? ' disabled' : '') + '><option value="">Model Seçiniz</option>' + opt(models, 'model') + '</select></label></div>'
+    + '<div class="field-row"><label>Yıl<select name="formYear" data-form-vehicle="year"' + (yearDisabled ? ' disabled' : '') + '><option value="">Yıl Seçiniz</option>' + opt(years, 'year') + '</select></label>'
+    + '<label>Versiyon<select name="formEngine" data-form-vehicle="engine"' + (engineDisabled ? ' disabled' : '') + '><option value="">Versiyon (opsiyonel)</option>' + opt(engines, 'engine') + '</select></label></div>';
 }
 function subcategorySlotHtml(category) {
-  const subs = subcategoriesFor(category);
+  const subs = getSubcategories(selection.type || '', category);
   if (!category || !subs.length) return '<label>Alt Kategori<select name="subCategory" disabled><option value="">Önce kategori seç</option></select></label>';
   return '<label>Alt Kategori<select name="subCategory"><option value="">Alt kategori (opsiyonel)</option>' + subs.map((name) => '<option value="' + name + '">' + name + '</option>').join('') + '</select></label>';
 }
 function categoryFieldsHtml() {
-  return '<label>Parça Kategorisi<span class="category-search"><input type="text" data-category-search placeholder="Kategori ara (örn. aydınlatma)"></span><select name="category" required><option value="">Parça Kategorisi Seçiniz</option>' + PART_CATEGORY_LIST.map((name) => '<option value="' + name + '">' + name + '</option>').join('') + '</select></label>'
+  const categories = getMainCategories(selection.type || '');
+  return '<label>Parça Kategorisi<span class="category-search"><input type="text" data-category-search placeholder="Kategori ara (örn. aydınlatma)"></span><select name="category" required><option value="">Parça Kategorisi Seçiniz</option>' + categories.map((name) => '<option value="' + name + '">' + name + '</option>').join('') + '</select></label>'
     + '<div data-subcategory-slot>' + subcategorySlotHtml('') + '</div>';
 }
 function wireListingFormFields(form) {
   form.addEventListener('change', (event) => {
     const vf = event.target.closest('[data-form-vehicle]');
     if (vf) {
-      selection[vf.dataset.formVehicle] = vf.value;
-      const order = ['make', 'model', 'year', 'engine'];
-      order.slice(order.indexOf(vf.dataset.formVehicle) + 1).forEach((key) => { selection[key] = ''; });
+      const changed = vf.dataset.formVehicle;
+      selection[changed] = vf.value;
+      const order = ['type', 'make', 'model', 'year', 'engine'];
+      order.slice(order.indexOf(changed) + 1).forEach((key) => { selection[key] = ''; });
       const container = form.querySelector('[data-vehicle-fields]');
       if (container) container.innerHTML = vehicleFieldsHtml();
+      if (changed === 'type') {
+        const categorySelect = form.querySelector('[name="category"]');
+        if (categorySelect) {
+          categorySelect.innerHTML = '<option value="">Parça Kategorisi Seçiniz</option>'
+            + getMainCategories(selection.type || '').map((name) => '<option value="' + name + '">' + name + '</option>').join('');
+        }
+        const slot = form.querySelector('[data-subcategory-slot]');
+        if (slot) slot.innerHTML = subcategorySlotHtml('');
+      }
       return;
     }
     if (event.target.matches('[name="category"]')) {
@@ -249,9 +266,16 @@ function wireListingFormFields(form) {
     }
   });
 }
+function openSellChoice() {
+  openModal('<span class="eyebrow">PARÇA AVCISI</span><h2>Ne yapmak istiyorsun?</h2><div class="sell-choice-grid">'
+    + '<button type="button" class="sell-choice" data-choice-sell><b>🔧</b><strong>Parça Satıyorum</strong><span>Sıfır, 2. el veya çıkma parçanı ilanla.</span></button>'
+    + '<button type="button" class="sell-choice" data-choice-request><b>🔎</b><strong>Parça Arıyorum</strong><span>Bulamadığın parçayı talep et; satıcılar sana ulaşsın.</span></button>'
+    + '</div>');
+}
 function openListingForm() {
   selectedPhotos = [];
-  openModal('<span class="eyebrow">YENİ İLAN</span><h2>İlanını hazırla</h2><form id="listingForm" class="stack-form"><select name="condition" required><option value="">Durum</option><option value="new">Sıfır</option><option value="used">2. El</option><option value="salvage">Çıkma</option></select><div data-vehicle-fields>' + vehicleFieldsHtml() + '</div>' + categoryFieldsHtml() + '<input name="partName" placeholder="Parça adı" required><input name="oemNumber" placeholder="OEM / parça numarası"><textarea name="description" placeholder="Açıklama"></textarea><div class="field-row"><input name="price" type="number" min="0" required placeholder="Fiyat"><input name="city" required placeholder="Şehir"></div>' + photoPickerHtml() + '<button>Önizlemeye Geç</button></form>');
+  const deliveryOptions = '<option value="">Teslimat tercihi (opsiyonel)</option>' + DELIVERY_OPTIONS.map((option) => '<option value="' + option.value + '">' + option.label + '</option>').join('');
+  openModal('<span class="eyebrow">YENİ İLAN</span><h2>İlanını hazırla</h2><form id="listingForm" class="stack-form"><select name="condition" required><option value="">Durum</option><option value="new">Sıfır</option><option value="used">2. El</option><option value="salvage">Çıkma</option></select><div data-vehicle-fields>' + vehicleFieldsHtml() + '</div>' + categoryFieldsHtml() + '<input name="partName" placeholder="Parça adı" required><input name="oemNumber" placeholder="OEM / parça numarası"><textarea name="description" placeholder="Açıklama"></textarea><div class="field-row"><input name="price" type="number" min="0" required placeholder="Fiyat"><input name="city" required placeholder="Şehir"></div><label>Teslimat<select name="delivery">' + deliveryOptions + '</select></label>' + photoPickerHtml() + '<button>Önizlemeye Geç</button></form>');
   const form = document.querySelector('#listingForm');
   wirePhotoPicker(form);
   wireListingFormFields(form);
@@ -267,12 +291,14 @@ function conditionKeyLabel(key) {
   return { new: 'Sıfır', used: '2. El', salvage: 'Çıkma' }[key] || key || '';
 }
 function previewDetailsHtml(data) {
+  const delivery = deliveryLabel(data.delivery || '');
   return '<div class="preview-grid">'
     + '<b>' + escapeHtml(data.vehicle || 'Araç belirtilmedi') + '</b>'
     + '<span>' + escapeHtml(data.category || 'Kategori seçilmedi') + (data.subCategory ? ' › ' + escapeHtml(data.subCategory) : '') + '</span>'
     + '<span>' + escapeHtml(conditionKeyLabel(data.condition)) + ' · ' + escapeHtml(data.partName) + (data.oemNumber ? ' · OEM: ' + escapeHtml(data.oemNumber) : '') + '</span>'
     + '<strong>' + Number(data.price).toLocaleString('tr-TR') + ' TL</strong>'
     + '<span>⌖ ' + escapeHtml(data.city) + '</span>'
+    + (delivery ? '<span>Kargo: ' + escapeHtml(delivery) + '</span>' : '')
     + '</div>';
 }
 function openPreview(data) {
@@ -292,6 +318,7 @@ async function createListingWithPhotos(data, status) {
       category: data.category || null,
       subcategory: data.subCategory || null,
       vehicle: data.vehicle || null,
+      delivery: data.delivery || null,
       status,
     });
     window.dispatchEvent(new CustomEvent('parca:listings-updated'));
@@ -353,7 +380,15 @@ document.addEventListener('click', async (event) => {
   if (event.target.closest('[data-close-modal]') || event.target === modal) closeModal();
   if (event.target.closest('[data-open-picker]')) vehicleSection.scrollIntoView({ behavior: 'smooth' });
   if (event.target.closest('[data-focus-oem]')) { document.querySelector('#searchInput').focus(); document.querySelector('#searchInput').placeholder = 'OEM / parça numarası ara...'; }
-  if (event.target.closest('#sellBtn, #mobileSell')) { event.preventDefault(); await requireMember(openListingForm); }
+  if (event.target.closest('#sellBtn, #mobileSell')) { event.preventDefault(); await requireMember(openSellChoice); }
+  if (event.target.closest('[data-choice-sell]')) { event.preventDefault(); closeModal(); openListingForm(); return; }
+  if (event.target.closest('[data-choice-request]')) {
+    event.preventDefault();
+    closeModal();
+    if (window.__openRequestForm) window.__openRequestForm();
+    else showToast('Talep oluşturma ekranı yüklenemedi.');
+    return;
+  }
   const detail = event.target.closest('[data-detail]');
   if (detail) { event.preventDefault(); event.stopImmediatePropagation(); openDetail(detail.dataset.detail); }
   const contact = event.target.closest('[data-contact]');
@@ -455,8 +490,8 @@ document.addEventListener('submit', async (event) => {
     data.photos = [...selectedPhotos];
     data.category = data.category || '';
     data.subCategory = data.subCategory || '';
-    data.vehicle = [selection.make, selection.model, selection.year, selection.engine].filter(Boolean).join(' · ');
-    if (!selection.make || !selection.model) return showToast('Araç bilgisi için marka ve model seç.');
+    data.vehicle = [selection.type, selection.make, selection.model, selection.year, selection.engine].filter(Boolean).join(' · ');
+    if (!selection.type || !selection.make || !selection.model) return showToast('Araç bilgisi için araç tipi, marka ve model seç.');
     openPreview(data);
   }
 });
