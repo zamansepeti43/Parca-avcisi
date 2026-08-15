@@ -117,7 +117,7 @@ function renderAuthUI(user) {
     if (user) {
       const name = user.user_metadata?.full_name || user.email?.split('@')[0] || 'Hesap';
       const initial = escapeHtml(name.charAt(0).toLocaleUpperCase('tr-TR'));
-      slot.innerHTML = '<button class="notif-bell" id="notifBell" type="button" aria-label="Bildirimler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="notif-badge" id="notifBadge"></span></button><button class="auth-account" id="accountBtn" type="button" aria-label="Hesabım"><b>' + initial + '</b><span>' + escapeHtml(name) + '</span></button>';
+      slot.innerHTML = '<button class="notif-bell" id="notifBell" type="button" aria-label="Bildirimler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="notif-badge" id="notifBadge"></span></button><button class="auth-account" id="accountBtn" type="button" aria-label="Hesabım"><b>' + initial + '</b><span>' + escapeHtml(name.toLocaleUpperCase('tr-TR')) + '</span></button>';
     } else {
       slot.innerHTML = '<button class="outline-btn auth-btn" id="loginBtn" type="button">Giriş Yap</button><button class="outline-btn auth-btn gold" id="signupBtn" type="button">Kayıt Ol</button>';
     }
@@ -125,7 +125,7 @@ function renderAuthUI(user) {
   const accountLabel = document.querySelector('#accountLabel');
   if (accountLabel) {
     const name = user ? (user.user_metadata?.full_name || user.email?.split('@')[0] || 'Hesabım').split(' ')[0] : 'Hesabım';
-    accountLabel.textContent = name;
+    accountLabel.textContent = name.toLocaleUpperCase('tr-TR');
   }
 }
 
