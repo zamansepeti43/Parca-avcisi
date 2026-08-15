@@ -7,13 +7,13 @@ const categories = [
   ['⚙️', 'Motor', 'Motor ve motor parçaları'], ['🔧', 'Şanzıman', 'Debriyaj ve aktarma'], ['🚗', 'Kaporta', 'Tampon, kapı ve ayna'], ['💡', 'Aydınlatma', 'Far, stop ve sinyal'],
   ['🛑', 'Fren Sistemi', 'Balata, disk ve kaliper'], ['🛞', 'Süspansiyon', 'Amortisör ve yürür'], ['⚡', 'Elektrik', 'Akü, marş ve elektronik'], ['🪑', 'İç Aksam', 'Konsol ve döşeme'], ['⭕', 'Jant & Lastik', 'Jant ve lastik'],
 ];
+const brandLogo = '/app-logo.png';
 
-const brandLogo = '/parca-avcisi-logo.png';
-const footerBrandLogo = '/logo-emblem-badge.png';
+const footerBrandLogo = '/app-logo.png';
 
 root.innerHTML = `
   <header class="site-header"><div class="container nav-wrap">
-    <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="63" height="36"></a>
+    <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="40" height="40"></a>
     <nav class="desktop-nav" aria-label="Ana menü"><a href="#ilanlar">İlanlar</a><a href="#kategoriler">Kategoriler</a><a href="#aracini-sec">Aracını Seç</a></nav>
     <span class="auth-slot" id="authSlot"></span>
     <button class="outline-btn" id="sellBtn">+ İlan Ver</button>
