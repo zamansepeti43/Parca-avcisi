@@ -13,7 +13,7 @@ const footerBrandLogo = '/app-logo.png';
 
 root.innerHTML = `
   <header class="site-header"><div class="container nav-wrap">
-    <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="92" height="42"></a>
+    <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="132" height="60"></a>
     <nav class="desktop-nav" aria-label="Ana menü"><a href="#ilanlar">İlanlar</a><a href="#kategoriler">Kategoriler</a><a href="#aracini-sec">Aracını Seç</a></nav>
     <span class="auth-slot" id="authSlot"></span>
     <button class="outline-btn" id="sellBtn">+ İlan Ver</button>
