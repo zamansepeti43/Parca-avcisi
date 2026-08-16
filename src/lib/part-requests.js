@@ -84,6 +84,19 @@ export async function getMyPartRequests() {
   return (data || []).map(normalizeRequest);
 }
 
+export async function getMyRespondedRequests() {
+  if (!supabaseConfigured) return [];
+  const user = await requireUser();
+  const mySelect = requestSelect.replace('responses:part_request_responses(', 'responses:part_request_responses!inner(');
+  const { data, error } = await requireSupabase()
+    .from('part_requests')
+    .select(mySelect)
+    .eq('responses.seller_id', user.id)
+    .order('created_at', { ascending: false });
+  if (error) throw error;
+  return (data || []).map(normalizeRequest);
+}
+
 export async function getActivePartRequests(filters = {}) {
   if (!supabaseConfigured) return [];
   let query = requireSupabase()

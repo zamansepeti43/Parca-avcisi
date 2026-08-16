@@ -8,7 +8,8 @@ import { getMyMessages, sendMessage, markConversationRead } from './messages.js'
 import { getNotifications, getUnreadNotificationsCount, markNotificationsRead, markAllNotificationsRead } from './notifications.js';
 import { getSavedSearches, createSavedSearch, updateSavedSearch, deleteSavedSearch } from './saved-searches.js';
 import { getMyProfile, getProfilesByIds, updateProfile } from './profile.js';
-import { getMyPartRequests, getActivePartRequests, getPartRequestById, setPartRequestStatus, respondToRequest, REQUEST_STATUS_LABELS, REQUEST_CONDITION_LABELS } from './part-requests.js';
+import { getMyPartRequests, getMyRespondedRequests, getPartRequestById, setPartRequestStatus, REQUEST_STATUS_LABELS } from './part-requests.js';
+import { supabase, supabaseConfigured } from './supabase.js';
 
 const modal = document.querySelector('#appModal');
 const content = document.querySelector('#modalContent');
@@ -22,6 +23,8 @@ let profilesCache = [];
 let editPhotoItems = [];
 let editOriginalIds = [];
 let editListingId = null;
+let activeThreadKey = null;
+let messagesChannel = null;
 
 const esc = (v) => String(v || '').replace(/[&<>'"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
 const money = (value) => new Intl.NumberFormat('tr-TR').format(Number(value) || 0) + ' TL';
@@ -56,7 +59,7 @@ const menuItems = [
   ['favorilerim', 'Favorilerim'],
   ['kayitli-aramalar', 'Kayıtlı Aramalarım'],
   ['bildirimler', 'Bildirimler'],
-  ['musteri-talepleri', 'Müşterilerin Aradığı Parçalar'],
+  ['musterilerim', 'Müşterilerim'],
   ['hesap-bilgileri', 'Hesap Bilgileri'],
   ['ayarlar', 'Ayarlar'],
   ['yardim', 'Yardım & Destek'],
@@ -99,7 +102,7 @@ async function openAccountCenter(pane) {
     favorilerim: renderFavoriler,
     'kayitli-aramalar': renderKayitliAramalar,
     bildirimler: renderBildirimler,
-    'musteri-talepleri': renderMusteriTalepleri,
+    'musterilerim': renderMusterilerim,
     'hesap-bilgileri': renderHesapBilgileri,
     ayarlar: renderAyarlar,
     yardim: renderYardim,
@@ -128,6 +131,7 @@ async function renderProfil() {
     '<label>Ad soyad<input name="fullName" required value="' + esc(name) + '"></label>' +
     '<label>Telefon<input name="phone" value="' + esc(profile?.phone || '') + '" placeholder="05xx xxx xx xx"></label>' +
     '<label>Şehir<input name="city" value="' + esc(profile?.city || '') + '" placeholder="Örn. İstanbul"></label>' +
+    '<label>Adres<textarea name="address" placeholder="Parça teslimatı için adres">' + esc(profile?.address || '') + '</textarea></label>' +
     '<label>Avatar (görsel bağlantısı)<input name="avatarUrl" value="' + esc(profile?.avatar_url || '') + '" placeholder="https://..."></label>' +
     '<button>Kaydet</button></form>'));
 }
@@ -303,33 +307,20 @@ async function renderTaleplerim(tab) {
     '<div class="pane-tabs">' + tabsHtml + '</div>' + rows));
 }
 
-// ---- Müşterilerin Aradığı Parçalar ----
-let requestFilters = {};
-
-function requestFilterFormHtml() {
-  const categoryOptions = '<option value="">Tüm Kategoriler</option>' + PART_CATEGORY_LIST.map((name) => '<option value="' + name + '"' + (requestFilters.category === name ? ' selected' : '') + '>' + name + '</option>').join('');
-  return '<form id="requestFilterForm" class="pane-form request-filters">' +
-    '<div class="field-row"><input name="make" placeholder="Marka" value="' + esc(requestFilters.make || '') + '"><input name="model" placeholder="Model" value="' + esc(requestFilters.model || '') + '"></div>' +
-    '<div class="field-row"><input name="year" inputmode="numeric" placeholder="Yıl" value="' + esc(requestFilters.year || '') + '"><select name="category">' + categoryOptions + '</select></div>' +
-    '<div class="field-row"><input name="city" placeholder="Şehir" value="' + esc(requestFilters.city || '') + '"><button>Filtrele</button></div>' +
-    '</form>';
-}
-
-async function renderMusteriTalepleri() {
-  const requests = (await getActivePartRequests(requestFilters)) || [];
+// ---- Müşterilerim ("Bende Var" dediğim taleplerin sahipleri) ----
+async function renderMusterilerim() {
+  const requests = (await getMyRespondedRequests()) || [];
   const rows = requests.length ? '<div class="pane-list">' + requests.map((r) => {
-    const responded = r.responses.some((resp) => resp.sellerId === me);
-    const respondAction = responded
-      ? '<span class="responded-badge">✓ Cevap verildi</span>'
-      : '<button class="primary" data-pane-respond="' + esc(r.id) + '">BENDE VAR</button>';
-    return '<div class="pane-row request-row"><div class="grow"><strong>' + esc(r.partName) + '</strong><small>' + esc(r.vehicleLabel) + ' · ' + esc(REQUEST_CONDITION_LABELS[r.condition] || r.condition) + ' · ⌖ ' + esc(r.city) + '</small></div>' +
+    const customer = r.owner || null;
+    const customerName = customer?.full_name || 'Müşteri';
+    const respondAt = r.responses.find((resp) => resp.sellerId === me)?.createdAt || '';
+    return '<div class="pane-row request-row"><div class="grow"><strong>' + esc(customerName) + '</strong><small>' + esc(r.partName) + ' · ' + esc(r.vehicleLabel) + ' · ⌖ ' + esc(r.city || 'Türkiye') + (respondAt ? ' · Bende Var: ' + timeLabel(respondAt) : '') + '</small></div>' +
       '<span class="status-badge ' + esc(r.status) + '">' + esc(REQUEST_STATUS_LABELS[r.status] || r.status) + '</span>' +
-      '<div class="pane-actions">' + respondAction + '<button data-open-request-detail="' + esc(r.id) + '">İncele</button></div></div>';
-  }).join('') + '</div>' : '<div class="pane-empty"><strong>Şu an aktif talep yok</strong><span>Alıcılar parça talep ettikçe burada görünür.</span></div>';
-  render(shell('musteri-talepleri',
-    '<div class="account-pane-head"><h2>Müşterilerin Aradığı Parçalar</h2></div>' +
-    '<p class="pane-hint">Bunlardan birini sende varsa "Bende Var" de; alıcıya haber verip mesajlaşmayı başlat.</p>' +
-    requestFilterFormHtml() + rows));
+      '<div class="pane-actions"><button data-request-thread="' + esc(r.id) + '::' + esc(r.userId) + '">Mesaj Aç</button><button data-open-request-detail="' + esc(r.id) + '">Talebi Gör</button></div></div>';
+  }).join('') + '</div>' : '<div class="pane-empty"><strong>Henüz müşterin yok</strong><span>Bir talebe "Bende Var" dediğinde o alıcı müşterin olarak burada görünür.</span></div>';
+  render(shell('musterilerim',
+    '<div class="account-pane-head"><h2>Müşterilerim</h2></div>' +
+    '<p class="pane-hint">"Bende Var" dediğin taleplerin sahipleri burada listelenir. Mesaj Aç ile görüşmeye devam edebilirsin.</p>' + rows));
 }
 
 // ---- Mesajlarım ----
@@ -366,6 +357,7 @@ function conversationsHtml() {
 }
 
 async function renderMesajlar() {
+  activeThreadKey = null;
   const messages = (await getMyMessages()) || [];
   const otherIds = [...new Set(messages.map((m) => (m.sender_id === me ? m.receiver_id : m.sender_id)))];
   profilesCache = await getProfilesByIds(otherIds);
@@ -373,12 +365,38 @@ async function renderMesajlar() {
   render(shell('mesajlarim', '<div class="account-pane-head"><h2>Mesajlarım</h2></div>' + conversationsHtml()));
 }
 
+async function refreshMessagesPane() {
+  try {
+    const messages = (await getMyMessages()) || [];
+    const otherIds = [...new Set(messages.map((m) => (m.sender_id === me ? m.receiver_id : m.sender_id)))];
+    profilesCache = await getProfilesByIds(otherIds);
+    conversations = buildConversations(messages, me);
+    if (activeThreadKey) renderThread(activeThreadKey);
+    else renderMesajlar();
+  } catch { /* pano yenilenemedi; mevcut görünüm korunur */ }
+}
+
+function subscribeMessagesRealtime() {
+  if (!supabaseConfigured || !supabase || messagesChannel) return;
+  try {
+    messagesChannel = supabase
+      .channel('account-messages-realtime')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, () => {
+        if (currentPane === 'mesajlarim' && modal.classList.contains('show')) refreshMessagesPane().catch(() => {});
+      })
+      .subscribe();
+  } catch (error) {
+    console.warn('Mesaj canlı takibi başlatılamadı', error);
+  }
+}
+
 async function renderThread(key) {
+  activeThreadKey = key;
   let conv = conversations.find((c) => c.key === key);
   if (!conv) {
     const [other, idPart] = key.split('::');
     const requestId = idPart && idPart.startsWith('r') ? idPart.slice(1) : null;
-    if (!requestId) return renderMesajlar();
+    if (!requestId) { activeThreadKey = null; return renderMesajlar(); }
     conv = { key, other, listing: null, request: { id: requestId }, messages: [], unread: 0 };
   }
   try {
@@ -486,7 +504,7 @@ async function renderHesapBilgileri() {
   const user = await getCurrentUser().catch(() => null);
   render(shell('hesap-bilgileri',
     '<div class="account-pane-head"><h2>Hesap Bilgileri</h2></div>' +
-    '<div class="pane-form"><label>E-posta<input value="' + esc(user?.email || '') + '" disabled></label><label>Telefon<input value="' + esc(profile?.phone || '') + '" disabled></label></div>' +
+    '<div class="pane-form"><label>E-posta<input value="' + esc(user?.email || '') + '" disabled></label><label>Telefon<input value="' + esc(profile?.phone || '') + '" disabled></label><label>Adres<textarea disabled>' + esc(profile?.address || '') + '</textarea></label></div>' +
     '<h3 style="margin:22px 0 4px">Şifre değiştir</h3>' +
     '<form id="accountPasswordForm" class="pane-form"><label>Yeni şifre<input name="password" type="password" required minlength="6" autocomplete="new-password" placeholder="En az 6 karakter"></label><label>Yeni şifre (tekrar)<input name="confirm" type="password" required minlength="6" autocomplete="new-password" placeholder="En az 6 karakter"></label><button>Şifreyi Güncelle</button></form>'));
 }
@@ -562,17 +580,6 @@ document.addEventListener('click', async (event) => {
       showToast('Talep yeniden aktif edildi.');
     } catch (error) { showToast(error.message || 'Talep aktifleştirilemedi.'); }
     renderTaleplerim(requestTab);
-    window.dispatchEvent(new CustomEvent('parca:requests-updated'));
-    return;
-  }
-
-  const paneRespond = event.target.closest('[data-pane-respond]');
-  if (paneRespond) {
-    try {
-      await respondToRequest(paneRespond.dataset.paneRespond);
-      showToast('Alıcıya bildirim gönderildi. Mesajlaşma başlatıldı.');
-    } catch (error) { showToast(error.message || 'Cevap oluşturulamadı.'); }
-    renderMusteriTalepleri();
     window.dispatchEvent(new CustomEvent('parca:requests-updated'));
     return;
   }
@@ -682,7 +689,7 @@ document.addEventListener('submit', async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
     try {
-      await updateProfile({ fullName: data.get('fullName'), phone: data.get('phone'), city: data.get('city'), avatarUrl: data.get('avatarUrl') });
+      await updateProfile({ fullName: data.get('fullName'), phone: data.get('phone'), city: data.get('city'), address: data.get('address'), avatarUrl: data.get('avatarUrl') });
       showToast('Profil güncellendi.');
       renderProfil();
     } catch (error) { showToast(error.message || 'Güncellenemedi.'); }
@@ -746,18 +753,6 @@ document.addEventListener('submit', async (event) => {
       renderKayitliAramalar();
     } catch (error) { showToast(error.message || 'Kaydedilemedi.'); }
   }
-  if (event.target.id === 'requestFilterForm') {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    requestFilters = {
-      make: data.get('make') || null,
-      model: data.get('model') || null,
-      year: data.get('year') || null,
-      category: data.get('category') || null,
-      city: data.get('city') || null,
-    };
-    renderMusteriTalepleri();
-  }
   if (event.target.id === 'accountPasswordForm') {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -791,5 +786,7 @@ refreshBadge();
 
 window.addEventListener('parca:requests-updated', () => {
   if (currentPane === 'taleplerim') renderTaleplerim(requestTab).catch(() => {});
-  else if (currentPane === 'musteri-talepleri') renderMusteriTalepleri().catch(() => {});
+  else if (currentPane === 'musterilerim') renderMusterilerim().catch(() => {});
 });
+
+subscribeMessagesRealtime();

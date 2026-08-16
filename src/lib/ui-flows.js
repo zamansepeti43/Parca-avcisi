@@ -11,6 +11,8 @@ import { supabaseConfigured } from './supabase.js';
 const resolver = new VehicleResolver();
 let selection = { type: '', make: '', model: '', generation: '', year: '', engine: '' };
 let pendingAction = null;
+let emailVerificationRequired = false;
+const isEmailVerified = (user) => Boolean(user && user.email_confirmed_at);
 let selectedPhotos = [];
 const ACCEPTED_PHOTO_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const isPhotoFile = (file) => file instanceof File && file.size > 0 && (ACCEPTED_PHOTO_TYPES.includes(file.type) || /\.(jpe?g|png|webp)$/i.test(file.name));
@@ -72,9 +74,13 @@ function openModal(html) { content.innerHTML = html; modal.querySelector('.modal
 function closeModal() { modal.classList.remove('show'); modal.setAttribute('aria-hidden', 'true'); pendingAction = null; }
 async function requireMember(action) {
   const user = await getCurrentUser().catch(() => null);
-  if (user) return action();
-  pendingAction = action;
-  openAuth();
+  if (!user) { pendingAction = action; openAuth(); return; }
+  if (emailVerificationRequired && !isEmailVerified(user)) {
+    pendingAction = null;
+    openVerifyEmailRequired();
+    return;
+  }
+  await action();
 }
 
 function openAuth() {
@@ -89,7 +95,7 @@ function openLoginForm() {
   openModal('<span class="eyebrow">PARÇA AVCISI ÜYELİK</span><h2>Giriş yap</h2><p>Hesabınla devam et.</p><form id="loginForm" class="stack-form"><input name="email" type="email" required autocomplete="email" placeholder="E-posta"><input name="password" type="password" required autocomplete="current-password" placeholder="Şifre"><button>Giriş Yap</button></form><div class="form-links"><button type="button" data-open-forgot>Şifremi unuttum</button><button type="button" data-open-signup>Hesabın yok mu? Kayıt ol</button></div>');
 }
 function openSignupForm() {
-  openModal('<span class="eyebrow">PARÇA AVCISI ÜYELİK</span><h2>Ücretsiz kayıt ol</h2><p>İlan vermek, favori kaydetmek ve satıcılarla iletişim kurmak için üye ol.</p><form id="signupForm" class="stack-form"><input name="fullName" required autocomplete="name" placeholder="Ad soyad"><input name="email" type="email" required autocomplete="email" placeholder="E-posta"><input name="password" type="password" required minlength="6" autocomplete="new-password" placeholder="Şifre (en az 6 karakter)"><button>Kayıt Ol</button></form><div class="form-links"><button type="button" data-open-login>Hesabın var mı? Giriş yap</button></div>');
+  openModal('<span class="eyebrow">PARÇA AVCISI ÜYELİK</span><h2>Ücretsiz kayıt ol</h2><p>İlan vermek, talep oluşturmak ve satıcılarla iletişim kurmak için üye ol. Telefon ve adres bilgilerin yalnızca görüşme kurduğun taraflarla paylaşılır.</p><form id="signupForm" class="stack-form"><div class="form-grid"><input name="firstName" required autocomplete="given-name" placeholder="Ad"><input name="lastName" required autocomplete="family-name" placeholder="Soyad"></div><div class="form-grid"><input name="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="Telefon (05xx xxx xx xx)"><input name="email" type="email" required autocomplete="email" placeholder="E-posta"></div><div class="form-grid"><input name="password" type="password" required minlength="6" autocomplete="new-password" placeholder="Şifre (en az 6 karakter)"><input name="confirm" type="password" required minlength="6" autocomplete="new-password" placeholder="Şifre (tekrar)"></div><textarea name="address" required placeholder="Adres (parça teslimatı için)"></textarea><button>Kayıt Ol</button></form><div class="form-links"><button type="button" data-open-login>Hesabın var mı? Giriş yap</button></div>');
 }
 function openForgotPassword() {
   openModal('<span class="eyebrow">PARÇA AVCISI ÜYELİK</span><h2>Şifreni mi unuttun?</h2><p>E-posta adresini gir, sana sıfırlama bağlantısı gönderelim.</p><form id="forgotForm" class="stack-form"><input name="email" type="email" required autocomplete="email" placeholder="E-posta"><button>Bağlantı Gönder</button></form><div class="form-links"><button type="button" data-open-login>Girişe dön</button></div>');
@@ -99,6 +105,9 @@ function openResetPassword() {
 }
 function openEmailVerify() {
   openModal('<span class="eyebrow">PARÇA AVCISI ÜYELİK</span><h2>E-postanı doğrula</h2><p>Sana bir doğrulama e-postası gönderdik. İçindeki bağlantıya tıklayarak hesabını aktifleştir, ardından giriş yap.</p><div class="auth-choices"><button data-open-login>Giriş Yap</button><button data-open-signup class="secondary">Kayıt ekranına dön</button></div>');
+}
+function openVerifyEmailRequired() {
+  openModal('<span class="eyebrow">PARÇA AVCISI ÜYELİK</span><h2>E-posta doğrulaması gerekli</h2><p>Bu işlemi kullanmak için hesabının e-posta adresini doğrulaman gerekiyor. E-postandaki doğrulama bağlantısına tıkladıktan sonra tekrar dene.</p><div class="auth-choices"><button data-close-modal>Tamam</button><button data-open-login class="secondary">Giriş Yap</button></div>');
 }
 async function openAccount() {
   const user = await getCurrentUser().catch(() => null);
@@ -434,13 +443,29 @@ document.addEventListener('submit', async (event) => {
       showToast('Giriş yapıldı.');
       renderAuthUI(await getCurrentUser().catch(() => null));
       if (action) action();
-    } catch (error) { showToast(error.message || 'Giriş yapılamadı.'); }
+    } catch (error) {
+      const message = error.message || 'Giriş yapılamadı.';
+      if (/confirm/i.test(message)) {
+        emailVerificationRequired = true;
+        pendingAction = null;
+        showToast('E-posta adresini doğrulaman gerekiyor. Doğrulama bağlantısı için kayıt e-postanı kontrol et.');
+        return;
+      }
+      showToast(message);
+    }
   }
   if (event.target.id === 'signupForm') {
     event.preventDefault();
     const data = new FormData(event.target);
+    const fullName = (String(data.get('firstName') || '').trim() + ' ' + String(data.get('lastName') || '').trim()).trim();
+    const phone = String(data.get('phone') || '').trim();
+    const address = String(data.get('address') || '').trim();
+    if (!fullName) return showToast('Ad ve soyad zorunlu.');
+    if (phone.replace(/\D/g, '').length < 10) return showToast('Geçerli bir telefon numarası gir.');
+    if (!address) return showToast('Adres zorunlu.');
+    if (data.get('password') !== data.get('confirm')) return showToast('Şifreler eşleşmiyor.');
     try {
-      const result = await signUp({ email: data.get('email'), password: data.get('password'), fullName: data.get('fullName') });
+      const result = await signUp({ email: data.get('email'), password: data.get('password'), fullName, phone, address });
       if (result.session) {
         const action = pendingAction;
         pendingAction = null;
@@ -449,6 +474,8 @@ document.addEventListener('submit', async (event) => {
         renderAuthUI(result.session.user);
         if (action) action();
       } else {
+        emailVerificationRequired = true;
+        pendingAction = null;
         openEmailVerify();
         showToast('Kayıt tamamlandı. E-postanı doğrulamayı unutma.');
       }

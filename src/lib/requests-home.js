@@ -164,11 +164,7 @@ export async function renderRequestMarket() {
 
 if (allRequestsBtn) {
   allRequestsBtn.addEventListener('click', () => {
-    if (window.__requireMember) {
-      window.__requireMember(() => {
-        if (window.__openAccountCenter) window.__openAccountCenter('musteri-talepleri');
-      });
-    }
+    if (window.__searchRequests) window.__searchRequests('');
   });
 }
 

@@ -40,3 +40,5 @@
 .sell-choice-alt{display:block;width:100%;margin-top:14px;border:0;background:transparent;color:#6e747c;font-size:12px;text-align:center;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .sell-choice-alt:hover{color:var(--gold)}
 @media(max-width:640px){.sell-choice-grid{grid-template-columns:1fr}.sell-choice{padding:16px}}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.form-grid{grid-template-columns:1fr}}

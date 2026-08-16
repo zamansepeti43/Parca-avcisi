@@ -7,11 +7,11 @@ export async function getCurrentUser() {
   return data.user;
 }
 
-export async function signUp({ email, password, fullName }) {
+export async function signUp({ email, password, fullName, phone, address }) {
   const { data, error } = await requireSupabase().auth.signUp({
     email,
     password,
-    options: { data: { full_name: fullName } },
+    options: { data: { full_name: fullName, phone: phone || '', address: address || '' } },
   });
   if (error) throw error;
   return data;

@@ -7,7 +7,7 @@ export async function getMyProfile() {
   if (!authData.user) return null;
   const { data, error } = await client
     .from('profiles')
-    .select('id, full_name, phone, city, avatar_url, role, settings')
+    .select('id, full_name, phone, city, address, avatar_url, role, settings')
     .eq('id', authData.user.id)
     .maybeSingle();
   if (error) throw error;
@@ -48,7 +48,7 @@ export async function getActiveListingCount(sellerId) {
   return count || 0;
 }
 
-export async function updateProfile({ fullName, phone, city, avatarUrl, settings }) {
+export async function updateProfile({ fullName, phone, city, address, avatarUrl, settings }) {
   const client = requireSupabase();
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
@@ -57,6 +57,7 @@ export async function updateProfile({ fullName, phone, city, avatarUrl, settings
   const payload = { id: authData.user.id, full_name: fullName };
   if (phone !== undefined) payload.phone = phone || null;
   if (city !== undefined) payload.city = city || null;
+  if (address !== undefined) payload.address = address || null;
   if (avatarUrl !== undefined) payload.avatar_url = avatarUrl || null;
   if (settings !== undefined) payload.settings = settings;
 
