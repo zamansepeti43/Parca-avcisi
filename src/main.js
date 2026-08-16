@@ -1,4 +1,5 @@
 import './app.js';
+import './lib/categories-menu.js';
 import './lib/ui-flows.js';
 import './lib/listing-detail.js';
 import './lib/listing-view.js';

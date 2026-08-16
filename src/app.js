@@ -10,7 +10,7 @@ const footerBrandLogo = '/app-logo.png';
 root.innerHTML = `
   <header class="site-header"><div class="container nav-wrap">
     <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="230" height="105"></a>
-    <nav class="desktop-nav" aria-label="Ana menü"><a href="#ilanlar">İlanlar</a><a href="#ilanlar">Kategoriler</a><a href="#aracini-sec">Aracını Seç</a></nav>
+    <nav class="desktop-nav" aria-label="Ana menü"><a href="#ilanlar">İlanlar</a><button type="button" class="nav-drop" data-open-categories aria-haspopup="true" aria-expanded="false" aria-controls="catMenu">Kategoriler<span class="nav-caret">▾</span></button><a href="#aracini-sec">Aracını Seç</a></nav>
     <span class="auth-slot" id="authSlot"></span>
     <button class="outline-btn" id="sellBtn">+ İlan Ver</button>
   </div></header>
@@ -58,7 +58,7 @@ root.innerHTML = `
   </main>
 
   <footer><div class="container footer-inner"><div><a class="brand" href="#top"><img class="brand-mark" src="${footerBrandLogo}" alt="Parça Avcısı" width="34" height="34"><span>PARÇA <strong>AVCISI</strong></span></a><p>Aradığın her parça Parça Avcısı'nda.</p></div><div class="footer-links"><a href="#ilanlar">İlanlar</a><a href="#ilanlar">Kategoriler</a><a href="#aracini-sec">Araç Seç</a></div><span>© 2026 Parça Avcısı</span></div></footer>
-  <nav class="mobile-nav" aria-label="Mobil menü"><a href="#top">⌂<small>Ana Sayfa</small></a><a href="#ilanlar">▦<small>Kategoriler</small></a><button id="mobileSell">+<small>İlan Ver</small></button><a href="#favorilerim" id="favoriteLink">♡<small>Favoriler</small></a><a href="#hesabim" id="accountLink">◉<small id="accountLabel">Hesabım</small></a></nav><div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <nav class="mobile-nav" aria-label="Mobil menü"><a href="#top">⌂<small>Ana Sayfa</small></a><button type="button" data-open-categories aria-expanded="false" aria-controls="catMenu">▦<small>Kategoriler</small></button><button id="mobileSell">+<small>İlan Ver</small></button><a href="#favorilerim" id="favoriteLink">♡<small>Favoriler</small></a><a href="#hesabim" id="accountLink">◉<small id="accountLabel">Hesabım</small></a></nav><div class="toast" id="toast" role="status" aria-live="polite"></div>
 `;
 
 const searchInput = document.querySelector('#searchInput');
@@ -170,3 +170,5 @@ if (arayanBack) {
     search(searchInput.value);
   });
 }
+
+window.__homeSearch = search;

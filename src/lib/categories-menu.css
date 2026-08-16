@@ -1,0 +1,24 @@
+.desktop-nav .nav-drop{display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;color:#9da4ad;text-decoration:none;font-size:13px;padding:0;cursor:pointer;font-family:inherit}
+.desktop-nav .nav-drop:hover{color:#fff}
+.desktop-nav .nav-drop[aria-expanded="true"]{color:var(--gold)}
+.nav-caret{font-size:9px;opacity:.85}
+.cat-menu{position:absolute;top:100%;left:0;right:0;z-index:40;background:rgba(9,11,14,.97);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 30px 60px rgba(0,0,0,.45);backdrop-filter:blur(18px)}
+.cat-menu[hidden]{display:none}
+.cat-menu:not([hidden]){animation:catFade .18s ease}
+@keyframes catFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.cat-menu-inner{padding:26px 0 30px}
+.cat-menu-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}
+.cat-type-switch{display:flex;gap:6px;flex-wrap:wrap}
+.cat-type-switch button{border:1px solid #343a42;background:transparent;color:#9ca4ad;border-radius:999px;padding:7px 13px;font-size:11px;cursor:pointer}
+.cat-type-switch button:hover{color:#fff;border-color:#76601e}
+.cat-type-switch button.active{background:var(--gold);border-color:var(--gold);color:#111;font-weight:850}
+.cat-menu-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:22px 28px;max-height:min(64vh,540px);overflow:auto;padding-right:4px}
+.cat-col{display:grid;gap:6px;align-content:start}
+.cat-main{display:flex;justify-content:space-between;align-items:center;gap:8px;border:0;background:transparent;color:#fff;font-size:13px;font-weight:850;letter-spacing:.04em;padding:5px 0;text-align:left;cursor:pointer}
+.cat-main::after{content:'›';color:#6e747c;font-weight:700}
+.cat-main:hover{color:var(--gold)}
+.cat-main:hover::after{color:var(--gold)}
+.cat-subs{display:grid;gap:1px}
+.cat-sub{border:0;background:transparent;color:#9da4ad;font-size:11.5px;padding:4px 0 4px 9px;text-align:left;cursor:pointer;border-left:1px solid #262b31}
+.cat-sub:hover{color:#fff;border-left-color:var(--gold)}
+@media(max-width:640px){.cat-menu-inner{padding:18px 0 22px}.cat-menu-head{flex-direction:column;align-items:flex-start;gap:12px}.cat-menu-cols{grid-template-columns:1fr 1fr;gap:16px;max-height:70vh}.cat-main{font-size:12px}.cat-sub{font-size:11px}}
