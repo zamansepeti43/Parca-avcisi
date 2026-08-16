@@ -9,7 +9,7 @@ const footerBrandLogo = '/app-logo.png';
 
 root.innerHTML = `
   <header class="site-header"><div class="container nav-wrap">
-    <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="140" height="64"></a>
+    <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="170" height="78"></a>
     <nav class="desktop-nav" aria-label="Ana menü"><a href="#ilanlar">İlanlar</a><a href="#ilanlar">Kategoriler</a><a href="#aracini-sec">Aracını Seç</a></nav>
     <span class="auth-slot" id="authSlot"></span>
     <button class="outline-btn" id="sellBtn">+ İlan Ver</button>
@@ -31,7 +31,6 @@ root.innerHTML = `
     <section class="section marketplace-cta" id="piyasa"><div class="container marketplace-grid">
       <article class="marketplace-card request"><span class="eyebrow">ARADIN, BULAMADIN MI?</span><div class="marketplace-icon">🔎</div><h2>Parça Arıyorum</h2><p>Bulamadığın parçayı talep et; sende olan satıcılar sana ulaşsın.</p><button class="marketplace-btn" data-open-request>Parça Talebi Oluştur</button></article>
       <article class="marketplace-card sell"><span class="eyebrow">ELİNDE FAZLA PARÇA MI VAR?</span><div class="marketplace-icon">🔧</div><h2>Parça Satıyorum</h2><p>Sıfır, 2. el veya çıkma parçanı ilanla; arayan alıcılarla buluş.</p><button class="marketplace-btn" data-open-sell>İlan Ver</button></article>
-      <article class="marketplace-card browse"><span class="eyebrow">SATICI HESABINLA</span><div class="marketplace-icon">👀</div><h2>Müşteri Taleplerini Gör</h2><p>Alıcıların şu an aradığı parçaları incele; sende olanlara "Bende Var" ile cevap ver.</p><button class="marketplace-btn" data-open-customer-requests>Müşteri Taleplerini Gör</button></article>
     </div></section>
 
     <section class="section vehicle-section" id="aracini-sec"><div class="container vehicle-card"><div><span class="eyebrow">ARACINI SEÇ</span><h2>Aracına uygun parçayı daha hızlı bul.</h2><p>Marka, model ve yılı seç; uyumlu parçaları keşfet.</p></div><form class="vehicle-form" id="vehicleForm"><select id="make"><option value="">Marka Seçiniz</option></select><select id="model" disabled><option value="">Model Seçiniz</option></select><select id="year" disabled><option value="">Yıl Seçiniz</option></select><button type="submit">Parçaları Göster</button></form></div></section>
@@ -162,10 +161,6 @@ function showToast(message) {
 document.querySelector('#allListings').addEventListener('click', () => {
   document.querySelectorAll('.filter').forEach((item) => item.classList.toggle('active', item.dataset.condition === 'Tümü'));
   if (listingView()) { listingView().setCondition('Tümü'); listingView().search(''); }
-});
-
-document.querySelector('[data-open-customer-requests]').addEventListener('click', () => {
-  document.querySelector('#talep-market').scrollIntoView({ behavior: 'smooth' });
 });
 
 const arayanBack = document.querySelector('#arayanBack');

@@ -65,9 +65,6 @@ main.request-mode>*:not(#requestDetail){display:none}
 .marketplace-card.request .marketplace-btn:hover{background:var(--gold-dark)}
 .marketplace-card.sell .marketplace-btn{background:#fff;color:#111}
 .marketplace-card.sell .marketplace-btn:hover{background:#e7e7e4}
-.marketplace-card.browse{grid-column:1/-1}
-.marketplace-card.browse .marketplace-btn{background:transparent;border:1px solid rgba(255,255,255,.28);color:#fff}
-.marketplace-card.browse .marketplace-btn:hover{background:rgba(255,255,255,.08)}
 @media(max-width:640px){.marketplace-cta{padding:40px 0}.marketplace-grid{grid-template-columns:1fr;gap:14px}.marketplace-card{padding:22px}.marketplace-btn{width:100%;text-align:center}}
 @media(max-width:900px){.request-layout{grid-template-columns:1fr}.request-gallery{height:320px}}
 @media(max-width:640px){.request-hero-row{flex-direction:column;align-items:stretch}.request-body{padding:20px 0 46px}.request-gallery{height:230px}.request-info-card{padding:18px;border-radius:14px}.request-response{align-items:stretch;flex-direction:column}.request-thread-btn{width:100%;text-align:center}}
