@@ -45,14 +45,14 @@ root.innerHTML = `
       </div>
     </section>
 
+    <section class="section listings-section" id="ilanlar"><div class="container"><div class="section-head"><div><span class="eyebrow">SATILAN PARÇALAR · YENİ EKLENENLER</span><h2>Yeni eklenen parçalar</h2></div><div class="filters"><button class="filter active" data-condition="Tümü">Tümü</button><button class="filter" data-condition="Sıfır">Sıfır</button><button class="filter" data-condition="2. El">2. El</button><button class="filter" data-condition="Çıkma">Çıkma</button></div></div><div class="listing-grid" id="listingGrid"></div><div class="center-action"><button class="dark-btn" id="allListings">Tüm ilanları gör</button></div></div></section>
+
     <section class="section requests-section" id="talep-market"><div class="container">
       <div class="section-head"><div><span class="eyebrow">MÜŞTERİLERİN ARADIĞI PARÇALAR</span><h2>Alıcılar bu parçaları arıyor</h2></div><button class="text-btn" id="allRequestsBtn">Hepsini Gör →</button></div>
       <p class="requests-intro">Aradığın parça burada yoksa, başka bir müşteri de senin elindeki parçayı arıyor olabilir. Sende olan parçaya "Bende Var" de, alıcıyla mesajlaşmayı başlat.</p>
       <div class="listing-grid request-grid" id="requestMarketGrid"></div>
       <div class="center-action"><button class="dark-btn" data-open-request>Parça ARIYORUM — Talep Oluştur</button></div>
     </div></section>
-
-    <section class="section listings-section" id="ilanlar"><div class="container"><div class="section-head"><div><span class="eyebrow">SATILAN PARÇALAR · YENİ EKLENENLER</span><h2>Yeni eklenen parçalar</h2></div><div class="filters"><button class="filter active" data-condition="Tümü">Tümü</button><button class="filter" data-condition="Sıfır">Sıfır</button><button class="filter" data-condition="2. El">2. El</button><button class="filter" data-condition="Çıkma">Çıkma</button></div></div><div class="listing-grid" id="listingGrid"></div><div class="center-action"><button class="dark-btn" id="allListings">Tüm ilanları gör</button></div></div></section>
 
     <section class="section benefits"><div class="container benefit-grid"><article><b>⌕</b><strong>Kolay arama</strong><span>Aradığın parçayı hızlıca bul.</span></article><article><b>◇</b><strong>Geniş ürün yelpazesi</strong><span>0, 2. el ve çıkma seçenekleri.</span></article><article><b>₺</b><strong>Uygun fiyat</strong><span>Farklı satıcıları karşılaştır.</span></article><article><b>✓</b><strong>Güvenli alışveriş</strong><span>Satıcı profillerini incele.</span></article><article><b>⚡</b><strong>Hızlı iletişim</strong><span>Satıcıya doğrudan ulaş.</span></article>    </div></section>
   </main>
@@ -160,7 +160,7 @@ function showToast(message) {
 
 document.querySelector('#allListings').addEventListener('click', () => {
   document.querySelectorAll('.filter').forEach((item) => item.classList.toggle('active', item.dataset.condition === 'Tümü'));
-  if (listingView()) { listingView().setCondition('Tümü'); listingView().search(''); }
+  if (listingView()) { listingView().setCondition('Tümü'); listingView().clearCategoryFilter(); }
 });
 
 const arayanBack = document.querySelector('#arayanBack');

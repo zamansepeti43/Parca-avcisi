@@ -37,9 +37,9 @@ let isOpen = false;
 function renderColumns() {
   cols.innerHTML = getMainCategories(activeType).map((category) => {
     const subs = getSubcategories(activeType, category);
-    return `<div class="cat-col">
-      <button type="button" class="cat-main" data-cat-search="${escapeHtml(category)}">${escapeHtml(category)}</button>
-      <div class="cat-subs">${subs.map((sub) => `<button type="button" class="cat-sub" data-cat-search="${escapeHtml(sub)}">${escapeHtml(sub)}</button>`).join('')}</div>
+    return `<div class="cat-col" data-cat-col="${escapeHtml(category)}">
+      <button type="button" class="cat-main" data-cat-main="${escapeHtml(category)}">${escapeHtml(category)}</button>
+      <div class="cat-subs">${subs.map((sub) => `<button type="button" class="cat-sub" data-cat-sub="${escapeHtml(sub)}">${escapeHtml(sub)}</button>`).join('')}</div>
     </div>`;
   }).join('');
 }
@@ -82,12 +82,13 @@ function toggle() {
   else open();
 }
 
-function runSearch(query) {
+function applyFilter(category, subcategory) {
   close();
-  if (window.__homeSearch) { window.__homeSearch(query); return; }
-  const input = document.querySelector('#searchInput');
-  if (input) input.value = query;
-  if (window.__listingView) window.__listingView.search(query);
+  if (window.__listingView && window.__listingView.setCategoryFilter) {
+    window.__listingView.setCategoryFilter({ category, subcategory: subcategory || '', vehicleType: activeType });
+  } else if (window.__homeSearch) {
+    window.__homeSearch([category, subcategory].filter(Boolean).join(' '));
+  }
   const target = document.querySelector('#ilanlar');
   if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -100,8 +101,15 @@ document.addEventListener('click', (event) => {
   if (trigger) { event.preventDefault(); toggle(); return; }
   const typeBtn = event.target.closest('[data-cat-type]');
   if (typeBtn) { event.preventDefault(); setType(typeBtn.dataset.catType); return; }
-  const searchBtn = event.target.closest('[data-cat-search]');
-  if (searchBtn) { event.preventDefault(); runSearch(searchBtn.dataset.catSearch); return; }
+  const mainBtn = event.target.closest('[data-cat-main]');
+  if (mainBtn) { event.preventDefault(); applyFilter(mainBtn.dataset.catMain, ''); return; }
+  const subBtn = event.target.closest('[data-cat-sub]');
+  if (subBtn) {
+    event.preventDefault();
+    const col = subBtn.closest('.cat-col');
+    applyFilter(col ? col.dataset.catCol : '', subBtn.dataset.catSub);
+    return;
+  }
   if (isOpen && !event.target.closest('#catMenu')) close();
 });
 

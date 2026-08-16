@@ -2,6 +2,7 @@ import { getActiveListings } from './listings.js';
 import { getFavoriteListingIds, toggleFavorite } from './favorites.js';
 import { supabaseConfigured } from './supabase.js';
 import { demoListings } from './demo-listings.js';
+import { vehicleCatalog } from './vehicle-catalog.js';
 
 const grid = document.querySelector('#listingGrid');
 const toast = document.querySelector('#toast');
@@ -22,7 +23,55 @@ const state = {
   items: [],
   favoriteIds: new Set(),
   live: supabaseConfigured,
+  categoryFilter: null,
 };
+
+// Araç tipi filtreleme: tip etiketi token'ı (gerçek ilanlarda `vehicle` ilk
+// token'dır) veya katalogdaki "marka model" kombinasyonu ile eşleşir.
+const VEHICLE_TYPE_KEYWORDS = {
+  'Kamyon': ['kamyon'],
+  'Otobüs': ['otobüs'],
+  'Motosiklet': ['motosiklet'],
+  'Pickup / Kamyonet': ['pickup', 'kamyonet'],
+};
+const typeVehicleMap = {};
+for (const record of vehicleCatalog) {
+  const combo = (record.make + ' ' + record.model).toLocaleLowerCase('tr-TR');
+  (typeVehicleMap[record.type] = typeVehicleMap[record.type] || new Set()).add(combo);
+}
+
+function matchesVehicleType(item, type) {
+  if (!type) return true;
+  const text = String(item.vehicle || '').toLocaleLowerCase('tr-TR');
+  const tokens = text.split(/[^a-z0-9çğıöşü]+/).filter(Boolean);
+  const keywords = VEHICLE_TYPE_KEYWORDS[type];
+  if (keywords && keywords.some((keyword) => tokens.includes(keyword))) return true;
+  const combos = typeVehicleMap[type];
+  if (combos) {
+    for (const combo of combos) {
+      if (text.includes(combo)) return true;
+    }
+  }
+  return false;
+}
+
+function syncUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const filter = state.categoryFilter;
+  if (filter && filter.category) {
+    params.set('category', filter.category);
+    if (filter.subcategory) params.set('subcategory', filter.subcategory);
+    else params.delete('subcategory');
+    if (filter.vehicleType) params.set('vehicleType', filter.vehicleType);
+    else params.delete('vehicleType');
+  } else {
+    params.delete('category');
+    params.delete('subcategory');
+    params.delete('vehicleType');
+  }
+  const queryString = params.toString();
+  window.history.replaceState(null, '', window.location.pathname + (queryString ? '?' + queryString : '') + window.location.hash);
+}
 
 function showToast(message) {
   toast.textContent = message;
@@ -94,6 +143,12 @@ function scoreItem(item) {
 function matches(item) {
   const okCondition = state.condition === 'Tümü' || item.condition === state.condition;
   if (!okCondition) return false;
+  const filter = state.categoryFilter;
+  if (filter && filter.category) {
+    if (String(item.category || '').toLocaleLowerCase('tr-TR') !== filter.category.toLocaleLowerCase('tr-TR')) return false;
+    if (filter.subcategory && String(item.subcategory || '').toLocaleLowerCase('tr-TR') !== filter.subcategory.toLocaleLowerCase('tr-TR')) return false;
+    if (filter.vehicleType && !matchesVehicleType(item, filter.vehicleType)) return false;
+  }
   return state.tokens.length ? scoreItem(item) > 0 : true;
 }
 
@@ -111,6 +166,9 @@ function requestCtaHtml() {
 }
 
 function emptyHtml() {
+  if (state.categoryFilter && state.categoryFilter.category) {
+    return '<div class="empty"><strong>Bu kategoride henüz ilan bulunmuyor.</strong><span>Farklı bir kategori, alt kategori veya araç tipi deneyebilirsin.</span><button class="dark-btn" data-clear-category>FİLTREYİ KALDIR</button>' + requestCtaHtml() + '</div>';
+  }
   const noItems = state.items.length === 0;
   if (noItems) {
     return state.live
@@ -140,7 +198,12 @@ async function load() {
   try {
     const [listings, favoriteIds] = await Promise.all([getActiveListings(), getFavoriteListingIds()]);
     state.live = true;
-    state.items = dedupe(listings || []);
+    // Geliştirme ortamında demo ilanlar da dataset'e eklenir; canlı veri henüz
+    // kategorize edilmemiş olsa bile kategori filtresi görünür sonuçlar üretir.
+    // Production build'de yalnızca gerçek ilanlar gösterilir (demo ilanlar
+    // yalnızca Supabase yapılandırılmadığında veya yüklenemediğinde devreye girer).
+    const merged = import.meta.env.DEV ? [...(listings || []), ...demoListings] : (listings || []);
+    state.items = dedupe(merged);
     state.favoriteIds = new Set(favoriteIds || []);
   } catch (error) {
     console.warn('Supabase ilanları yüklenemedi; demo ilanlar gösteriliyor.', error);
@@ -158,6 +221,33 @@ async function refresh() {
 function search(query) {
   state.query = query || '';
   state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean);
+  // Boş arama kategori filtresini korur; dolu bir arama yeni bir manuel
+  // arama başlattığı için kategori filtresini sıfırlar.
+  if (state.tokens.length) state.categoryFilter = null;
+  syncUrl();
+  render();
+}
+
+function setCategoryFilter(filter) {
+  const category = (filter && filter.category) || '';
+  const subcategory = (filter && filter.subcategory) || '';
+  const vehicleType = (filter && filter.vehicleType) || '';
+  state.categoryFilter = { category, subcategory, vehicleType };
+  state.query = [category, subcategory].filter(Boolean).join(' ');
+  state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean);
+  const input = document.querySelector('#searchInput');
+  if (input) input.value = state.query;
+  syncUrl();
+  render();
+}
+
+function clearCategoryFilter() {
+  state.categoryFilter = null;
+  state.query = '';
+  state.tokens = [];
+  const input = document.querySelector('#searchInput');
+  if (input) input.value = '';
+  syncUrl();
   render();
 }
 
@@ -167,6 +257,8 @@ function setCondition(condition) {
 }
 
 document.addEventListener('click', async (event) => {
+  const clearButton = event.target.closest('[data-clear-category]');
+  if (clearButton) { event.preventDefault(); clearCategoryFilter(); return; }
   const button = event.target.closest('[data-live-save]');
   if (!button) return;
   event.preventDefault();
@@ -189,6 +281,23 @@ document.addEventListener('click', async (event) => {
 
 window.addEventListener('parca:listings-updated', () => { refresh(); });
 
-window.__listingView = { search, setCondition, refresh, load };
+window.__listingView = { search, setCondition, refresh, load, setCategoryFilter, clearCategoryFilter };
+
+(function restoreCategoryFilter() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get('category');
+    if (!category) return;
+    const subcategory = params.get('subcategory') || '';
+    const vehicleType = params.get('vehicleType') || '';
+    state.categoryFilter = { category, subcategory, vehicleType };
+    state.query = [category, subcategory].filter(Boolean).join(' ');
+    state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean);
+    const input = document.querySelector('#searchInput');
+    if (input) input.value = state.query;
+  } catch (error) {
+    console.warn('Kategori filtresi geri yüklenemedi.', error);
+  }
+})();
 
 load();
