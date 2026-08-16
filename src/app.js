@@ -13,7 +13,7 @@ const footerBrandLogo = '/app-logo.png';
 
 root.innerHTML = `
   <header class="site-header"><div class="container nav-wrap">
-    <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="132" height="60"></a>
+    <a class="brand brand-logo" href="#top" aria-label="Parça Avcısı ana sayfa"><img class="brand-mark" src="${brandLogo}" alt="Parça Avcısı" width="158" height="72"></a>
     <nav class="desktop-nav" aria-label="Ana menü"><a href="#ilanlar">İlanlar</a><a href="#kategoriler">Kategoriler</a><a href="#aracini-sec">Aracını Seç</a></nav>
     <span class="auth-slot" id="authSlot"></span>
     <button class="outline-btn" id="sellBtn">+ İlan Ver</button>
@@ -21,7 +21,7 @@ root.innerHTML = `
 
   <main id="top">
     <section class="hero"><div class="container hero-grid"><div class="hero-copy">
-      <span class="eyebrow">SIFIR • 2. EL • ÇIKMA</span><h1>Aradığın her parça<br><em>burada.</em></h1>
+      <span class="eyebrow">SIFIR · 2. EL · ÇIKMA</span><h1>Aradığın her parça<br><em>burada.</em></h1>
       <p>Aracına uygun oto parçalarını tek yerde bul. Fiyatları karşılaştır, satıcıyı incele ve doğru parçayı avla.</p>
       <div class="search-mode-tabs" role="tablist" aria-label="Arama modu">
         <button type="button" class="search-mode-tab active" data-search-mode="listings" role="tab" aria-selected="true">🔧 PARÇA BUL</button>
@@ -30,7 +30,7 @@ root.innerHTML = `
       <form class="search-box" id="searchForm"><span aria-hidden="true">⌕</span><input id="searchInput" autocomplete="off" placeholder="Parça, marka, model veya parça no ara..." aria-label="Parça ara"><button type="submit">Parça Bul</button></form>
       <div class="quick-tags"><button data-query="Far">Far</button><button data-query="Motor">Motor</button><button data-query="Tampon">Tampon</button><button data-query="Fren">Fren</button><button data-query="Tofaş">Tofaş</button><button data-query="Ford">Ford</button></div>
       <div class="hero-trust"><span>✓ Binlerce parça</span><span>✓ Türkiye geneli</span><span>✓ Sıfır & 2. el</span></div>
-    </div><div class="hero-visual" aria-hidden="true"><div class="car-glow"></div><div class="hero-car">◖<span>◗</span></div><div class="visual-label"><b>DOĞRU PARÇA</b><small>DOĞRU FİYAT</small></div></div></div></section>
+    </div><div class="hero-visual" aria-hidden="true"><div class="hero-emblem-glow"></div><img class="hero-emblem" src="/app-logo.png" alt=""></div></div></section>
 
     <section class="section marketplace-cta" id="piyasa"><div class="container marketplace-grid">
       <article class="marketplace-card request"><span class="eyebrow">ARADIN, BULAMADIN MI?</span><div class="marketplace-icon">🔎</div><h2>Parça Arıyorum</h2><p>Bulamadığın parçayı talep et; sende olan satıcılar sana ulaşsın.</p><button class="marketplace-btn" data-open-request>Parça Talebi Oluştur</button></article>
