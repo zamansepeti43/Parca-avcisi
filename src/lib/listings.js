@@ -2,6 +2,8 @@ import { requireSupabase, supabaseConfigured } from './supabase.js';
 import { getListingImageUrl, deleteListingImages } from './listing-images.js';
 
 const conditionLabels = { new: 'Sıfır', used: '2. El', salvage: 'Çıkma' };
+const DEFAULT_PAGE_SIZE = 24;
+const MAX_PAGE_SIZE = 48;
 
 function vehicleLabel(vehicles = []) {
   const vehicle = vehicles[0]?.vehicle;
@@ -41,15 +43,20 @@ export function toListingCard(listing) {
 
 const listingSelect = 'id, title, description, condition, price, city, district, oem_number, category, subcategory, vehicle, stock_count, status, delivery, created_at, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
 
-export async function getActiveListings() {
+export async function getActiveListings({ page = 0, pageSize = DEFAULT_PAGE_SIZE } = {}) {
   if (!supabaseConfigured) return null;
+  const safePageSize = Math.min(Math.max(Number(pageSize) || DEFAULT_PAGE_SIZE, 1), MAX_PAGE_SIZE);
+  const safePage = Math.max(Number(page) || 0, 0);
+  const from = safePage * safePageSize;
+  const to = from + safePageSize - 1;
   const { data, error } = await requireSupabase()
     .from('listings')
     .select(listingSelect)
     .eq('status', 'active')
-    .order('created_at', { ascending: false });
+    .order('created_at', { ascending: false })
+    .range(from, to);
   if (error) throw error;
-  return data.map(toListingCard);
+  return (data || []).map(toListingCard);
 }
 
 export async function getMyListings() {
