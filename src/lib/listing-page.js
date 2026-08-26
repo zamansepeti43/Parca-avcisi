@@ -13,7 +13,6 @@ if (!isListingsPage) {
   const arayan = document.querySelector('#arayan-bul');
   if (!listings) throw new Error('İlanlar bölümü bulunamadı.');
 
-  // İlanlar sayfası: ana sayfanın diğer bölümlerini gizle, ortak header/footer korunur.
   document.querySelectorAll('main > section').forEach((section) => {
     section.hidden = section !== listings && section !== arayan;
   });
@@ -74,7 +73,16 @@ if (!isListingsPage) {
   const filters = listings.querySelector('.filters');
   if (filters) filters.classList.add('listing-condition-filters');
   const allListings = listings.querySelector('#allListings');
-  if (allListings) allListings.closest('.center-action')?.classList.add('listing-bottom-action');
+  const bottomAction = allListings?.closest('.center-action');
+  if (bottomAction) bottomAction.classList.add('listing-bottom-action');
+
+  const content = document.createElement('div');
+  content.className = 'listing-content';
+  const currentGrid = listings.querySelector('#listingGrid');
+  if (currentGrid) {
+    currentGrid.parentNode.insertBefore(content, currentGrid);
+    content.appendChild(currentGrid);
+  }
 
   let mode = 'listings';
   const setMode = (next) => {
@@ -90,23 +98,16 @@ if (!isListingsPage) {
     if (submit) submit.textContent = mode === 'requests' ? 'Arayanı Bul' : 'Ara';
     listings.classList.toggle('request-mode-active', mode === 'requests');
     if (arayan) arayan.hidden = mode !== 'requests';
+    if (filters) filters.hidden = mode === 'requests';
+    if (bottomAction) bottomAction.hidden = mode === 'requests';
     if (mode === 'requests') {
-      listings.querySelector('#listingGrid')?.closest('.listing-content')?.classList.add('is-hidden');
+      content.classList.add('is-hidden');
       if (window.__hideArayanSection) window.__hideArayanSection();
     } else {
       if (arayan) arayan.hidden = true;
-      listings.querySelector('#listingGrid')?.closest('.listing-content')?.classList.remove('is-hidden');
+      content.classList.remove('is-hidden');
     }
   };
-
-  // Mevcut grid'i ortak bir içerik kabına al; filtreler Parça Bul modunda kalır.
-  const content = document.createElement('div');
-  content.className = 'listing-content';
-  const currentGrid = listings.querySelector('#listingGrid');
-  if (currentGrid) {
-    currentGrid.parentNode.insertBefore(content, currentGrid);
-    content.appendChild(currentGrid);
-  }
 
   const runSearch = (query) => {
     const input = document.querySelector('#listingPageSearchInput');
@@ -126,8 +127,6 @@ if (!isListingsPage) {
   });
   tools.querySelectorAll('[data-listing-query]').forEach((button) => button.addEventListener('click', () => runSearch(button.dataset.listingQuery)));
 
-  // URL'deki kategori filtresini listing-view zaten okuyabildiği için kategori butonu
-  // sadece mevcut kategori drawer'ını açar; seçim sonrası /ilanlar?category=... olarak kalır.
   window.__listingPageSetMode = setMode;
   setMode('listings');
 
