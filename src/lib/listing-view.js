@@ -1,6 +1,6 @@
 import { getActiveListings } from './listings.js';
 import { getFavoriteListingIds, toggleFavorite } from './favorites.js';
-import { supabaseConfigured } from './supabase.js';
+import { requireSupabase, supabaseConfigured } from './supabase.js';
 import { demoListings } from './demo-listings.js';
 import { vehicleCatalog } from './vehicle-catalog.js';
 
@@ -26,8 +26,9 @@ const state = {
   live: supabaseConfigured,
   categoryFilter: null,
   page: 0,
-  hasMore: false,
-  loadingMore: false,
+  totalItems: 0,
+  totalPages: 0,
+  loadingPage: false,
 };
 
 const VEHICLE_TYPE_KEYWORDS = {
@@ -80,15 +81,6 @@ function showToast(message) {
   toast.classList.add('show');
   window.clearTimeout(showToast.timer);
   showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 2600);
-}
-
-function dedupe(items) {
-  const seen = new Set();
-  return items.filter((item) => {
-    if (seen.has(item.id)) return false;
-    seen.add(item.id);
-    return true;
-  });
 }
 
 function searchableFields(item) {
@@ -176,9 +168,22 @@ function emptyHtml() {
   return '<div class="empty"><strong>Aradığın parçayı bulamadık.</strong><span>Başka bir parça, marka veya kategori dene — ya da talep oluştur.</span>' + requestCtaHtml() + '</div>';
 }
 
-function loadMoreHtml() {
-  if (!state.live || !state.hasMore) return '';
-  return '<div class="listing-load-more"><button class="dark-btn" data-load-more ' + (state.loadingMore ? 'disabled' : '') + '>' + (state.loadingMore ? 'YÜKLENİYOR…' : 'DAHA FAZLA İLAN GÖR') + '</button></div>';
+function paginationHtml() {
+  if (!state.live || state.totalPages <= 1) return '';
+  const current = state.page;
+  const last = state.totalPages - 1;
+  const pages = new Set([0, last, current - 1, current, current + 1].filter((page) => page >= 0 && page <= last));
+  const ordered = [...pages].sort((a, b) => a - b);
+  const controls = [];
+  let previous = null;
+  for (const page of ordered) {
+    if (previous !== null && page - previous > 1) controls.push('<span class="pagination-gap" aria-hidden="true">…</span>');
+    controls.push('<button type="button" class="pagination-btn ' + (page === current ? 'active' : '') + '" data-page="' + page + '" aria-current="' + (page === current ? 'page' : 'false') + '">' + (page + 1) + '</button>');
+    previous = page;
+  }
+  const prevDisabled = current === 0 || state.loadingPage ? 'disabled' : '';
+  const nextDisabled = current >= last || state.loadingPage ? 'disabled' : '';
+  return '<div class="center-action listing-pagination" style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:28px"><button type="button" class="dark-btn" data-prev-page ' + prevDisabled + '>‹ Önceki</button><div style="display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap">' + controls.join('') + '</div><button type="button" class="dark-btn" data-next-page ' + nextDisabled + '>Sonraki ›</button></div>';
 }
 
 function render() {
@@ -187,60 +192,75 @@ function render() {
     .filter((result) => matches(result.item))
     .sort((a, b) => b.score - a.score || a.index - b.index);
   const visible = results.map((result) => result.item);
-  grid.innerHTML = visible.length ? visible.map(cardHtml).join('') + loadMoreHtml() : emptyHtml() + loadMoreHtml();
+  grid.innerHTML = visible.length ? visible.map(cardHtml).join('') + paginationHtml() : emptyHtml() + paginationHtml();
 }
 
-async function load({ append = false } = {}) {
+async function getTotalActiveListings() {
+  const { count, error } = await requireSupabase()
+    .from('listings')
+    .select('id', { count: 'exact', head: true })
+    .eq('status', 'active');
+  if (error) throw error;
+  return Number(count || 0);
+}
+
+async function load({ page = 0, refreshMeta = false } = {}) {
   if (!supabaseConfigured) {
     state.live = false;
     state.items = demoListings.slice();
     state.favoriteIds = new Set();
     state.page = 0;
-    state.hasMore = false;
+    state.totalItems = state.items.length;
+    state.totalPages = 1;
     render();
     return;
   }
+  if (state.loadingPage) return;
+  state.loadingPage = true;
+  render();
   try {
-    if (!append) {
-      state.page = 0;
-      state.items = [];
-      state.hasMore = false;
-    }
-    const [listings, favoriteIds] = await Promise.all([
-      getActiveListings({ page: state.page, pageSize: PAGE_SIZE }),
-      append ? Promise.resolve(null) : getFavoriteListingIds(),
-    ]);
+    const tasks = [getActiveListings({ page, pageSize: PAGE_SIZE })];
+    if (refreshMeta || state.totalPages === 0) tasks.push(getTotalActiveListings());
+    if (refreshMeta || state.favoriteIds.size === 0) tasks.push(getFavoriteListingIds());
+    const results = await Promise.all(tasks);
+    const listings = results[0] || [];
+    let resultIndex = 1;
+    const totalItems = refreshMeta || state.totalPages === 0 ? results[resultIndex++] : state.totalItems;
+    const favoriteIds = refreshMeta || state.favoriteIds.size === 0 ? results[resultIndex] : null;
     state.live = true;
-    const pageItems = listings || [];
-    const merged = import.meta.env.DEV && !append ? [...pageItems, ...demoListings] : pageItems;
-    state.items = dedupe(append ? [...state.items, ...pageItems] : merged);
-    state.hasMore = pageItems.length === PAGE_SIZE;
-    if (pageItems.length) state.page += 1;
+    state.page = Math.max(0, Number(page) || 0);
+    state.items = import.meta.env.DEV && state.page === 0 ? [...listings, ...demoListings] : listings;
+    state.totalItems = Number(totalItems || 0);
+    state.totalPages = Math.max(1, Math.ceil(state.totalItems / PAGE_SIZE));
     if (favoriteIds) state.favoriteIds = new Set(favoriteIds || []);
+    if (!state.items.length && state.page > 0) {
+      state.page = Math.max(0, state.totalPages - 1);
+      const fallback = await getActiveListings({ page: state.page, pageSize: PAGE_SIZE });
+      state.items = fallback || [];
+    }
   } catch (error) {
     console.warn('Supabase ilanları yüklenemedi; demo ilanlar gösteriliyor.', error);
     state.live = false;
     state.items = demoListings.slice();
     state.favoriteIds = new Set();
-    state.hasMore = false;
-  }
-  render();
-}
-
-async function loadMore() {
-  if (state.loadingMore || !state.hasMore || !state.live) return;
-  state.loadingMore = true;
-  render();
-  try {
-    await load({ append: true });
+    state.page = 0;
+    state.totalItems = state.items.length;
+    state.totalPages = 1;
   } finally {
-    state.loadingMore = false;
+    state.loadingPage = false;
     render();
   }
 }
 
+async function goToPage(page) {
+  const target = Math.max(0, Math.min(Number(page) || 0, state.totalPages - 1));
+  if (!state.live || target === state.page || state.loadingPage) return;
+  await load({ page: target });
+  document.querySelector('#ilanlar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 async function refresh() {
-  await load();
+  await load({ page: 0, refreshMeta: true });
 }
 
 function search(query) {
@@ -261,7 +281,7 @@ function setCategoryFilter(filter) {
   const input = document.querySelector('#searchInput');
   if (input) input.value = state.query;
   syncUrl();
-  render();
+  load({ page: 0 });
 }
 
 function clearCategoryFilter() {
@@ -271,19 +291,27 @@ function clearCategoryFilter() {
   const input = document.querySelector('#searchInput');
   if (input) input.value = '';
   syncUrl();
-  render();
+  load({ page: 0 });
 }
 
 function setCondition(condition) {
   state.condition = condition || 'Tümü';
-  render();
+  load({ page: 0 });
 }
 
 document.addEventListener('click', async (event) => {
   const clearButton = event.target.closest('[data-clear-category]');
   if (clearButton) { event.preventDefault(); clearCategoryFilter(); return; }
-  const moreButton = event.target.closest('[data-load-more]');
-  if (moreButton) { event.preventDefault(); await loadMore(); return; }
+
+  const pageButton = event.target.closest('[data-page]');
+  if (pageButton) { event.preventDefault(); await goToPage(pageButton.dataset.page); return; }
+
+  const prevButton = event.target.closest('[data-prev-page]');
+  if (prevButton) { event.preventDefault(); await goToPage(state.page - 1); return; }
+
+  const nextButton = event.target.closest('[data-next-page]');
+  if (nextButton) { event.preventDefault(); await goToPage(state.page + 1); return; }
+
   const button = event.target.closest('[data-live-save]');
   if (!button) return;
   event.preventDefault();
@@ -306,7 +334,7 @@ document.addEventListener('click', async (event) => {
 
 window.addEventListener('parca:listings-updated', () => { refresh(); });
 
-window.__listingView = { search, setCondition, refresh, load, loadMore, setCategoryFilter, clearCategoryFilter };
+window.__listingView = { search, setCondition, refresh, load, goToPage, setCategoryFilter, clearCategoryFilter };
 
 (function restoreCategoryFilter() {
   try {
@@ -325,4 +353,4 @@ window.__listingView = { search, setCondition, refresh, load, loadMore, setCateg
   }
 })();
 
-load();
+load({ page: 0, refreshMeta: true });
