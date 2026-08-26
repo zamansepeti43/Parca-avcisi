@@ -6,6 +6,7 @@ import { vehicleCatalog } from './vehicle-catalog.js';
 
 const grid = document.querySelector('#listingGrid');
 const toast = document.querySelector('#toast');
+const PAGE_SIZE = 24;
 const money = (value) => new Intl.NumberFormat('tr-TR').format(value) + ' TL';
 const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
 const titleCase = (value) => String(value ?? '').trim().split(/\s+/).filter(Boolean).map((word) => {
@@ -24,10 +25,11 @@ const state = {
   favoriteIds: new Set(),
   live: supabaseConfigured,
   categoryFilter: null,
+  page: 0,
+  hasMore: false,
+  loadingMore: false,
 };
 
-// Araç tipi filtreleme: tip etiketi token'ı (gerçek ilanlarda `vehicle` ilk
-// token'dır) veya katalogdaki "marka model" kombinasyonu ile eşleşir.
 const VEHICLE_TYPE_KEYWORDS = {
   'Kamyon': ['kamyon'],
   'Otobüs': ['otobüs'],
@@ -99,10 +101,6 @@ function searchableFields(item) {
     city: String(item.city || '').toLocaleLowerCase('tr-TR'),
     seller: String(item.seller || '').toLocaleLowerCase('tr-TR'),
   };
-}
-
-function searchableText(item) {
-  return Object.values(searchableFields(item)).filter(Boolean).join(' ');
 }
 
 function tokenMatches(token, text) {
@@ -178,40 +176,67 @@ function emptyHtml() {
   return '<div class="empty"><strong>Aradığın parçayı bulamadık.</strong><span>Başka bir parça, marka veya kategori dene — ya da talep oluştur.</span>' + requestCtaHtml() + '</div>';
 }
 
+function loadMoreHtml() {
+  if (!state.live || !state.hasMore) return '';
+  return '<div class="listing-load-more"><button class="dark-btn" data-load-more ' + (state.loadingMore ? 'disabled' : '') + '>' + (state.loadingMore ? 'YÜKLENİYOR…' : 'DAHA FAZLA İLAN GÖR') + '</button></div>';
+}
+
 function render() {
   const results = state.items
     .map((item, index) => ({ item, index, score: scoreItem(item) }))
     .filter((result) => matches(result.item))
     .sort((a, b) => b.score - a.score || a.index - b.index);
   const visible = results.map((result) => result.item);
-  grid.innerHTML = visible.length ? visible.map(cardHtml).join('') : emptyHtml();
+  grid.innerHTML = visible.length ? visible.map(cardHtml).join('') + loadMoreHtml() : emptyHtml() + loadMoreHtml();
 }
 
-async function load() {
+async function load({ append = false } = {}) {
   if (!supabaseConfigured) {
     state.live = false;
     state.items = demoListings.slice();
     state.favoriteIds = new Set();
+    state.page = 0;
+    state.hasMore = false;
     render();
     return;
   }
   try {
-    const [listings, favoriteIds] = await Promise.all([getActiveListings(), getFavoriteListingIds()]);
+    if (!append) {
+      state.page = 0;
+      state.items = [];
+      state.hasMore = false;
+    }
+    const [listings, favoriteIds] = await Promise.all([
+      getActiveListings({ page: state.page, pageSize: PAGE_SIZE }),
+      append ? Promise.resolve(null) : getFavoriteListingIds(),
+    ]);
     state.live = true;
-    // Geliştirme ortamında demo ilanlar da dataset'e eklenir; canlı veri henüz
-    // kategorize edilmemiş olsa bile kategori filtresi görünür sonuçlar üretir.
-    // Production build'de yalnızca gerçek ilanlar gösterilir (demo ilanlar
-    // yalnızca Supabase yapılandırılmadığında veya yüklenemediğinde devreye girer).
-    const merged = import.meta.env.DEV ? [...(listings || []), ...demoListings] : (listings || []);
-    state.items = dedupe(merged);
-    state.favoriteIds = new Set(favoriteIds || []);
+    const pageItems = listings || [];
+    const merged = import.meta.env.DEV && !append ? [...pageItems, ...demoListings] : pageItems;
+    state.items = dedupe(append ? [...state.items, ...pageItems] : merged);
+    state.hasMore = pageItems.length === PAGE_SIZE;
+    if (pageItems.length) state.page += 1;
+    if (favoriteIds) state.favoriteIds = new Set(favoriteIds || []);
   } catch (error) {
     console.warn('Supabase ilanları yüklenemedi; demo ilanlar gösteriliyor.', error);
     state.live = false;
     state.items = demoListings.slice();
     state.favoriteIds = new Set();
+    state.hasMore = false;
   }
   render();
+}
+
+async function loadMore() {
+  if (state.loadingMore || !state.hasMore || !state.live) return;
+  state.loadingMore = true;
+  render();
+  try {
+    await load({ append: true });
+  } finally {
+    state.loadingMore = false;
+    render();
+  }
 }
 
 async function refresh() {
@@ -221,8 +246,6 @@ async function refresh() {
 function search(query) {
   state.query = query || '';
   state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean);
-  // Boş arama kategori filtresini korur; dolu bir arama yeni bir manuel
-  // arama başlattığı için kategori filtresini sıfırlar.
   if (state.tokens.length) state.categoryFilter = null;
   syncUrl();
   render();
@@ -259,6 +282,8 @@ function setCondition(condition) {
 document.addEventListener('click', async (event) => {
   const clearButton = event.target.closest('[data-clear-category]');
   if (clearButton) { event.preventDefault(); clearCategoryFilter(); return; }
+  const moreButton = event.target.closest('[data-load-more]');
+  if (moreButton) { event.preventDefault(); await loadMore(); return; }
   const button = event.target.closest('[data-live-save]');
   if (!button) return;
   event.preventDefault();
@@ -281,7 +306,7 @@ document.addEventListener('click', async (event) => {
 
 window.addEventListener('parca:listings-updated', () => { refresh(); });
 
-window.__listingView = { search, setCondition, refresh, load, setCategoryFilter, clearCategoryFilter };
+window.__listingView = { search, setCondition, refresh, load, loadMore, setCategoryFilter, clearCategoryFilter };
 
 (function restoreCategoryFilter() {
   try {
