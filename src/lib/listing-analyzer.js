@@ -1,4 +1,5 @@
 import { vehicleCatalog } from './vehicle-catalog.js';
+import { requireSupabase, supabaseConfigured } from './supabase.js';
 
 const OEM_PATTERN = /\b[A-Z0-9][A-Z0-9 .-]{5,24}[A-Z0-9]\b/g;
 const knownBrands = [...new Set(vehicleCatalog.map(({ make }) => make))];
@@ -52,13 +53,19 @@ export class GeminiVisionProvider {
     try {
       const imageDataUrl = await fileToDataUrl(file);
       if (!imageDataUrl) return { labels: [], confidence: 0, engine: 'unavailable' };
+      const headers = { 'Content-Type': 'application/json' };
+      if (supabaseConfigured) {
+        const { data } = await requireSupabase().auth.getSession();
+        const token = data?.session?.access_token;
+        if (token) headers.Authorization = 'Bearer ' + token;
+      }
       const response = await fetch('/api/analyze-part', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ imageDataUrl })
       });
-      if (!response.ok) return { labels: [], confidence: 0, engine: 'gemini-fallback', error: (await response.json().catch(() => ({}))).error };
-      const payload = await response.json();
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) return { labels: [], confidence: 0, engine: 'gemini-fallback', error: payload?.error || 'Vision AI isteği başarısız.' };
       return { labels: [], confidence: Number(payload?.result?.confidence || 0) / 100, engine: payload?.model || 'gemini', result: payload?.result || {} };
     } catch (error) {
       return { labels: [], confidence: 0, engine: 'gemini-fallback', error: error.message };
@@ -112,7 +119,7 @@ export class ListingAnalyzer {
       photos: [file],
       confidence,
       requiresReview: Boolean(aiResult.requiresReview) || confidence < 70 || !aiResult.category,
-      evidence: { ocr: ocr.engine, vision: vision.engine, aiVision: ai.engine, barcode: vision.barcodes?.[0] || '' },
+      evidence: { ocr: ocr.engine, vision: vision.engine, aiVision: ai.engine, barcode: vision.barcodes?.[0] || '', aiError: ai.error || '' },
     };
   }
 }
