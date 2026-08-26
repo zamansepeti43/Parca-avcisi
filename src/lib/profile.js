@@ -5,13 +5,28 @@ export async function getMyProfile() {
   const client = requireSupabase();
   const { data: authData } = await client.auth.getUser();
   if (!authData.user) return null;
+
+  // `address` was added by a later migration. Keep the profile screen usable
+  // against an older database while the additive production sync is applied.
+  const baseSelect = 'id, full_name, phone, city, avatar_url, role, settings';
   const { data, error } = await client
     .from('profiles')
-    .select('id, full_name, phone, city, address, avatar_url, role, settings')
+    .select(baseSelect + ', address')
     .eq('id', authData.user.id)
     .maybeSingle();
-  if (error) throw error;
-  return data;
+
+  if (!error) return data;
+
+  const message = String(error.message || '');
+  if (!/address|column.*does not exist|schema cache/i.test(message)) throw error;
+
+  const { data: fallback, error: fallbackError } = await client
+    .from('profiles')
+    .select(baseSelect)
+    .eq('id', authData.user.id)
+    .maybeSingle();
+  if (fallbackError) throw fallbackError;
+  return fallback;
 }
 
 export async function getProfilesByIds(ids) {
@@ -62,5 +77,17 @@ export async function updateProfile({ fullName, phone, city, address, avatarUrl,
   if (settings !== undefined) payload.settings = settings;
 
   const { error } = await client.from('profiles').upsert(payload);
-  if (error) throw error;
+  if (!error) return;
+
+  // Older live schemas may not have `address` yet. Retry without that optional
+  // field so profile edits do not become completely unusable during migration.
+  if (address !== undefined && /address|column.*does not exist|schema cache/i.test(String(error.message || ''))) {
+    const fallbackPayload = { ...payload };
+    delete fallbackPayload.address;
+    const { error: fallbackError } = await client.from('profiles').upsert(fallbackPayload);
+    if (fallbackError) throw fallbackError;
+    return;
+  }
+
+  throw error;
 }
