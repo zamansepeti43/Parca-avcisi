@@ -1,4 +1,5 @@
 import './styles.css';
+import './landing-theme.css';
 import { getMakes, getModels, getYears } from './lib/vehicle-catalog.js';
 
 const root = document.querySelector('#root');
@@ -36,13 +37,7 @@ root.innerHTML = `
 
     <section class="section vehicle-section" id="aracini-sec"><div class="container vehicle-card"><div><span class="eyebrow">ARACINI SEÇ</span><h2>Aracına uygun parçayı <em>bul.</em></h2><p>Marka, model ve yılı seç; uyumlu parçaları keşfet.</p></div><form class="vehicle-form" id="vehicleForm"><select id="make"><option value="">Marka Seçiniz</option></select><select id="model" disabled><option value="">Model Seçiniz</option></select><select id="year" disabled><option value="">Yıl Seçiniz</option></select><button type="submit">Uygun Parçaları Göster</button></form></div></section>
 
-    <section class="section requests-section arayan-bul-section" id="arayan-bul" hidden>
-      <div class="container">
-        <div class="section-head"><div><span class="eyebrow">PARÇA ARAYANI BUL</span><h2>Bu parçayı arayan müşteriler</h2></div><button class="text-btn" id="arayanBack">← İlanlara Dön</button></div>
-        <p class="requests-intro">Alıcıların aktif taleplerini ara; elindeki parçaya "Bende Var" de ve mesajlaşmaya başla.</p>
-        <div id="arayanFilters"></div><div class="listing-grid request-grid" id="arayanGrid"></div><div class="center-action" id="arayanAction"></div>
-      </div>
-    </section>
+    <section class="section requests-section arayan-bul-section" id="arayan-bul" hidden><div class="container"><div class="section-head"><div><span class="eyebrow">PARÇA ARAYANI BUL</span><h2>Bu parçayı arayan müşteriler</h2></div><button class="text-btn" id="arayanBack">← İlanlara Dön</button></div><p class="requests-intro">Alıcıların aktif taleplerini ara; elindeki parçaya "Bende Var" de ve mesajlaşmaya başla.</p><div id="arayanFilters"></div><div class="listing-grid request-grid" id="arayanGrid"></div><div class="center-action" id="arayanAction"></div></div></section>
 
     <section class="section listings-section" id="ilanlar"><div class="container"><div class="section-head"><div><span class="eyebrow">SATILAN PARÇALAR · YENİ EKLENENLER</span><h2>Yeni eklenen parçalar</h2></div><div class="filters"><button class="filter active" data-condition="Tümü">Tümü</button><button class="filter" data-condition="Sıfır">Sıfır</button><button class="filter" data-condition="2. El">2. El</button><button class="filter" data-condition="Çıkma">Çıkma</button></div></div><div class="listing-grid" id="listingGrid"></div><div class="center-action"><button class="dark-btn" id="allListings">Tüm ilanları gör</button></div></div></section>
 
@@ -59,32 +54,14 @@ const searchInput = document.querySelector('#searchInput');
 const makeSelect = document.querySelector('#make');
 const modelSelect = document.querySelector('#model');
 const yearSelect = document.querySelector('#year');
-
 function escapeHtml(value) { return String(value || '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char])); }
 const listingView = () => window.__listingView;
 let searchMode = 'listings';
 const SEARCH_MODE_KEY = 'pa:searchMode';
-
-function setSearchMode(mode) {
-  searchMode = mode === 'requests' ? 'requests' : 'listings';
-  try { window.localStorage.setItem(SEARCH_MODE_KEY, searchMode); } catch { }
-  document.querySelectorAll('.search-mode-tab').forEach((tab) => { const active = tab.dataset.searchMode === searchMode; tab.classList.toggle('active', active); tab.setAttribute('aria-selected', String(active)); });
-  const submit = document.querySelector('#searchForm button');
-  if (submit) submit.textContent = searchMode === 'requests' ? 'Arayanı Bul' : 'Ara';
-  const input = document.querySelector('#searchInput');
-  if (input) input.placeholder = searchMode === 'requests' ? 'Aranan parça, araç veya şehir ara...' : 'Parça, marka, model veya parça no ara...';
-  if (window.__setRequestSearchMode) window.__setRequestSearchMode(searchMode);
-}
-function search(query) {
-  searchInput.value = query;
-  if (searchMode === 'requests') { if (window.__searchRequests) { window.__searchRequests(query); return; } setSearchMode('listings'); }
-  if (window.__hideArayanSection) window.__hideArayanSection();
-  if (listingView()) listingView().search(query);
-  document.querySelector('#ilanlar').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+function setSearchMode(mode) { searchMode = mode === 'requests' ? 'requests' : 'listings'; try { window.localStorage.setItem(SEARCH_MODE_KEY, searchMode); } catch { } document.querySelectorAll('.search-mode-tab').forEach((tab) => { const active = tab.dataset.searchMode === searchMode; tab.classList.toggle('active', active); tab.setAttribute('aria-selected', String(active)); }); const submit = document.querySelector('#searchForm button'); if (submit) submit.textContent = searchMode === 'requests' ? 'Arayanı Bul' : 'Ara'; const input = document.querySelector('#searchInput'); if (input) input.placeholder = searchMode === 'requests' ? 'Aranan parça, araç veya şehir ara...' : 'Parça, marka, model veya parça no ara...'; if (window.__setRequestSearchMode) window.__setRequestSearchMode(searchMode); }
+function search(query) { searchInput.value = query; if (searchMode === 'requests') { if (window.__searchRequests) { window.__searchRequests(query); return; } setSearchMode('listings'); } if (window.__hideArayanSection) window.__hideArayanSection(); if (listingView()) listingView().search(query); document.querySelector('#ilanlar').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 document.querySelectorAll('[data-search-mode]').forEach((tab) => tab.addEventListener('click', () => setSearchMode(tab.dataset.searchMode)));
 (function restoreSearchMode() { try { if (window.localStorage.getItem(SEARCH_MODE_KEY) === 'requests') setSearchMode('requests'); } catch { } })();
-
 document.querySelector('#headerSearchBtn').addEventListener('click', () => { document.querySelector('#searchInput')?.focus(); document.querySelector('#top')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 makeSelect.innerHTML = '<option value="">Marka Seçiniz</option>' + getMakes().map((name) => `<option>${escapeHtml(name)}</option>`).join('');
 function resetModelYear() { modelSelect.innerHTML = '<option value="">Model Seçiniz</option>'; modelSelect.disabled = !makeSelect.value; yearSelect.innerHTML = '<option value="">Yıl Seçiniz</option>'; yearSelect.disabled = true; }
