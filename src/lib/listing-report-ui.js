@@ -1,4 +1,4 @@
-import { reportListing } from './listing-reports.js';
+import { REPORT_REASONS, submitListingReport } from './listing-reports.js';
 
 function injectReportButton() {
   const actions = document.querySelector('#listingDetail .detail-actions');
@@ -11,19 +11,86 @@ function injectReportButton() {
   actions.appendChild(button);
 }
 
+function closeReportModal() {
+  document.querySelector('[data-report-modal]')?.remove();
+}
+
+function openReportModal(listingId) {
+  if (document.querySelector('[data-report-modal]')) return;
+
+  const modal = document.createElement('div');
+  modal.className = 'report-modal';
+  modal.dataset.reportModal = '';
+  modal.innerHTML = `
+    <div class="report-backdrop" data-report-close></div>
+    <section class="report-dialog" role="dialog" aria-modal="true" aria-labelledby="report-title">
+      <button type="button" class="report-close" data-report-close aria-label="Kapat">×</button>
+      <div class="report-icon" aria-hidden="true">!</div>
+      <h2 id="report-title">İlanı Bildir</h2>
+      <p class="report-lead">Bu ilanla ilgili sorun olduğunu düşünüyorsan nedenini seç.</p>
+      <div class="report-reasons" role="radiogroup" aria-label="Bildirim nedeni">
+        ${REPORT_REASONS.map(([value, label]) => `
+          <label class="report-reason">
+            <input type="radio" name="listing-report-reason" value="${value}">
+            <span>${label}</span>
+          </label>
+        `).join('')}
+      </div>
+      <label class="report-details">
+        <span>Açıklama <small>(isteğe bağlı)</small></span>
+        <textarea maxlength="500" placeholder="Sorunu kısaca açıklayabilirsin..."></textarea>
+      </label>
+      <div class="report-error" data-report-error role="alert"></div>
+      <div class="report-actions">
+        <button type="button" class="report-cancel" data-report-close>Vazgeç</button>
+        <button type="button" class="report-submit" data-report-submit>Bildiri Gönder</button>
+      </div>
+    </section>
+  `;
+  document.body.appendChild(modal);
+
+  const first = modal.querySelector('input[type="radio"]');
+  first?.focus();
+  modal.addEventListener('click', async (event) => {
+    if (event.target.closest('[data-report-close]')) {
+      closeReportModal();
+      return;
+    }
+    const submit = event.target.closest('[data-report-submit]');
+    if (!submit) return;
+
+    const selected = modal.querySelector('input[name="listing-report-reason"]:checked');
+    const errorBox = modal.querySelector('[data-report-error]');
+    if (!selected) {
+      errorBox.textContent = 'Lütfen bir bildirim nedeni seç.';
+      return;
+    }
+
+    submit.disabled = true;
+    submit.textContent = 'Gönderiliyor...';
+    errorBox.textContent = '';
+    try {
+      const details = modal.querySelector('textarea')?.value || '';
+      await submitListingReport(listingId, selected.value, details);
+      closeReportModal();
+      window.__showToast?.('İlan bildirimin alındı. Teşekkürler.');
+    } catch (error) {
+      errorBox.textContent = error.message || 'İlan bildirilemedi.';
+      submit.disabled = false;
+      submit.textContent = 'Bildiri Gönder';
+    }
+  });
+
+  modal.querySelector('textarea')?.addEventListener('input', () => {
+    modal.querySelector('[data-report-error]').textContent = '';
+  });
+}
+
 async function handleReport() {
-  const button = document.querySelector('[data-detail-report]');
   const match = /^#\/ilan\/([^#]+)$/.exec(window.location.hash || '');
   if (!match) return;
-  if (button) button.disabled = true;
-  try {
-    const ok = await window.__requireMember(() => reportListing(decodeURIComponent(match[1])));
-    if (ok) window.__showToast?.('İlan bildirimin alındı. Teşekkürler.');
-  } catch (error) {
-    window.__showToast?.(error.message || 'İlan bildirilemedi.');
-  } finally {
-    if (button) button.disabled = false;
-  }
+  const ok = await window.__requireMember?.(() => openReportModal(decodeURIComponent(match[1])));
+  if (ok === false) return;
 }
 
 document.addEventListener('click', (event) => {
