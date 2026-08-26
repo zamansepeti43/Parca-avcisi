@@ -35,6 +35,12 @@ export async function verifyPhoneOtp(phone, token) {
   return data;
 }
 
+export async function claimVerifiedPhoneIdentity(phone) {
+  const { data, error } = await requireSupabase().rpc('claim_verified_phone_identity', { p_phone_e164: phone });
+  if (error) throw error;
+  return data;
+}
+
 export async function signOut() {
   if (!supabaseConfigured) return;
   const { error } = await requireSupabase().auth.signOut();
