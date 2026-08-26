@@ -9,51 +9,46 @@ const TYPE_OPTIONS = [
   { label: 'Pickup / Kamyonet', type: 'Pickup / Kamyonet' },
 ];
 
-const escapeHtml = (value) => String(value || '').replace(/[&<>\"']/g, (char) => ({
+const escapeHtml = (value) => String(value ?? '').replace(/[&<>\"']/g, (char) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', "'": '&#39;',
 }[char]));
 
-const header = document.querySelector('.site-header');
+const backdrop = document.createElement('div');
+backdrop.className = 'cat-backdrop';
+backdrop.hidden = true;
+backdrop.setAttribute('aria-hidden', 'true');
+
 const menu = document.createElement('aside');
 menu.className = 'cat-menu';
 menu.id = 'catMenu';
 menu.hidden = true;
+menu.setAttribute('aria-hidden', 'true');
 menu.setAttribute('aria-label', 'Kategori menüsü');
 menu.innerHTML = `
   <div class="cat-menu-inner">
     <div class="cat-menu-head">
       <div class="cat-menu-title">
-        <span class="eyebrow">KATEGORİLER</span>
+        <div>
+          <span class="eyebrow">KATEGORİLER</span>
+          <h2>Parça kategorileri</h2>
+        </div>
         <button type="button" class="cat-close" data-close-categories aria-label="Kategorileri kapat">×</button>
       </div>
-      <p class="cat-menu-hint">Araç tipini seç, ana kategoriyi aç ve parçaya git.</p>
+      <p class="cat-menu-hint">Araç tipini seç, ardından ana kategoriden parçanı seç.</p>
       <div class="cat-type-switch" role="tablist" aria-label="Araç tipine göre kategoriler">
         ${TYPE_OPTIONS.map((option) => `<button type="button" role="tab" data-cat-type="${escapeHtml(option.type)}">${escapeHtml(option.label)}</button>`).join('')}
       </div>
     </div>
+    <div class="cat-list-head"><span>Ana kategoriler</span><small>Seçmek için dokun</small></div>
     <div class="cat-menu-cols" id="catMenuCols"></div>
   </div>`;
-if (header) header.appendChild(menu);
+
+document.body.append(backdrop, menu);
 
 const cols = menu.querySelector('#catMenuCols');
 let activeType = '';
 let isOpen = false;
 const expandedCategories = new Set();
-
-function renderColumns() {
-  cols.innerHTML = getMainCategories(activeType).map((category) => {
-    const subs = getSubcategories(activeType, category);
-    const expanded = expandedCategories.has(category);
-    return `<div class="cat-col ${expanded ? 'is-open' : ''}" data-cat-col="${escapeHtml(category)}">
-      <button type="button" class="cat-main" data-cat-main="${escapeHtml(category)}" aria-expanded="${expanded}">
-        <span>${escapeHtml(category)}</span><span class="cat-chevron" aria-hidden="true">›</span>
-      </button>
-      <div class="cat-subs" ${expanded ? '' : 'hidden'}>
-        ${subs.map((sub) => `<button type="button" class="cat-sub" data-cat-sub="${escapeHtml(sub)}">${escapeHtml(sub)}</button>`).join('')}
-      </div>
-    </div>`;
-  }).join('');
-}
 
 function renderTypeSwitch() {
   menu.querySelectorAll('[data-cat-type]').forEach((button) => {
@@ -63,38 +58,55 @@ function renderTypeSwitch() {
   });
 }
 
+function renderColumns() {
+  const categories = getMainCategories(activeType);
+  cols.innerHTML = categories.map((category) => {
+    const subs = getSubcategories(activeType, category);
+    const expanded = expandedCategories.has(category);
+    return `<section class="cat-col ${expanded ? 'is-open' : ''}" data-cat-col="${escapeHtml(category)}">
+      <button type="button" class="cat-main" data-cat-main="${escapeHtml(category)}" aria-expanded="${expanded}">
+        <span class="cat-main-label">${escapeHtml(category)}</span><span class="cat-chevron" aria-hidden="true">›</span>
+      </button>
+      <div class="cat-subs" ${expanded ? '' : 'hidden'}>
+        ${subs.length ? subs.map((sub) => `<button type="button" class="cat-sub" data-cat-sub="${escapeHtml(sub)}">${escapeHtml(sub)}</button>`).join('') : '<span class="cat-empty">Bu kategoride alt parça bulunamadı.</span>'}
+      </div>
+    </section>`;
+  }).join('');
+}
+
+function setTriggerState() {
+  document.querySelectorAll('[data-open-categories]').forEach((trigger) => trigger.setAttribute('aria-expanded', String(isOpen)));
+}
+
+function openMenu() {
+  if (isOpen) return;
+  isOpen = true;
+  menu.hidden = false;
+  backdrop.hidden = false;
+  menu.setAttribute('aria-hidden', 'false');
+  backdrop.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('categories-open');
+  setTriggerState();
+  renderTypeSwitch();
+  renderColumns();
+}
+
+function closeMenu() {
+  if (!isOpen) return;
+  isOpen = false;
+  menu.hidden = true;
+  backdrop.hidden = true;
+  menu.setAttribute('aria-hidden', 'true');
+  backdrop.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('categories-open');
+  setTriggerState();
+}
+
 function setType(type) {
   activeType = type || '';
   expandedCategories.clear();
   renderTypeSwitch();
   renderColumns();
-}
-
-function setTriggerState() {
-  document.querySelectorAll('[data-open-categories]').forEach((trigger) => {
-    trigger.setAttribute('aria-expanded', String(isOpen));
-  });
-}
-
-function openMenu() {
-  isOpen = true;
-  menu.hidden = false;
-  menu.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('categories-open');
-  setTriggerState();
-  renderColumns();
-}
-
-function closeMenu() {
-  isOpen = false;
-  menu.hidden = true;
-  menu.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('categories-open');
-  setTriggerState();
-}
-
-function toggleMenu() {
-  if (isOpen) closeMenu(); else openMenu();
 }
 
 function toggleCategory(category) {
@@ -109,23 +121,20 @@ function applyFilter(category, subcategory) {
   if (subcategory) params.set('subcategory', subcategory);
   if (activeType) params.set('vehicleType', activeType);
   closeMenu();
-  window.location.href = '/ilanlar' + (params.toString() ? `?${params.toString()}` : '');
+  window.location.href = `/ilanlar${params.toString() ? `?${params.toString()}` : ''}`;
 }
 
 renderTypeSwitch();
 renderColumns();
 
-// Capture phase keeps category controls working even when another page-level
-// handler calls stopPropagation on the same click.
 document.addEventListener('click', (event) => {
   const trigger = event.target.closest?.('[data-open-categories]');
   if (trigger) {
     event.preventDefault();
-    toggleMenu();
+    if (isOpen) closeMenu(); else openMenu();
     return;
   }
-  const closeButton = event.target.closest?.('[data-close-categories]');
-  if (closeButton) {
+  if (event.target.closest?.('[data-close-categories]') || event.target === backdrop) {
     event.preventDefault();
     closeMenu();
     return;
@@ -147,10 +156,8 @@ document.addEventListener('click', (event) => {
     event.preventDefault();
     const column = subButton.closest('.cat-col');
     applyFilter(column?.dataset.catCol || '', subButton.dataset.catSub || '');
-    return;
   }
-  if (isOpen && !event.target.closest('#catMenu')) closeMenu();
-}, true);
+});
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && isOpen) closeMenu();
