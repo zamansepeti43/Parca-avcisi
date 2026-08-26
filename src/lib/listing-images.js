@@ -17,8 +17,8 @@ function publicUrl(storagePath) {
 
 function thumbnailPath(storagePath) {
   const parts = String(storagePath || '').split('/');
-  if (!parts.length) return storagePath;
-  const file = parts.pop();
+  const file = parts.pop() || '';
+  if (!file.startsWith('img-')) return storagePath;
   parts.push('thumb-' + file.replace(/\.[^.]+$/, '.webp'));
   return parts.join('/');
 }
@@ -28,11 +28,7 @@ export function getListingThumbnailUrl(storagePath) { return publicUrl(thumbnail
 
 export async function getListingImages(listingId) {
   if (!supabaseConfigured) return [];
-  const { data, error } = await requireSupabase()
-    .from('listing_images')
-    .select('id, listing_id, storage_path, sort_order, is_cover, file_size, created_at')
-    .eq('listing_id', listingId)
-    .order('sort_order', { ascending: true });
+  const { data, error } = await requireSupabase().from('listing_images').select('id, listing_id, storage_path, sort_order, is_cover, file_size, created_at').eq('listing_id', listingId).order('sort_order', { ascending: true });
   if (error) throw error;
   return (data || []).map((row) => ({ ...row, url: publicUrl(row.storage_path), thumbnailUrl: getListingThumbnailUrl(row.storage_path) }));
 }
@@ -100,11 +96,13 @@ export async function optimizeListingImage(file) {
 
 async function createThumbnail(file) {
   const image = await loadImage(file);
-  const size = scaledSize(image.width || image.naturalWidth, image.height || image.naturalHeight, THUMB_WIDTH);
+  const naturalWidth = image.width || image.naturalWidth;
+  const naturalHeight = image.height || image.naturalHeight;
+  const size = scaledSize(naturalWidth, naturalHeight, THUMB_WIDTH);
   const width = Math.min(THUMB_WIDTH, size.width);
-  const height = Math.min(THUMB_HEIGHT, Math.round((size.height / size.width) * width));
+  const height = Math.min(THUMB_HEIGHT, Math.max(1, Math.round((size.height / Math.max(1, size.width)) * width)));
   const blob = await renderWebp(image, width, height, [0.68, 0.58, 0.48], THUMB_TARGET_BYTES);
-  return new File([blob], 'thumb-' + (file.name || 'foto').replace(/\.[^.]+$/, '') + '.webp', { type: 'image/webp', lastModified: Date.now() });
+  return new File([blob], 'thumb.webp', { type: 'image/webp', lastModified: Date.now() });
 }
 
 export async function attachImagesToListing(listingId, files) {
@@ -116,8 +114,7 @@ export async function attachImagesToListing(listingId, files) {
   if (authError) throw authError;
   if (!authData.user) throw new Error('Fotoğraf yüklemek için giriş yapmalısın.');
 
-  const { data: existing, error: existingError } = await client
-    .from('listing_images').select('id, storage_path, file_size').eq('listing_id', listingId).order('sort_order', { ascending: true });
+  const { data: existing, error: existingError } = await client.from('listing_images').select('id, storage_path, file_size').eq('listing_id', listingId).order('sort_order', { ascending: true });
   if (existingError) throw existingError;
   const existingCount = existing?.length || 0;
   if (existingCount + list.length > MAX_IMAGES_PER_LISTING) throw new Error('Bir ilanda en fazla 5 fotoğraf olabilir.');
@@ -134,7 +131,7 @@ export async function attachImagesToListing(listingId, files) {
       if (totalUploadedBytes + file.size > MAX_TOTAL_BYTES) throw new Error('Fotoğrafların toplam boyutu 5 MB sınırını aşamaz. Daha az veya daha küçük fotoğraf seç.');
       const thumb = await createThumbnail(file);
       const sortOrder = existingCount + i;
-      const filename = Date.now() + '-' + i + '-' + Math.random().toString(36).slice(2, 8) + '.webp';
+      const filename = 'img-' + Date.now() + '-' + i + '-' + Math.random().toString(36).slice(2, 8) + '.webp';
       const path = [authData.user.id, listingId, filename].join('/');
       const thumbPath = thumbnailPath(path);
 
@@ -146,9 +143,7 @@ export async function attachImagesToListing(listingId, files) {
         throw new Error('Fotoğraf küçük önizlemesi oluşturulamadı: ' + thumbError.message);
       }
 
-      const { data: row, error: insertError } = await client.from('listing_images').insert({
-        listing_id: listingId, storage_path: path, sort_order: sortOrder, is_cover: !hasCover && i === 0, file_size: file.size
-      }).select().single();
+      const { data: row, error: insertError } = await client.from('listing_images').insert({ listing_id: listingId, storage_path: path, sort_order: sortOrder, is_cover: !hasCover && i === 0, file_size: file.size }).select().single();
       if (insertError) {
         try { await client.storage.from(BUCKET).remove([path, thumbPath]); } catch (_) {}
         throw new Error('Fotoğraf kaydı oluşturulamadı: ' + insertError.message);
