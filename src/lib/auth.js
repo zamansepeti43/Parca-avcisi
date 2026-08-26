@@ -23,6 +23,18 @@ export async function signIn({ email, password }) {
   return data;
 }
 
+export async function startPhoneVerification(phone) {
+  const { data, error } = await requireSupabase().auth.updateUser({ phone });
+  if (error) throw error;
+  return data;
+}
+
+export async function verifyPhoneOtp(phone, token) {
+  const { data, error } = await requireSupabase().auth.verifyOtp({ phone, token, type: 'phone_change' });
+  if (error) throw error;
+  return data;
+}
+
 export async function signOut() {
   if (!supabaseConfigured) return;
   const { error } = await requireSupabase().auth.signOut();
