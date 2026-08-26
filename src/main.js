@@ -1,5 +1,6 @@
 import './app.js';
 import './lib/mobile-nav-fix.css';
+import './lib/home-redesign.css';
 import './lib/categories-menu.js';
 import './lib/listing-entry-flow.js';
 import './lib/ui-flows.js';
