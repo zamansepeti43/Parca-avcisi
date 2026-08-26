@@ -47,9 +47,9 @@ function optionCards(kind) {
 
 function render(kind) {
   const request = kind === 'request';
-  show('<span class="eyebrow">PARÇA AVCISI</span><h2>Ne yapmak istiyorsun?</h2><p class="entry-lead">Önce işlemi seç, ardından nasıl oluşturmak istediğini belirle.</p><div class="entry-type-switch" role="tablist" aria-label="İşlem türü">'
-    + '<button type="button" class="entry-type ' + (request ? 'selected' : '') + '" data-entry-kind="request" role="tab" aria-selected="' + request + '"><span>🔎</span><strong>Parça Arıyorum</strong><small>Bulamadığın parçayı talep et.</small><i>✓</i></button>'
-    + '<button type="button" class="entry-type ' + (!request ? 'selected' : '') + '" data-entry-kind="sell" role="tab" aria-selected="' + (!request) + '"><span>🔧</span><strong>Parça Satıyorum</strong><small>Sıfır, 2. el veya çıkma parçanı ilanla.</small><i>✓</i></button>'
+  show('<span class="eyebrow">PARÇA AVCISI</span><h2>Ne yapmak istiyorsun?</h2><p class="entry-lead">İşlem türünü seç; aşağıdaki seçenekler otomatik olarak ona göre değişsin.</p><div class="entry-type-switch" role="tablist" aria-label="İşlem türü">'
+    + '<button type="button" class="entry-type ' + (request ? 'selected' : '') + '" data-entry-kind="request" role="tab" aria-selected="' + request + '"><span>🔎</span><strong>Parça Arıyorum</strong><small>Bulamadığın parçayı talep et.</small><i aria-hidden="true">✓</i></button>'
+    + '<button type="button" class="entry-type ' + (!request ? 'selected' : '') + '" data-entry-kind="sell" role="tab" aria-selected="' + (!request) + '"><span>🔧</span><strong>Parça Satıyorum</strong><small>Sıfır, 2. el veya çıkma parçanı ilanla.</small><i aria-hidden="true">✓</i></button>'
     + '</div>' + optionCards(kind) + '<div class="entry-tip">💡 Doğru kategori, araç bilgisi ve fotoğraf eklemek parçanın daha hızlı bulunmasını sağlar.</div>');
 }
 
