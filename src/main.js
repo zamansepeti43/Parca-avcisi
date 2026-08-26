@@ -1,4 +1,5 @@
 import './app.js';
+import './lib/mobile-nav-fix.css';
 import './lib/categories-menu.js';
 import './lib/ui-flows.js';
 import './lib/listing-detail.js';
