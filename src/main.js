@@ -6,6 +6,7 @@ import './lib/listing-view.js';
 import './lib/listing-creator.js';
 import './lib/account-center.js';
 import './lib/saved-vehicles-ui.js';
+import './lib/listing-report-ui.js';
 import './lib/part-requests-ui.js';
 import './lib/requests-home.js';
 import './lib/requests-search.js';
