@@ -15,27 +15,55 @@ function notice(message) { toast.textContent=message; toast.classList.add('show'
 async function openChoices() {
   const user = await getCurrentUser().catch(() => null);
   if (!user) return;
-  open('<span class="eyebrow">KOLAY İLAN VER</span><h2>Parçanın fotoğrafını çek. İlanını biz hazırlayalım.</h2><div class="creator-options"><button data-photo-flow><b>📸</b><strong>Fotoğraftan İlan Oluştur</strong><small>Fotoğraf → otomatik taslak → kontrol → yayınla</small></button><button data-bulk-flow><b>📦</b><strong>Toplu İlan Oluştur</strong><small>Birden fazla fotoğraftan ayrı taslaklar</small></button><button data-manual-flow><b>✍️</b><strong>Manuel İlan</strong><small>Alanları kendin doldur</small></button></div>');
+  open('<span class="eyebrow">KOLAY İLAN VER</span><h2>Parçanın fotoğrafını çek. İlanını biz hazırlayalım.</h2><div class="creator-options"><button data-photo-flow><b>✦</b><strong>AI İlan Oluştur</strong><small>Fotoğraf → parça tanıma → kategori → ilan taslağı</small></button><button data-bulk-flow><b>▱</b><strong>AI Çoklu İlan Oluştur</strong><small>Birden fazla fotoğraftan ayrı ilan taslakları</small></button><button data-manual-flow><b>✍️</b><strong>Tekli İlan Oluştur</strong><small>Alanları kendin doldur</small></button></div>');
 }
+
 function upload(multiple) {
-  open('<span class="eyebrow">FOTOĞRAFTAN TASLAK</span><h2>Fotoğrafları seç</h2><p>Etiket/OEM analizi için altyapı hazır. Sonuçlar yayınlanmadan önce mutlaka kontrol edilir.</p><input id="analyzeFiles" type="file" accept="image/*" ' + (multiple ? 'multiple' : '') + '><button id="startAnalysis">Taslakları hazırla</button>');
+  open('<span class="eyebrow">AI İLAN OLUŞTUR</span><h2>Fotoğrafları seç</h2><p>AI parçayı, kategoriyi ve mümkün olan teknik bilgileri fotoğraftan çıkarır; yayınlamadan önce kontrol edebilirsin.</p><input id="analyzeFiles" type="file" accept="image/*" ' + (multiple ? 'multiple' : '') + '><small>Bir ilan için en fazla 5 fotoğraf kullanılabilir.</small><button id="startAnalysis">AI ile analiz et</button>');
   document.querySelector('#startAnalysis').onclick = async () => {
-    const files = [...document.querySelector('#analyzeFiles').files];
-    if (!files.length) return notice('En az bir fotoğraf seç.');
-    const drafts = await Promise.all(files.map((file) => analyzer.analyze(file)));
-    renderDrafts(drafts, multiple, files);
+    const input = document.querySelector('#analyzeFiles');
+    const selected = [...input.files];
+    if (!selected.length) return notice('En az bir fotoğraf seç.');
+    if (selected.length > 5) return notice('Bir ilanda en fazla 5 fotoğraf olabilir.');
+    const button = document.querySelector('#startAnalysis');
+    button.disabled = true;
+    button.textContent = 'AI analiz ediyor…';
+    try {
+      const drafts = await Promise.all(selected.map((file) => analyzer.analyze(file)));
+      renderDrafts(drafts, multiple, selected);
+    } catch (error) {
+      notice(error.message || 'AI analizi başarısız.');
+      button.disabled = false;
+      button.textContent = 'AI ile analiz et';
+    }
   };
 }
+
 function renderDrafts(drafts, bulk, files = []) {
-  open('<span class="eyebrow">OTOMATİK TASLAKLAR</span><h2>Bilgileri kontrol edin</h2><p class="confidence-note">AI tahminleri kesin araç/parça uyumluluğu değildir. Yayınlamadan önce her alanı düzeltin.</p><div id="draftList">' + drafts.map((d,i)=>'<form class="ai-draft" data-draft="'+i+'"><small class="analysis-result">Güven: %'+d.confidence+' · OCR: '+esc(d.evidence?.ocr)+' · Görsel: '+esc(d.evidence?.vision)+'</small><input name="brand" value="'+esc(d.brand)+'" placeholder="Marka"><input name="partName" value="'+esc(d.partName)+'" placeholder="Parça adı"><input name="title" value="'+esc(d.title)+'" placeholder="İlan başlığı"><input name="oemNumber" placeholder="OEM / parça no"><input name="category" placeholder="Kategori"><input name="vehicle" value="'+esc(d.vehicle)+'" placeholder="Araç bilgisi"><textarea name="description" placeholder="Açıklama"></textarea><input name="price" type="number" min="0" placeholder="Fiyat"><input name="city" placeholder="Şehir"><select name="condition"><option value="used">2. El</option><option value="new">Sıfır</option><option value="salvage">Çıkma</option></select></form>').join('')+'</div><button id="publishDrafts">'+(bulk ? 'Seçili taslakları oluştur' : 'Taslağı oluştur')+'</button>');
+  open('<span class="eyebrow">AI TASLAĞI</span><h2>Bilgileri kontrol edin</h2><p class="confidence-note">AI fotoğraftaki parçayı ve görülebilen bilgileri analiz eder. Emin olmadığı alanları yayınlamadan önce kontrol et.</p><div id="draftList">' + drafts.map((d,i)=>'<form class="ai-draft" data-draft="'+i+'"><small class="analysis-result">Güven: %'+d.confidence+' · AI: '+esc(d.evidence?.aiVision || 'yerel')+' · OCR: '+esc(d.evidence?.ocr || '')+'</small><input name="brand" value="'+esc(d.brand)+'" placeholder="Marka"><input name="partName" value="'+esc(d.partName)+'" placeholder="Parça adı"><input name="title" value="'+esc(d.title)+'" placeholder="İlan başlığı"><input name="oemNumber" value="'+esc(d.oemNumber)+'" placeholder="OEM / parça no"><input name="category" value="'+esc(d.category)+'" placeholder="Kategori"><input name="subcategory" value="'+esc(d.subcategory)+'" placeholder="Alt kategori"><input name="vehicle" value="'+esc(d.vehicle)+'" placeholder="Araç bilgisi"><textarea name="description" placeholder="Açıklama">'+esc(d.description)+'</textarea><input name="price" type="number" min="0" placeholder="Fiyat"><input name="city" placeholder="Şehir"><select name="condition"><option value="used">2. El</option><option value="new">Sıfır</option><option value="salvage">Çıkma</option></select></form>').join('')+'</div><button id="publishDrafts">'+(bulk ? 'Seçili taslakları oluştur' : 'Taslağı oluştur')+'</button>');
   document.querySelector('#publishDrafts').onclick = async () => {
     const forms=[...document.querySelectorAll('.ai-draft')]; let lastId=null; let count=0;
-    for (let i=0;i<forms.length;i++) { const form = forms[i]; const d=Object.fromEntries(new FormData(form)); if (!d.partName || !d.price || !d.city) continue; try { const listing = await createListing({title:d.title||d.partName,description:d.description,condition:d.condition,price:d.price,city:d.city,oemNumber:d.oemNumber,category:d.category||null,vehicle:d.vehicle||null}); lastId = listing.id; count++; const file = files[i]; if (file) { try { await attachImagesToListing(listing.id, [file]); } catch (imgError) { notice(imgError.message || 'Fotoğraf yüklenemedi.'); } } } catch (error) { notice(error.message || 'İlan oluşturulamadı.'); } }
-    notice(count ? count+' taslak ilan oluşturuldu.' : 'Parça adı, fiyat ve şehir alanlarını doldur.');
+    for (let i=0;i<forms.length && i<5;i++) {
+      const form = forms[i];
+      const d=Object.fromEntries(new FormData(form));
+      if (!d.partName || !d.price || !d.city) continue;
+      try {
+        const listing = await createListing({ title:d.title||d.partName, description:d.description, condition:d.condition, price:d.price, city:d.city, oemNumber:d.oemNumber, category:d.category||null, subcategory:d.subcategory||null, vehicle:d.vehicle||null });
+        lastId = listing.id;
+        count++;
+        const file = files[i];
+        if (file) {
+          try { await attachImagesToListing(listing.id, [file]); }
+          catch (imgError) { notice(imgError.message || 'Fotoğraf yüklenemedi.'); }
+        }
+      } catch (error) { notice(error.message || 'İlan oluşturulamadı.'); }
+    }
+    notice(count ? count+' AI taslak ilan oluşturuldu.' : 'Parça adı, fiyat ve şehir alanlarını doldur.');
     if (count) window.dispatchEvent(new CustomEvent('parca:listings-updated'));
     if (lastId && window.__openListingDetail) window.__openListingDetail(lastId);
   };
 }
+
 document.addEventListener('click', (event) => {
   if (event.target.closest('[data-photo-flow]')) upload(false);
   if (event.target.closest('[data-bulk-flow]')) upload(true);
