@@ -8,6 +8,7 @@ on:
       - mvp/backend-foundation
       - mvp/production-sync-hardening
       - release/final-mvp3
+      - integration/security-final
 
 permissions:
   contents: read
