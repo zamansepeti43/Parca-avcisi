@@ -1,6 +1,7 @@
 const host = document.querySelector('#listingGrid')?.closest('.container');
 const grid = document.querySelector('#listingGrid');
 let activeFilters = { minPrice: '', maxPrice: '', city: '', sort: 'relevance' };
+let applying = false;
 
 const parsePrice = (value) => {
   const number = Number(String(value ?? '').replace(/[^0-9,.-]/g, '').replace(',', '.'));
@@ -54,37 +55,42 @@ function mount() {
   }
 
   function applyToGrid() {
-    if (!grid) return;
+    if (!grid || applying) return;
     const cards = Array.from(grid.querySelectorAll('.listing-card'));
     if (!cards.length) return;
-    const min = parsePrice(activeFilters.minPrice);
-    const max = parsePrice(activeFilters.maxPrice);
-    const city = normalize(activeFilters.city);
-    const matches = [];
+    applying = true;
+    try {
+      const min = parsePrice(activeFilters.minPrice);
+      const max = parsePrice(activeFilters.maxPrice);
+      const city = normalize(activeFilters.city);
+      const matches = [];
 
-    cards.forEach((card) => {
-      const price = parsePrice(card.querySelector('.price')?.textContent);
-      const cityText = normalize(card.querySelector('.listing-meta span:last-child')?.textContent?.replace(/^⌖\s*/, ''));
-      const ok = (min === null || (price !== null && price >= min))
-        && (max === null || (price !== null && price <= max))
-        && (!city || cityText.includes(city));
-      card.hidden = !ok;
-      if (ok) matches.push({ card, price: price ?? Infinity });
-    });
+      cards.forEach((card) => {
+        const price = parsePrice(card.querySelector('.price')?.textContent);
+        const cityText = normalize(card.querySelector('.listing-meta span:last-child')?.textContent?.replace(/^⌖\s*/, ''));
+        const ok = (min === null || (price !== null && price >= min))
+          && (max === null || (price !== null && price <= max))
+          && (!city || cityText.includes(city));
+        card.hidden = !ok;
+        if (ok) matches.push({ card, price: price ?? Infinity });
+      });
 
-    if (activeFilters.sort === 'price_asc') matches.sort((a, b) => a.price - b.price);
-    if (activeFilters.sort === 'price_desc') matches.sort((a, b) => b.price - a.price);
-    if (activeFilters.sort !== 'relevance') matches.forEach(({ card }) => grid.appendChild(card));
+      if (activeFilters.sort === 'price_asc') matches.sort((a, b) => a.price - b.price);
+      if (activeFilters.sort === 'price_desc') matches.sort((a, b) => b.price - a.price);
+      if (activeFilters.sort !== 'relevance') matches.forEach(({ card }) => grid.appendChild(card));
 
-    let empty = grid.querySelector('.filter-empty-state');
-    if (!matches.length) {
-      if (!empty) {
-        empty = document.createElement('div');
-        empty.className = 'filter-empty-state';
-        empty.innerHTML = '<strong>Bu filtrelerle eşleşen ilan yok.</strong><span>Fiyat veya şehir aralığını genişletmeyi deneyebilirsin.</span><br><button type="button" data-clear-advanced>Filtreleri temizle</button>';
-        grid.appendChild(empty);
-      }
-    } else if (empty) empty.remove();
+      let empty = grid.querySelector('.filter-empty-state');
+      if (!matches.length) {
+        if (!empty) {
+          empty = document.createElement('div');
+          empty.className = 'filter-empty-state';
+          empty.innerHTML = '<strong>Bu filtrelerle eşleşen ilan yok.</strong><span>Fiyat veya şehir aralığını genişletmeyi deneyebilirsin.</span><br><button type="button" data-clear-advanced>Filtreleri temizle</button>';
+          grid.appendChild(empty);
+        }
+      } else if (empty) empty.remove();
+    } finally {
+      applying = false;
+    }
   }
 
   panel.querySelector('#filterApply').addEventListener('click', () => {
@@ -117,7 +123,7 @@ function mount() {
   });
 
   const observer = new MutationObserver(() => {
-    if (activeFilters.minPrice || activeFilters.maxPrice || activeFilters.city || activeFilters.sort !== 'relevance') applyToGrid();
+    if (!applying && (activeFilters.minPrice || activeFilters.maxPrice || activeFilters.city || activeFilters.sort !== 'relevance')) applyToGrid();
   });
   observer.observe(grid, { childList: true });
 }
