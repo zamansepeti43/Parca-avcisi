@@ -1,5 +1,5 @@
 import { requireSupabase, supabaseConfigured } from './supabase.js';
-import { getListingImageUrl, deleteListingImages } from './listing-images.js';
+import { getListingImageUrl, getListingThumbnailUrl, deleteListingImages } from './listing-images.js';
 
 const conditionLabels = { new: 'Sıfır', used: '2. El', salvage: 'Çıkma' };
 const DEFAULT_PAGE_SIZE = 24;
@@ -13,13 +13,12 @@ function vehicleLabel(vehicles = []) {
 }
 
 function sortedImages(listing) {
-  return (listing.listing_images || [])
-    .slice()
-    .sort((a, b) => Number(b.is_cover ?? 0) - Number(a.is_cover ?? 0) || (a.sort_order ?? 0) - (b.sort_order ?? 0));
+  return (listing.listing_images || []).slice().sort((a, b) => Number(b.is_cover ?? 0) - Number(a.is_cover ?? 0) || (a.sort_order ?? 0) - (b.sort_order ?? 0));
 }
 
 export function toListingCard(listing) {
   const images = sortedImages(listing);
+  const coverPath = images[0]?.storage_path;
   return {
     id: listing.id,
     title: listing.title,
@@ -37,7 +36,10 @@ export function toListingCard(listing) {
     tone: 'engine',
     oem: listing.oem_number || listing.part?.oem_number || '',
     description: listing.description || '',
-    coverImage: images[0] ? getListingImageUrl(images[0].storage_path) : null,
+    // Liste kartları küçük, önceden üretilmiş WebP thumbnail kullanır.
+    // Eski fotoğraflarda thumbnail yoksa orijinale güvenli fallback yapılır.
+    coverImage: coverPath ? getListingThumbnailUrl(coverPath) : null,
+    coverImageFallback: coverPath ? getListingImageUrl(coverPath) : null,
   };
 }
 
@@ -49,12 +51,7 @@ export async function getActiveListings({ page = 0, pageSize = DEFAULT_PAGE_SIZE
   const safePage = Math.max(Number(page) || 0, 0);
   const from = safePage * safePageSize;
   const to = from + safePageSize - 1;
-  const { data, error } = await requireSupabase()
-    .from('listings')
-    .select(listingSelect)
-    .eq('status', 'active')
-    .order('created_at', { ascending: false })
-    .range(from, to);
+  const { data, error } = await requireSupabase().from('listings').select(listingSelect).eq('status', 'active').order('created_at', { ascending: false }).range(from, to);
   if (error) throw error;
   return (data || []).map(toListingCard);
 }
@@ -65,22 +62,14 @@ export async function getMyListings() {
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) return [];
-  const { data, error } = await client
-    .from('listings')
-    .select(listingSelect)
-    .eq('seller_id', authData.user.id)
-    .order('created_at', { ascending: false });
+  const { data, error } = await client.from('listings').select(listingSelect).eq('seller_id', authData.user.id).order('created_at', { ascending: false });
   if (error) throw error;
   return data.map(toListingCard);
 }
 
 export async function getListingById(id) {
   if (!supabaseConfigured) return null;
-  const { data, error } = await requireSupabase()
-    .from('listings')
-    .select(listingSelect)
-    .eq('id', id)
-    .maybeSingle();
+  const { data, error } = await requireSupabase().from('listings').select(listingSelect).eq('id', id).maybeSingle();
   if (error) throw error;
   if (!data) return null;
   const images = sortedImages(data).map((image) => ({
@@ -88,9 +77,11 @@ export async function getListingById(id) {
     sortOrder: image.sort_order,
     isCover: image.is_cover,
     url: getListingImageUrl(image.storage_path),
+    thumbnailUrl: getListingThumbnailUrl(image.storage_path),
   }));
   return {
     ...toListingCard(data),
+    coverImage: images[0]?.url || null,
     description: data.description || '',
     oemNumber: data.oem_number || data.part?.oem_number || '',
     category: data.category || data.part?.category || '',
@@ -104,13 +95,7 @@ export async function getListingById(id) {
 
 export async function getSellerActiveListings(sellerId, { excludeId } = {}) {
   if (!supabaseConfigured) return [];
-  let query = requireSupabase()
-    .from('listings')
-    .select(listingSelect)
-    .eq('seller_id', sellerId)
-    .eq('status', 'active')
-    .order('created_at', { ascending: false })
-    .limit(8);
+  let query = requireSupabase().from('listings').select(listingSelect).eq('seller_id', sellerId).eq('status', 'active').order('created_at', { ascending: false }).limit(8);
   if (excludeId) query = query.neq('id', excludeId);
   const { data, error } = await query;
   if (error) throw error;
@@ -122,34 +107,10 @@ export async function createListing({ title, description, condition, price, city
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) throw new Error('İlan vermek için giriş yapmalısın.');
-
-  const { data: listing, error } = await client
-    .from('listings')
-    .insert({
-      seller_id: authData.user.id,
-      part_id: partId || null,
-      title,
-      description: description || null,
-      condition,
-      price,
-      city: city || null,
-      district: district || null,
-      oem_number: oemNumber || null,
-      category: category || null,
-      subcategory: subcategory || null,
-      vehicle: vehicle || null,
-      delivery: delivery || null,
-      stock_count: stockCount,
-      status,
-    })
-    .select()
-    .single();
+  const { data: listing, error } = await client.from('listings').insert({ seller_id: authData.user.id, part_id: partId || null, title, description: description || null, condition, price, city: city || null, district: district || null, oem_number: oemNumber || null, category: category || null, subcategory: subcategory || null, vehicle: vehicle || null, delivery: delivery || null, stock_count: stockCount, status }).select().single();
   if (error) throw error;
-
   if (vehicleIds.length) {
-    const { error: vehicleError } = await client
-      .from('listing_vehicles')
-      .insert(vehicleIds.map((vehicleId) => ({ listing_id: listing.id, vehicle_id: vehicleId })));
+    const { error: vehicleError } = await client.from('listing_vehicles').insert(vehicleIds.map((vehicleId) => ({ listing_id: listing.id, vehicle_id: vehicleId })));
     if (vehicleError) throw vehicleError;
   }
   return listing;
@@ -160,7 +121,6 @@ export async function updateListing(id, fields) {
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) throw new Error('Giriş yapmalısın.');
-
   const payload = { updated_at: new Date().toISOString() };
   if (fields.title !== undefined) payload.title = fields.title;
   if (fields.description !== undefined) payload.description = fields.description || null;
@@ -172,7 +132,6 @@ export async function updateListing(id, fields) {
   if (fields.subcategory !== undefined) payload.subcategory = fields.subcategory || null;
   if (fields.vehicle !== undefined) payload.vehicle = fields.vehicle || null;
   if (fields.delivery !== undefined) payload.delivery = fields.delivery || null;
-
   const { error } = await client.from('listings').update(payload).eq('id', id).eq('seller_id', authData.user.id);
   if (error) throw error;
 }
@@ -182,11 +141,7 @@ export async function updateListingStatus(id, status) {
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) throw new Error('Giriş yapmalısın.');
-  const { error } = await client
-    .from('listings')
-    .update({ status, updated_at: new Date().toISOString() })
-    .eq('id', id)
-    .eq('seller_id', authData.user.id);
+  const { error } = await client.from('listings').update({ status, updated_at: new Date().toISOString() }).eq('id', id).eq('seller_id', authData.user.id);
   if (error) throw error;
 }
 
@@ -195,20 +150,10 @@ export async function deleteListing(id) {
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) throw new Error('Giriş yapmalısın.');
-
-  const { data: listing, error: listingError } = await client
-    .from('listings')
-    .select('id')
-    .eq('id', id)
-    .eq('seller_id', authData.user.id)
-    .maybeSingle();
+  const { data: listing, error: listingError } = await client.from('listings').select('id').eq('id', id).eq('seller_id', authData.user.id).maybeSingle();
   if (listingError) throw listingError;
   if (!listing) throw new Error('İlan bulunamadı veya bu ilanı silemezsin.');
-
-  // Storage dosyalarını DB kaydından önce temizliyoruz. Storage temizlenemezse
-  // ilan silinmez; böylece kullanıcı ilanını silip geride orphan dosya bırakmaz.
   await deleteListingImages(id);
-
   const { error } = await client.from('listings').delete().eq('id', id).eq('seller_id', authData.user.id);
   if (error) throw error;
 }
