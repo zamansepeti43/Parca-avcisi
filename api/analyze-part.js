@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 
 const DAILY_AI_LIMIT = 10;
@@ -11,6 +12,18 @@ function supabaseServerClient(accessToken) {
     auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
     global: { headers: { Authorization: 'Bearer ' + accessToken } }
   });
+}
+
+function supabaseAdminClient() {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
+}
+
+function imageHash(imageDataUrl) {
+  const base64 = imageDataUrl.replace(/^data:[^;]+;base64,/, '');
+  return crypto.createHash('sha256').update(base64, 'base64').digest('hex');
 }
 
 export default async function handler(req, res) {
@@ -32,33 +45,41 @@ export default async function handler(req, res) {
     if (!userData.user.email_confirmed_at) return res.status(403).json({ error: 'Önce e-posta adresini doğrulamalısın.' });
     if (!userData.user.phone_confirmed_at) return res.status(403).json({ error: 'Önce telefon numaranı doğrulamalısın.' });
 
-    const { data: quota, error: quotaError } = await supabase.rpc('consume_ai_analysis', { p_daily_limit: DAILY_AI_LIMIT });
-    if (quotaError) return res.status(503).json({ error: 'AI kullanım kotası kontrol edilemedi.' });
-    if (!quota?.allowed) {
-      return res.status(429).json({ error: 'Bugünkü ücretsiz AI ilan oluşturma hakkın doldu.', usage: quota });
-    }
-
     const { imageDataUrl } = req.body || {};
     if (!imageDataUrl || typeof imageDataUrl !== 'string') return res.status(400).json({ error: 'Görsel bulunamadı.' });
     if (imageDataUrl.length > MAX_BODY_CHARS) return res.status(413).json({ error: 'Görsel çok büyük. Sistem fotoğrafı otomatik küçültüyor; lütfen optimize edilmiş fotoğrafı gönder.' });
     if (!/^data:image\/(webp|jpeg|jpg|png);base64,/i.test(imageDataUrl)) return res.status(400).json({ error: 'Desteklenmeyen görsel formatı.' });
+
+    const hash = imageHash(imageDataUrl);
+    const admin = supabaseAdminClient();
+    if (admin) {
+      const { data: cached } = await admin.from('ai_image_analysis_cache').select('result, model').eq('image_hash', hash).maybeSingle();
+      if (cached?.result) {
+        await admin.from('ai_image_analysis_cache').update({ last_used_at: new Date().toISOString() }).eq('image_hash', hash);
+        return res.status(200).json({ result: cached.result, model: cached.model, cached: true, usage: { allowed: true, consumed: false } });
+      }
+    }
+
+    const { data: quota, error: quotaError } = await supabase.rpc('consume_ai_analysis', { p_daily_limit: DAILY_AI_LIMIT });
+    if (quotaError) return res.status(503).json({ error: 'AI kullanım kotası kontrol edilemedi.' });
+    if (!quota?.allowed) return res.status(429).json({ error: 'Bugünkü ücretsiz AI ilan oluşturma hakkın doldu.', usage: quota });
 
     const prompt = `Sen Parça Avcısı'nın otomotiv yedek parça görsel analiz motorusun. Fotoğraftaki parçayı mümkün olduğunca dikkatli tanı. Sadece fotoğrafta görülen veya güçlü biçimde desteklenen bilgileri doldur; emin olmadığın alanları boş bırak ve uydurma OEM/araç uyumluluğu üretme. Kategoriyi Türkçe seç. Çıktıyı SADECE geçerli JSON olarak döndür. Şema: {"partName":"","category":"","subcategory":"","brand":"","model":"","oemNumber":"","vehicle":"","title":"","description":"","confidence":0,"requiresReview":true}. category için mümkünse şu sınıflardan birini kullan: Motor, Şanzıman, Kaporta, Aydınlatma, Fren Sistemi, Süspansiyon, Direksiyon, Elektrik, Soğutma, Yakıt Sistemi, Egzoz, Klima, İç Donanım, Dış Donanım, Filtreler, Jant & Lastik, Aksesuar, Diğer. description kısa ve profesyonel bir ilan açıklaması olsun. confidence 0-100 arası sayı olsun.`;
 
     const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=' + encodeURIComponent(apiKey), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ role: 'user', parts: [{ text: prompt }, { inline_data: { mime_type: imageDataUrl.match(/^data:([^;]+);/)?.[1] || 'image/webp', data: imageDataUrl.replace(/^data:[^;]+;base64,/, '') } }] }],
-        generationConfig: { temperature: 0.1, responseMimeType: 'application/json' }
-      })
+      body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }, { inline_data: { mime_type: imageDataUrl.match(/^data:([^;]+);/)?.[1] || 'image/webp', data: imageDataUrl.replace(/^data:[^;]+;base64,/, '') } }] }], generationConfig: { temperature: 0.1, responseMimeType: 'application/json' } })
     });
 
     const payload = await response.json();
     if (!response.ok) return res.status(response.status).json({ error: payload?.error?.message || 'Vision AI isteği başarısız.' });
     const text = payload?.candidates?.[0]?.content?.parts?.map((part) => part.text || '').join('') || '{}';
     const result = JSON.parse(text.replace(/^```json\s*/i, '').replace(/\s*```$/i, ''));
-    return res.status(200).json({ result, model: 'gemini-2.5-flash-lite', usage: quota });
+    if (admin) {
+      await admin.from('ai_image_analysis_cache').upsert({ image_hash: hash, model: 'gemini-2.5-flash-lite', result, last_used_at: new Date().toISOString() }, { onConflict: 'image_hash' });
+    }
+    return res.status(200).json({ result, model: 'gemini-2.5-flash-lite', cached: false, usage: quota });
   } catch (error) {
     return res.status(500).json({ error: error.message || 'Vision AI analiz hatası.' });
   }
