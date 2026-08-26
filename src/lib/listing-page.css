@@ -47,8 +47,7 @@ body.listings-page #arayanGrid .request-card{background:#11161c;border-color:#2b
 body.listings-page #arayanGrid .request-card h3{color:#eef1f4}
 body.listings-page #arayanGrid .request-card-vehicle{color:#8c96a1}
 
-/* Stronger category drawer visibility */
-body:has(.cat-menu:not([hidden]))::before{content:"";position:fixed;left:0;right:0;top:76px;bottom:0;background:rgba(0,0,0,.64);backdrop-filter:blur(2px);z-index:54}
+/* Category drawer styling. The drawer backdrop is provided by categories-menu.css. */
 .cat-menu{top:76px!important;width:380px!important;background:#0b1016!important;border-right:2px solid #f5b900!important;box-shadow:28px 0 70px rgba(0,0,0,.65),inset -1px 0 rgba(255,255,255,.04)!important;z-index:100!important}
 .cat-menu-inner{padding:22px 20px!important}
 .cat-menu-title{padding-bottom:10px;border-bottom:1px solid #2c343d}
@@ -72,7 +71,6 @@ body:has(.cat-menu:not([hidden]))::before{content:"";position:fixed;left:0;right
   .listing-page-heading{align-items:flex-start;flex-direction:column}
 }
 @media(max-width:700px){
-  body:has(.cat-menu:not([hidden]))::before{top:68px}
   .cat-menu{top:68px!important;width:min(92vw,380px)!important}
   .listing-search-row{grid-template-columns:1fr}
   .listing-category-btn{min-height:44px}
