@@ -43,3 +43,5 @@ document.addEventListener('click', (event) => {
 });
 
 window.__openEasyListing = openChoices;
+window.__openPhotoListing = () => upload(false);
+window.__openBulkListing = () => upload(true);
