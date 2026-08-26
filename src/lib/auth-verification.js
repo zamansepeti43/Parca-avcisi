@@ -1,4 +1,4 @@
-import { getCurrentUser, startPhoneVerification, verifyPhoneOtp, claimVerifiedPhoneIdentity } from './auth.js';
+import { getCurrentUser, onAuthStateChange, startPhoneVerification, verifyPhoneOtp, claimVerifiedPhoneIdentity } from './auth.js';
 import { supabaseConfigured } from './supabase.js';
 
 const normalizePhone = (value) => {
@@ -38,12 +38,11 @@ export async function confirmPhoneVerification(phone, token) {
 
 function showVerificationModal(user) {
   const existing = document.querySelector('#phoneVerificationModal');
-  if (existing) existing.remove();
+  if (existing) return;
   const phone = normalizePhone(user?.user_metadata?.phone || user?.phone || '');
   const html = '<div id="phoneVerificationModal" class="app-modal show" aria-hidden="false"><div class="modal-card" role="dialog" aria-modal="true">'
-    + '<button class="modal-close" data-phone-close aria-label="Kapat">×</button>'
     + '<span class="eyebrow">HESAP DOĞRULAMA</span><h2>Telefonunu doğrula</h2>'
-    + '<p>Parça Avcısı hesabını kullanabilmek için e-posta ve telefon doğrulaması gerekiyor.</p>'
+    + '<p>E-posta adresin doğrulandı. Hesabını kullanmaya devam etmek için şimdi telefonunu da doğrulaman gerekiyor.</p>'
     + '<form id="phoneVerificationForm" class="stack-form">'
     + '<input name="phone" type="tel" required value="' + phone + '" placeholder="05xx xxx xx xx" autocomplete="tel">'
     + '<button type="button" data-send-phone-code>SMS kodu gönder</button>'
@@ -71,7 +70,18 @@ function showVerificationModal(user) {
       window.__showToast?.('Telefon doğrulandı. Hesabın artık tamamen doğrulanmış.');
     } catch (error) { status.textContent = error.message || 'Telefon doğrulanamadı.'; }
   });
-  modal.addEventListener('click', (event) => { if (event.target === modal || event.target.closest('[data-phone-close]')) modal.remove(); });
+}
+
+export function openPhoneVerification(user) { showVerificationModal(user); }
+
+async function enforceVerification(user) {
+  if (!user || !user.email_confirmed_at || user.phone_confirmed_at) return;
+  showVerificationModal(user);
+}
+
+if (supabaseConfigured) {
+  onAuthStateChange((_event, session) => enforceVerification(session?.user || null));
+  getCurrentUser().then(enforceVerification).catch(() => {});
 }
 
 async function guardProtectedAction(event) {
@@ -79,11 +89,14 @@ async function guardProtectedAction(event) {
   if (!target || !supabaseConfigured) return;
   const user = await getCurrentUser().catch(() => null);
   if (!user || isFullyVerifiedUser(user)) return;
-  if (!user.email_confirmed_at) return;
   event.preventDefault();
   event.stopImmediatePropagation();
+  if (!user.email_confirmed_at) {
+    window.__showToast?.('Önce e-posta adresini doğrulamalısın.');
+    return;
+  }
   showVerificationModal(user);
 }
 
 document.addEventListener('click', guardProtectedAction, true);
-window.__parcaAuthVerification = { isFullyVerifiedUser, requireFullVerification, beginPhoneVerification, confirmPhoneVerification };
+window.__parcaAuthVerification = { isFullyVerifiedUser, requireFullVerification, beginPhoneVerification, confirmPhoneVerification, openPhoneVerification };
