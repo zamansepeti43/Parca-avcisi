@@ -41,15 +41,15 @@ export async function getProfilesByIds(ids) {
   return data || [];
 }
 
+// Public seller data is intentionally served through a SECURITY DEFINER RPC.
+// This prevents listing pages from exposing private profile fields such as
+// phone, address or settings through the profiles table.
 export async function getProfileById(id) {
   if (!supabaseConfigured || !id) return null;
   const { data, error } = await requireSupabase()
-    .from('profiles')
-    .select('id, full_name, phone, city, avatar_url, role, created_at, settings')
-    .eq('id', id)
-    .maybeSingle();
+    .rpc('get_public_seller_profile', { p_seller_id: id });
   if (error) throw error;
-  return data;
+  return Array.isArray(data) ? (data[0] || null) : data || null;
 }
 
 export async function getActiveListingCount(sellerId) {
