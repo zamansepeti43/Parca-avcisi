@@ -1,3 +1,5 @@
+import './listing-entry-flow.css';
+
 const modal = () => document.querySelector('#appModal');
 const content = () => document.querySelector('#modalContent');
 
