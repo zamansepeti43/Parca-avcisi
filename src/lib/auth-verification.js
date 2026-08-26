@@ -54,7 +54,7 @@ function showVerificationModal(user) {
   const phone = normalizePhone(user?.user_metadata?.phone || user?.phone || '');
   const html = '<div id="phoneVerificationModal" class="app-modal show" aria-hidden="false">'
     + '<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="phoneVerificationTitle">'
-    + '<button type="button" class="modal-close" data-close-phone-verification aria-label="Kapat">×</button>'
+    + '<button type="button" data-close-phone-verification aria-label="Kapat" style="position:absolute;right:16px;top:12px;width:38px;height:38px;border:0;border-radius:50%;background:#f1f1f1;color:#171717;font-size:26px;line-height:1;cursor:pointer;z-index:5">×</button>'
     + '<span class="eyebrow">HESAP DOĞRULAMA</span><h2 id="phoneVerificationTitle">Telefonunu doğrula</h2>'
     + '<p>E-posta adresin doğrulandı. İlan vermek için telefonunu da doğrulaman gerekiyor.</p>'
     + '<form id="phoneVerificationForm" class="stack-form">'
