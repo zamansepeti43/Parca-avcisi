@@ -19,5 +19,6 @@ import './lib/requests-search.js';
 import './lib/auth-verification.js';
 import './lib/platform-settings.js';
 import { initRequestRealtime } from './lib/request-realtime.js';
+import './lib/route-pages.js';
 
 initRequestRealtime();
