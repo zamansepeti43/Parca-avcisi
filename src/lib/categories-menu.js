@@ -1,130 +1,21 @@
 import './categories-menu.css';
 import { getMainCategories, getSubcategories } from './part-catalog.js';
-
-const TYPE_OPTIONS = [
-  { label: 'Otomobil', type: '' },
-  { label: 'Kamyon', type: 'Kamyon' },
-  { label: 'Otobüs', type: 'Otobüs' },
-  { label: 'Motosiklet', type: 'Motosiklet' },
-  { label: 'Pickup / Kamyonet', type: 'Pickup / Kamyonet' },
-];
-
-const escapeHtml = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
-
-const header = document.querySelector('.site-header');
-const menu = document.createElement('div');
-menu.className = 'cat-menu';
-menu.id = 'catMenu';
-menu.hidden = true;
-menu.setAttribute('aria-label', 'Kategori menüsü');
-menu.innerHTML = `
-  <div class="cat-menu-inner">
-    <div class="cat-menu-head">
-      <span class="eyebrow">KATEGORİLER</span>
-      <p class="cat-menu-hint">Bir ana kategori seç, alt parçaları aç.</p>
-      <div class="cat-type-switch" role="tablist" aria-label="Araç tipine göre kategoriler">
-        ${TYPE_OPTIONS.map((option) => `<button type="button" role="tab" data-cat-type="${escapeHtml(option.type)}">${escapeHtml(option.label)}</button>`).join('')}
-      </div>
-    </div>
-    <div class="cat-menu-cols" id="catMenuCols"></div>
-  </div>
-`;
-if (header) header.appendChild(menu);
-
-const cols = menu.querySelector('#catMenuCols');
-let activeType = '';
-let isOpen = false;
-const expandedCategories = new Set();
-
-function renderColumns() {
-  cols.innerHTML = getMainCategories(activeType).map((category) => {
-    const subs = getSubcategories(activeType, category);
-    const expanded = expandedCategories.has(category);
-    return `<div class="cat-col ${expanded ? 'is-open' : ''}" data-cat-col="${escapeHtml(category)}">
-      <button type="button" class="cat-main" data-cat-main="${escapeHtml(category)}" aria-expanded="${expanded}">
-        <span>${escapeHtml(category)}</span><span class="cat-chevron" aria-hidden="true">›</span>
-      </button>
-      <div class="cat-subs" ${expanded ? '' : 'hidden'}>${subs.map((sub) => `<button type="button" class="cat-sub" data-cat-sub="${escapeHtml(sub)}">${escapeHtml(sub)}</button>`).join('')}</div>
-    </div>`;
-  }).join('');
-}
-
-function renderTypeSwitch() {
-  menu.querySelectorAll('[data-cat-type]').forEach((button) => {
-    const active = button.dataset.catType === activeType;
-    button.classList.toggle('active', active);
-    button.setAttribute('aria-selected', String(active));
-  });
-}
-
-function setType(type) {
-  activeType = type;
-  expandedCategories.clear();
-  renderTypeSwitch();
-  renderColumns();
-}
-
-function setTriggerState() {
-  document.querySelectorAll('[data-open-categories]').forEach((trigger) => trigger.setAttribute('aria-expanded', String(isOpen)));
-}
-
-function open() {
-  isOpen = true;
-  menu.hidden = false;
-  menu.setAttribute('aria-hidden', 'false');
-  setTriggerState();
-  renderColumns();
-}
-
-function close() {
-  isOpen = false;
-  menu.hidden = true;
-  menu.setAttribute('aria-hidden', 'true');
-  setTriggerState();
-}
-
-function toggle() {
-  if (isOpen) close();
-  else open();
-}
-
-function toggleCategory(category) {
-  if (expandedCategories.has(category)) expandedCategories.delete(category);
-  else expandedCategories.add(category);
-  renderColumns();
-}
-
-function applyFilter(category, subcategory) {
-  close();
-  if (window.__listingView && window.__listingView.setCategoryFilter) {
-    window.__listingView.setCategoryFilter({ category, subcategory: subcategory || '', vehicleType: activeType });
-  } else if (window.__homeSearch) {
-    window.__homeSearch([category, subcategory].filter(Boolean).join(' '));
-  }
-  const target = document.querySelector('#ilanlar');
-  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-renderTypeSwitch();
-renderColumns();
-
-document.addEventListener('click', (event) => {
-  const trigger = event.target.closest('[data-open-categories]');
-  if (trigger) { event.preventDefault(); toggle(); return; }
-  const typeBtn = event.target.closest('[data-cat-type]');
-  if (typeBtn) { event.preventDefault(); setType(typeBtn.dataset.catType); return; }
-  const mainBtn = event.target.closest('[data-cat-main]');
-  if (mainBtn) { event.preventDefault(); toggleCategory(mainBtn.dataset.catMain); return; }
-  const subBtn = event.target.closest('[data-cat-sub]');
-  if (subBtn) {
-    event.preventDefault();
-    const col = subBtn.closest('.cat-col');
-    applyFilter(col ? col.dataset.catCol : '', subBtn.dataset.catSub);
-    return;
-  }
-  if (isOpen && !event.target.closest('#catMenu')) close();
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && isOpen) close();
-});
+const TYPE_OPTIONS=[{label:'Otomobil',type:''},{label:'Kamyon',type:'Kamyon'},{label:'Otobüs',type:'Otobüs'},{label:'Motosiklet',type:'Motosiklet'},{label:'Pickup / Kamyonet',type:'Pickup / Kamyonet'}];
+const escapeHtml=(value)=>String(value||'').replace(/[&<>"']/g,(char)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const header=document.querySelector('.site-header');
+const menu=document.createElement('aside'); menu.className='cat-menu'; menu.id='catMenu'; menu.hidden=true; menu.setAttribute('aria-label','Kategori menüsü');
+menu.innerHTML=`<div class="cat-menu-inner"><div class="cat-menu-head"><div class="cat-menu-title"><span class="eyebrow">KATEGORİLER</span><button type="button" class="cat-close" data-close-categories aria-label="Kategorileri kapat">×</button></div><p class="cat-menu-hint">Araç tipini seç, ana kategoriyi aç ve parçaya git.</p><div class="cat-type-switch" role="tablist" aria-label="Araç tipine göre kategoriler">${TYPE_OPTIONS.map((option)=>`<button type="button" role="tab" data-cat-type="${escapeHtml(option.type)}">${escapeHtml(option.label)}</button>`).join('')}</div></div><div class="cat-menu-cols" id="catMenuCols"></div></div>`;
+if(header) header.appendChild(menu);
+const cols=menu.querySelector('#catMenuCols'); let activeType=''; let isOpen=false; const expandedCategories=new Set();
+function renderColumns(){cols.innerHTML=getMainCategories(activeType).map((category)=>{const subs=getSubcategories(activeType,category);const expanded=expandedCategories.has(category);return `<div class="cat-col ${expanded?'is-open':''}" data-cat-col="${escapeHtml(category)}"><button type="button" class="cat-main" data-cat-main="${escapeHtml(category)}" aria-expanded="${expanded}"><span>${escapeHtml(category)}</span><span class="cat-chevron" aria-hidden="true">›</span></button><div class="cat-subs" ${expanded?'':'hidden'}>${subs.map((sub)=>`<button type="button" class="cat-sub" data-cat-sub="${escapeHtml(sub)}">${escapeHtml(sub)}</button>`).join('')}</div></div>`;}).join('');}
+function renderTypeSwitch(){menu.querySelectorAll('[data-cat-type]').forEach((button)=>{const active=button.dataset.catType===activeType;button.classList.toggle('active',active);button.setAttribute('aria-selected',String(active));});}
+function setType(type){activeType=type;expandedCategories.clear();renderTypeSwitch();renderColumns();}
+function setTriggerState(){document.querySelectorAll('[data-open-categories]').forEach((trigger)=>trigger.setAttribute('aria-expanded',String(isOpen)));}
+function open(){isOpen=true;menu.hidden=false;menu.setAttribute('aria-hidden','false');setTriggerState();renderColumns();}
+function close(){isOpen=false;menu.hidden=true;menu.setAttribute('aria-hidden','true');setTriggerState();}
+function toggle(){if(isOpen)close();else open();}
+function toggleCategory(category){if(expandedCategories.has(category))expandedCategories.delete(category);else expandedCategories.add(category);renderColumns();}
+function applyFilter(category,subcategory){close();if(window.__listingView&&window.__listingView.setCategoryFilter)window.__listingView.setCategoryFilter({category,subcategory:subcategory||'',vehicleType:activeType});else if(window.__homeSearch)window.__homeSearch([category,subcategory].filter(Boolean).join(' '));const target=document.querySelector('#ilanlar');if(target)target.scrollIntoView({behavior:'smooth',block:'start'});}
+renderTypeSwitch();renderColumns();
+document.addEventListener('click',(event)=>{const trigger=event.target.closest('[data-open-categories]');if(trigger){event.preventDefault();toggle();return;}const closeBtn=event.target.closest('[data-close-categories]');if(closeBtn){event.preventDefault();close();return;}const typeBtn=event.target.closest('[data-cat-type]');if(typeBtn){event.preventDefault();setType(typeBtn.dataset.catType);return;}const mainBtn=event.target.closest('[data-cat-main]');if(mainBtn){event.preventDefault();toggleCategory(mainBtn.dataset.catMain);return;}const subBtn=event.target.closest('[data-cat-sub]');if(subBtn){event.preventDefault();const col=subBtn.closest('.cat-col');applyFilter(col?col.dataset.catCol:'',subBtn.dataset.catSub);return;}if(isOpen&&!event.target.closest('#catMenu'))close();});
+document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&isOpen)close();});
