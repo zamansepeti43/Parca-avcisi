@@ -36,8 +36,8 @@ function optionCards(kind) {
     ['drafts', '📂', 'Taleplerim', 'Kayıtlı taleplerini görüntüle ve düzenle.'],
   ] : [
     ['single', '📷', 'Tekli İlan Oluştur', 'Tek bir parça için ilan oluştur.'],
-    ['bulk', '▱', 'Çoklu İlan Oluştur', 'Birden fazla parçayı fotoğraflardan hızlıca oluştur.'],
-    ['photo', '📸', 'Fotoğraflı İlan Oluştur', 'Fotoğraf ekle, otomatik taslakları kontrol ederek ilanını hazırla.'],
+    ['bulk', '▱', 'AI Çoklu İlan Oluştur', 'Birden fazla parçayı AI destekli taslaklarla hızlıca oluştur.'],
+    ['photo', '✦', 'AI İlan Oluştur', 'Fotoğrafı analiz et, otomatik taslağı kontrol ederek ilanını hazırla.'],
     ['drafts', '📂', 'Taslaklarım', 'Kayıtlı taslak ilanlarını görüntüle ve düzenle.'],
   ];
   return '<section class="entry-options"><h3>' + title + '</h3><div class="entry-option-list">' + cards.map(([action, icon, label, desc]) =>
