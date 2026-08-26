@@ -1,9 +1,15 @@
 const host = document.querySelector('#listingGrid')?.closest('.container');
+const grid = document.querySelector('#listingGrid');
+let activeFilters = { minPrice: '', maxPrice: '', city: '', sort: 'relevance' };
 
-function escapeHtml(value) { return String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char])); }
+const parsePrice = (value) => {
+  const number = Number(String(value ?? '').replace(/[^0-9,.-]/g, '').replace(',', '.'));
+  return Number.isFinite(number) ? number : null;
+};
+const normalize = (value) => String(value ?? '').trim().toLocaleLowerCase('tr-TR');
 
 function mount() {
-  if (!host || document.querySelector('#advancedFilters')) return;
+  if (!host || !grid || document.querySelector('#advancedFilters')) return;
   const panel = document.createElement('div');
   panel.id = 'advancedFilters';
   panel.className = 'advanced-filters';
@@ -47,10 +53,44 @@ function mount() {
     panel.querySelector('#advancedFilterSummary').textContent = parts.length ? parts.join(' · ') : 'Tüm ilanlar';
   }
 
+  function applyToGrid() {
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.listing-card'));
+    if (!cards.length) return;
+    const min = parsePrice(activeFilters.minPrice);
+    const max = parsePrice(activeFilters.maxPrice);
+    const city = normalize(activeFilters.city);
+    const matches = [];
+
+    cards.forEach((card) => {
+      const price = parsePrice(card.querySelector('.price')?.textContent);
+      const cityText = normalize(card.querySelector('.listing-meta span:last-child')?.textContent?.replace(/^⌖\s*/, ''));
+      const ok = (min === null || (price !== null && price >= min))
+        && (max === null || (price !== null && price <= max))
+        && (!city || cityText.includes(city));
+      card.hidden = !ok;
+      if (ok) matches.push({ card, price: price ?? Infinity });
+    });
+
+    if (activeFilters.sort === 'price_asc') matches.sort((a, b) => a.price - b.price);
+    if (activeFilters.sort === 'price_desc') matches.sort((a, b) => b.price - a.price);
+    if (activeFilters.sort !== 'relevance') matches.forEach(({ card }) => grid.appendChild(card));
+
+    let empty = grid.querySelector('.filter-empty-state');
+    if (!matches.length) {
+      if (!empty) {
+        empty = document.createElement('div');
+        empty.className = 'filter-empty-state';
+        empty.innerHTML = '<strong>Bu filtrelerle eşleşen ilan yok.</strong><span>Fiyat veya şehir aralığını genişletmeyi deneyebilirsin.</span><br><button type="button" data-clear-advanced>Filtreleri temizle</button>';
+        grid.appendChild(empty);
+      }
+    } else if (empty) empty.remove();
+  }
+
   panel.querySelector('#filterApply').addEventListener('click', () => {
-    const filters = values();
-    window.__listingView?.setAdvancedFilters?.(filters);
-    updateSummary(filters);
+    activeFilters = values();
+    updateSummary(activeFilters);
+    applyToGrid();
     drawer.hidden = true;
     toggle.setAttribute('aria-expanded', 'false');
   });
@@ -60,14 +100,26 @@ function mount() {
     panel.querySelector('#filterMaxPrice').value = '';
     panel.querySelector('#filterCity').value = '';
     panel.querySelector('#filterSort').value = 'relevance';
-    const filters = values();
-    window.__listingView?.setAdvancedFilters?.(filters);
-    updateSummary(filters);
+    activeFilters = values();
+    updateSummary(activeFilters);
+    applyToGrid();
   });
 
-  ['filterMinPrice','filterMaxPrice','filterCity'].forEach((id) => panel.querySelector(`#${id}`).addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') panel.querySelector('#filterApply').click();
-  }));
+  grid.addEventListener('click', (event) => {
+    if (!event.target.closest('[data-clear-advanced]')) return;
+    activeFilters = { minPrice: '', maxPrice: '', city: '', sort: 'relevance' };
+    panel.querySelector('#filterMinPrice').value = '';
+    panel.querySelector('#filterMaxPrice').value = '';
+    panel.querySelector('#filterCity').value = '';
+    panel.querySelector('#filterSort').value = 'relevance';
+    updateSummary(activeFilters);
+    applyToGrid();
+  });
+
+  const observer = new MutationObserver(() => {
+    if (activeFilters.minPrice || activeFilters.maxPrice || activeFilters.city || activeFilters.sort !== 'relevance') applyToGrid();
+  });
+  observer.observe(grid, { childList: true });
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount, { once: true });
