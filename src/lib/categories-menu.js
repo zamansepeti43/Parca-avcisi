@@ -18,9 +18,10 @@ menu.id = 'catMenu';
 menu.hidden = true;
 menu.setAttribute('aria-label', 'Kategori menüsü');
 menu.innerHTML = `
-  <div class="container cat-menu-inner">
+  <div class="cat-menu-inner">
     <div class="cat-menu-head">
       <span class="eyebrow">KATEGORİLER</span>
+      <p class="cat-menu-hint">Bir ana kategori seç, alt parçaları aç.</p>
       <div class="cat-type-switch" role="tablist" aria-label="Araç tipine göre kategoriler">
         ${TYPE_OPTIONS.map((option) => `<button type="button" role="tab" data-cat-type="${escapeHtml(option.type)}">${escapeHtml(option.label)}</button>`).join('')}
       </div>
@@ -33,13 +34,17 @@ if (header) header.appendChild(menu);
 const cols = menu.querySelector('#catMenuCols');
 let activeType = '';
 let isOpen = false;
+const expandedCategories = new Set();
 
 function renderColumns() {
   cols.innerHTML = getMainCategories(activeType).map((category) => {
     const subs = getSubcategories(activeType, category);
-    return `<div class="cat-col" data-cat-col="${escapeHtml(category)}">
-      <button type="button" class="cat-main" data-cat-main="${escapeHtml(category)}">${escapeHtml(category)}</button>
-      <div class="cat-subs">${subs.map((sub) => `<button type="button" class="cat-sub" data-cat-sub="${escapeHtml(sub)}">${escapeHtml(sub)}</button>`).join('')}</div>
+    const expanded = expandedCategories.has(category);
+    return `<div class="cat-col ${expanded ? 'is-open' : ''}" data-cat-col="${escapeHtml(category)}">
+      <button type="button" class="cat-main" data-cat-main="${escapeHtml(category)}" aria-expanded="${expanded}">
+        <span>${escapeHtml(category)}</span><span class="cat-chevron" aria-hidden="true">›</span>
+      </button>
+      <div class="cat-subs" ${expanded ? '' : 'hidden'}>${subs.map((sub) => `<button type="button" class="cat-sub" data-cat-sub="${escapeHtml(sub)}">${escapeHtml(sub)}</button>`).join('')}</div>
     </div>`;
   }).join('');
 }
@@ -54,6 +59,7 @@ function renderTypeSwitch() {
 
 function setType(type) {
   activeType = type;
+  expandedCategories.clear();
   renderTypeSwitch();
   renderColumns();
 }
@@ -82,6 +88,12 @@ function toggle() {
   else open();
 }
 
+function toggleCategory(category) {
+  if (expandedCategories.has(category)) expandedCategories.delete(category);
+  else expandedCategories.add(category);
+  renderColumns();
+}
+
 function applyFilter(category, subcategory) {
   close();
   if (window.__listingView && window.__listingView.setCategoryFilter) {
@@ -102,7 +114,7 @@ document.addEventListener('click', (event) => {
   const typeBtn = event.target.closest('[data-cat-type]');
   if (typeBtn) { event.preventDefault(); setType(typeBtn.dataset.catType); return; }
   const mainBtn = event.target.closest('[data-cat-main]');
-  if (mainBtn) { event.preventDefault(); applyFilter(mainBtn.dataset.catMain, ''); return; }
+  if (mainBtn) { event.preventDefault(); toggleCategory(mainBtn.dataset.catMain); return; }
   const subBtn = event.target.closest('[data-cat-sub]');
   if (subBtn) {
     event.preventDefault();
