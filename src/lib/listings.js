@@ -1,5 +1,5 @@
 import { requireSupabase, supabaseConfigured } from './supabase.js';
-import { getListingImageUrl } from './listing-images.js';
+import { getListingImageUrl, deleteListingImages } from './listing-images.js';
 
 const conditionLabels = { new: 'Sıfır', used: '2. El', salvage: 'Çıkma' };
 
@@ -188,6 +188,20 @@ export async function deleteListing(id) {
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) throw new Error('Giriş yapmalısın.');
+
+  const { data: listing, error: listingError } = await client
+    .from('listings')
+    .select('id')
+    .eq('id', id)
+    .eq('seller_id', authData.user.id)
+    .maybeSingle();
+  if (listingError) throw listingError;
+  if (!listing) throw new Error('İlan bulunamadı veya bu ilanı silemezsin.');
+
+  // Storage dosyalarını DB kaydından önce temizliyoruz. Storage temizlenemezse
+  // ilan silinmez; böylece kullanıcı ilanını silip geride orphan dosya bırakmaz.
+  await deleteListingImages(id);
+
   const { error } = await client.from('listings').delete().eq('id', id).eq('seller_id', authData.user.id);
   if (error) throw error;
 }
