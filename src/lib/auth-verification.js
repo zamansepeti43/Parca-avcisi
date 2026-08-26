@@ -18,8 +18,7 @@ export async function requireFullVerification() {
   if (!supabaseConfigured) return true;
   const user = await getCurrentUser().catch(() => null);
   if (!user) return false;
-  if (isFullyVerifiedUser(user)) return true;
-  return false;
+  return isFullyVerifiedUser(user);
 }
 
 export async function beginPhoneVerification(phone) {
@@ -35,9 +34,4 @@ export async function confirmPhoneVerification(phone, token) {
   return verifyPhoneOtp(normalized, String(token).trim());
 }
 
-window.__parcaAuthVerification = {
-  isFullyVerifiedUser,
-  requireFullVerification,
-  beginPhoneVerification,
-  confirmPhoneVerification,
-};
+window.__parcaAuthVerification = { isFullyVerifiedUser, requireFullVerification, beginPhoneVerification, confirmPhoneVerification };
