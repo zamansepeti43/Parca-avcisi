@@ -1,14 +1,11 @@
 /* Parça Avcısı — route-specific visual layer */
-
-/* Ana sayfa: sol kategori menüsü görünür ve belirgin */
 @media (min-width:901px){
   .site-header .menu-trigger{width:46px;height:46px;border-color:#3a424c;background:#11161c;box-shadow:0 8px 22px rgba(0,0,0,.22);z-index:60}
   .site-header .menu-trigger span{width:20px;height:2px;background:#f1f3f5}
   .site-header .menu-trigger:hover{border-color:var(--gold);background:#171d23}
-  .cat-menu{top:76px;width:310px;z-index:70}
 }
 
-/* Ana sayfadaki müşteri talepleri artık ana tasarımla aynı koyu dilde */
+/* Ana sayfadaki müşteri talepleri koyu tasarım */
 body:not(.is-listings-page) .requests-section{background:#0b0e12!important;border-top:1px solid #20262d!important;color:#eef1f4}
 body:not(.is-listings-page) .requests-section .requests-intro{color:#7f8994!important}
 body:not(.is-listings-page) .request-card{background:linear-gradient(145deg,#11161c,#0e1318)!important;border-color:#292f36!important;color:#eef1f4!important;box-shadow:none!important}
@@ -27,7 +24,6 @@ body.is-listings-page{background:#080b0f!important;color:#eef1f4!important}
 body.is-listings-page #top>section.hero,
 body.is-listings-page #top>section.marketplace-cta,
 body.is-listings-page #top>section.vehicle-section,
-body.is-listings-page #top>section.arayan-bul-section,
 body.is-listings-page #top>section#talep-market,
 body.is-listings-page #top>section.benefits{display:none!important}
 body.is-listings-page #top>section.listings-section{display:block!important;min-height:calc(100vh - 76px);padding:46px 0 90px;background:#080b0f!important;border-top:0}
@@ -53,9 +49,7 @@ body.is-listings-page .listing-grid .empty{min-height:280px;color:#7f8994}
 body.is-listings-page .listing-grid .empty strong{color:#eef1f4!important}
 body.is-listings-page .listing-pagination{border-top:1px solid #20262d;padding-top:24px}
 
-@media(max-width:1000px){
-  body.is-listings-page .listing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
+@media(max-width:1000px){body.is-listings-page .listing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){
   body.is-listings-page #top>section.listings-section{padding:30px 0 70px}
   body.is-listings-page .listings-section .container{width:calc(100% - 22px)}
