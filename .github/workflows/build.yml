@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - mvp/backend-foundation
+      - mvp/production-sync-hardening
 
 permissions:
   contents: read
