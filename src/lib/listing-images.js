@@ -3,6 +3,7 @@ import { requireSupabase, supabaseConfigured } from './supabase.js';
 const BUCKET = 'listing-images';
 const MAX_IMAGES_PER_LISTING = 5;
 const TARGET_BYTES = 900 * 1024;
+const MAX_TOTAL_BYTES = 5 * 1024 * 1024;
 const MAX_DIMENSION = 1800;
 
 function fileExtension(name) {
@@ -25,7 +26,7 @@ export async function getListingImages(listingId) {
   const client = requireSupabase();
   const { data, error } = await client
     .from('listing_images')
-    .select('id, listing_id, storage_path, sort_order, is_cover, created_at')
+    .select('id, listing_id, storage_path, sort_order, is_cover, file_size, created_at')
     .eq('listing_id', listingId)
     .order('sort_order', { ascending: true });
   if (error) throw error;
@@ -75,8 +76,6 @@ export async function optimizeListingImage(file) {
   const naturalHeight = image.height || image.naturalHeight;
   if (!naturalWidth || !naturalHeight) throw new Error('Fotoğraf boyutları okunamadı.');
 
-  // Küçük ve zaten uygun çözünürlüklü görseli aynen koru; kalite kaybı veya
-  // dosya boyutunun gereksiz artması olmasın.
   if (file.size <= TARGET_BYTES && Math.max(naturalWidth, naturalHeight) <= MAX_DIMENSION) {
     return file;
   }
@@ -123,7 +122,7 @@ export async function attachImagesToListing(listingId, files) {
 
   const { data: existing, error: existingError } = await client
     .from('listing_images')
-    .select('id, storage_path')
+    .select('id, storage_path, file_size')
     .eq('listing_id', listingId)
     .order('sort_order', { ascending: true });
   if (existingError) throw existingError;
@@ -133,12 +132,22 @@ export async function attachImagesToListing(listingId, files) {
     throw new Error('Bir ilanda en fazla ' + MAX_IMAGES_PER_LISTING + ' fotoğraf olabilir.');
   }
 
+  const existingBytes = (existing || []).reduce((sum, row) => sum + Number(row.file_size || 0), 0);
+  if (existingBytes >= MAX_TOTAL_BYTES) {
+    throw new Error('Bu ilanın fotoğraf depolama sınırına ulaşıldı.');
+  }
+
   const hasCover = existingCount > 0;
   const uploaded = [];
+  let totalUploadedBytes = existingBytes;
   try {
     for (let i = 0; i < list.length; i++) {
       const sourceFile = list[i];
       const file = await optimizeListingImage(sourceFile);
+      if (totalUploadedBytes + file.size > MAX_TOTAL_BYTES) {
+        throw new Error('Fotoğrafların toplam boyutu 5 MB sınırını aşamaz. Daha az veya daha küçük fotoğraf seç.');
+      }
+
       const sortOrder = existingCount + i;
       const extension = file.type === 'image/webp' ? 'webp' : fileExtension(file.name);
       const contentType = file.type || 'image/' + extension;
@@ -165,7 +174,8 @@ export async function attachImagesToListing(listingId, files) {
           listing_id: listingId,
           storage_path: path,
           sort_order: sortOrder,
-          is_cover: !hasCover && i === 0
+          is_cover: !hasCover && i === 0,
+          file_size: file.size
         })
         .select()
         .single();
@@ -174,6 +184,7 @@ export async function attachImagesToListing(listingId, files) {
         throw new Error('Fotoğraf kaydı oluşturulamadı: ' + insertError.message);
       }
       uploaded.push({ ...row, url: publicUrl(row.storage_path) });
+      totalUploadedBytes += file.size;
     }
     return uploaded;
   } catch (error) {
