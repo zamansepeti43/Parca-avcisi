@@ -70,8 +70,10 @@
 .faq[open] summary:before{content:'▾ '}
 .faq p{margin:8px 0 0;color:#6e747c;font-size:12px;line-height:1.6}
 @media(max-width:640px){.account-shell{grid-template-columns:1fr}
-.account-menu{position:static;flex-direction:row;overflow-x:auto}
-.account-menu button{white-space:nowrap}
+.account-menu{position:static;flex-direction:row;flex-wrap:wrap;overflow-x:visible;max-height:none}
+.account-menu button{white-space:nowrap;flex:0 0 auto}
+.account-menu button[data-saved-vehicles]{order:-1;border:1px solid var(--gold);background:var(--gold);color:var(--ink);font-weight:850}
+.account-menu button[data-saved-vehicles].active{background:var(--ink);color:#fff;border-color:var(--ink)}
 .field-row{grid-template-columns:1fr}
 .pane-row{flex-wrap:wrap}
 .pane-row .price{margin-left:0}
