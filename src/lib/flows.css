@@ -42,3 +42,5 @@
 @media(max-width:640px){.sell-choice-grid{grid-template-columns:1fr}.sell-choice{padding:16px}}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:480px){.form-grid{grid-template-columns:1fr}}
+/* Mesajlarım: konuşma satırında talep butonu gösterilmez. */
+.conv-row .pane-btn[data-open-request-detail]{display:none!important}
