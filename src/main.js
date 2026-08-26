@@ -7,6 +7,7 @@ import './lib/listing-detail.js';
 import './lib/listing-view.js';
 import './lib/listing-filters-ui.js';
 import './lib/listing-creator.js';
+import './lib/photo-limit-ui.js';
 import './lib/account-center.js';
 import './lib/saved-vehicles-ui.js';
 import './lib/listing-report.css';
