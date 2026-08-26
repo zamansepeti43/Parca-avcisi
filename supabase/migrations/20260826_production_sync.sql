@@ -163,6 +163,12 @@ begin
     ) then
       execute 'alter publication supabase_realtime add table public.part_request_responses';
     end if;
+    if not exists (
+      select 1 from pg_publication_tables
+      where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'messages'
+    ) then
+      execute 'alter publication supabase_realtime add table public.messages';
+    end if;
   end if;
 end $$;
 
@@ -205,6 +211,56 @@ drop trigger if exists notify_request_response_trigger on public.part_request_re
 create trigger notify_request_response_trigger
 after insert on public.part_request_responses
 for each row execute procedure public.notify_request_response();
+
+-- ============================= New request notification =============================
+-- Keep the seller-side notification trigger in the consolidated production
+-- sync so a database that only receives this file does not silently miss the
+-- "new part request" notification feature.
+create or replace function public.notify_part_request_created()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+declare
+  r record;
+  v_settings jsonb;
+begin
+  if new.status <> 'active' then
+    return new;
+  end if;
+
+  for r in
+    select distinct l.seller_id as seller_id
+    from public.listings l
+    where l.status = 'active'
+      and l.seller_id <> new.user_id
+      and (
+        (new.part_category is not null and l.category = new.part_category)
+        or (new.part_category is null and new.city is not null and l.city = new.city)
+        or (new.part_category is null and new.city is null)
+      )
+  loop
+    select settings into v_settings from public.profiles where id = r.seller_id;
+    if coalesce((v_settings ->> 'notify_requests')::boolean, true) then
+      insert into public.notifications (user_id, type, title, body, related_request_id)
+      values (
+        r.seller_id,
+        'part_request',
+        'Yeni parça talebi',
+        coalesce(new.part_name, 'Parça') || ' için yeni bir talep var.',
+        new.id
+      );
+    end if;
+  end loop;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists notify_part_request_created_trigger on public.part_requests;
+create trigger notify_part_request_created_trigger
+after insert on public.part_requests
+for each row execute procedure public.notify_part_request_created();
 
 -- ============================= Profile creation =============================
 create or replace function public.handle_new_user()
