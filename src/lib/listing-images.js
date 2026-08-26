@@ -62,20 +62,24 @@ function scaledSize(width, height, maxDimension) {
 }
 
 /**
- * Kullanıcıdan gelen büyük fotoğrafları yüklemeden önce otomatik optimize eder.
- * Hedef yaklaşık 900 KB'dır; böylece 1 MB üstüne çıkma ihtimali ciddi biçimde azaltılır.
+ * Kullanıcıdan gelen fotoğrafları yüklemeden önce otomatik optimize eder.
+ * Hedef yaklaşık 900 KB'dır; 1 MB üstüne çıkma ihtimalini azaltır.
+ * Zaten küçük ve boyutları uygun görseller gereksiz yere yeniden kodlanmaz.
  */
 export async function optimizeListingImage(file) {
   if (!(file instanceof File) || !file.size) throw new Error('Geçerli bir fotoğraf seçmelisin.');
   if (!String(file.type || '').startsWith('image/')) throw new Error('Yalnızca görsel dosyaları yüklenebilir.');
 
-  // Zaten küçük dosyayı gereksiz yere yeniden kodlamayalım.
-  if (file.size <= TARGET_BYTES && file.type === 'image/webp') return file;
-
   const image = await loadImage(file);
   const naturalWidth = image.width || image.naturalWidth;
   const naturalHeight = image.height || image.naturalHeight;
   if (!naturalWidth || !naturalHeight) throw new Error('Fotoğraf boyutları okunamadı.');
+
+  // Küçük ve zaten uygun çözünürlüklü görseli aynen koru; kalite kaybı veya
+  // dosya boyutunun gereksiz artması olmasın.
+  if (file.size <= TARGET_BYTES && Math.max(naturalWidth, naturalHeight) <= MAX_DIMENSION) {
+    return file;
+  }
 
   const maxDimensions = [MAX_DIMENSION, 1600, 1400, 1200, 1000];
   const qualities = [0.82, 0.75, 0.68, 0.60, 0.52];
@@ -136,16 +140,18 @@ export async function attachImagesToListing(listingId, files) {
       const sourceFile = list[i];
       const file = await optimizeListingImage(sourceFile);
       const sortOrder = existingCount + i;
+      const extension = file.type === 'image/webp' ? 'webp' : fileExtension(file.name);
+      const contentType = file.type || 'image/' + extension;
       const path = [
         authData.user.id,
         listingId,
-        Date.now() + '-' + i + '-' + Math.random().toString(36).slice(2, 8) + '.webp'
+        Date.now() + '-' + i + '-' + Math.random().toString(36).slice(2, 8) + '.' + extension
       ].join('/');
 
       const { error: uploadError } = await client.storage
         .from(BUCKET)
         .upload(path, file, {
-          contentType: 'image/webp',
+          contentType,
           cacheControl: '31536000',
           upsert: false
         });
@@ -188,8 +194,6 @@ export async function deleteListingImages(listingId) {
     .eq('listing_id', listingId);
   if (error) throw error;
 
-  // Önce gerçek Storage dosyalarını sil. Başarısız olursa DB kaydını silmeyerek
-  // daha sonra yeniden temizlemeye izin veriyoruz; böylece sessiz orphan dosya oluşmaz.
   const paths = (rows || []).map((row) => row.storage_path).filter(Boolean);
   if (paths.length) {
     const { error: storageError } = await client.storage.from(BUCKET).remove(paths);
