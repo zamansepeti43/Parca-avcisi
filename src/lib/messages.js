@@ -1,5 +1,8 @@
 import { requireSupabase, supabaseConfigured } from './supabase.js';
 
+const MAX_MESSAGE_HISTORY = 100;
+const MAX_MESSAGE_LENGTH = 4000;
+
 export async function getMyMessages() {
   if (!supabaseConfigured) return [];
   const client = requireSupabase();
@@ -10,7 +13,8 @@ export async function getMyMessages() {
     .from('messages')
     .select('id, body, read_at, created_at, sender_id, receiver_id, listing:listings(id, title, price, city, status), request:part_requests(id, part_name, part_category, city, status)')
     .or(`sender_id.eq.${me},receiver_id.eq.${me}`)
-    .order('created_at', { ascending: false });
+    .order('created_at', { ascending: false })
+    .limit(MAX_MESSAGE_HISTORY);
   if (error) throw error;
   return data || [];
 }
@@ -21,7 +25,12 @@ export async function sendMessage({ listingId, requestId, receiverId, body }) {
   if (authError) throw authError;
   if (!authData.user) throw new Error('Mesaj göndermek için giriş yapmalısın.');
 
-  const payload = { sender_id: authData.user.id, receiver_id: receiverId, body };
+  const cleanBody = String(body || '').trim();
+  if (!cleanBody) throw new Error('Mesaj boş olamaz.');
+  if (cleanBody.length > MAX_MESSAGE_LENGTH) throw new Error('Mesaj en fazla ' + MAX_MESSAGE_LENGTH + ' karakter olabilir.');
+  if (!receiverId || receiverId === authData.user.id) throw new Error('Geçerli bir alıcı seçmelisin.');
+
+  const payload = { sender_id: authData.user.id, receiver_id: receiverId, body: cleanBody };
   if (requestId) payload.request_id = requestId;
   if (listingId) payload.listing_id = listingId;
 
