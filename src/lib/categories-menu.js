@@ -127,6 +127,8 @@ function applyFilter(category, subcategory) {
 renderTypeSwitch();
 renderColumns();
 
+// Capture phase is intentional: the category drawer must win against other
+// page-level click handlers so the left menu cannot become intermittently inert.
 document.addEventListener('click', (event) => {
   const trigger = event.target.closest?.('[data-open-categories]');
   if (trigger) {
@@ -157,7 +159,7 @@ document.addEventListener('click', (event) => {
     const column = subButton.closest('.cat-col');
     applyFilter(column?.dataset.catCol || '', subButton.dataset.catSub || '');
   }
-});
+}, true);
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && isOpen) closeMenu();
