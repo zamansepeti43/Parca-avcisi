@@ -132,5 +132,20 @@ if (!isListingsPage) {
 
   const params = new URLSearchParams(window.location.search);
   const initialQuery = params.get('q') || '';
-  if (initialQuery) runSearch(initialQuery);
+  const initialCategory = params.get('category') || '';
+  const initialSubcategory = params.get('subcategory') || '';
+  const initialVehicleType = params.get('vehicleType') || '';
+
+  // Category menu navigates with category/subcategory/vehicleType query params.
+  // Apply those params immediately so the selected category actually filters
+  // the listings loaded from Supabase (or the demo data when Supabase is off).
+  if (initialCategory && window.__listingView?.setCategoryFilter) {
+    window.__listingView.setCategoryFilter({
+      category: initialCategory,
+      subcategory: initialSubcategory,
+      vehicleType: initialVehicleType,
+    });
+  } else if (initialQuery) {
+    runSearch(initialQuery);
+  }
 }
