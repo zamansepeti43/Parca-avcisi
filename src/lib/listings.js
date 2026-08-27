@@ -36,8 +36,6 @@ export function toListingCard(listing) {
     tone: 'engine',
     oem: listing.oem_number || listing.part?.oem_number || '',
     description: listing.description || '',
-    // Liste kartları küçük, önceden üretilmiş WebP thumbnail kullanır.
-    // Eski fotoğraflarda thumbnail yoksa orijinale güvenli fallback yapılır.
     coverImage: coverPath ? getListingThumbnailUrl(coverPath) : null,
     coverImageFallback: coverPath ? getListingImageUrl(coverPath) : null,
   };
@@ -45,13 +43,19 @@ export function toListingCard(listing) {
 
 const listingSelect = 'id, title, description, condition, price, city, district, oem_number, category, subcategory, vehicle, stock_count, status, delivery, created_at, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
 
-export async function getActiveListings({ page = 0, pageSize = DEFAULT_PAGE_SIZE } = {}) {
+export async function getActiveListings({ page = 0, pageSize = DEFAULT_PAGE_SIZE, category = null, subcategory = null } = {}) {
   if (!supabaseConfigured) return null;
   const safePageSize = Math.min(Math.max(Number(pageSize) || DEFAULT_PAGE_SIZE, 1), MAX_PAGE_SIZE);
   const safePage = Math.max(Number(page) || 0, 0);
   const from = safePage * safePageSize;
   const to = from + safePageSize - 1;
-  const { data, error } = await requireSupabase().from('listings').select(listingSelect).eq('status', 'active').order('created_at', { ascending: false }).range(from, to);
+  const params = new URLSearchParams(window.location.search);
+  const activeCategory = category || params.get('category') || '';
+  const activeSubcategory = subcategory || params.get('subcategory') || '';
+  let query = requireSupabase().from('listings').select(listingSelect).eq('status', 'active').order('created_at', { ascending: false });
+  if (activeCategory) query = query.eq('category', activeCategory);
+  if (activeSubcategory) query = query.eq('subcategory', activeSubcategory);
+  const { data, error } = await query.range(from, to);
   if (error) throw error;
   return (data || []).map(toListingCard);
 }
