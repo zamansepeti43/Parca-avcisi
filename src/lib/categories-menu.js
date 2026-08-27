@@ -127,37 +127,48 @@ function applyFilter(category, subcategory) {
 renderTypeSwitch();
 renderColumns();
 
-// Capture phase is intentional: the category drawer must win against other
-// page-level click handlers so the left menu cannot become intermittently inert.
+// Capture phase owns category interactions. We stop the event before it reaches
+// unrelated page handlers so they cannot immediately close/reset the drawer.
 document.addEventListener('click', (event) => {
   const trigger = event.target.closest?.('[data-open-categories]');
   if (trigger) {
     event.preventDefault();
+    event.stopImmediatePropagation();
     if (isOpen) closeMenu(); else openMenu();
     return;
   }
   if (event.target.closest?.('[data-close-categories]') || event.target === backdrop) {
     event.preventDefault();
+    event.stopImmediatePropagation();
     closeMenu();
     return;
   }
   const typeButton = event.target.closest?.('[data-cat-type]');
   if (typeButton) {
     event.preventDefault();
+    event.stopImmediatePropagation();
     setType(typeButton.dataset.catType || '');
     return;
   }
   const mainButton = event.target.closest?.('[data-cat-main]');
   if (mainButton) {
     event.preventDefault();
+    event.stopImmediatePropagation();
     toggleCategory(mainButton.dataset.catMain || '');
     return;
   }
   const subButton = event.target.closest?.('[data-cat-sub]');
   if (subButton) {
     event.preventDefault();
+    event.stopImmediatePropagation();
     const column = subButton.closest('.cat-col');
     applyFilter(column?.dataset.catCol || '', subButton.dataset.catSub || '');
+    return;
+  }
+  if (isOpen && !event.target.closest('#catMenu')) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    closeMenu();
   }
 }, true);
 
