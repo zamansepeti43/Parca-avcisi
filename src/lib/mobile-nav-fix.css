@@ -91,7 +91,8 @@
   .mobile-nav #favoriteLink,
   .mobile-nav #accountLink { color: #8d949d; }
 
-  /* Mobile header is a single clean row: menu + centered logo + listings + sell. */
+  /* Kategori paneli açıkken alt navigasyon KESİNLİKLE gizlenmez. */
+
   .site-header .nav-wrap {
     position: relative;
     min-height: 68px;
@@ -139,32 +140,12 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  .site-header .mobile-listings-link span {
-    font-size: 17px;
-    line-height: 1;
-  }
-
-  .site-header .mobile-listings-link small {
-    font-size: 7px;
-    line-height: 1;
-    font-weight: 800;
-    color: #aeb5bd;
-  }
-
+  .site-header .mobile-listings-link span { font-size: 17px; line-height: 1; }
+  .site-header .mobile-listings-link small { font-size: 7px; line-height: 1; font-weight: 800; color: #aeb5bd; }
   .site-header .mobile-listings-link:active,
-  .site-header .mobile-listings-link:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-
+  .site-header .mobile-listings-link:hover { border-color: var(--gold); color: var(--gold); }
   .site-header .auth-slot { display: none !important; }
-  .site-header #sellBtn {
-    margin-left: 0;
-    padding: 8px 9px;
-    font-size: 9px;
-    white-space: nowrap;
-    z-index: 2;
-  }
+  .site-header #sellBtn { margin-left: 0; padding: 8px 9px; font-size: 9px; white-space: nowrap; z-index: 2; }
 }
 
 @media (min-width: 641px) {
