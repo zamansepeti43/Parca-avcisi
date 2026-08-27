@@ -127,50 +127,59 @@ function applyFilter(category, subcategory) {
 renderTypeSwitch();
 renderColumns();
 
-// Capture phase owns category interactions. We stop the event before it reaches
-// unrelated page handlers so they cannot immediately close/reset the drawer.
-document.addEventListener('click', (event) => {
-  const trigger = event.target.closest?.('[data-open-categories]');
-  if (trigger) {
+// The drawer owns its internal clicks directly. This avoids document-level
+// handlers from other modules interfering with category selection/toggling.
+menu.addEventListener('click', (event) => {
+  const closeButton = event.target.closest?.('[data-close-categories]');
+  if (closeButton) {
     event.preventDefault();
-    event.stopImmediatePropagation();
-    if (isOpen) closeMenu(); else openMenu();
-    return;
-  }
-  if (event.target.closest?.('[data-close-categories]') || event.target === backdrop) {
-    event.preventDefault();
-    event.stopImmediatePropagation();
+    event.stopPropagation();
     closeMenu();
     return;
   }
+
   const typeButton = event.target.closest?.('[data-cat-type]');
   if (typeButton) {
     event.preventDefault();
-    event.stopImmediatePropagation();
+    event.stopPropagation();
     setType(typeButton.dataset.catType || '');
     return;
   }
+
   const mainButton = event.target.closest?.('[data-cat-main]');
   if (mainButton) {
     event.preventDefault();
-    event.stopImmediatePropagation();
+    event.stopPropagation();
     toggleCategory(mainButton.dataset.catMain || '');
     return;
   }
+
   const subButton = event.target.closest?.('[data-cat-sub]');
   if (subButton) {
     event.preventDefault();
-    event.stopImmediatePropagation();
+    event.stopPropagation();
     const column = subButton.closest('.cat-col');
     applyFilter(column?.dataset.catCol || '', subButton.dataset.catSub || '');
+  }
+});
+
+// Only the external triggers/backdrop are handled at document level.
+document.addEventListener('click', (event) => {
+  const target = event.target;
+  const trigger = target?.closest?.('[data-open-categories]');
+  if (trigger) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (isOpen) closeMenu(); else openMenu();
     return;
   }
-  if (isOpen && !event.target.closest('#catMenu')) {
+
+  if (target === backdrop) {
     event.preventDefault();
-    event.stopImmediatePropagation();
+    event.stopPropagation();
     closeMenu();
   }
-}, true);
+});
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && isOpen) closeMenu();
