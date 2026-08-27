@@ -1,4 +1,4 @@
-import './flows.css';
+﻿import './flows.css';
 import { VehicleResolver } from './vehicle-resolver.js';
 import { getCurrentUser, onAuthStateChange, signIn, signUp, signOut, resetPassword, updatePassword } from './auth.js';
 import { createListing, getListingById, getMyListings } from './listings.js';
@@ -9,7 +9,7 @@ import { sendMessage } from './messages.js';
 import { supabaseConfigured } from './supabase.js';
 
 const resolver = new VehicleResolver();
-let selection = { type: '', make: '', model: '', generation: '', year: '', engine: '' };
+let selection = { type: '', make: '', model: '', generation: '', year: '', engine: '', trim: '' };
 let pendingAction = null;
 let emailVerificationRequired = false;
 const isEmailVerified = (user) => Boolean(user && user.email_confirmed_at);
@@ -22,8 +22,13 @@ const vehicleSection = document.querySelector('#aracini-sec');
 vehicleSection.innerHTML = '<div class="container vehicle-card vehicle-picker"><div><span class="eyebrow">AKILLI ARAÇ SEÇİCİ</span><h2>Aracını seç, uyumlu parçayı bul.</h2><p>Araç tipiyle başla; katalog kapsamı olan alanlar sırayla açılır.</p></div><form class="vehicle-form vehicle-hierarchy" id="vehicleHierarchy"></form></div>';
 
 const fields = [
-  ['type', 'Araç Tipi'], ['make', 'Marka'], ['model', 'Model'],
-  ['year', 'Yıl'], ['engine', 'Versiyon'],
+  ['type', 'Araç Tipi'],
+  ['make', 'Marka'],
+  ['model', 'Model'],
+  ['generation', 'Nesil/Kasa'],
+  ['year', 'Yıl'],
+  ['trim', 'Versiyon / Trim'],
+  ['engine', 'Motor'],
 ];
 
 function optionsHtml(field) {
@@ -243,7 +248,7 @@ function wireListingFormFields(form) {
     if (vf) {
       const changed = vf.dataset.formVehicle;
       selection[changed] = vf.value;
-      const order = ['type', 'make', 'model', 'year', 'engine'];
+      const order = ['type', 'make', 'model', 'year', 'trim', 'engine'];
       order.slice(order.indexOf(changed) + 1).forEach((key) => { selection[key] = ''; });
       const container = form.querySelector('[data-vehicle-fields]');
       if (container) container.innerHTML = vehicleFieldsHtml();
@@ -552,3 +557,4 @@ onAuthStateChange((event, session) => {
   renderAuthUI(session?.user || null);
 });
 getCurrentUser().then((user) => renderAuthUI(user)).catch(() => renderAuthUI(null));
+
