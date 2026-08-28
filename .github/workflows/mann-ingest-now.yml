@@ -1,11 +1,11 @@
-name: MANN catalog ingest now
+name: MANN Trucks and Buses ingest now
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'scripts/mann-pdf-ingest.py'
       - '.github/workflows/mann-ingest-now.yml'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -13,7 +13,7 @@ permissions:
 jobs:
   ingest:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,10 +21,15 @@ jobs:
           python-version: '3.12'
       - name: Install PDF parser
         run: python -m pip install --disable-pip-version-check pypdf
-      - name: Ingest official MANN cars and transporters catalog
+      - name: Ingest official MANN trucks and buses catalog
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           MANN_SOURCE_ID: d6646f1f-55c9-4141-beb8-f12b69ae7034
+          MANN_SOURCE_URL: https://www.mann-filter.com/en/catalog.html
+          MANN_CATALOG_URL: https://www.mann-filter.com/content/dam/mann-filter/communication-media/brochures-catalogs/mann-filter-catalog-trucks-and-buses-2024-26-interactive.pdf
+          MANN_PDF_PATH: data/mann-trucks-buses-2024-26.pdf
+          MANN_JSONL_PATH: data/mann-trucks-buses-2024-26.jsonl
+          MANN_APPLICATION_START_PAGE: 57
           CATALOG_BATCH_SIZE: 50
         run: python scripts/mann-pdf-ingest.py
