@@ -45,6 +45,22 @@ function fingerprint(input) {
   return (hash >>> 0).toString(16);
 }
 
+// Stable identity for a learned part. Listing IDs and timestamps are intentionally excluded.
+function learningKey({ verifiedListing = {}, aiPrediction = null } = {}) {
+  const verified = normalizeListing(verifiedListing);
+  const prediction = aiPrediction ? normalizeListing(aiPrediction) : null;
+  const identity = {
+    oemNumber: verified.oemNumber || prediction?.oemNumber || '',
+    brand: verified.brand || prediction?.brand || '',
+    model: verified.model || prediction?.model || '',
+    partName: verified.partName || prediction?.partName || '',
+    category: verified.category || prediction?.category || '',
+    subcategory: verified.subcategory || prediction?.subcategory || '',
+    vehicle: verified.vehicle || prediction?.vehicle || '',
+  };
+  return fingerprint(identity);
+}
+
 function toExample(row) {
   return {
     id: row.id,
@@ -64,7 +80,7 @@ function saveLocalExample({ source, aiPrediction, verifiedListing, corrections, 
   const verified = normalizeListing(verifiedListing);
   const prediction = aiPrediction ? normalizeListing(aiPrediction) : null;
   const example = {
-    id: fingerprint({ source, prediction, verified, corrections, listingId }),
+    id: learningKey({ verifiedListing: verified, aiPrediction: prediction }),
     source: source === 'ai' ? 'ai' : 'manual',
     status,
     createdAt: new Date().toISOString(),
@@ -96,7 +112,7 @@ export async function recordLearningExample({ source = 'manual', aiPrediction = 
     const userId = await getUserId();
     const verified = normalizeListing(verifiedListing);
     const prediction = aiPrediction ? normalizeListing(aiPrediction) : null;
-    const exampleKey = fingerprint({ source, prediction, verified, corrections, listingId });
+    const exampleKey = learningKey({ verifiedListing: verified, aiPrediction: prediction });
     const { data, error } = await requireSupabase()
       .from('ai_learning_examples')
       .upsert({
