@@ -1,0 +1,27 @@
+{
+  "batchSize": 500,
+  "sources": [
+    {
+      "name": "MANN-FILTER Official Online Catalog",
+      "adapter": "mann-official.mjs",
+      "baseUrl": "https://www.mann-filter.com/tr-tr/katalog.html",
+      "trustScore": 0.99,
+      "mode": "official-source-only",
+      "requiresExplicitInput": true
+    },
+    {
+      "name": "Bosch Aftermarket Official Catalog",
+      "baseUrl": "https://ap-ecat.boschaftermarket.com/",
+      "trustScore": 0.99,
+      "mode": "official-source-only",
+      "requiresExplicitInput": true
+    }
+  ],
+  "rules": {
+    "rejectWithoutSourceUrl": true,
+    "dedupeByCanonicalKey": true,
+    "doNotInventApplications": true,
+    "preserveRawSourceReference": true,
+    "maxRetries": 3
+  }
+}
