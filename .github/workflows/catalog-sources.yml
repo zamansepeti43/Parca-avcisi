@@ -1,0 +1,45 @@
+name: Parça Avcısı - 5 catalog sources
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/catalog-sources.yml'
+      - 'scripts/catalog-adapters/**'
+
+permissions:
+  contents: read
+
+# Canonical five-source pipeline. Existing products are merged; never delete existing rows.
+jobs:
+  catalog-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        source:
+          - kautek
+          - kurpar
+          - oto-karaman
+          - driv
+          - continental
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install catalog parser dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          python -m pip install --disable-pip-version-check requests beautifulsoup4 lxml
+      - name: Validate adapter
+        run: test -f "scripts/catalog-adapters/${{ matrix.source }}.mjs"
+      - name: Ingest ${{ matrix.source }}
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          CATALOG_SOURCE: ${{ matrix.source }}
+          CATALOG_BATCH_SIZE: 100
+        run: node "scripts/catalog-adapters/${{ matrix.source }}.mjs"
