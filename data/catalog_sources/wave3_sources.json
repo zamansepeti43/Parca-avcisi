@@ -1,0 +1,27 @@
+{
+  "wave": 3,
+  "market_priority": "TR",
+  "ingest_target": "supabase.ai_catalog_records",
+  "sources": [
+    {"key":"bosch","name":"Bosch Automotive Aftermarket","priority":1,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"schaeffler","name":"Schaeffler / LuK INA FAG","priority":2,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"zf","name":"ZF Aftermarket / Sachs Lemforder TRW","priority":3,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"mahle","name":"MAHLE Aftermarket","priority":4,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"febi","name":"febi Bilstein","priority":5,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"meyle","name":"MEYLE","priority":6,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"skf","name":"SKF Automotive","priority":7,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"gates","name":"Gates Automotive","priority":8,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"brembo","name":"Brembo Aftermarket","priority":9,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"ngk","name":"NGK / NTK","priority":10,"scope":["passenger","light_commercial","commercial"],"require_vehicle_applications":true},
+    {"key":"aypar","name":"Aypar Otomotiv","priority":11,"scope":["passenger","light_commercial","commercial"],"turkey_priority":true,"target_catalog_size":"100000+","require_vehicle_applications":true,"no_fake_records":true}
+  ],
+  "rules": {
+    "existing_records": "upsert",
+    "never_delete": true,
+    "dedupe": ["brand","part_number"],
+    "batch_failure_isolation": true,
+    "zero_record_source": "fail_source_only",
+    "catalog_size_claim_is_not_ingested_count": true,
+    "supabase_is_source_of_truth": true
+  }
+}
