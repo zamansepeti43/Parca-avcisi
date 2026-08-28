@@ -1,0 +1,47 @@
+name: MANN additional catalogs ingest
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/mann-additional-catalogs.yml'
+      - 'scripts/mann-pdf-ingest.py'
+
+permissions:
+  contents: read
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        catalog:
+          - name: construction-industrial
+            url: https://www.mann-filter.com/content/dam/mann-filter/communication-media/brochures-catalogs/mann-filter-catalog-construction-machinery-industrial-applications-2024-26-interactive.pdf
+            file: data/mann-construction-industrial-2024-26.pdf
+            jsonl: data/mann-construction-industrial-2024-26.jsonl
+          - name: agricultural-machinery
+            url: https://www.mann-filter.com/content/dam/mann-filter/communication-media/brochures-catalogs/mann-filter-catalog-agricultural-machinery-2024-26-interactive.pdf
+            file: data/mann-agricultural-machinery-2024-26.pdf
+            jsonl: data/mann-agricultural-machinery-2024-26.jsonl
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF parser
+        run: python -m pip install --disable-pip-version-check pypdf
+      - name: Ingest official MANN ${{ matrix.catalog.name }} catalog
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          MANN_SOURCE_ID: d6646f1f-55c9-4141-beb8-f12b69ae7034
+          MANN_SOURCE_URL: https://www.mann-filter.com/tr-tr/katalog.html
+          MANN_CATALOG_URL: ${{ matrix.catalog.url }}
+          MANN_PDF_PATH: ${{ matrix.catalog.file }}
+          MANN_JSONL_PATH: ${{ matrix.catalog.jsonl }}
+          MANN_APPLICATION_START_PAGE: 57
+          CATALOG_BATCH_SIZE: 50
+        run: python scripts/mann-pdf-ingest.py
