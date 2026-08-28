@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/catalog-sources.yml'
       - 'scripts/catalog-adapters/**'
+      - 'supabase/migrations/**'
 
 permissions:
   contents: read
