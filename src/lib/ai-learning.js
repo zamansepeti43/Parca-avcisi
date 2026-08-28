@@ -1,3 +1,5 @@
+import { requireSupabase, supabaseConfigured } from './supabase.js';
+
 const STORAGE_KEY = 'parca-avcisi-ai-learning-v1';
 const MAX_LOCAL_EXAMPLES = 1000;
 
@@ -43,14 +45,30 @@ function fingerprint(input) {
   return (hash >>> 0).toString(16);
 }
 
-export function recordLearningExample({ source = 'manual', aiPrediction = null, verifiedListing = {}, corrections = {}, confidence = 0, evidence = {}, status = 'verified' } = {}) {
+function toExample(row) {
+  return {
+    id: row.id,
+    source: row.source,
+    status: row.status,
+    createdAt: row.created_at,
+    listingId: row.listing_id || null,
+    aiPrediction: row.ai_prediction || null,
+    verifiedListing: row.verified_listing || {},
+    corrections: row.corrections || {},
+    confidence: Number(row.confidence) || 0,
+    evidence: row.evidence || {},
+  };
+}
+
+function saveLocalExample({ source, aiPrediction, verifiedListing, corrections, confidence, evidence, status, listingId = null }) {
   const verified = normalizeListing(verifiedListing);
   const prediction = aiPrediction ? normalizeListing(aiPrediction) : null;
   const example = {
-    id: fingerprint({ source, prediction, verified, corrections }),
+    id: fingerprint({ source, prediction, verified, corrections, listingId }),
     source: source === 'ai' ? 'ai' : 'manual',
     status,
     createdAt: new Date().toISOString(),
+    listingId,
     aiPrediction: prediction,
     verifiedListing: verified,
     corrections: corrections && typeof corrections === 'object' ? corrections : {},
@@ -64,26 +82,112 @@ export function recordLearningExample({ source = 'manual', aiPrediction = null, 
   return example;
 }
 
-export function recordAiCorrection({ aiPrediction, verifiedListing, corrections = {}, confidence = 0, evidence = {} } = {}) {
-  return recordLearningExample({ source: 'ai', aiPrediction, verifiedListing, corrections, confidence, evidence });
+async function getUserId() {
+  const { data, error } = await requireSupabase().auth.getUser();
+  if (error) throw error;
+  if (!data.user) throw new Error('AI öğrenme verisi için giriş yapmalısın.');
+  return data.user.id;
 }
 
-export function recordManualListing({ verifiedListing, evidence = {} } = {}) {
-  return recordLearningExample({ source: 'manual', verifiedListing, evidence });
+export async function recordLearningExample({ source = 'manual', aiPrediction = null, verifiedListing = {}, corrections = {}, confidence = 0, evidence = {}, status = 'verified', listingId = null } = {}) {
+  if (!supabaseConfigured) return saveLocalExample({ source, aiPrediction, verifiedListing, corrections, confidence, evidence, status, listingId });
+
+  try {
+    const userId = await getUserId();
+    const verified = normalizeListing(verifiedListing);
+    const prediction = aiPrediction ? normalizeListing(aiPrediction) : null;
+    const exampleKey = fingerprint({ source, prediction, verified, corrections, listingId });
+    const { data, error } = await requireSupabase()
+      .from('ai_learning_examples')
+      .upsert({
+        user_id: userId,
+        listing_id: listingId,
+        source: source === 'ai' ? 'ai' : 'manual',
+        status,
+        example_key: exampleKey,
+        ai_prediction: prediction,
+        verified_listing: verified,
+        corrections: corrections && typeof corrections === 'object' ? corrections : {},
+        confidence: Number(confidence) || 0,
+        evidence: evidence && typeof evidence === 'object' ? evidence : {},
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,example_key' })
+      .select()
+      .single();
+    if (error) throw error;
+    return toExample(data);
+  } catch (error) {
+    console.warn('AI learning remote kayıt başarısız, yerel yedek kullanılıyor:', error);
+    return saveLocalExample({ source, aiPrediction, verifiedListing, corrections, confidence, evidence, status, listingId });
+  }
 }
 
-export function getLearningExamples({ source = null, status = 'verified' } = {}) {
-  const examples = load().examples;
-  return examples.filter((item) => (!source || item.source === source) && (!status || item.status === status));
+export function recordAiCorrection(options = {}) {
+  return recordLearningExample({ ...options, source: 'ai' });
 }
 
-export function getLearningStats() {
-  const examples = load().examples;
-  return {
-    total: examples.length,
-    aiVerified: examples.filter((item) => item.source === 'ai').length,
-    manualVerified: examples.filter((item) => item.source === 'manual').length,
-  };
+export function recordManualListing(options = {}) {
+  return recordLearningExample({ ...options, source: 'manual' });
+}
+
+export async function getLearningExamples({ source = null, status = 'verified', limit = 100 } = {}) {
+  if (!supabaseConfigured) {
+    const examples = load().examples;
+    return examples.filter((item) => (!source || item.source === source) && (!status || item.status === status)).slice(0, limit);
+  }
+
+  try {
+    const userId = await getUserId();
+    let query = requireSupabase()
+      .from('ai_learning_examples')
+      .select('*')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(Math.min(Math.max(Number(limit) || 100, 1), 500));
+    if (source) query = query.eq('source', source);
+    if (status) query = query.eq('status', status);
+    const { data, error } = await query;
+    if (error) throw error;
+    return (data || []).map(toExample);
+  } catch (error) {
+    console.warn('AI learning remote okuma başarısız:', error);
+    const examples = load().examples;
+    return examples.filter((item) => (!source || item.source === source) && (!status || item.status === status)).slice(0, limit);
+  }
+}
+
+export async function getLearningStats() {
+  if (!supabaseConfigured) {
+    const examples = load().examples;
+    return {
+      total: examples.length,
+      aiVerified: examples.filter((item) => item.source === 'ai' && item.status === 'verified').length,
+      manualVerified: examples.filter((item) => item.source === 'manual' && item.status === 'verified').length,
+    };
+  }
+
+  try {
+    const userId = await getUserId();
+    const { data, error } = await requireSupabase()
+      .from('ai_learning_examples')
+      .select('source,status')
+      .eq('user_id', userId);
+    if (error) throw error;
+    const rows = data || [];
+    return {
+      total: rows.length,
+      aiVerified: rows.filter((item) => item.source === 'ai' && item.status === 'verified').length,
+      manualVerified: rows.filter((item) => item.source === 'manual' && item.status === 'verified').length,
+    };
+  } catch (error) {
+    console.warn('AI learning istatistikleri alınamadı:', error);
+    const examples = load().examples;
+    return {
+      total: examples.length,
+      aiVerified: examples.filter((item) => item.source === 'ai' && item.status === 'verified').length,
+      manualVerified: examples.filter((item) => item.source === 'manual' && item.status === 'verified').length,
+    };
+  }
 }
 
 export function clearLearningExamples() {
