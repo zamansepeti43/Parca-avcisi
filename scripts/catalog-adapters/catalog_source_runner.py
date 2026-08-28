@@ -56,7 +56,8 @@ def parse_html_product(source,url,html):
     sku=x.get('mpn') or x.get('sku') or ''
     name=x.get('name') or ''
     if sku:
-     rows.append(record(source,sku,name,oems=[x.get('gtin13','')] if x.get('gtin13') else [],source_url=url))
+     r=record(source,sku,name,oems=[x.get('gtin13','')] if x.get('gtin13') else [],source_url=url)
+     if r: rows.append(r)
  # Then visible catalog/product links. Do not invent vehicle trims; retain the raw page text as application evidence.
  text=clean(soup.get_text(' ',strip=True))
  for a in soup.find_all('a',href=True):
@@ -65,11 +66,13 @@ def parse_html_product(source,url,html):
   if not label: continue
   candidates=PART_RE.findall(label)
   for p in candidates[:3]:
-   rows.append(record(source,p,label,apps=[{'text':label,'sourceUrl':href}],source_url=href))
+   r=record(source,p,label,apps=[{'text':label,'sourceUrl':href}],source_url=href)
+   if r: rows.append(r)
  # If the catalog page itself exposes product rows, capture codes from compact text chunks.
  for m in re.finditer(r'(.{0,80})(%s)(.{0,160})' % PART_RE.pattern,text,re.I):
   p=m.group(2); ctx=clean(m.group(1)+' '+m.group(3))
-  rows.append(record(source,p,ctx[:180],source_url=url))
+  r=record(source,p,ctx[:180],source_url=url)
+  if r: rows.append(r)
  return rows
 
 def discover_sitemap(base):
@@ -122,7 +125,8 @@ def run_pdf_page(source):
     oems=OEM_RE.findall(line)
     for p in parts[:8]:
      apps=[{'make':current_make,'raw':line}] if current_make else [{'raw':line}]
-     rows.append(record(source,p,line[:180],oems=oems[:10],apps=apps,source_url=u))
+     r=record(source,p,line[:180],oems=oems[:10],apps=apps,source_url=u)
+     if r: rows.append(r)
   finally:
    try: os.unlink(path)
    except OSError: pass
@@ -132,12 +136,28 @@ def main():
  source=os.environ.get('CATALOG_SOURCE','').strip().lower()
  if source not in SOURCES: raise SystemExit('CATALOG_SOURCE must be one of: '+', '.join(SOURCES))
  rows=run_html(source) if SOURCES[source]['kind']=='html' else run_pdf_page(source)
+ scanned_records=len(rows)
  dedup={}
- for r in rows: dedup[(r['brand'].lower(),re.sub(r'[^A-Z0-9]','',r['partNumber'].upper()))]=r
+ invalid=0
+ duplicates=0
+ for r in rows:
+  # A parser is allowed to return None for an invalid candidate. One bad candidate
+  # must never abort an entire multi-thousand-record catalog ingestion.
+  if not isinstance(r,dict):
+   invalid += 1
+   continue
+  brand=clean(r.get('brand'))
+  part=clean(r.get('partNumber'))
+  if not brand or not part:
+   invalid += 1
+   continue
+  key=(brand.lower(),re.sub(r'[^A-Z0-9]','',part.upper()))
+  if key in dedup: duplicates += 1
+  dedup[key]=r
  rows=list(dedup.values())
+ print(f'{source}: parser_records={scanned_records} invalid_skipped={invalid} duplicates_removed={duplicates} unique={len(rows)}')
  if not rows: raise RuntimeError(f'{source}: zero normalized catalog records; refusing to report success')
- print(f'{source}: normalized {len(rows)} unique records')
  upload(rows)
- print(f'{source}: SUCCESS')
+ print(f'{source}: SUCCESS | uploaded={len(rows)}')
 
 if __name__=='__main__': main()
