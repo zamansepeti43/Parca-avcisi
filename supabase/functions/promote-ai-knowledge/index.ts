@@ -5,6 +5,9 @@ const SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
 const MIN_CONFIDENCE = 0.85;
 const MIN_CONFIRMATIONS = 2;
+const clean = (value = '') => String(value).trim();
+const normalize = (listing = {}) => ({ title: clean(listing.title), partName: clean(listing.partName), category: clean(listing.category), subcategory: clean(listing.subcategory), brand: clean(listing.brand), model: clean(listing.model), oemNumber: clean(listing.oemNumber), vehicle: clean(listing.vehicle) });
+function fingerprint(input) { const text = JSON.stringify(input).toLowerCase(); let hash = 2166136261; for (let i = 0; i < text.length; i += 1) { hash ^= text.charCodeAt(i); hash = Math.imul(hash, 16777619); } return (hash >>> 0).toString(16); }
 
 Deno.serve(async (request) => {
   if (request.method !== 'POST') return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers: { 'Content-Type': 'application/json' } });
@@ -16,15 +19,15 @@ Deno.serve(async (request) => {
     if (authError || !user) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
 
     const body = await request.json();
-    const verified = body?.verifiedListing || {};
+    const verified = normalize(body?.verifiedListing || {});
     const confidence = Number(body?.confidence) > 1 ? Number(body.confidence) / 100 : Number(body?.confidence || 0);
     const confirmations = Number(body?.confirmations || 1);
     const conflicts = Number(body?.conflicts || 0);
-    const hasIdentity = Boolean(String(verified.oemNumber || '').trim() || (String(verified.brand || '').trim() && String(verified.partName || '').trim() && (String(verified.vehicle || '').trim() || String(verified.category || '').trim())));
+    const hasIdentity = Boolean(verified.oemNumber || (verified.brand && verified.partName && (verified.vehicle || verified.category)));
     if (!hasIdentity || confidence < MIN_CONFIDENCE || confirmations < MIN_CONFIRMATIONS || conflicts !== 0) return new Response(JSON.stringify({ promoted: false, reason: 'Promotion requirements not met.' }), { status: 200, headers: { 'Content-Type': 'application/json' } });
 
-    const partKey = String(body?.partKey || '').trim();
-    if (!partKey) return new Response(JSON.stringify({ error: 'partKey is required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    const prediction = normalize(body?.aiPrediction || {});
+    const partKey = fingerprint({ oemNumber: verified.oemNumber || prediction.oemNumber || '', brand: verified.brand || prediction.brand || '', model: verified.model || prediction.model || '', partName: verified.partName || prediction.partName || '', category: verified.category || prediction.category || '', subcategory: verified.subcategory || prediction.subcategory || '', vehicle: verified.vehicle || prediction.vehicle || '' });
     const { data: existing, error: readError } = await supabase.from('ai_part_knowledge').select('*').eq('part_key', partKey).maybeSingle();
     if (readError) throw readError;
     const now = new Date().toISOString();
