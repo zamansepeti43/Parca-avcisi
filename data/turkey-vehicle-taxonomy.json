@@ -1,0 +1,105 @@
+{
+  "version": "2026-08-28",
+  "scope": "Türkiye'de kullanılan motorlu kara taşıtları",
+  "policy": {
+    "primary_market": "TR",
+    "priority": "Türkiye araç parkında kullanılan araçlar",
+    "do_not_infer": true,
+    "global_fallback": "Kullanıcı talebi veya doğrulanmış uygulama varsa sonradan öğren"
+  },
+  "official_vehicle_classes": [
+    "otomobil",
+    "minibüs",
+    "otobüs",
+    "kamyonet",
+    "kamyon",
+    "çekici",
+    "motosiklet",
+    "traktör",
+    "özel_amaçlı_taşıt"
+  ],
+  "catalog_classes": [
+    {
+      "id": "passenger",
+      "name": "Binek Otomobil",
+      "priority": 1,
+      "segments": ["A", "B", "C", "D", "E", "F", "MPV", "SUV", "crossover", "sedan", "hatchback", "station-wagon", "coupe", "convertible"]
+    },
+    {
+      "id": "light-commercial",
+      "name": "Hafif Ticari",
+      "priority": 2,
+      "segments": ["panelvan", "van", "minivan", "pickup", "kamyonet"]
+    },
+    {
+      "id": "heavy-commercial",
+      "name": "Ağır Ticari",
+      "priority": 3,
+      "segments": ["kamyon", "çekici", "otobüs", "midibus", "dorse/treyler"]
+    },
+    {
+      "id": "minibus",
+      "name": "Minibüs",
+      "priority": 4,
+      "segments": ["minibüs", "personel-servis", "okul-servisi"]
+    },
+    {
+      "id": "bus",
+      "name": "Otobüs",
+      "priority": 5,
+      "segments": ["şehir-içi", "şehirlerarası", "turizm", "midibüs"]
+    },
+    {
+      "id": "motorcycle",
+      "name": "Motosiklet / ATV",
+      "priority": 6,
+      "segments": ["scooter", "naked", "sport", "touring", "enduro", "cross", "chopper", "ATV"]
+    },
+    {
+      "id": "tractor",
+      "name": "Tarım / Traktör",
+      "priority": 7,
+      "segments": ["traktör", "tarım-makinesi"]
+    },
+    {
+      "id": "special-purpose",
+      "name": "Özel Amaçlı",
+      "priority": 8,
+      "segments": ["ambulans", "itfaiye", "çekici-kurtarıcı", "cenaze", "iş-makinesi"]
+    }
+  ],
+  "priority_brands": {
+    "tier_1_park": ["Renault", "Fiat", "Volkswagen", "Opel", "Hyundai", "Ford", "Toyota", "Peugeot", "Honda", "Dacia"],
+    "tier_2_park": ["Citroen", "Mercedes-Benz", "BMW", "Skoda", "Nissan", "Kia", "Audi", "Seat", "Mitsubishi", "Suzuki", "Chevrolet", "Volvo"],
+    "tier_3_current_market": ["BYD", "Togg", "Tesla", "Chery", "MG", "Cupra", "Jaecoo", "Omoda", "Leapmotor", "Seres", "Skywell", "Maxus", "KGM", "Subaru", "Mazda", "Jeep", "Land Rover", "Porsche", "Mini", "Lexus", "Isuzu"],
+    "commercial_priority": ["Ford", "Fiat", "Renault", "Volkswagen", "Mercedes-Benz", "Peugeot", "Citroen", "Toyota", "Opel", "Iveco", "Isuzu", "Mitsubishi Fuso", "Karsan", "Otokar", "Temsa", "Anadolu Isuzu", "MAN", "Scania", "Volvo Trucks", "DAF", "Renault Trucks", "Mercedes-Benz Trucks", "BMC", "Ford Trucks"],
+    "tractor_priority": ["New Holland", "Case IH", "John Deere", "Massey Ferguson", "Deutz-Fahr", "Fendt", "Tümosan", "Başak", "Erkunt", "Same", "Landini", "Valtra", "Kubota"],
+    "motorcycle_priority": ["Honda", "Yamaha", "Kawasaki", "Suzuki", "KTM", "Bajaj", "TVS", "Mondial", "RKS", "Arora", "Kuba", "CFMOTO", "SYM", "Kymco", "Vespa", "Piaggio", "Benelli", "Aprilia", "BMW Motorrad"]
+  },
+  "high_priority_models_from_tr_park": {
+    "Fiat": ["Doğan", "Şahin", "Kartal", "Egea Sedan", "Egea Cross", "Linea", "Punto", "Palio", "Albea", "Doblo", "Fiorino", "Ducato"],
+    "Toyota": ["Corolla", "C-HR", "Yaris", "Auris", "Avensis", "RAV4", "Hilux", "Proace"],
+    "Renault": ["Clio", "Megane", "Symbol", "Fluence", "R12 Toros", "R9 Broadway", "R19", "Laguna", "Scenic", "Captur", "Kadjar", "Austral", "Kangoo", "Master", "Trafic"],
+    "Opel": ["Astra", "Corsa", "Vectra", "Insignia", "Mokka", "Crossland", "Grandland", "Combo", "Vivaro", "Movano"],
+    "Ford": ["Focus", "Fiesta", "Mondeo", "Courier", "Connect", "Custom", "Transit", "Ranger", "Kuga", "Puma"],
+    "Volkswagen": ["Golf", "Polo", "Passat", "Jetta", "Bora", "Caddy", "Transporter", "Crafter", "Tiguan", "Touran", "Amarok"],
+    "Hyundai": ["i10", "i20", "Accent", "Accent Blue", "Elantra", "Getz", "i30", "Tucson", "Kona", "Santa Fe", "Bayon", "Staria"],
+    "Peugeot": ["206", "207", "208", "301", "308", "407", "508", "2008", "3008", "5008", "Partner", "Rifter", "Expert", "Boxer"],
+    "Honda": ["Civic", "Jazz", "City", "CR-V", "HR-V", "Accord", "Type R"],
+    "Dacia": ["Logan", "Sandero", "Duster", "Lodgy", "Dokker", "Jogger", "Spring"],
+    "Citroen": ["C3", "C4", "C-Elysee", "C5", "C3 Aircross", "C4 X", "C5 Aircross", "Berlingo", "Jumpy", "Jumper"],
+    "Mercedes-Benz": ["A-Class", "C-Class", "E-Class", "S-Class", "CLA", "GLA", "GLC", "GLE", "Sprinter", "Vito", "Actros", "Atego", "Axor"],
+    "BMW": ["1 Series", "2 Series", "3 Series", "5 Series", "7 Series", "X1", "X3", "X5", "X6"],
+    "Skoda": ["Fabia", "Octavia", "Superb", "Rapid", "Scala", "Kamiq", "Karoq", "Kodiaq"],
+    "Nissan": ["Micra", "Almera", "Note", "Juke", "Qashqai", "X-Trail", "Navara", "Townstar"],
+    "Kia": ["Picanto", "Rio", "Ceed", "Cerato", "Sportage", "Stonic", "Sorento", "Niro", "EV6"],
+    "Audi": ["A1", "A3", "A4", "A5", "A6", "A8", "Q2", "Q3", "Q5", "Q7"],
+    "Togg": ["T10X", "T10F"],
+    "BYD": ["Atto 3", "Seal", "Seal U", "Dolphin", "Han"],
+    "Tesla": ["Model 3", "Model Y", "Model S", "Model X"],
+    "Chery": ["Tiggo 7 Pro", "Tiggo 8 Pro", "Omoda 5", "Tiggo 4"]
+  },
+  "required_vehicle_resolution": ["brand", "model", "generation_or_body", "model_year", "version_or_trim", "engine", "fuel", "transmission"],
+  "data_priority": ["vehicle_application", "oem_number", "aftermarket_part_number", "cross_reference", "part_category", "technical_specification"],
+  "source_rule": "Sadece yetkili/açık kaynaklardan doğrulanabilir veriler; tahmin edilen araç uygulaması eklenmez."
+}
