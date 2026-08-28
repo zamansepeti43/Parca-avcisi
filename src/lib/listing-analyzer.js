@@ -4,7 +4,7 @@ import { requireSupabase, supabaseConfigured } from './supabase.js';
 const OEM_PATTERN = /\b[A-Z0-9][A-Z0-9 .-]{5,24}[A-Z0-9]\b/g;
 const knownBrands = [...new Set(vehicleCatalog.map(({ make }) => make))];
 
-function unique(values) { return [...new Set(values.filter(Boolean)); }
+function unique(values) { return [...new Set(values.filter(Boolean))]; }
 function oemCandidates(text = '') {
   return unique((text.toUpperCase().match(OEM_PATTERN) || [])
     .map((value) => value.replace(/\s+/g, ' ').trim())
@@ -26,20 +26,18 @@ async function findLocalKnowledge({ text = '', barcodes = [] } = {}) {
     ...barcodes.map(String),
     ...oemCandidates(text),
   ]).map((value) => value.trim()).filter(Boolean);
-  if (!candidates.length) return null;
+  if (!candidates.length || !supabaseConfigured) return null;
 
-  if (!supabaseConfigured) return null;
   try {
     const supabase = requireSupabase();
     for (const candidate of candidates) {
       const { data, error } = await supabase
         .from('ai_part_knowledge')
         .select('part_key,canonical_part,aliases,verified_count,last_verified_at')
-        .or(`part_key.eq.${candidate},canonical_part->>oemNumber.eq.${candidate}`)
+        .eq('canonical_part->>oemNumber', candidate)
         .limit(1)
         .maybeSingle();
-      if (error) continue;
-      if (data?.canonical_part) return data;
+      if (!error && data?.canonical_part) return data;
     }
   } catch (error) {
     console.warn('Yerel AI hafızası okunamadı:', error);
@@ -122,7 +120,7 @@ export class ListingAnalyzer {
     const catalog = await this.catalog.match({ text: ocr.text, barcodes: vision.barcodes });
     const local = await findLocalKnowledge({ text: ocr.text, barcodes: vision.barcodes });
     const ai = local
-      ? { labels: [], confidence: Math.min(1, 0.95), engine: 'local-ai-memory', result: local.canonical_part }
+      ? { labels: [], confidence: 0.95, engine: 'local-ai-memory', result: local.canonical_part }
       : await this.aiVision.inspect(file);
     const aiResult = ai.result || {};
     const oemNumber = aiResult.oemNumber || catalog.oemNumber || oemCandidates(ocr.text)[0] || '';
