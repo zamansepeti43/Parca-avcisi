@@ -7,12 +7,10 @@ export async function getCurrentUser() {
   return data.user;
 }
 
-export async function signUp({ email, password, fullName, phone, address }) {
-  const { data, error } = await requireSupabase().auth.signUp({
-    email,
-    password,
-    options: { data: { full_name: fullName, phone: phone || '', address: address || '' } },
-  });
+export async function signUp({ email, password, fullName, phone, address, captchaToken }) {
+  const options = { data: { full_name: fullName, phone: phone || '', address: address || '' } };
+  if (captchaToken) options.captchaToken = captchaToken;
+  const { data, error } = await requireSupabase().auth.signUp({ email, password, options });
   if (error) throw error;
   return data;
 }
@@ -48,9 +46,7 @@ export async function signOut() {
 }
 
 export async function resetPassword(email) {
-  const { error } = await requireSupabase().auth.resetPasswordForEmail(email, {
-    redirectTo: window.location.origin,
-  });
+  const { error } = await requireSupabase().auth.resetPasswordForEmail(email, { redirectTo: window.location.origin });
   if (error) throw error;
 }
 
