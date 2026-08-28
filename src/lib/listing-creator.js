@@ -39,6 +39,16 @@ function upload(multiple) {
   };
 }
 
+function buildCorrections(prediction, verified) {
+  const fields = ['brand', 'partName', 'title', 'oemNumber', 'category', 'subcategory', 'vehicle', 'description'];
+  return fields.reduce((result, field) => {
+    const predicted = String(prediction?.[field] || '').trim();
+    const actual = String(verified?.[field] || '').trim();
+    if (predicted !== actual) result[field] = { from: predicted, to: actual };
+    return result;
+  }, {});
+}
+
 function renderDrafts(drafts, bulk, files = []) {
   open('<span class="eyebrow">AI TASLAĞI</span><h2>Bilgileri kontrol edin</h2><p class="confidence-note">AI fotoğraftaki parçayı ve görülebilen bilgileri analiz eder. Emin olmadığı alanları yayınlamadan önce kontrol et.</p><div id="draftList">' + drafts.map((d,i)=>'<form class="ai-draft" data-draft="'+i+'"><small class="analysis-result">Güven: %'+d.confidence+' · AI: '+esc(d.evidence?.aiVision || 'yerel')+' · OCR: '+esc(d.evidence?.ocr || '')+'</small><input name="brand" value="'+esc(d.brand)+'" placeholder="Marka"><input name="partName" value="'+esc(d.partName)+'" placeholder="Parça adı"><input name="title" value="'+esc(d.title)+'" placeholder="İlan başlığı"><input name="oemNumber" value="'+esc(d.oemNumber)+'" placeholder="OEM / parça no"><input name="category" value="'+esc(d.category)+'" placeholder="Kategori"><input name="subcategory" value="'+esc(d.subcategory)+'" placeholder="Alt kategori"><input name="vehicle" value="'+esc(d.vehicle)+'" placeholder="Araç bilgisi"><textarea name="description" placeholder="Açıklama">'+esc(d.description)+'</textarea><input name="price" type="number" min="0" placeholder="Fiyat"><input name="city" placeholder="Şehir"><select name="condition"><option value="used">2. El</option><option value="new">Sıfır</option><option value="salvage">Çıkma</option></select></form>').join('')+'</div><button id="publishDrafts">'+(bulk ? 'Seçili taslakları oluştur' : 'Taslağı oluştur')+'</button>');
   document.querySelector('#publishDrafts').onclick = async () => {
@@ -48,7 +58,37 @@ function renderDrafts(drafts, bulk, files = []) {
       const d=Object.fromEntries(new FormData(form));
       if (!d.partName || !d.price || !d.city) continue;
       try {
-        const listing = await createListing({ title:d.title||d.partName, description:d.description, condition:d.condition, price:d.price, city:d.city, oemNumber:d.oemNumber, category:d.category||null, subcategory:d.subcategory||null, vehicle:d.vehicle||null });
+        const prediction = drafts[i] || {};
+        const learningVerified = {
+          ...d,
+          brand: d.brand || '',
+          partName: d.partName || '',
+          title: d.title || d.partName,
+          oemNumber: d.oemNumber || '',
+          category: d.category || '',
+          subcategory: d.subcategory || '',
+          vehicle: d.vehicle || '',
+        };
+        const listing = await createListing({
+          title:d.title||d.partName,
+          description:d.description,
+          condition:d.condition,
+          price:d.price,
+          city:d.city,
+          oemNumber:d.oemNumber,
+          category:d.category||null,
+          subcategory:d.subcategory||null,
+          vehicle:d.vehicle||null,
+          learning: {
+            source: 'ai',
+            aiPrediction: prediction,
+            verifiedListing: learningVerified,
+            corrections: buildCorrections(prediction, learningVerified),
+            confidence: prediction.confidence || 0,
+            evidence: prediction.evidence || {},
+            status: 'verified',
+          },
+        });
         lastId = listing.id;
         count++;
         const file = files[i];

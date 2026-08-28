@@ -21,6 +21,30 @@ async function fileToDataUrl(file) {
   });
 }
 
+async function findLocalKnowledge({ text = '', barcodes = [] } = {}) {
+  const candidates = unique([
+    ...barcodes.map(String),
+    ...oemCandidates(text),
+  ]).map((value) => value.trim()).filter(Boolean);
+  if (!candidates.length || !supabaseConfigured) return null;
+
+  try {
+    const supabase = requireSupabase();
+    for (const candidate of candidates) {
+      const { data, error } = await supabase
+        .from('ai_part_knowledge')
+        .select('part_key,canonical_part,aliases,verified_count,last_verified_at')
+        .eq('canonical_part->>oemNumber', candidate)
+        .limit(1)
+        .maybeSingle();
+      if (!error && data?.canonical_part) return data;
+    }
+  } catch (error) {
+    console.warn('Yerel AI hafızası okunamadı:', error);
+  }
+  return null;
+}
+
 export class OcrProvider {
   async read(file) {
     try {
@@ -94,7 +118,10 @@ export class ListingAnalyzer {
   async analyze(file) {
     const [ocr, vision] = await Promise.all([this.ocr.read(file), this.vision.inspect(file)]);
     const catalog = await this.catalog.match({ text: ocr.text, barcodes: vision.barcodes });
-    const ai = await this.aiVision.inspect(file);
+    const local = await findLocalKnowledge({ text: ocr.text, barcodes: vision.barcodes });
+    const ai = local
+      ? { labels: [], confidence: 0.95, engine: 'local-ai-memory', result: local.canonical_part }
+      : await this.aiVision.inspect(file);
     const aiResult = ai.result || {};
     const oemNumber = aiResult.oemNumber || catalog.oemNumber || oemCandidates(ocr.text)[0] || '';
     const brand = aiResult.brand || catalog.brand || '';
@@ -119,7 +146,7 @@ export class ListingAnalyzer {
       photos: [file],
       confidence,
       requiresReview: Boolean(aiResult.requiresReview) || confidence < 70 || !aiResult.category,
-      evidence: { ocr: ocr.engine, vision: vision.engine, aiVision: ai.engine, barcode: vision.barcodes?.[0] || '', aiError: ai.error || '' },
+      evidence: { ocr: ocr.engine, vision: vision.engine, aiVision: ai.engine, barcode: vision.barcodes?.[0] || '', aiError: ai.error || '', knowledgeSource: local ? 'local-ai-memory' : 'api' },
     };
   }
 }

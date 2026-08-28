@@ -1,5 +1,6 @@
 import { requireSupabase, supabaseConfigured } from './supabase.js';
 import { getListingImageUrl, getListingThumbnailUrl, deleteListingImages } from './listing-images.js';
+import { recordLearningExample } from './ai-learning.js';
 
 const conditionLabels = { new: 'Sıfır', used: '2. El', salvage: 'Çıkma' };
 const DEFAULT_PAGE_SIZE = 24;
@@ -106,7 +107,7 @@ export async function getSellerActiveListings(sellerId, { excludeId } = {}) {
   return data.map(toListingCard);
 }
 
-export async function createListing({ title, description, condition, price, city, district, oemNumber, stockCount = 1, partId, vehicleIds = [], category, subcategory, vehicle, delivery, status = 'draft' }) {
+export async function createListing({ title, description, condition, price, city, district, oemNumber, stockCount = 1, partId, vehicleIds = [], category, subcategory, vehicle, delivery, status = 'draft', learning = null }) {
   const client = requireSupabase();
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
@@ -117,6 +118,28 @@ export async function createListing({ title, description, condition, price, city
     const { error: vehicleError } = await client.from('listing_vehicles').insert(vehicleIds.map((vehicleId) => ({ listing_id: listing.id, vehicle_id: vehicleId })));
     if (vehicleError) throw vehicleError;
   }
+
+  const verifiedListing = {
+    title,
+    partName: learning?.verifiedListing?.partName || '',
+    category,
+    subcategory,
+    brand: learning?.verifiedListing?.brand || '',
+    model: learning?.verifiedListing?.model || '',
+    oemNumber,
+    vehicle,
+  };
+  recordLearningExample({
+    source: learning?.source || 'manual',
+    aiPrediction: learning?.aiPrediction || null,
+    verifiedListing: learning?.verifiedListing ? { ...verifiedListing, ...learning.verifiedListing } : verifiedListing,
+    corrections: learning?.corrections || {},
+    confidence: learning?.confidence || 0,
+    evidence: learning?.evidence || { listingCreated: true },
+    status: learning?.status || 'verified',
+    listingId: listing.id,
+  }).catch((learningError) => console.warn('AI learning kaydı atlandı:', learningError));
+
   return listing;
 }
 
