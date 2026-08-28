@@ -18,14 +18,21 @@ jobs:
       fail-fast: false
       matrix:
         catalog:
+          - name: trucks-buses
+            url: https://www.mann-filter.com/content/dam/mann-filter/communication-media/brochures-catalogs/mann-filter-catalog-trucks-and-buses-2024-26-interactive.pdf
+            file: data/mann-trucks-buses-2024-26.pdf
+            jsonl: data/mann-trucks-buses-2024-26.jsonl
+            start_page: 57
           - name: construction-industrial
             url: https://www.mann-filter.com/content/dam/mann-filter/communication-media/brochures-catalogs/mann-filter-catalog-construction-machinery-industrial-applications-2024-26-interactive.pdf
             file: data/mann-construction-industrial-2024-26.pdf
             jsonl: data/mann-construction-industrial-2024-26.jsonl
+            start_page: 57
           - name: agricultural-machinery
             url: https://www.mann-filter.com/content/dam/mann-filter/communication-media/brochures-catalogs/mann-filter-catalog-agricultural-machinery-2024-26-interactive.pdf
             file: data/mann-agricultural-machinery-2024-26.pdf
             jsonl: data/mann-agricultural-machinery-2024-26.jsonl
+            start_page: 57
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,6 +49,6 @@ jobs:
           MANN_CATALOG_URL: ${{ matrix.catalog.url }}
           MANN_PDF_PATH: ${{ matrix.catalog.file }}
           MANN_JSONL_PATH: ${{ matrix.catalog.jsonl }}
-          MANN_APPLICATION_START_PAGE: 57
+          MANN_APPLICATION_START_PAGE: ${{ matrix.catalog.start_page }}
           CATALOG_BATCH_SIZE: 50
         run: python scripts/mann-pdf-ingest.py
