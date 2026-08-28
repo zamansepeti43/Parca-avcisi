@@ -1,12 +1,15 @@
 import { getCurrentUser } from './auth.js';
 import { VehicleResolver } from './vehicle-resolver.js';
 import { getSavedVehicles, saveVehicle, deleteSavedVehicle } from './saved-vehicles.js';
+import { requireSupabase, supabaseConfigured } from './supabase.js';
+import { getListingThumbnailUrl } from './listing-images.js';
 
 const resolver = new VehicleResolver();
 let active = false;
 let selection = { type: '', make: '', model: '', year: '', engine: '' };
 
 const esc = (v) => String(v ?? '').replace(/[&<>'\"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
+const money = (value) => new Intl.NumberFormat('tr-TR').format(Number(value) || 0) + ' TL';
 
 function pane() { return document.querySelector('.account-pane'); }
 function menu() { return document.querySelector('.account-menu'); }
@@ -20,7 +23,7 @@ function options(field) {
 }
 
 function renderForm() {
-  return '<div class="account-pane-head"><div><h2>Araçlarım</h2><p style="margin:4px 0 0;color:#6e747c">Sık kullandığın araçları kaydet. Parça ararken tekrar tekrar seçim yapmana gerek kalmasın.</p></div></div>' +
+  return '<div class="account-pane-head"><div><h2>Araçlarım</h2><p style="margin:4px 0 0;color:#6e747c">Sık kullandığın araçları kaydet. Aracına tıkladığında uyumlu ilanları doğrudan görebilirsin.</p></div></div>' +
     '<form id="savedVehicleForm" class="pane-form" style="margin-top:18px">' +
     '<div class="form-grid">' +
     '<label>Araç Tipi' + options('type') + '</label>' +
@@ -35,9 +38,41 @@ function renderForm() {
 function renderList(items) {
   if (!items.length) return '<div class="pane-empty" style="margin-top:18px"><strong>Henüz kayıtlı aracın yok</strong><span>Yukarıdan ilk aracını ekle.</span></div>';
   return '<div class="pane-list" style="margin-top:18px">' + items.map((item) =>
-    '<div class="pane-row"><div class="grow"><strong>' + esc(item.nickname || [item.make, item.model].filter(Boolean).join(' ')) + '</strong><small>' + esc([item.vehicle_type, item.make, item.model, item.year, item.version].filter(Boolean).join(' · ')) + '</small></div>' +
-    '<div class="pane-actions"><button class="danger" data-delete-saved-vehicle="' + esc(item.id) + '">Sil</button></div></div>'
+    '<div class="pane-row saved-vehicle-row" data-open-saved-vehicle="' + esc(item.id) + '" role="button" tabindex="0" title="Uyumlu ilanları göster"><div class="grow"><strong>' + esc(item.nickname || [item.make, item.model].filter(Boolean).join(' ')) + '</strong><small>' + esc([item.vehicle_type, item.make, item.model, item.year, item.version].filter(Boolean).join(' · ')) + '</small></div>' +
+    '<div class="pane-actions"><button class="pane-btn" type="button" data-open-saved-vehicle="' + esc(item.id) + '">Uyumlu İlanlar</button><button class="danger" data-delete-saved-vehicle="' + esc(item.id) + '">Sil</button></div></div>'
   ).join('') + '</div>';
+}
+
+function renderCompatible(items, label) {
+  const grid = document.querySelector('#listingGrid');
+  const section = document.querySelector('#ilanlar');
+  if (!grid || !section) return;
+  if (!items.length) {
+    grid.innerHTML = '<div class="empty"><strong>' + esc(label) + ' için uyumlu aktif ilan bulunamadı.</strong><span>Yeni ilanlar geldikçe bu araç için tekrar kontrol edebilirsin.</span></div>';
+  } else {
+    grid.innerHTML = items.map((item) => {
+      const photo = item.image_path ? '<img class="listing-photo" src="' + esc(getListingThumbnailUrl(item.image_path)) + '" alt="' + esc(item.title) + '" loading="lazy">' : '';
+      return '<article class="listing-card"><div class="listing-image engine">' + photo + '<span class="condition">' + esc(item.condition === 'new' ? 'Sıfır' : item.condition === 'used' ? '2. El' : item.condition === 'salvage' ? 'Çıkma' : item.condition || '') + '</span><div class="part-art">⚙</div><span class="art-caption">PARÇA AVCISI</span></div><div class="listing-body"><div class="listing-meta"><span>' + esc(item.category || 'Oto Parça') + '</span><span>⌖ ' + esc(item.city || 'Türkiye') + '</span></div><h3>' + esc(item.title) + '</h3><p>' + esc(item.matched_vehicle || label) + '</p><strong class="price">' + money(item.price) + '</strong><div class="seller-line"><span>✓ ' + esc(item.seller_name || 'Satıcı') + '</span><button class="detail-btn" data-detail="' + esc(item.id) + '">İncele</button></div></div></article>';
+    }).join('');
+  }
+  section.querySelector('.section-head h2')?.replaceChildren(document.createTextNode(label + ' için uyumlu ilanlar'));
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+async function openCompatibleVehicle(id) {
+  if (!supabaseConfigured) return;
+  try {
+    const { data: saved, error: savedError } = await requireSupabase().from('user_vehicles').select('id, make, model, year, version, nickname').eq('id', id).maybeSingle();
+    if (savedError) throw savedError;
+    if (!saved) throw new Error('Kayıtlı araç bulunamadı.');
+    const { data, error } = await requireSupabase().rpc('search_saved_vehicle_listings', { p_user_vehicle_id: id, p_limit: 100 });
+    if (error) throw error;
+    const label = [saved.nickname, saved.make, saved.model, saved.year, saved.version].filter(Boolean).join(' · ');
+    renderCompatible(data || [], label);
+  } catch (error) {
+    const toast = document.querySelector('#toast');
+    if (toast) { toast.textContent = error.message || 'Uyumlu ilanlar yüklenemedi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
+  }
 }
 
 async function render() {
@@ -63,6 +98,7 @@ async function activate(event) {
   selection = { type: '', make: '', model: '', year: '', engine: '' };
   await render();
 }
+window.__openSavedVehicles = activate;
 
 function ensureMenu() {
   const root = menu();
@@ -75,6 +111,17 @@ function ensureMenu() {
   const profile = root.querySelector('[data-pane="profilim"]');
   if (profile?.parentNode) profile.parentNode.insertBefore(button, profile.nextSibling);
   else root.prepend(button);
+
+  const nav = document.querySelector('.desktop-nav');
+  if (nav && !nav.querySelector('[data-open-saved-vehicles]')) {
+    const navButton = document.createElement('button');
+    navButton.type = 'button';
+    navButton.className = 'nav-drop saved-vehicles-nav';
+    navButton.dataset.openSavedVehicles = '';
+    navButton.textContent = 'Araçlarım';
+    navButton.addEventListener('click', activate);
+    nav.appendChild(navButton);
+  }
 }
 
 document.addEventListener('change', (event) => {
@@ -105,6 +152,14 @@ document.addEventListener('submit', async (event) => {
 });
 
 document.addEventListener('click', async (event) => {
+  const open = event.target.closest('[data-open-saved-vehicle]');
+  if (open && active) {
+    if (event.target.closest('[data-delete-saved-vehicle]')) return;
+    event.preventDefault();
+    event.stopPropagation();
+    await openCompatibleVehicle(open.dataset.openSavedVehicle);
+    return;
+  }
   const button = event.target.closest('[data-delete-saved-vehicle]');
   if (!button || !active) return;
   event.preventDefault();
@@ -116,6 +171,14 @@ document.addEventListener('click', async (event) => {
     const toast = document.querySelector('#toast');
     if (toast) { toast.textContent = error.message || 'Araç silinemedi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
   }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+  const row = event.target.closest?.('[data-open-saved-vehicle]');
+  if (!row || event.target.closest('button')) return;
+  event.preventDefault();
+  openCompatibleVehicle(row.dataset.openSavedVehicle);
 });
 
 const observer = new MutationObserver(() => ensureMenu());
