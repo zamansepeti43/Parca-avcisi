@@ -1,0 +1,124 @@
+{
+  "version": "2026-08-28",
+  "scope": "Türkiye araç parkı için yedek parça ve araç-uyumluluk kaynakları",
+  "policy": {
+    "market": "TR",
+    "priority": "Türkiye'de kullanılan araçlar",
+    "do_not_infer": true,
+    "no_global_flood": true,
+    "merge_existing_products": true,
+    "source_access": "Açık ve yetkili kaynaklardan doğrulanabilir veri; robots/terms/erişim koşullarına uyulmayan kaynaklar otomatik çekilmez."
+  },
+  "catalog_sources": [
+    {
+      "id": "ozcete-catalogs",
+      "name": "Özçete Otomotiv katalog merkezi",
+      "url": "https://ozcete.com.tr/kataloglar/",
+      "priority": 1,
+      "type": "catalog-hub",
+      "brands": ["BOSCH", "TRW", "DELPHI", "FEBI", "FROW", "BITAPART"],
+      "evidence": "Online katalog bağlantıları; 200.000+ stok çeşidi beyanı",
+      "adapter_status": "planned"
+    },
+    {
+      "id": "valeo-service-tr",
+      "name": "Valeo Service Türkiye",
+      "url": "https://www.valeoservice.com.tr/tr",
+      "priority": 1,
+      "type": "manufacturer-catalog",
+      "brands": ["VALEO", "SWF"],
+      "features": ["ürün kataloğu", "şasi numarası", "parça numarası", "araç marka/modeli", "teknik kütüphane"],
+      "adapter_status": "planned"
+    },
+    {
+      "id": "vaden",
+      "name": "VADEN ORIGINAL",
+      "url": "https://www.vaden.com.tr/tr/kataloglar",
+      "priority": 1,
+      "type": "heavy-commercial-catalog",
+      "categories": ["debriyaj", "direksiyon", "egzoz", "fren", "havalı fren kompresörleri", "motor", "soğutma", "süspansiyon", "şanzıman", "yakıt"],
+      "brands": ["MAN", "MERCEDES-BENZ", "DAF", "SCANIA", "VOLVO", "RENAULT TRUCKS", "IVECO", "FORD", "FORD OTOSAN", "ISUZU", "OTOKAR", "TEMSA", "BMC", "VOLKSWAGEN", "ZF", "WABCO", "KNORR-BREMSE", "MERITOR", "BPW", "SAF"],
+      "catalog_years": [2025, 2024, 2023, 2022],
+      "adapter_status": "planned"
+    },
+    {
+      "id": "parcadolu",
+      "name": "Parcadolu Türkiye yedek parça kataloğu",
+      "url": "https://parcadolu.com/carparts/",
+      "priority": 1,
+      "type": "multi-brand-catalog",
+      "brands": ["BOSCH", "FEBI", "VALEO", "DELPHI", "MANN-FILTER", "ELRING", "MAHLE", "HELLA", "NGK", "FILTRON", "GATES", "DENSO", "TRW", "DAYCO", "LEMFORDER", "FERODO", "SKF", "TEKNOROT"],
+      "vehicle_scope": ["binek", "hafif ticari", "ağır ticari", "kamyon", "otobüs"],
+      "adapter_status": "planned"
+    },
+    {
+      "id": "otoparcaavm",
+      "name": "otoparcaAVM marka kataloğu",
+      "url": "https://otoparcaavm.com.tr/Product/Brands",
+      "priority": 2,
+      "type": "multi-brand-catalog-index",
+      "reported_brand_count": 595,
+      "reported_product_count": 1657936,
+      "high_priority_brands": ["OTOSAN", "TOYOTA", "BMW", "PSA", "BOSCH", "BSG", "CORTECO", "VALEO", "OPAR", "SWAG", "FEBI", "BLUE PRINT", "DELPHI", "TRW", "SACHS", "GATES", "TEKNOROT", "HELLA", "DAYCO", "MAHLE", "LEMFORDER", "BREMBO", "DENSO", "NGK", "SKF", "INA", "FERODO", "FAG", "LUK", "CONTITECH", "M.MARELLI", "SNR", "PIERBURG", "HENGST", "UFI", "MANN", "TEXTAR", "AISIN", "KYB", "MEYLE", "VICTOR REINZ", "EXEDY", "TIMKEN"],
+      "adapter_status": "planned"
+    },
+    {
+      "id": "hk-birlik",
+      "name": "HK Birlik Otomotiv / Parçam Tedarik",
+      "url": "https://www.hkbirlikotomotiv.com/",
+      "priority": 2,
+      "type": "multi-brand-catalog",
+      "reported_part_count": "100000+",
+      "reported_supplier_brand_count": 68,
+      "brands": ["BOSCH", "MANN-FILTER", "VALEO", "MAHLE", "ZF SACHS", "FEBI BILSTEIN", "NGK", "SKF"],
+      "features": ["araç seçimi", "OE numarası ile arama"],
+      "adapter_status": "planned"
+    },
+    {
+      "id": "bisgen-parca",
+      "name": "Bisgen Parça",
+      "url": "https://www.bisgenparca.com/",
+      "priority": 2,
+      "type": "oe-compatibility-catalog",
+      "brands": ["BOSCH", "VALEO", "MANN-FILTER", "FEBI BILSTEIN", "TRW", "SKF", "MAHLE", "FILTRON", "DENSO", "BSG", "NGK", "CONTITECH", "GATES", "SACHS", "LUK", "INA", "FAG", "DELPHI", "HENGST", "PIERBURG"],
+      "features": ["OE numarası", "muadil kod", "açık araç uyumluluk tablosu"],
+      "adapter_status": "planned"
+    },
+    {
+      "id": "intra-parts",
+      "name": "INTRA PARTS",
+      "url": "https://intra.parts/",
+      "priority": 2,
+      "type": "category-and-brand-catalog",
+      "categories": ["motor", "yakıt", "soğutma", "fren", "süspansiyon", "direksiyon", "şanzıman", "egzoz", "elektrik", "kaporta", "aydınlatma", "filtre", "ateşleme", "triger", "akü"],
+      "brands": ["BOSCH", "CONTINENTAL", "DENSO", "DELPHI", "VALEO", "HELLA", "ZF", "AISIN", "BREMBO", "BILSTEIN", "SACHS", "FAG", "SKF", "ATE", "TRW", "LEMFORDER", "GATES", "MANN-FILTER", "MAHLE", "NGK", "DAYCO", "FEBI", "MEYLE", "KYB", "MONROE", "MOOG", "NISSENS", "EXEDY", "LUK", "INA", "CORTECO", "ELRING", "VICTOR REINZ", "TEXTAR", "JURID", "FERODO", "BLUE PRINT"],
+      "adapter_status": "planned"
+    },
+    {
+      "id": "seri-yedek-parca",
+      "name": "Seri Yedek Parça",
+      "url": "https://seriyedekparca.com/",
+      "priority": 3,
+      "type": "multi-brand-catalog",
+      "features": ["OEM arama", "şasi sorgulama", "araç seçimi"],
+      "brands": ["BOSCH", "ATE", "BEHR-MAHLE", "BILSTEIN", "BLUEPRINT", "CONTITECH", "CORTECO", "DAYCO", "DELPHI", "DENSO", "DEPO", "INA", "FAG", "FEBI", "FERODO", "TRW", "FILTRON", "MANN", "FTE", "GATES", "GKN", "LEMFORDER", "LUK", "SACHS", "SNR", "SKF", "SWAG", "UFI", "MONROE"],
+      "adapter_status": "planned"
+    }
+  ],
+  "next_manufacturer_catalogs": [
+    "BOSCH", "VALEO", "DELPHI", "FEBI BILSTEIN", "TRW", "MAHLE", "DENSO", "HELLA", "SKF", "SACHS", "LUK", "INA", "FAG", "GATES", "DAYCO", "NGK", "CONTITECH", "MANN-FILTER", "FILTRON", "LEMFORDER", "BREMBO", "ATE", "TEXTAR", "FERODO", "JURID", "KYB", "MONROE", "MEYLE", "CORTECO", "ELRING", "VICTOR REINZ", "NISSENS", "PIERBURG", "AISIN", "EXEDY", "SNR", "HENGST", "UFI", "BLUE PRINT"
+  ],
+  "parts_categories": [
+    "motor", "motor üst kapak", "piston-segman", "krank", "eksantrik", "conta", "triger", "zincir", "devirdaim", "soğutma", "radyatör", "termostat", "yakıt", "enjektör", "turbo", "hava sistemi", "filtre", "fren", "balata", "disk", "kaliper", "ABS", "süspansiyon", "amortisör", "yay", "salıncak", "rot", "direksiyon", "aks", "rulman", "porya", "debriyaj", "volan", "şanzıman", "diferansiyel", "egzoz", "DPF", "katalizör", "EGR", "elektrik", "marş", "alternatör", "akü", "buji", "kızdırma", "sensör", "aydınlatma", "kaporta", "ayna", "cam", "silecek", "klima", "kompresör", "kabin", "hidrolik", "pnömatik", "dorse", "beşinci teker", "hava fren", "ticari araç", "traktör", "motosiklet"
+  ],
+  "ingestion_order": [
+    "Turkey vehicle taxonomy filter",
+    "OE/OEM normalization",
+    "aftermarket part number normalization",
+    "cross-reference linking",
+    "vehicle application resolution",
+    "duplicate merge",
+    "Supabase upsert",
+    "source statistics"
+  ]
+}
