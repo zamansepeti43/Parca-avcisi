@@ -1,4 +1,4 @@
-import { getCurrentUser, onAuthStateChange, signUp, startPhoneVerification, verifyPhoneOtp, claimVerifiedPhoneIdentity } from './auth.js';
+import { getCurrentUser, onAuthStateChange, signUp, startPhoneVerification, verifyPhoneOtp } from './auth.js';
 import { supabaseConfigured } from './supabase.js';
 
 const PENDING_KEY = 'parca-avcisi-pending-phone-verification';
@@ -22,7 +22,7 @@ function errorText(error) {
   const message = String(error?.message || '').trim();
   const lower = message.toLowerCase();
   if (/captcha|turnstile/i.test(message)) return 'İnsan doğrulaması başarısız. Lütfen güvenlik kontrolünü tekrar tamamla.';
-  if (/twilio|sms.*provider|phone.*provider|provider.*phone|sms.*not.*configured|missing.*account.*sid/i.test(message)) return 'SMS sağlayıcısı Supabase Auth tarafında yapılandırılmamış. Supabase > Authentication > Providers > Phone bölümünde SMS sağlayıcısını yapılandırmalısın.';
+  if (/twilio|sms.*provider|phone.*provider|provider.*phone|sms.*not.*configured|missing.*account.*sid/i.test(message)) return 'Telefon SMS sağlayıcısı henüz yapılandırılmamış.';
   if (/rate.?limit|too many|frequency/i.test(message)) return 'Çok sık SMS istendi. Lütfen biraz bekleyip tekrar dene.';
   if (/user already registered|email.*already|email.*exists|already.*registered.*email/i.test(lower)) return 'Bu e-posta adresi zaten bir hesapta kayıtlı. Farklı bir e-posta kullan veya mevcut hesabınla giriş yap.';
   if (/phone.*already|already.*phone|phone.*exists|phone.*used|phone.*linked/i.test(lower)) return 'Bu telefon numarası başka bir hesapta doğrulanmış. Başka bir numara kullan.';
@@ -30,7 +30,7 @@ function errorText(error) {
 }
 
 async function loadTurnstile() {
-  if (!TURNSTILE_SITE_KEY) throw new Error('VITE_TURNSTILE_SITE_KEY eksik. Cloudflare Turnstile site anahtarını Vercel ortam değişkenlerine eklemelisin.');
+  if (!TURNSTILE_SITE_KEY) throw new Error('VITE_TURNSTILE_SITE_KEY eksik.');
   if (window.turnstile) return window.turnstile;
   if (!turnstileReady) {
     turnstileReady = new Promise((resolve, reject) => {
@@ -93,7 +93,6 @@ async function openVerification(phone, resend = false) {
     status.textContent = 'Kod doğrulanıyor…';
     try {
       await verifyPhoneOtp(phone, form.elements.otp.value.trim());
-      await claimVerifiedPhoneIdentity(phone);
       clearPending();
       modal.remove();
       window.__showToast?.('Kayıt tamamlandı. Telefon numaran doğrulandı.');
