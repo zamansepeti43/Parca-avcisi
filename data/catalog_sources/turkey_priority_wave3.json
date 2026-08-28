@@ -1,0 +1,17 @@
+{
+  "wave": 3,
+  "market_priority": "TR",
+  "rule": "Only ingest sources with usable catalog/application data; preserve OEM and vehicle fitment fields; never delete existing records.",
+  "sources": [
+    {"key":"bosch","name":"Bosch Automotive Aftermarket Turkey","url":"https://www.boschaftermarket.com/tr/tr/urunler/katalog/ueruen-arama/","priority":1,"segments":["passenger","lcv","commercial"],"focus":["filters","brakes","ignition","sensors","starter","alternator"]},
+    {"key":"schaeffler","name":"Schaeffler Automotive Aftermarket Turkey","url":"https://www.schaeffler.com.tr/tr/products-and-solutions/automotive-aftermarket/","priority":2,"brands":["LuK","INA","FAG"],"segments":["passenger","lcv","heavy"],"focus":["clutch","flywheel","timing","bearings","chassis"]},
+    {"key":"zf","name":"ZF Aftermarket Turkey","url":"https://aftermarket.zf.com/tr/catalog/","priority":3,"brands":["ZF","Sachs","Lemforder","TRW"],"segments":["passenger","lcv","commercial"],"focus":["clutch","transmission","brakes","steering","suspension"]},
+    {"key":"mahle","name":"MAHLE Aftermarket","url":"https://www.mahle-aftermarket.com/","priority":4,"segments":["passenger","lcv","commercial"],"focus":["engine","filters","thermal"]},
+    {"key":"febi","name":"Ferdinand Bilstein / febi","url":"https://www.febi.com/","priority":5,"segments":["passenger","lcv","commercial"],"focus":["chassis","steering","engine","maintenance"]},
+    {"key":"meyle","name":"MEYLE","url":"https://www.meyle.com/","priority":6,"segments":["passenger","lcv","commercial"],"focus":["chassis","steering","brakes","cooling"]},
+    {"key":"skf","name":"SKF Automotive","url":"https://www.skf.com/","priority":7,"segments":["passenger","lcv","commercial"],"focus":["wheel-bearings","timing","accessories"]},
+    {"key":"gates","name":"Gates Automotive","url":"https://www.gates.com/","priority":8,"segments":["passenger","lcv","commercial"],"focus":["belts","cooling","timing"]},
+    {"key":"brembo","name":"Brembo Aftermarket","url":"https://www.brembo.com/","priority":9,"segments":["passenger","lcv","commercial"],"focus":["brakes"]},
+    {"key":"ngk","name":"NGK / NTK","url":"https://www.ngkntk.com/","priority":10,"segments":["passenger","lcv","commercial"],"focus":["spark-plugs","glow-plugs","sensors","ignition"]}
+  ]
+}
