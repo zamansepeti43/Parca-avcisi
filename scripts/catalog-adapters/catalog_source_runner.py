@@ -12,11 +12,12 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-HEADERS = {'User-Agent': 'Parca-Avcisi-Catalog-Worker/2.0'}
+HEADERS = {'User-Agent': 'Parca-Avcisi-Catalog-Worker/2.1'}
 SUPABASE_URL = os.environ.get('SUPABASE_URL', '').rstrip('/')
 SUPABASE_KEY = os.environ.get('SUPABASE_SERVICE_ROLE_KEY', '')
 BATCH = int(os.environ.get('CATALOG_BATCH_SIZE', '100'))
 MAX_URLS = int(os.environ.get('CATALOG_MAX_URLS', '2500'))
+MAX_PDFS = int(os.environ.get('CATALOG_MAX_PDFS', '40'))
 HTTP_TIMEOUT = int(os.environ.get('CATALOG_HTTP_TIMEOUT', '20'))
 WORKERS = int(os.environ.get('CATALOG_WORKERS', '12'))
 
@@ -223,27 +224,44 @@ def run_pdf_page(source):
             continue
         if source != 'continental' or any(k in label for k in ('catalog', 'workbook', 'cross', 'products', 'catalogue')):
             links.append(href)
-    links = list(dict.fromkeys(links))[:40]
+    links = list(dict.fromkeys(links))[:MAX_PDFS]
     if not links:
         raise RuntimeError(f'No PDF catalog links found for {source}; source page layout may have changed')
 
     seen = set()
     pending = []
+    failed = 0
     print(f'{source}: pdfs={len(links)}', flush=True)
     for index, url in enumerate(links, 1):
-        with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as file:
-            path = file.name
+        path = None
         try:
-            response = get(url, timeout=max(HTTP_TIMEOUT, 60))
-            Path(path).write_bytes(response.content)
-            output = subprocess.run(
-                ['pdftotext', '-layout', path, '-'],
-                capture_output=True,
-                text=True,
-                timeout=180,
-            )
+            with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as file:
+                path = file.name
+            try:
+                response = get(url, timeout=max(HTTP_TIMEOUT, 60))
+                Path(path).write_bytes(response.content)
+            except Exception as exc:
+                failed += 1
+                print(f'{source}: pdf {index}/{len(links)} SKIP download | {url} | {exc}', flush=True)
+                continue
+
+            try:
+                output = subprocess.run(
+                    ['pdftotext', '-layout', path, '-'],
+                    capture_output=True,
+                    text=True,
+                    timeout=180,
+                )
+            except Exception as exc:
+                failed += 1
+                print(f'{source}: pdf {index}/{len(links)} SKIP parse | {url} | {exc}', flush=True)
+                continue
+
             if output.returncode != 0:
-                raise RuntimeError(output.stderr.strip() or 'pdftotext failed')
+                failed += 1
+                print(f'{source}: pdf {index}/{len(links)} SKIP parse | {url} | {output.stderr.strip() or "pdftotext failed"}', flush=True)
+                continue
+
             current_make = ''
             for line in (clean(x) for x in output.stdout.splitlines()):
                 if not line:
@@ -259,15 +277,17 @@ def run_pdf_page(source):
                     row = record(source, part, line[:180], oems=oems[:10], apps=apps, source_url=url)
                     if row:
                         upload_unique([row], seen, pending)
-            print(f'{source}: pdf {index}/{len(links)} | unique={len(seen)}', flush=True)
+            print(f'{source}: pdf {index}/{len(links)} OK | unique={len(seen)} | failed={failed}', flush=True)
         finally:
-            try:
-                os.unlink(path)
-            except OSError:
-                pass
+            if path:
+                try:
+                    os.unlink(path)
+                except OSError:
+                    pass
 
     if pending:
         upload(pending)
+    print(f'{source}: PDF SUMMARY | unique={len(seen)} | failed={failed} | total={len(links)}', flush=True)
     return len(seen)
 
 
