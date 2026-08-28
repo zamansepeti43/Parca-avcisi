@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "scope": "TR-first automotive spare parts catalog expansion",
+  "policy": {
+    "priority": "turkey",
+    "focus": ["passenger", "light_commercial", "heavy_commercial"],
+    "store_oem": true,
+    "store_cross_references": true,
+    "store_vehicle_compatibility": true,
+    "deduplicate_by": ["normalized_brand", "normalized_part_number"],
+    "never_fail_all_sources_on_single_source_error": true
+  },
+  "sources": [
+    {
+      "id": "kautek-tr",
+      "name": "KAUTEK",
+      "priority": 10,
+      "type": "interactive_catalog",
+      "url": "https://www.kautek.com.tr/tr/catalog",
+      "scope": ["passenger", "commercial"],
+      "evidence": "14,932 listed products; OEM/cross-reference and vehicle make-model hierarchy available"
+    },
+    {
+      "id": "hanparca-tr",
+      "name": "Hanparça",
+      "priority": 20,
+      "type": "interactive_catalog",
+      "url": "https://www.hanparca.com/",
+      "scope": ["passenger", "commercial"],
+      "evidence": "84,131 spare parts; 180,130 OEM numbers; 62 vehicle makes; VIN/vehicle filtering"
+    },
+    {
+      "id": "phira-tr",
+      "name": "Phira",
+      "priority": 30,
+      "type": "interactive_catalog",
+      "url": "https://phira.com.tr/online-katalog/",
+      "scope": ["passenger", "commercial"],
+      "evidence": "28 brands and OEM/brand/model search"
+    },
+    {
+      "id": "teknorot-tr",
+      "name": "Teknorot",
+      "priority": 40,
+      "type": "interactive_catalog_and_pdf",
+      "url": "https://www.teknorot.com/katalog/",
+      "pdf_urls": [
+        "https://apps.teknorot.com/pdf/ev-tr-no-space.pdf?ver=1.0.0-20260307",
+        "https://www.teknorot.com/wp-content/uploads/2020/02/2019_teknorot_catalog_part1.pdf"
+      ],
+      "scope": ["passenger", "commercial"],
+      "evidence": "OEM, Teknorot reference, cross-reference, make/model/year/chassis filtering"
+    },
+    {
+      "id": "oto-karaman-tr",
+      "name": "Oto Karaman",
+      "priority": 50,
+      "type": "pdf_catalog",
+      "url": "https://otokaraman.com/tr",
+      "scope": ["heavy_commercial"],
+      "evidence": "40+ heavy-vehicle brands; OEM and cross-reference matching"
+    },
+    {
+      "id": "aypar-tr",
+      "name": "Aypar Otomotiv",
+      "priority": 60,
+      "type": "catalog_candidate",
+      "url": "https://www.aypar.com.tr/",
+      "scope": ["passenger", "commercial"],
+      "evidence": "Turkey aftermarket distribution source; ingest when a public machine-readable catalog endpoint is available"
+    },
+    {
+      "id": "disa-tr",
+      "name": "Disa Automotive",
+      "priority": 70,
+      "type": "catalog_candidate",
+      "scope": ["passenger", "commercial"],
+      "evidence": "Target source for OEM/cross-reference catalog expansion; require public catalog/export endpoint before ingestion"
+    },
+    {
+      "id": "valeo-tr",
+      "name": "Valeo Türkiye",
+      "priority": 80,
+      "type": "catalog_candidate",
+      "scope": ["passenger", "commercial", "heavy_commercial"],
+      "evidence": "Target source for Türkiye aftermarket coverage; require public catalog/export endpoint before ingestion"
+    }
+  ],
+  "ingestion_rules": {
+    "country_filter": "TR",
+    "prefer_turkey_vehicle_applications": true,
+    "preserve_source_record": true,
+    "preserve_oem_numbers": true,
+    "preserve_cross_references": true,
+    "preserve_brand_model_year_engine": true,
+    "skip_invalid_records": true,
+    "continue_after_source_failure": true,
+    "checkpoint_batches": 100,
+    "write_to": "public.ai_catalog_records"
+  }
+}
