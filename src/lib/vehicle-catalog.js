@@ -126485,3 +126485,7 @@ export const vehicleCatalog=[
 ];
 export function optionsFor(selection,field){const rows=vehicleCatalog;if(field==='type')return [...new Set(rows.map(x=>x.type).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'tr'));if(field==='make')return [...new Set(rows.filter(x=>!selection.type||x.type===selection.type).map(x=>x.make).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'tr'));if(field==='model')return [...new Set(rows.filter(x=>(!selection.type||x.type===selection.type)&&(!selection.make||x.make===selection.make)).map(x=>x.model).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'tr'));if(field==='year')return [...new Set(rows.filter(x=>(!selection.make||x.make===selection.make)&&(!selection.model||x.model===selection.model)).flatMap(x=>x.years?.length?x.years:yearsFor(x))).filter(Boolean)].sort((a,b)=>a-b).map(String);if(field==='engine')return [...new Set(rows.filter(x=>(!selection.make||x.make===selection.make)&&(!selection.model||x.model===selection.model)&&(!selection.year||!x.years?.length||x.years.includes(Number(selection.year))).flatMap(x=>[...(x.trims||[]),...(x.engines||[])])).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'tr'));return [];}
 function yearsFor(x){const a=[];const f=Number(x.year_from);const t=Number(x.year_to||f);if(Number.isFinite(f))for(let y=f;y<=t;y++)a.push(y);return a;}
+
+export function getMakes(selection={}) { return optionsFor(selection,'make'); }
+export function getModels(selection={}) { return optionsFor(selection,'model'); }
+export function getYears(selection={}) { return optionsFor(selection,'year'); }
