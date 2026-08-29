@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-08-29T09:49:58.244Z",
+  "generatedAt": "2026-08-29T10:09:20.556Z",
   "sourceFiles": [
     "data/vehicle-catalog-merged.json",
     "data/vehicle-catalog.json",
     "data/turkey-vehicle-taxonomy.json"
   ],
+  "externalSourcesAttempted": 0,
   "counts": {
     "brands": 2,
     "models": 5449,
