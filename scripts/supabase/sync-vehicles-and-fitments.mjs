@@ -4,16 +4,10 @@ const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/$/, '');
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!SUPABASE_URL || !SERVICE_KEY) throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY GitHub secret.');
 
-const auth = {
-  apikey: SERVICE_KEY,
-  Authorization: `Bearer ${SERVICE_KEY}`,
-  'Content-Type': 'application/json',
-};
-
+const auth = { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}`, 'Content-Type': 'application/json' };
 const PAGE = 1000;
 const FITMENT_FLUSH = 500;
 const REQUEST_TIMEOUT_MS = 25000;
-
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const request = async (url, options = {}, label = 'request') => {
@@ -22,11 +16,7 @@ const request = async (url, options = {}, label = 'request') => {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
     try {
-      const response = await fetch(url, {
-        ...options,
-        headers: { ...auth, ...(options.headers || {}) },
-        signal: controller.signal,
-      });
+      const response = await fetch(url, { ...options, headers: { ...auth, ...(options.headers || {}) }, signal: controller.signal });
       const text = await response.text();
       if (response.ok) return text;
       last = `${response.status} ${text.slice(0, 500)}`;
@@ -34,9 +24,7 @@ const request = async (url, options = {}, label = 'request') => {
     } catch (error) {
       last = error?.name === 'AbortError' ? 'request timeout' : String(error);
       console.warn(`${label} failed attempt ${attempt}/5: ${last}`);
-    } finally {
-      clearTimeout(timer);
-    }
+    } finally { clearTimeout(timer); }
     if (attempt < 5) await sleep(attempt * 3000);
   }
   throw new Error(`${label} failed after 5 attempts: ${last}`);
@@ -44,29 +32,20 @@ const request = async (url, options = {}, label = 'request') => {
 
 const getJson = async (table, select, offset, label) => {
   const url = `${SUPABASE_URL}/rest/v1/${table}?select=${encodeURIComponent(select)}&order=id.asc`;
-  const text = await request(url, {
-    method: 'GET',
-    headers: { Range: `${offset}-${offset + PAGE - 1}`, Prefer: 'count=none' },
-  }, label);
+  const text = await request(url, { method: 'GET', headers: { Range: `${offset}-${offset + PAGE - 1}`, Prefer: 'count=none' } }, label);
   return JSON.parse(text);
 };
 
 const normalize = (value) => String(value ?? '')
-  .normalize('NFKD')
-  .replace(/[\u0300-\u036f]/g, '')
-  .toUpperCase()
-  .replace(/[^A-Z0-9]+/g, '');
-
+  .normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]+/g, '');
 const normalizeYear = (value, fallback) => {
   const n = Number.parseInt(String(value ?? ''), 10);
   return Number.isFinite(n) ? n : fallback;
 };
-
 const appArrays = (record) => [
   ...(Array.isArray(record.structured_applications) ? record.structured_applications : []),
   ...(Array.isArray(record.applications) ? record.applications : []),
 ];
-
 const vehicleKey = (make, model, yearFrom, yearTo, engine) => [
   normalize(make), normalize(model), yearFrom ?? 0, yearTo ?? 9999, normalize(engine),
 ].join('|');
@@ -79,10 +58,7 @@ if (!vehiclesFromCatalog.length) throw new Error('vehicle-catalog-sync.json cont
 const vehicleUrl = `${SUPABASE_URL}/functions/v1/sync-vehicle-catalog`;
 for (let offset = 0; offset < vehiclesFromCatalog.length; offset += 500) {
   const batch = vehiclesFromCatalog.slice(offset, offset + 500);
-  const text = await request(vehicleUrl, {
-    method: 'POST',
-    body: JSON.stringify({ vehicles: batch }),
-  }, `Vehicle sync ${offset}`);
+  const text = await request(vehicleUrl, { method: 'POST', body: JSON.stringify({ vehicles: batch }) }, `Vehicle sync ${offset}`);
   console.log(`VEHICLE_SYNC offset=${offset} count=${batch.length} result=${text.slice(0, 400)}`);
 }
 console.log(`VEHICLES_SOURCE_CATALOG=${vehiclesFromCatalog.length}`);
@@ -102,16 +78,8 @@ for (let offset = 0;; offset += PAGE) {
 
 const vehiclesByKey = new Map();
 for (let offset = 0;; offset += PAGE) {
-  const rows = await getJson(
-    'vehicles',
-    'id,make,model,year_from,year_to,engine_code',
-    offset,
-    `Load vehicles ${offset}`,
-  );
-  for (const row of rows) {
-    const key = vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code);
-    vehiclesByKey.set(key, row.id);
-  }
+  const rows = await getJson('vehicles', 'id,make,model,year_from,year_to,engine_code', offset, `Load vehicles ${offset}`);
+  for (const row of rows) vehiclesByKey.set(vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code), row.id);
   console.log(`VEHICLE_INDEX offset=${offset} count=${rows.length}`);
   if (rows.length < PAGE) break;
 }
@@ -121,6 +89,7 @@ let catalogRecords = 0;
 let newVehicles = 0;
 let fitmentsWritten = 0;
 let fitmentBuffer = [];
+const fitmentKeys = new Set();
 const pendingVehicles = new Map();
 
 const flushVehicles = async () => {
@@ -136,10 +105,7 @@ const flushVehicles = async () => {
       }))),
     }, `Insert vehicles ${i}`);
     const inserted = JSON.parse(text);
-    for (const row of inserted) {
-      const key = vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code);
-      vehiclesByKey.set(key, row.id);
-    }
+    for (const row of inserted) vehiclesByKey.set(vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code), row.id);
     newVehicles += inserted.length;
   }
   pendingVehicles.clear();
@@ -149,25 +115,17 @@ const flushFitments = async () => {
   if (!fitmentBuffer.length) return;
   const batch = fitmentBuffer;
   fitmentBuffer = [];
-  await request(
-    `${SUPABASE_URL}/rest/v1/part_vehicle_fitments?on_conflict=part_id,vehicle_id`,
-    {
-      method: 'POST',
-      headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
-      body: JSON.stringify(batch),
-    },
-    `Insert fitments count=${batch.length}`,
-  );
+  fitmentKeys.clear();
+  await request(`${SUPABASE_URL}/rest/v1/part_vehicle_fitments?on_conflict=part_id,vehicle_id`, {
+    method: 'POST',
+    headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
+    body: JSON.stringify(batch),
+  }, `Insert fitments count=${batch.length}`);
   fitmentsWritten += batch.length;
 };
 
 for (;;) {
-  const rows = await getJson(
-    'ai_catalog_records',
-    'id,brand,part_number,applications,structured_applications,source_quality',
-    catalogOffset,
-    `Load catalog ${catalogOffset}`,
-  );
+  const rows = await getJson('ai_catalog_records', 'id,brand,part_number,applications,structured_applications,source_quality', catalogOffset, `Load catalog ${catalogOffset}`);
   if (!rows.length) break;
 
   for (const record of rows) {
@@ -190,9 +148,11 @@ for (;;) {
         pendingVehicles.set(key, { make, model, year_from: yearFrom, year_to: yearTo, engine_code: engine });
         continue;
       }
-
       if (String(vehicleId).startsWith('PENDING:')) continue;
 
+      const fitmentKey = `${partId}|${vehicleId}`;
+      if (fitmentKeys.has(fitmentKey)) continue;
+      fitmentKeys.add(fitmentKey);
       const quality = Number(app?.source_quality ?? record.source_quality ?? 0.99);
       fitmentBuffer.push({
         part_id: partId,
@@ -205,8 +165,6 @@ for (;;) {
     }
   }
 
-  // Newly discovered variants are inserted and immediately indexed, so the
-  // next catalog page can use them without another full database scan.
   await flushVehicles();
   if (rows.length < PAGE) break;
   catalogOffset += PAGE;
@@ -218,7 +176,7 @@ await flushFitments();
 
 console.log(JSON.stringify({
   FITMENT_SYNC_COMPLETE: true,
-  mode: 'catalog_direct_batched',
+  mode: 'catalog_direct_batched_rest',
   catalog_records_processed: catalogRecords,
   vehicles_added: newVehicles,
   fitments_written: fitmentsWritten,
