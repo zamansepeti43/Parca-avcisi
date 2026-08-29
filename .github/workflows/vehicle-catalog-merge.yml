@@ -1,0 +1,46 @@
+name: Parça Avcısı - Turkey vehicle catalog merge
+
+on:
+  workflow_dispatch:
+    inputs:
+      fleetbyte:
+        description: 'Enrich Turkish makes with FleetByte variants'
+        required: false
+        default: 'true'
+  schedule:
+    - cron: '30 2 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Merge vehicle sources
+        env:
+          FLEETBYTE: ${{ github.event_name == 'schedule' && '1' || (github.event.inputs.fleetbyte == 'true' && '1' || '0') }}
+        run: node scripts/vehicle-catalog/merge_turkey_catalog.mjs
+
+      - name: Validate generated catalog
+        run: |
+          node --check src/lib/vehicle-catalog.js
+          node -e "import('./src/lib/vehicle-catalog.js').then(m=>{if(!m.vehicleCatalog?.length) process.exit(1); console.log('vehicles:',m.vehicleCatalog.length)})"
+
+      - name: Commit merged catalog
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-merged.json src/lib/vehicle-catalog.js
+          git diff --cached --quiet && exit 0
+          git commit -m 'data: merge Turkey vehicle catalog sources'
+          git push
