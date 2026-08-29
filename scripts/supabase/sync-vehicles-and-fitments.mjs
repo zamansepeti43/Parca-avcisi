@@ -10,7 +10,7 @@ const vehicles = Array.isArray(raw.vehicles) ? raw.vehicles : [];
 if (!vehicles.length) throw new Error('vehicle-catalog-sync.json contains no vehicles.');
 
 // Canonical vehicle batches are sent directly to the Supabase Edge Function.
-// The function deduplicates records before the upsert.
+// The function removes duplicate vehicle identities before the upsert.
 const vehicleUrl = `${SUPABASE_URL}/functions/v1/sync-vehicle-catalog`;
 const vehicleBatch = 500;
 for (let offset = 0; offset < vehicles.length; offset += vehicleBatch) {
