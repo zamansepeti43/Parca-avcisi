@@ -7,8 +7,8 @@ on:
   push:
     paths:
       - 'data/**'
-      - 'scripts/catalog-sync.mjs'
       - 'scripts/vehicle-catalog/**'
+      - 'scripts/catalog-sync.mjs'
       - '.github/workflows/vehicle-catalog-sync.yml'
 
 permissions:
@@ -26,7 +26,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+
+      - name: Verify catalog API
+        run: node -e "import('./src/lib/vehicle-catalog.js').then(m=>console.log('catalog API OK:', typeof m.getMakes, typeof m.getModels, typeof m.getYears))"
 
       - name: Merge free vehicle sources
         env:
