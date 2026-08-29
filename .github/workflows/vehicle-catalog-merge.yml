@@ -9,7 +9,8 @@ on:
         default: 'true'
   push:
     paths:
-      - 'scripts/vehicle-catalog/merge_turkey_catalog.mjs'
+      - 'scripts/vehicle-catalog/**'
+      - 'data/vehicle-catalog-sources/turkey-makes.json'
       - '.github/workflows/vehicle-catalog-merge.yml'
   schedule:
     - cron: '30 2 * * 1'
@@ -35,6 +36,9 @@ jobs:
           FLEETBYTE: ${{ github.event_name == 'schedule' && '1' || (github.event.inputs.fleetbyte == 'true' && '1' || '0') }}
         run: node scripts/vehicle-catalog/merge_turkey_catalog.mjs
 
+      - name: Expand to Turkey make scope
+        run: node scripts/vehicle-catalog/expand_turkey_makes.mjs
+
       - name: Validate generated catalog
         run: |
           node --check src/lib/vehicle-catalog.js
@@ -44,7 +48,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-merged.json src/lib/vehicle-catalog.js
+          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-sources/turkey-makes.json data/vehicle-catalog-merged.json src/lib/vehicle-catalog.js
           git diff --cached --quiet && exit 0
-          git commit -m 'data: merge Turkey vehicle catalog sources'
+          git commit -m 'data: expand Turkey vehicle catalog scope'
           git push
