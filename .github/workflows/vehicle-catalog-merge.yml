@@ -42,16 +42,19 @@ jobs:
       - name: Restore compatibility exports
         run: node scripts/vehicle-catalog/fix_generated_exports.mjs
 
+      - name: Audit catalog coverage
+        run: node scripts/vehicle-catalog/audit_catalog.mjs
+
       - name: Validate generated catalog
         run: |
           node --check src/lib/vehicle-catalog.js
           node -e "import('./src/lib/vehicle-catalog.js').then(m=>{if(!m.vehicleCatalog?.length) process.exit(1); if(!m.getMakes||!m.getModels||!m.getYears) process.exit(1); console.log('vehicles:',m.vehicleCatalog.length)})"
 
-      - name: Commit merged catalog
+      - name: Commit merged catalog and audit
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-sources/turkey-makes.json data/vehicle-catalog-merged.json src/lib/vehicle-catalog.js
+          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-sources/turkey-makes.json data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json src/lib/vehicle-catalog.js
           git diff --cached --quiet && exit 0
-          git commit -m 'data: expand Turkey vehicle catalog scope'
+          git commit -m 'data: expand Turkey vehicle catalog and audit coverage'
           git push
