@@ -34,8 +34,7 @@ export async function verifyEmailOtp(email, token) {
   const { data, error } = await requireSupabase().auth.verifyOtp({
     email: String(email || '').trim().toLowerCase(),
     token: String(token || '').trim(),
-    // This token is the signup confirmation OTP, not a password-reset or magic-link token.
-    type: 'signup',
+    type: 'email',
   });
   if (error) throw error;
   return data;
