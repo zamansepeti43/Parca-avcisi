@@ -27,8 +27,9 @@
 .pane-actions button.primary,.pane-btn.primary{border-color:var(--gold);background:var(--gold);color:var(--ink)}
 .pane-actions button.danger{color:#b02e2e;border-color:#e4b9b9}
 .pane-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
-.pane-tabs button{border:1px solid #d9dcda;border-radius:999px;background:#fff;padding:7px 13px;font-size:12px;font-weight:750}
-.pane-tabs button.active{border-color:var(--ink);background:var(--ink);color:#fff}
+.pane-tabs button{border:1px solid #d9dcda;border-radius:999px;background:#fff;padding:7px 13px;font-size:12px;font-weight:750;transition:background .15s,border-color .15s,color .15s,box-shadow .15s}
+.pane-tabs button:hover{border-color:var(--gold);background:#fffaf0}
+.pane-tabs button.active{border-color:var(--gold);background:var(--gold);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
 .pane-form{display:grid;gap:10px;margin-top:14px;max-width:560px}
 .pane-form label{display:grid;gap:5px;font-size:11px;font-weight:750;color:#4a515a}
 .pane-form input,.pane-form select,.pane-form textarea{padding:11px;border:1px solid #d9dcda;border-radius:9px;background:#fff}
