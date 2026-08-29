@@ -7,6 +7,10 @@ on:
         description: 'Enrich Turkish makes with FleetByte variants'
         required: false
         default: 'true'
+  push:
+    paths:
+      - 'scripts/vehicle-catalog/merge_turkey_catalog.mjs'
+      - '.github/workflows/vehicle-catalog-merge.yml'
   schedule:
     - cron: '30 2 * * 1'
 
