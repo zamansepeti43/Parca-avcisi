@@ -49,14 +49,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
-          for attempt in 1 2 3 4 5; do
-            echo "Supabase sync attempt $attempt/5"
-            if node scripts/supabase/sync-vehicles-and-fitments.mjs; then
-              exit 0
-            fi
-            if [ "$attempt" -lt 5 ]; then sleep $((attempt * 15)); fi
-          done
-          exit 1
+          node scripts/supabase/sync-direct-fitments-from-parts.mjs
       - name: Commit catalog changes
         run: |
           git config user.name 'github-actions[bot]'
