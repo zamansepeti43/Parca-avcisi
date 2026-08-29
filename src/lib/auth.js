@@ -15,6 +15,15 @@ export async function signUp({ email, password, fullName, phone, address, captch
   return data;
 }
 
+export async function resendEmailOtp(email) {
+  const { data, error } = await requireSupabase().auth.resend({
+    type: 'signup',
+    email: String(email || '').trim().toLowerCase(),
+  });
+  if (error) throw error;
+  return data;
+}
+
 export async function signIn({ email, password }) {
   const { data, error } = await requireSupabase().auth.signInWithPassword({ email, password });
   if (error) throw error;
