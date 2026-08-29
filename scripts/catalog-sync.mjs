@@ -1,47 +1,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-
-const root = process.cwd();
-const dataDir = path.join(root, 'data');
-const outFile = path.join(dataDir, 'vehicle-catalog-sync.json');
-const sourcesFile = path.join(root, 'scripts', 'catalog-sources.json');
-const normalize = (value) => String(value ?? '').trim().toLocaleLowerCase('tr-TR').replace(/\s+/g, ' ');
-const key = (v) => [v.make,v.model,v.year,v.body,v.engine,v.fuel,v.transmission,v.trim].map(normalize).join('|');
-async function readJson(file) { try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch { return []; } }
-async function fetchJson(url) { const r = await fetch(url, { headers: { accept: 'application/json', 'user-agent': 'Parca-Avcisi-CatalogSync/1.0' } }); if (!r.ok) throw new Error(`${r.status} ${r.statusText}: ${url}`); return r.json(); }
-function flatten(source) {
-  const rows = [];
-  const walk = (make, model, year, item = {}) => {
-    const engines = item.engines ?? item.engine ?? [];
-    const trims = item.trims ?? item.versions ?? item.variants ?? [];
-    const engineList = Array.isArray(engines) ? engines : [engines];
-    const trimList = Array.isArray(trims) ? trims : [trims];
-    for (const e of (engineList.length ? engineList : [{}])) {
-      const base = typeof e === 'string' ? { engine: e } : e || {};
-      for (const t of (trimList.length ? trimList : [{}])) {
-        const trim = typeof t === 'string' ? t : (t?.name ?? t?.trim ?? t?.label ?? null);
-        rows.push({ make, model, year: year ?? item.year ?? t?.year ?? e?.year ?? null, body: item.body ?? item.body_style ?? t?.body ?? e?.body ?? null, engine: base.name ?? base.engine ?? base.label ?? item.engine ?? null, fuel: base.fuel ?? e?.fuel ?? t?.fuel ?? item.fuel ?? null, transmission: base.transmission ?? e?.transmission ?? t?.transmission ?? item.transmission ?? null, trim });
-      }
-    }
-  };
-  if (Array.isArray(source)) for (const item of source) { if (item.make || item.brand) walk(item.make ?? item.brand, item.model ?? item.name, item.year, item); else if (item.models) for (const model of item.models) walk(item.make ?? item.brand ?? item.name, model.name ?? model.model, model.year, model); }
-  else if (source && typeof source === 'object') for (const [make, models] of Object.entries(source)) if (Array.isArray(models)) for (const item of models) walk(make, item.model ?? item.name, item.year, item);
-  return rows;
-}
-
-const candidates = ['data/vehicle-catalog-merged.json','data/vehicle-catalog.json','data/turkey-vehicle-taxonomy.json'];
-const rows = [];
-for (const file of candidates) rows.push(...flatten(await readJson(path.join(root, file))));
-const external = [];
-const registry = await readJson(sourcesFile);
-for (const source of (registry.sources ?? []).filter(s => s.enabled && s.url && s.source_type === 'json')) {
-  try { external.push(...flatten(await fetchJson(source.url))); } catch (error) { console.warn(`Source skipped: ${source.id}: ${error.message}`); }
-}
-rows.push(...external);
-const unique = new Map();
-for (const row of rows) if (row.make && row.model) unique.set(key(row), row);
-const vehicles = [...unique.values()].sort((a,b) => key(a).localeCompare(key(b), 'tr-TR'));
-const audit = { generatedAt: new Date().toISOString(), sourceFiles: candidates, externalSourcesAttempted: external.length, counts: { brands: new Set(vehicles.map(v=>normalize(v.make))).size, models: new Set(vehicles.map(v=>`${normalize(v.make)}|${normalize(v.model)}`)).size, engineVariants: new Set(vehicles.map(v=>[v.make,v.model,v.year,v.body,v.engine,v.fuel,v.transmission].map(normalize).join('|'))).size, trims: new Set(vehicles.map(v=>[v.make,v.model,v.year,v.body,v.engine,v.fuel,v.transmission,v.trim].map(normalize).join('|'))).size, vehicles: vehicles.length }, vehicles };
-await fs.mkdir(dataDir, { recursive:true });
-await fs.writeFile(outFile, JSON.stringify(audit, null, 2) + '\n');
-console.log(JSON.stringify(audit.counts));
+const root=process.cwd();
+const dataDir=path.join(root,'data');
+const outFile=path.join(dataDir,'vehicle-catalog-sync.json');
+const normalize=v=>String(v??'').trim().toLocaleLowerCase('tr-TR').replace(/\s+/g,' ');
+const key=v=>[v.make,v.model,v.year,v.body,v.engine,v.fuel,v.transmission,v.trim].map(normalize).join('|');
+async function readJson(file){try{return JSON.parse(await fs.readFile(file,'utf8'));}catch{return [];}}
+function validMake(make){const m=normalize(make);return !!m&&!['records','catalog_classes','undefined','null','object object'].includes(m);}
+function flatten(source){const rows=[];const walk=(make,model,year,item={})=>{if(!validMake(make)||!model||typeof model==='object')return;const years=Array.isArray(item.years)?item.years.filter(Number.isFinite).map(Number):[];const ys=year!=null?[year]:(years.length?years:[null]);const engines=item.engines??item.engine??[];const trims=item.trims??item.versions??item.variants??[];const es=Array.isArray(engines)?engines:[engines];const ts=Array.isArray(trims)?trims:[trims];for(const y of ys)for(const e of(es.length?es:[{}])){const base=typeof e==='string'?{engine:e}:e||{};for(const t of(ts.length?ts:[{}])){const trim=typeof t==='string'?t:(t?.name??t?.trim??t?.label??null);rows.push({make:String(make).trim(),model:String(model).trim(),year:y,body:item.body??item.body_style??t?.body??e?.body??null,engine:base.name??base.engine??base.label??(typeof item.engine==='string'?item.engine:null),fuel:base.fuel??e?.fuel??t?.fuel??item.fuel??null,transmission:base.transmission??e?.transmission??t?.transmission??item.transmission??null,trim});}}};
+if(Array.isArray(source)){for(const item of source){if(item?.make||item?.brand)walk(item.make??item.brand,item.model??item.name,item.year,item);else if(Array.isArray(item?.models))for(const model of item.models)walk(item.make??item.brand??item.name,model.name??model.model,model.year,model);}}else if(source&&typeof source==='object'){if(Array.isArray(source.records))for(const item of source.records)walk(item.make??item.brand,item.model??item.name,item.year,item);else if(Array.isArray(source.vehicles))for(const item of source.vehicles)walk(item.make??item.brand,item.model??item.name,item.year,item);else if(Array.isArray(source.items))for(const item of source.items)walk(item.make??item.brand,item.model??item.name,item.year,item);else for(const [make,models] of Object.entries(source))if(Array.isArray(models))for(const item of models)walk(make,item.model??item.name,item.year,item);}return rows;}
+const rows=flatten(await readJson(path.join(dataDir,'vehicle-catalog-merged.json')));const unique=new Map();for(const row of rows)if(validMake(row.make)&&row.model)unique.set(key(row),row);const vehicles=[...unique.values()].sort((a,b)=>key(a).localeCompare(key(b),'tr-TR'));const audit={generatedAt:new Date().toISOString(),sourceFiles:['data/vehicle-catalog-merged.json'],counts:{brands:new Set(vehicles.map(v=>normalize(v.make))).size,models:new Set(vehicles.map(v=>`${normalize(v.make)}|${normalize(v.model)}`)).size,engineVariants:new Set(vehicles.map(v=>[v.make,v.model,v.year,v.body,v.engine,v.fuel,v.transmission].map(normalize).join('|'))).size,trims:new Set(vehicles.map(key)).size,vehicles:vehicles.length},vehicles};await fs.mkdir(dataDir,{recursive:true});await fs.writeFile(outFile,JSON.stringify(audit,null,2)+'\n');console.log(JSON.stringify(audit.counts));
