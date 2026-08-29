@@ -42,13 +42,20 @@ const normalizeYear = (value, fallback) => {
   const n = Number.parseInt(String(value ?? ''), 10);
   return Number.isFinite(n) ? n : fallback;
 };
-const appArrays = (record) => [
-  ...(Array.isArray(record.structured_applications) ? record.structured_applications : []),
-  ...(Array.isArray(record.applications) ? record.applications : []),
-];
-const vehicleKey = (make, model, yearFrom, yearTo, engine) => [
-  normalize(make), normalize(model), yearFrom ?? 0, yearTo ?? 9999, normalize(engine),
-].join('|');
+const yearOverlap = (vf, vt, af, at) => (vf ?? 0) <= (at ?? 9999) && (af ?? 0) <= (vt ?? 9999);
+const appArrays = (record) => {
+  const out = [];
+  for (const key of ['structured_applications', 'applications']) {
+    const value = record[key];
+    const arr = Array.isArray(value) ? value : [];
+    for (const item of arr) {
+      if (item && typeof item === 'object') out.push(item);
+      else if (typeof item === 'string') out.push({ raw: item });
+    }
+  }
+  return out;
+};
+const vehicleKey = (make, model, yearFrom, yearTo, engine) => [normalize(make), normalize(model), yearFrom ?? 0, yearTo ?? 9999, normalize(engine)].join('|');
 
 const raw = JSON.parse(await fs.readFile('data/vehicle-catalog-sync.json', 'utf8'));
 const vehiclesFromCatalog = Array.isArray(raw.vehicles) ? raw.vehicles : [];
@@ -63,8 +70,7 @@ for (let offset = 0; offset < vehiclesFromCatalog.length; offset += 500) {
 }
 console.log(`VEHICLES_SOURCE_CATALOG=${vehiclesFromCatalog.length}`);
 
-// 2) Build small in-memory indexes. This avoids the old full-table RPC join
-// that exceeded PostgREST/Postgres statement_timeout.
+// 2) Small indexes: no giant RPC joins.
 const partsByKey = new Map();
 for (let offset = 0;; offset += PAGE) {
   const rows = await getJson('parts', 'id,brand,part_number', offset, `Load parts ${offset}`);
@@ -77,20 +83,27 @@ for (let offset = 0;; offset += PAGE) {
 }
 
 const vehiclesByKey = new Map();
+const vehiclesByMake = new Map();
 for (let offset = 0;; offset += PAGE) {
   const rows = await getJson('vehicles', 'id,make,model,year_from,year_to,engine_code', offset, `Load vehicles ${offset}`);
-  for (const row of rows) vehiclesByKey.set(vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code), row.id);
+  for (const row of rows) {
+    const key = vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code);
+    vehiclesByKey.set(key, row.id);
+    const makeKey = normalize(row.make);
+    if (!vehiclesByMake.has(makeKey)) vehiclesByMake.set(makeKey, []);
+    vehiclesByMake.get(makeKey).push(row);
+  }
   console.log(`VEHICLE_INDEX offset=${offset} count=${rows.length}`);
   if (rows.length < PAGE) break;
 }
 
+const pendingVehicles = new Map();
 let catalogOffset = 0;
 let catalogRecords = 0;
 let newVehicles = 0;
 let fitmentsWritten = 0;
 let fitmentBuffer = [];
 const fitmentKeys = new Set();
-const pendingVehicles = new Map();
 
 const flushVehicles = async () => {
   if (!pendingVehicles.size) return;
@@ -100,12 +113,15 @@ const flushVehicles = async () => {
     const text = await request(`${SUPABASE_URL}/rest/v1/vehicles`, {
       method: 'POST',
       headers: { Prefer: 'return=representation' },
-      body: JSON.stringify(batch.map(({ make, model, year_from, year_to, engine_code }) => ({
-        make, model, year_from, year_to, engine_code, source_quality: 0.99,
-      }))),
+      body: JSON.stringify(batch.map(({ make, model, year_from, year_to, engine_code }) => ({ make, model, year_from, year_to, engine_code, source_quality: 0.99 }))),
     }, `Insert vehicles ${i}`);
     const inserted = JSON.parse(text);
-    for (const row of inserted) vehiclesByKey.set(vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code), row.id);
+    for (const row of inserted) {
+      vehiclesByKey.set(vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code), row.id);
+      const makeKey = normalize(row.make);
+      if (!vehiclesByMake.has(makeKey)) vehiclesByMake.set(makeKey, []);
+      vehiclesByMake.get(makeKey).push(row);
+    }
     newVehicles += inserted.length;
   }
   pendingVehicles.clear();
@@ -124,6 +140,66 @@ const flushFitments = async () => {
   fitmentsWritten += batch.length;
 };
 
+const modelMatch = (rawText, candidates) => {
+  const text = normalize(rawText);
+  if (!text) return null;
+  let best = null;
+  for (const vehicle of candidates) {
+    const model = normalize(vehicle.model);
+    if (model.length < 3) continue;
+    if (text.includes(model) && (!best || model.length > best.model.length)) best = { vehicle, model };
+  }
+  return best?.vehicle ?? null;
+};
+
+const engineMatches = (rawText, candidates) => {
+  const text = normalize(rawText);
+  if (!text) return [];
+  const hits = [];
+  for (const vehicle of candidates) {
+    const engine = normalize(vehicle.engine_code);
+    if (engine.length < 4) continue;
+    if (!/[0-9]/.test(engine) && engine.length < 5) continue;
+    if (text.includes(engine)) hits.push(vehicle);
+  }
+  return hits;
+};
+
+const resolveVehicles = (record, app) => {
+  const make = String(app?.make ?? '').trim();
+  if (!make) return [];
+  const candidates = vehiclesByMake.get(normalize(make)) ?? [];
+  if (!candidates.length) return [];
+
+  const appModel = String(app?.model ?? app?.model_type ?? '').trim();
+  const rawText = String(app?.raw ?? app?.raw_text ?? '');
+  const appYearFrom = normalizeYear(app?.year_from, 0);
+  const appYearTo = normalizeYear(app?.year_to, 9999);
+  const appEngine = normalize(app?.engine_code ?? '');
+
+  // Exact structured model is preferred.
+  let modelCandidates = candidates;
+  if (appModel) {
+    const wanted = normalize(appModel);
+    modelCandidates = candidates.filter((v) => normalize(v.model) === wanted && yearOverlap(v.year_from, v.year_to, appYearFrom, appYearTo));
+  } else {
+    const matched = modelMatch(rawText, candidates);
+    if (matched) modelCandidates = candidates.filter((v) => normalize(v.model) === normalize(matched.model) && yearOverlap(v.year_from, v.year_to, appYearFrom, appYearTo));
+    else {
+      const engines = engineMatches(rawText, candidates);
+      if (engines.length) return engines;
+      return [];
+    }
+  }
+
+  if (!modelCandidates.length) return [];
+  if (appEngine) {
+    const exactEngine = modelCandidates.filter((v) => normalize(v.engine_code) === appEngine);
+    if (exactEngine.length) return exactEngine;
+  }
+  return modelCandidates;
+};
+
 for (;;) {
   const rows = await getJson('ai_catalog_records', 'id,brand,part_number,applications,structured_applications,source_quality', catalogOffset, `Load catalog ${catalogOffset}`);
   if (!rows.length) break;
@@ -134,34 +210,21 @@ for (;;) {
     if (!partId) continue;
 
     for (const app of appArrays(record)) {
-      const make = String(app?.make ?? '').trim();
-      const model = String(app?.model ?? '').trim();
-      if (!make || !model) continue;
-
-      const yearFrom = normalizeYear(app?.year_from, 0) || null;
-      const yearTo = normalizeYear(app?.year_to, 9999) || null;
-      const engine = String(app?.engine_code ?? '').trim() || null;
-      const key = vehicleKey(make, model, yearFrom, yearTo, engine);
-
-      let vehicleId = vehiclesByKey.get(key);
-      if (!vehicleId) {
-        pendingVehicles.set(key, { make, model, year_from: yearFrom, year_to: yearTo, engine_code: engine });
-        continue;
+      const matches = resolveVehicles(record, app);
+      for (const vehicle of matches) {
+        const fitmentKey = `${partId}|${vehicle.id}`;
+        if (fitmentKeys.has(fitmentKey)) continue;
+        fitmentKeys.add(fitmentKey);
+        const quality = Number(app?.source_quality ?? record.source_quality ?? (app?.model || app?.model_type ? 0.90 : 0.82));
+        fitmentBuffer.push({
+          part_id: partId,
+          vehicle_id: vehicle.id,
+          match_method: 'catalog_direct',
+          confidence: Math.max(0, Math.min(1, Number.isFinite(quality) ? quality : 0.90)),
+          source_record_id: record.id,
+        });
+        if (fitmentBuffer.length >= FITMENT_FLUSH) await flushFitments();
       }
-      if (String(vehicleId).startsWith('PENDING:')) continue;
-
-      const fitmentKey = `${partId}|${vehicleId}`;
-      if (fitmentKeys.has(fitmentKey)) continue;
-      fitmentKeys.add(fitmentKey);
-      const quality = Number(app?.source_quality ?? record.source_quality ?? 0.99);
-      fitmentBuffer.push({
-        part_id: partId,
-        vehicle_id: vehicleId,
-        match_method: 'catalog_direct',
-        confidence: Math.max(0, Math.min(1, Number.isFinite(quality) ? quality : 0.99)),
-        source_record_id: record.id,
-      });
-      if (fitmentBuffer.length >= FITMENT_FLUSH) await flushFitments();
     }
   }
 
@@ -176,7 +239,7 @@ await flushFitments();
 
 console.log(JSON.stringify({
   FITMENT_SYNC_COMPLETE: true,
-  mode: 'catalog_direct_batched_rest',
+  mode: 'catalog_direct_batched_raw_model_engine',
   catalog_records_processed: catalogRecords,
   vehicles_added: newVehicles,
   fitments_written: fitmentsWritten,
