@@ -23,7 +23,7 @@ function options(field) {
 }
 
 function renderForm() {
-  return '<div class="account-pane-head"><div><h2>Araçlarım</h2><p style="margin:4px 0 0;color:#6e747c">Sık kullandığın araçları kaydet. Aracına tıkladığında uyumlu ilanları doğrudan görebilirsin.</p></div></div>' +
+  return '<div class="account-pane-head"><div><h2>Araçlarım</h2><p style="margin:4px 0 0;color:#6e747c">Aracını kaydet. Tek dokunuşla o araca uyumlu parçaları ve aktif ilanları bul.</p></div></div>' +
     '<form id="savedVehicleForm" class="pane-form" style="margin-top:18px">' +
     '<div class="form-grid">' +
     '<label>Araç Tipi' + options('type') + '</label>' +
@@ -38,8 +38,8 @@ function renderForm() {
 function renderList(items) {
   if (!items.length) return '<div class="pane-empty" style="margin-top:18px"><strong>Henüz kayıtlı aracın yok</strong><span>Yukarıdan ilk aracını ekle.</span></div>';
   return '<div class="pane-list" style="margin-top:18px">' + items.map((item) =>
-    '<div class="pane-row saved-vehicle-row" data-open-saved-vehicle="' + esc(item.id) + '" role="button" tabindex="0" title="Uyumlu ilanları göster"><div class="grow"><strong>' + esc(item.nickname || [item.make, item.model].filter(Boolean).join(' ')) + '</strong><small>' + esc([item.vehicle_type, item.make, item.model, item.year, item.version].filter(Boolean).join(' · ')) + '</small></div>' +
-    '<div class="pane-actions"><button class="pane-btn" type="button" data-open-saved-vehicle="' + esc(item.id) + '">Uyumlu İlanlar</button><button class="danger" data-delete-saved-vehicle="' + esc(item.id) + '">Sil</button></div></div>'
+    '<div class="pane-row saved-vehicle-row" data-open-saved-vehicle="' + esc(item.id) + '" role="button" tabindex="0" title="Aracıma ait parçaları göster"><div class="grow"><strong>' + esc(item.nickname || [item.make, item.model].filter(Boolean).join(' ')) + '</strong><small>' + esc([item.vehicle_type, item.make, item.model, item.year, item.version].filter(Boolean).join(' · ')) + '</small></div>' +
+    '<div class="pane-actions"><button class="pane-btn" type="button" data-open-saved-vehicle="' + esc(item.id) + '">Aracıma Ait Parçaları Bul</button><button class="danger" data-delete-saved-vehicle="' + esc(item.id) + '">Sil</button></div></div>'
   ).join('') + '</div>';
 }
 
@@ -48,21 +48,21 @@ function renderCompatible(items, label) {
   const section = document.querySelector('#ilanlar');
   if (!grid || !section) return;
   if (!items.length) {
-    grid.innerHTML = '<div class="empty"><strong>' + esc(label) + ' için uyumlu aktif ilan bulunamadı.</strong><span>Yeni ilanlar geldikçe bu araç için tekrar kontrol edebilirsin.</span></div>';
+    grid.innerHTML = '<div class="empty"><strong>' + esc(label) + ' için uyumlu aktif ilan bulunamadı.</strong><span>Uyumluluk ağı ve yeni ilanlar güncellendikçe sonuçlar genişleyecek.</span></div>';
   } else {
     grid.innerHTML = items.map((item) => {
       const photo = item.image_path ? '<img class="listing-photo" src="' + esc(getListingThumbnailUrl(item.image_path)) + '" alt="' + esc(item.title) + '" loading="lazy">' : '';
       return '<article class="listing-card"><div class="listing-image engine">' + photo + '<span class="condition">' + esc(item.condition === 'new' ? 'Sıfır' : item.condition === 'used' ? '2. El' : item.condition === 'salvage' ? 'Çıkma' : item.condition || '') + '</span><div class="part-art">⚙</div><span class="art-caption">PARÇA AVCISI</span></div><div class="listing-body"><div class="listing-meta"><span>' + esc(item.category || 'Oto Parça') + '</span><span>⌖ ' + esc(item.city || 'Türkiye') + '</span></div><h3>' + esc(item.title) + '</h3><p>' + esc(item.matched_vehicle || label) + '</p><strong class="price">' + money(item.price) + '</strong><div class="seller-line"><span>✓ ' + esc(item.seller_name || 'Satıcı') + '</span><button class="detail-btn" data-detail="' + esc(item.id) + '">İncele</button></div></div></article>';
     }).join('');
   }
-  section.querySelector('.section-head h2')?.replaceChildren(document.createTextNode(label + ' için uyumlu ilanlar'));
+  section.querySelector('.section-head h2')?.replaceChildren(document.createTextNode(label + ' için uyumlu parçalar ve ilanlar'));
   section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 async function openCompatibleVehicle(id) {
   if (!supabaseConfigured) return;
   try {
-    const { data: saved, error: savedError } = await requireSupabase().from('user_vehicles').select('id, make, model, year, version, nickname').eq('id', id).maybeSingle();
+    const { data: saved, error: savedError } = await requireSupabase().from('user_vehicles').select('id, vehicle_id, make, model, year, version, nickname').eq('id', id).maybeSingle();
     if (savedError) throw savedError;
     if (!saved) throw new Error('Kayıtlı araç bulunamadı.');
     const { data, error } = await requireSupabase().rpc('search_saved_vehicle_listings', { p_user_vehicle_id: id, p_limit: 100 });
@@ -71,7 +71,7 @@ async function openCompatibleVehicle(id) {
     renderCompatible(data || [], label);
   } catch (error) {
     const toast = document.querySelector('#toast');
-    if (toast) { toast.textContent = error.message || 'Uyumlu ilanlar yüklenemedi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
+    if (toast) { toast.textContent = error.message || 'Aracına ait parçalar yüklenemedi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
   }
 }
 
@@ -140,7 +140,8 @@ document.addEventListener('submit', async (event) => {
   if (!selection.make || !selection.model) return;
   const nickname = event.target.elements.nickname?.value || '';
   try {
-    await saveVehicle({ vehicleType: selection.type, make: selection.make, model: selection.model, year: selection.year, version: selection.engine, nickname });
+    const resolved = resolver.resolve?.(selection) || null;
+    await saveVehicle({ vehicleId: resolved?.id || null, vehicleType: selection.type, make: selection.make, model: selection.model, year: selection.year, version: selection.engine, nickname });
     selection = { type: '', make: '', model: '', year: '', engine: '' };
     const toast = document.querySelector('#toast');
     if (toast) { toast.textContent = 'Araç kaydedildi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2200); }
