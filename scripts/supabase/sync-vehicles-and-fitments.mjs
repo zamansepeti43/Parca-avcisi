@@ -20,22 +20,24 @@ for (let offset = 0; offset < vehicles.length; offset += vehicleBatch) {
 }
 console.log(`VEHICLES_SOURCE_CATALOG=${vehicles.length}`);
 
-// Resume immediately after the last successful batch from the failed run.
-// Once this recovery run completes, reset this value to null for normal nightly syncs.
-let afterId = '4e175564-ac50-4984-8495-ba0f54ed9fbb';
+// Full restart is intentional: the previous recovery pass completed with matched=0
+// because most catalog applications are raw strings rather than structured objects.
+// The Edge Function v9 now parses raw application text against the vehicle catalog.
+let afterId = null;
 const functionUrl = `${SUPABASE_URL}/functions/v1/sync-part-fitments`;
 const functionBatch = 500;
 let batchNo = 0;
 while (true) {
-  const r = await fetch(functionUrl, { method: 'POST', headers: auth, body: JSON.stringify({ limit: functionBatch, after_id: afterId }) });
+  const payload = { limit: functionBatch, ...(afterId ? { after_id: afterId } : {}) };
+  const r = await fetch(functionUrl, { method: 'POST', headers: auth, body: JSON.stringify(payload) });
   const text = await r.text();
-  if (!r.ok) throw new Error(`Fitment recovery batch after ${afterId} failed: ${r.status} ${text}`);
+  if (!r.ok) throw new Error(`Fitment batch after ${afterId ?? 'START'} failed: ${r.status} ${text}`);
   let result;
   try { result = JSON.parse(text); } catch { throw new Error(`Invalid fitment response: ${text}`); }
   batchNo++;
-  console.log(`FITMENT_RECOVERY_BATCH=${batchNo} after_id=${afterId} result=${text}`);
+  console.log(`FITMENT_BATCH=${batchNo} after_id=${afterId ?? 'START'} result=${text}`);
   const nextId = result.last_id;
   if (!result.has_more || !nextId || nextId === afterId) break;
   afterId = nextId;
 }
-console.log('FITMENT_SYNC_RECOVERY_COMPLETE');
+console.log('FITMENT_SYNC_COMPLETE');
