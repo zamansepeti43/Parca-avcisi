@@ -1,0 +1,48 @@
+name: Cleanup TR Vehicle Catalog UI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: ${{ !contains(github.event.head_commit.message, 'chore: apply TR vehicle catalog cleanup') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch catalog and vehicle picker
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+
+          ui = Path('src/lib/ui-flows.js')
+          s = ui.read_text(encoding='utf-8-sig')
+          s = s.replace("let selection = { type: '', make: '', model: '', generation: '', year: '', engine: '', trim: '' };", "let selection = { type: '', make: '', model: '', year: '', engine: '', trim: '' };")
+          s = s.replace("  ['generation', 'Nesil/Kasa'],\n", "")
+          ui.write_text(s, encoding='utf-8')
+
+          merge = Path('scripts/vehicle-catalog/merge_turkey_catalog.mjs')
+          s = merge.read_text(encoding='utf-8')
+          old = "const fleet=await enrichFleetByte(records,seen); records.sort((a,b)=>key(a.make,a.model,a.generation,a.body).localeCompare(key(b.make,b.model,b.generation,b.body),'tr'));"
+          new = "const taxonomy=JSON.parse(await fs.readFile(path.join(root,'data/turkey-vehicle-taxonomy.json'),'utf8')); const allowedMakes=new Set(Object.values(taxonomy.priority_brands||{}).flat().map(x=>clean(x).toLocaleLowerCase('tr-TR'))); records.splice(0,records.length,...records.filter(x=>allowedMakes.has(clean(x.make).toLocaleLowerCase('tr-TR')))); const fleet=await enrichFleetByte(records,seen); records.sort((a,b)=>key(a.make,a.model,a.generation,a.body).localeCompare(key(b.make,b.model,b.generation,b.body),'tr'));"
+          if old not in s:
+              raise SystemExit('merge target not found')
+          s = s.replace(old, new, 1)
+          merge.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Rebuild TR catalog
+        run: node scripts/vehicle-catalog/merge_turkey_catalog.mjs
+
+      - name: Commit cleanup
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/lib/ui-flows.js scripts/vehicle-catalog/merge_turkey_catalog.mjs data/vehicle-catalog-merged.json src/lib/vehicle-catalog.js
+          git diff --cached --quiet || git commit -m 'chore: apply TR vehicle catalog cleanup'
+          git push
