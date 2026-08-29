@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-29T11:27:05.298Z",
+  "generated_at": "2026-08-29T11:39:24.327Z",
   "source": "ParcaAvcisi vehicle-catalog-merged.json",
   "parca_avcisi": {
-    "marka_sayisi": 39,
-    "model_sayisi": 4687,
+    "marka_sayisi": 98,
+    "model_sayisi": 5864,
     "motor_sayisi": 798,
     "donanim_paket_sayisi": 1624,
     "motor_veya_versiyon_sayisi": 2422,
     "kasa_govde_sayisi": 10,
     "yil_sayisi": 59,
-    "kayit_sayisi": 6374
+    "kayit_sayisi": 7587
   },
   "sahibinden": {
     "marka_sayisi": null,
