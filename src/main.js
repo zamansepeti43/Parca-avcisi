@@ -25,5 +25,6 @@ import './lib/platform-settings.js';
 import { initRequestRealtime } from './lib/request-realtime.js';
 import './lib/route-pages.js';
 import './lib/listing-page.js';
+import './lib/signup-input-fix.js';
 
 initRequestRealtime();
