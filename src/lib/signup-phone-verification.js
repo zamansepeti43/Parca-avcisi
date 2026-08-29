@@ -4,6 +4,7 @@ import { supabaseConfigured } from './supabase.js';
 const PENDING_KEY = 'parca-avcisi-pending-phone-verification';
 const PENDING_EMAIL_KEY = 'parca-avcisi-pending-email-verification';
 const TURNSTILE_SITE_KEY = String(import.meta.env.VITE_TURNSTILE_SITE_KEY || '').trim();
+const PHONE_OTP_UI_TTL_MS = 5 * 60 * 1000;
 let turnstileReady = null;
 
 function normalizePhone(value) {
@@ -16,9 +17,10 @@ function normalizePhone(value) {
 }
 
 function getPending() { try { return JSON.parse(sessionStorage.getItem(PENDING_KEY) || 'null'); } catch { return null; } }
-function setPending(email, phone) { sessionStorage.setItem(PENDING_KEY, JSON.stringify({ email: String(email || '').toLowerCase(), phone })); }
+function setPending(email, phone) { sessionStorage.setItem(PENDING_KEY, JSON.stringify({ email: String(email || '').toLowerCase(), phone, startedAt: Date.now() })); }
 function clearPending() { sessionStorage.removeItem(PENDING_KEY); }
 function setPendingEmail(email, phone) { sessionStorage.setItem(PENDING_EMAIL_KEY, JSON.stringify({ email: String(email || '').trim().toLowerCase(), phone })); }
+function getPendingEmail() { try { return JSON.parse(sessionStorage.getItem(PENDING_EMAIL_KEY) || 'null'); } catch { return null; } }
 function clearPendingEmail() { sessionStorage.removeItem(PENDING_EMAIL_KEY); }
 
 function errorText(error) {
@@ -101,21 +103,16 @@ async function openEmailVerification(email, phone) {
       clearPendingEmail();
       modal.remove();
       const user = await getCurrentUser().catch(() => null);
-      if (user) {
-        await openVerification(phone);
-      } else {
-        window.__showToast?.('E-posta doğrulandı. Şimdi giriş yap.');
-      }
+      if (user) await openVerification(phone);
+      else window.__showToast?.('E-posta doğrulandı. Şimdi giriş yap.');
     } catch (error) { status.textContent = errorText(error); button.disabled = false; }
   });
   form.querySelector('[data-resend-email-code]').addEventListener('click', async () => {
     const button = form.querySelector('[data-resend-email-code]');
     button.disabled = true;
     status.textContent = 'Yeni e-posta kodu gönderiliyor…';
-    try {
-      await resendEmailOtp(email);
-      status.textContent = 'Yeni e-posta kodu gönderildi.';
-    } catch (error) { status.textContent = errorText(error); }
+    try { await resendEmailOtp(email); status.textContent = 'Yeni e-posta kodu gönderildi.'; }
+    catch (error) { status.textContent = errorText(error); }
     finally { button.disabled = false; }
   });
 }
@@ -124,17 +121,26 @@ function modalHtml(phone) {
   return '<div id="signupPhoneVerifyModal" class="app-modal show" aria-hidden="false"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signupPhoneVerifyTitle"><span class="eyebrow">KAYIT DOĞRULAMA</span><h2 id="signupPhoneVerifyTitle">Telefonunu doğrula</h2><p>Telefonuna gönderilen 6 haneli SMS kodunu gir.</p><form id="signupPhoneVerifyForm" class="stack-form"><input name="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required placeholder="6 haneli SMS kodu"><button>Telefonu Doğrula</button><button type="button" data-resend-signup-sms class="secondary">SMS kodunu tekrar gönder</button><small data-signup-phone-status role="status"></small></form></div></div>';
 }
 
-async function openVerification(phone, resend = false) {
+async function openVerification(phone, send = true) {
   const existing = document.querySelector('#signupPhoneVerifyModal');
   if (existing) existing.remove();
+  const pending = getPending();
+  if (pending?.startedAt && Date.now() - Number(pending.startedAt) >= PHONE_OTP_UI_TTL_MS) {
+    clearPending();
+    return false;
+  }
   document.body.insertAdjacentHTML('beforeend', modalHtml(phone));
   const modal = document.querySelector('#signupPhoneVerifyModal');
   const form = document.querySelector('#signupPhoneVerifyForm');
   const status = form.querySelector('[data-signup-phone-status]');
   try {
-    if (resend) status.textContent = 'SMS gönderiliyor…';
-    await startPhoneVerification(phone);
-    status.textContent = 'SMS kodu gönderildi.';
+    if (send) {
+      status.textContent = 'SMS gönderiliyor…';
+      await startPhoneVerification(phone);
+      status.textContent = 'SMS kodu gönderildi. Kod 5 dakika geçerlidir.';
+    } else {
+      status.textContent = 'Aktif SMS doğrulama kodunu gir.';
+    }
   } catch (error) { status.textContent = errorText(error); }
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -154,10 +160,15 @@ async function openVerification(phone, resend = false) {
     const button = form.querySelector('[data-resend-signup-sms]');
     button.disabled = true;
     status.textContent = 'SMS tekrar gönderiliyor…';
-    try { await startPhoneVerification(phone); status.textContent = 'Yeni SMS kodu gönderildi.'; }
-    catch (error) { status.textContent = errorText(error); }
+    try {
+      await startPhoneVerification(phone);
+      const current = getPending();
+      if (current) { current.startedAt = Date.now(); sessionStorage.setItem(PENDING_KEY, JSON.stringify(current)); }
+      status.textContent = 'Yeni SMS kodu gönderildi. Kod 5 dakika geçerlidir.';
+    } catch (error) { status.textContent = errorText(error); }
     finally { button.disabled = false; }
   });
+  return true;
 }
 
 async function handleSignup(event) {
@@ -176,7 +187,6 @@ async function handleSignup(event) {
   if (!/^\+90\d{10}$/.test(phone)) return window.__showToast?.('Geçerli bir Türkiye telefon numarası gir.');
   if (password !== confirm) return window.__showToast?.('Şifreler eşleşmiyor.');
   if (!TURNSTILE_SITE_KEY) return window.__showToast?.('Kayıt güvenliği henüz yapılandırılmamış. Turnstile anahtarı eklenmeden kayıt açılamaz.');
-
   const submit = form.querySelector('button[type="submit"], button:not([type])');
   const captcha = form.querySelector('[data-turnstile-signup]');
   if (submit) submit.disabled = true;
@@ -184,13 +194,8 @@ async function handleSignup(event) {
     const captchaToken = await getCaptchaToken(captcha);
     const result = await signUp({ email, password, fullName: `${firstName} ${lastName}`.trim(), phone, address, captchaToken });
     setPending(email, phone);
-    if (result?.session) {
-      await openVerification(phone);
-    } else {
-      setPendingEmail(email, phone);
-      closeSignupParentModal();
-      await openEmailVerification(email, phone);
-    }
+    if (result?.session) await openVerification(phone);
+    else { setPendingEmail(email, phone); closeSignupParentModal(); await openEmailVerification(email, phone); }
   } catch (error) { window.__showToast?.(errorText(error)); }
   finally { if (submit) submit.disabled = false; }
 }
@@ -198,8 +203,24 @@ async function handleSignup(event) {
 document.addEventListener('submit', handleSignup, true);
 
 document.addEventListener('click', (event) => {
-  if (!event.target.closest('#signupBtn, [data-open-signup]')) return;
-  setTimeout(() => {
+  const signupTrigger = event.target.closest('#signupBtn, [data-open-signup]');
+  if (!signupTrigger) return;
+  setTimeout(async () => {
+    const pending = getPending();
+    const user = await getCurrentUser().catch(() => null);
+    if (pending && user && !user.phone_confirmed_at && pending.email === String(user.email || '').toLowerCase()) {
+      const age = pending.startedAt ? Date.now() - Number(pending.startedAt) : 0;
+      if (age < PHONE_OTP_UI_TTL_MS) {
+        await openVerification(normalizePhone(pending.phone), false);
+        return;
+      }
+      clearPending();
+    }
+    const pendingEmail = getPendingEmail();
+    if (pendingEmail && !user && pendingEmail.email) {
+      await openEmailVerification(pendingEmail.email, pendingEmail.phone);
+      return;
+    }
     const form = document.querySelector('#signupForm');
     if (!form || form.querySelector('[data-turnstile-signup]')) return;
     const holder = document.createElement('div');
@@ -215,7 +236,9 @@ async function resumePendingVerification(user) {
   const pending = getPending();
   if (!user || !pending || pending.email !== String(user.email || '').toLowerCase()) return;
   if (user.phone_confirmed_at) { clearPending(); return; }
-  try { await openVerification(normalizePhone(pending.phone), true); } catch { /* UI reports provider errors */ }
+  const age = pending.startedAt ? Date.now() - Number(pending.startedAt) : 0;
+  if (age >= PHONE_OTP_UI_TTL_MS) { clearPending(); return; }
+  try { await openVerification(normalizePhone(pending.phone), false); } catch { /* UI reports provider errors */ }
 }
 
 if (supabaseConfigured) {
