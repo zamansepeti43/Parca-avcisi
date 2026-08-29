@@ -74,6 +74,13 @@ function modalHtml(phone) {
   return '<div id="signupPhoneVerifyModal" class="app-modal show" aria-hidden="false"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signupPhoneVerifyTitle"><span class="eyebrow">KAYIT DOĞRULAMA</span><h2 id="signupPhoneVerifyTitle">Telefonunu doğrula</h2><p>Hesabını tamamlamak için <strong>' + phone + '</strong> numarasına gönderilen 6 haneli SMS kodunu gir.</p><form id="signupPhoneVerifyForm" class="stack-form"><input name="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required placeholder="6 haneli SMS kodu"><button>Telefonu Doğrula</button><button type="button" data-resend-signup-sms class="secondary">SMS kodunu tekrar gönder</button><small data-signup-phone-status role="status"></small></form></div></div>';
 }
 
+function closeSignupParentModal() {
+  const parent = document.querySelector('#appModal');
+  if (!parent) return;
+  parent.classList.remove('show');
+  parent.setAttribute('aria-hidden', 'true');
+}
+
 async function openVerification(phone, resend = false) {
   const existing = document.querySelector('#signupPhoneVerifyModal');
   if (existing) existing.remove();
@@ -95,7 +102,8 @@ async function openVerification(phone, resend = false) {
       await verifyPhoneOtp(phone, form.elements.otp.value.trim());
       clearPending();
       modal.remove();
-      window.__showToast?.('Kayıt tamamlandı. Telefon numaran doğrulandı.');
+      closeSignupParentModal();
+      window.__showToast?.('Kayıt tamamlandı. E-posta ve telefon doğrulandı.');
       window.dispatchEvent(new CustomEvent('parca:verification-complete'));
     } catch (error) { status.textContent = errorText(error); button.disabled = false; }
   });
