@@ -8,6 +8,7 @@ on:
     paths:
       - 'data/**'
       - 'scripts/catalog-sync.mjs'
+      - 'scripts/vehicle-catalog/**'
       - '.github/workflows/vehicle-catalog-sync.yml'
 
 permissions:
@@ -27,17 +28,25 @@ jobs:
         with:
           node-version: 20
 
-      - name: Sync and audit catalog
-        run: node scripts/catalog-sync.mjs
+      - name: Merge free vehicle sources
+        env:
+          FLEETBYTE: '1'
+        run: node scripts/vehicle-catalog/merge_turkey_catalog.mjs
+
+      - name: Audit merged catalog
+        run: node scripts/vehicle-catalog/audit_catalog.mjs
+
+      - name: Build application
+        run: npm install --no-audit --no-fund && npm run build
 
       - name: Commit catalog changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/vehicle-catalog-sync.json
+          git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json src/lib/vehicle-catalog.js data/vehicle-catalog-sync.json
           if git diff --cached --quiet; then
             echo 'No catalog changes detected.'
           else
-            git commit -m 'chore: sync vehicle catalog'
+            git commit -m 'chore: auto-expand vehicle catalog'
             git push
           fi
