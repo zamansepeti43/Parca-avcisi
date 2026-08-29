@@ -76,7 +76,7 @@ async function getCaptchaToken(container) {
 }
 
 function emailModalHtml(email) {
-  return '<div id="signupEmailVerifyModal" class="app-modal show" aria-hidden="false"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signupEmailVerifyTitle"><span class="eyebrow">KAYIT DOĞRULAMA</span><h2 id="signupEmailVerifyTitle">E-postanı doğrula</h2><p><strong>' + email + '</strong> adresine gönderdiğimiz 8 haneli doğrulama kodunu gir.</p><form id="signupEmailVerifyForm" class="stack-form"><input name="emailOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="10" pattern="[0-9]{6,10}" required placeholder="Doğrulama kodu (6-10 hane)"><button>E-postayı Doğrula</button><button type="button" data-resend-email-code class="secondary">Kodu tekrar gönder</button><small data-signup-email-status role="status"></small></form></div></div>';
+  return '<div id="signupEmailVerifyModal" class="app-modal show" aria-hidden="false"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signupEmailVerifyTitle"><span class="eyebrow">KAYIT DOĞRULAMA</span><h2 id="signupEmailVerifyTitle">E-postanı doğrula</h2><p><strong>' + email + '</strong> adresine gönderdiğimiz 6 haneli doğrulama kodunu gir.</p><form id="signupEmailVerifyForm" class="stack-form"><input name="emailOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required placeholder="6 haneli e-posta kodu"><button>E-postayı Doğrula</button><button type="button" data-resend-email-code class="secondary">Kodu tekrar gönder</button><small data-signup-email-status role="status"></small></form></div></div>';
 }
 
 function closeSignupParentModal() {
