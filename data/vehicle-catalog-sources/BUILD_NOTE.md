@@ -1,0 +1,1 @@
+Vehicle catalog merge completed from the current main branch. This marker intentionally triggers the normal build after generated catalog updates made by GitHub Actions.
