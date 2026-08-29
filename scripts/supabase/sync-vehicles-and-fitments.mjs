@@ -30,9 +30,18 @@ const request = async (url, options = {}, label = 'request') => {
   throw new Error(`${label} failed after 5 attempts: ${last}`);
 };
 
+// Use explicit limit/offset query parameters. Range headers are unreliable for
+// some Supabase/PostgREST relations (notably ai_catalog_records), which can
+// otherwise make a populated table appear empty to the sync job.
 const getJson = async (table, select, offset, label) => {
-  const url = `${SUPABASE_URL}/rest/v1/${table}?select=${encodeURIComponent(select)}&order=id.asc`;
-  const text = await request(url, { method: 'GET', headers: { Range: `${offset}-${offset + PAGE - 1}`, Prefer: 'count=none' } }, label);
+  const params = new URLSearchParams({
+    select,
+    order: 'id.asc',
+    limit: String(PAGE),
+    offset: String(offset),
+  });
+  const url = `${SUPABASE_URL}/rest/v1/${table}?${params.toString()}`;
+  const text = await request(url, { method: 'GET', headers: { Prefer: 'count=none' } }, label);
   return JSON.parse(text);
 };
 
@@ -177,7 +186,6 @@ const resolveVehicles = (record, app) => {
   const appYearTo = normalizeYear(app?.year_to, 9999);
   const appEngine = normalize(app?.engine_code ?? '');
 
-  // Exact structured model is preferred.
   let modelCandidates = candidates;
   if (appModel) {
     const wanted = normalize(appModel);
