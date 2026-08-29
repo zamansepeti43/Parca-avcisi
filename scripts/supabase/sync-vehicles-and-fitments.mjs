@@ -116,47 +116,40 @@ for (let offset = 0;; offset += PAGE) {
   if (rows.length < PAGE) break;
 }
 
-// 3) Walk catalog records in pages. Each page is small, so no SQL statement
-// can grow into the giant IN()/Cartesian query that previously timed out.
 let catalogOffset = 0;
 let catalogRecords = 0;
 let newVehicles = 0;
-let fitmentsInserted = 0;
+let fitmentsWritten = 0;
 let fitmentBuffer = [];
-const pendingVehicleKeys = new Set();
+const pendingVehicles = new Map();
 
 const flushVehicles = async () => {
-  if (!pendingVehicleKeys.size) return;
-  const rows = [];
-  for (const key of pendingVehicleKeys) {
-    const [make, model, yearFrom, yearTo, engine] = key.split('|');
-    rows.push({
-      make,
-      model,
-      year_from: Number(yearFrom) || null,
-      year_to: Number(yearTo) || null,
-      engine_code: engine || null,
-      source_quality: 0.99,
-    });
-  }
+  if (!pendingVehicles.size) return;
+  const rows = [...pendingVehicles.values()];
   for (let i = 0; i < rows.length; i += 200) {
     const batch = rows.slice(i, i + 200);
     const text = await request(`${SUPABASE_URL}/rest/v1/vehicles`, {
       method: 'POST',
-      headers: { Prefer: 'return=minimal' },
-      body: JSON.stringify(batch),
+      headers: { Prefer: 'return=representation' },
+      body: JSON.stringify(batch.map(({ make, model, year_from, year_to, engine_code }) => ({
+        make, model, year_from, year_to, engine_code, source_quality: 0.99,
+      }))),
     }, `Insert vehicles ${i}`);
-    void text;
-    newVehicles += batch.length;
+    const inserted = JSON.parse(text);
+    for (const row of inserted) {
+      const key = vehicleKey(row.make, row.model, row.year_from, row.year_to, row.engine_code);
+      vehiclesByKey.set(key, row.id);
+    }
+    newVehicles += inserted.length;
   }
-  pendingVehicleKeys.clear();
+  pendingVehicles.clear();
 };
 
 const flushFitments = async () => {
   if (!fitmentBuffer.length) return;
   const batch = fitmentBuffer;
   fitmentBuffer = [];
-  const text = await request(
+  await request(
     `${SUPABASE_URL}/rest/v1/part_vehicle_fitments?on_conflict=part_id,vehicle_id`,
     {
       method: 'POST',
@@ -165,8 +158,7 @@ const flushFitments = async () => {
     },
     `Insert fitments count=${batch.length}`,
   );
-  void text;
-  fitmentsInserted += batch.length;
+  fitmentsWritten += batch.length;
 };
 
 for (;;) {
@@ -183,7 +175,6 @@ for (;;) {
     const partId = partsByKey.get(`${normalize(record.brand)}|${normalize(record.part_number)}`);
     if (!partId) continue;
 
-    const seenForRecord = new Set();
     for (const app of appArrays(record)) {
       const make = String(app?.make ?? '').trim();
       const model = String(app?.model ?? '').trim();
@@ -196,18 +187,11 @@ for (;;) {
 
       let vehicleId = vehiclesByKey.get(key);
       if (!vehicleId) {
-        // Queue a new catalog-defined vehicle variant. We keep the key in the
-        // index immediately so duplicate applications in later records do not
-        // create duplicate rows in this run.
-        pendingVehicleKeys.add(key);
-        vehiclesByKey.set(key, `PENDING:${key}`);
+        pendingVehicles.set(key, { make, model, year_from: yearFrom, year_to: yearTo, engine_code: engine });
         continue;
       }
-      if (String(vehicleId).startsWith('PENDING:')) continue;
 
-      const fitmentKey = `${partId}|${vehicleId}`;
-      if (seenForRecord.has(fitmentKey)) continue;
-      seenForRecord.add(fitmentKey);
+      if (String(vehicleId).startsWith('PENDING:')) continue;
 
       const quality = Number(app?.source_quality ?? record.source_quality ?? 0.99);
       fitmentBuffer.push({
@@ -221,12 +205,12 @@ for (;;) {
     }
   }
 
-  // Insert newly discovered vehicle variants between catalog pages, then
-  // subsequent pages can resolve them normally.
+  // Newly discovered variants are inserted and immediately indexed, so the
+  // next catalog page can use them without another full database scan.
   await flushVehicles();
   if (rows.length < PAGE) break;
   catalogOffset += PAGE;
-  console.log(`CATALOG_PROGRESS records=${catalogRecords} fitments=${fitmentsInserted} vehicles_added=${newVehicles}`);
+  console.log(`CATALOG_PROGRESS records=${catalogRecords} fitments=${fitmentsWritten} vehicles_added=${newVehicles}`);
 }
 
 await flushVehicles();
@@ -237,5 +221,5 @@ console.log(JSON.stringify({
   mode: 'catalog_direct_batched',
   catalog_records_processed: catalogRecords,
   vehicles_added: newVehicles,
-  fitments_written: fitmentsInserted,
+  fitments_written: fitmentsWritten,
 }));
