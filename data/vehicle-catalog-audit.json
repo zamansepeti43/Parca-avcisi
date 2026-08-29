@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-08-29T09:45:18.539Z",
+  "source": "ParcaAvcisi vehicle-catalog-merged.json",
+  "parca_avcisi": {
+    "marka_sayisi": 98,
+    "model_sayisi": 5864,
+    "motor_sayisi": 798,
+    "donanim_paket_sayisi": 1624,
+    "motor_veya_versiyon_sayisi": 2422,
+    "kasa_govde_sayisi": 10,
+    "yil_sayisi": 59,
+    "kayit_sayisi": 7587
+  },
+  "sahibinden": {
+    "marka_sayisi": null,
+    "model_sayisi": null,
+    "motor_veya_versiyon_sayisi": null,
+    "donanim_paket_sayisi": null,
+    "note": "Sahibinden does not expose a public bulk taxonomy/API for its complete Marka-Seri-Model-Yil-Motor-Paket-Donanim tree. Do not scrape or infer totals from individual search pages. Use an authorized export/API if available."
+  },
+  "comparison": {
+    "status": "awaiting_authorized_sahibinden_reference",
+    "parca_avcisi_is_ready": true
+  }
+}
