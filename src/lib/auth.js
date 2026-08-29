@@ -21,6 +21,16 @@ export async function signIn({ email, password }) {
   return data;
 }
 
+export async function verifyEmailOtp(email, token) {
+  const { data, error } = await requireSupabase().auth.verifyOtp({
+    email: String(email || '').trim().toLowerCase(),
+    token: String(token || '').trim(),
+    type: 'email',
+  });
+  if (error) throw error;
+  return data;
+}
+
 async function callPhoneOtp(action, phone, token = '') {
   const { data, error } = await requireSupabase().functions.invoke('textbee-phone-otp', {
     body: { action, phone, ...(token ? { token } : {}) },
