@@ -1,0 +1,39 @@
+{
+  "sources": [
+    {
+      "id": "vehiclesdb",
+      "name": "VehiclesDB",
+      "url": "https://github.com/vehiclesdb/vehiclesdb",
+      "enabled": true,
+      "role": "global_vehicle_baseline"
+    },
+    {
+      "id": "informationcar",
+      "name": "InformationCar",
+      "url": "https://www.informationcar.com/",
+      "enabled": true,
+      "role": "trim_and_variant_enrichment"
+    },
+    {
+      "id": "fleetbyte",
+      "name": "fleetByteCatalog",
+      "url": "https://github.com/Disturbing-Byte/fleetByteCatalog-docs",
+      "enabled": true,
+      "role": "variant_fallback"
+    },
+    {
+      "id": "sahibinden_reference",
+      "name": "Sahibinden reference",
+      "url": "https://www.sahibinden.com/otomobil",
+      "enabled": false,
+      "role": "market_reference_only"
+    }
+  ],
+  "rules": {
+    "never_invent_vehicle": true,
+    "deduplicate_by_canonical_key": true,
+    "preserve_existing_records": true,
+    "new_vehicle_requires_source": true,
+    "new_trim_requires_source": true
+  }
+}
