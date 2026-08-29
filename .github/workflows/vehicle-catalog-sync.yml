@@ -19,7 +19,7 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 240
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,6 +33,8 @@ jobs:
         env:
           FLEETBYTE: '1'
         run: node scripts/vehicle-catalog/merge_turkey_catalog.mjs
+      - name: Build sync catalog from merged records
+        run: node scripts/catalog-sync.mjs
       - name: Audit merged catalog
         run: node scripts/vehicle-catalog/audit_catalog.mjs
       - name: Build application
@@ -46,10 +48,18 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: node scripts/supabase/sync-vehicles-and-fitments.mjs
+        run: |
+          for attempt in 1 2 3 4 5; do
+            echo "Supabase sync attempt $attempt/5"
+            if node scripts/supabase/sync-vehicles-and-fitments.mjs; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 5 ]; then sleep $((attempt * 15)); fi
+          done
+          exit 1
       - name: Commit catalog changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json src/lib/vehicle-catalog.js data/vehicle-catalog-sync.json
+          git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json data/vehicle-catalog-sync.json src/lib/vehicle-catalog.js
           if git diff --cached --quiet; then echo 'No catalog changes detected.'; else git commit -m 'chore: auto-expand vehicle catalog'; git push; fi
