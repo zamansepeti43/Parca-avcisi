@@ -20,9 +20,7 @@ for (let offset = 0; offset < vehicles.length; offset += vehicleBatch) {
 }
 console.log(`VEHICLES_SOURCE_CATALOG=${vehicles.length}`);
 
-// Full restart is intentional: the previous recovery pass completed with matched=0
-// because most catalog applications are raw strings rather than structured objects.
-// The Edge Function v9 now parses raw application text against the vehicle catalog.
+// Full restart: sync-part-fitments v12 detects make/model directly inside raw application text.
 let afterId = null;
 const functionUrl = `${SUPABASE_URL}/functions/v1/sync-part-fitments`;
 const functionBatch = 500;
