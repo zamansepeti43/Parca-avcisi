@@ -9,8 +9,6 @@ const raw = JSON.parse(await fs.readFile('data/vehicle-catalog-sync.json', 'utf8
 const vehicles = Array.isArray(raw.vehicles) ? raw.vehicles : [];
 if (!vehicles.length) throw new Error('vehicle-catalog-sync.json contains no vehicles.');
 
-// Canonical vehicle batches are sent directly to the Supabase Edge Function.
-// Vehicle identity uniqueness is enforced by deterministic IDs; trim/package data is preserved.
 const vehicleUrl = `${SUPABASE_URL}/functions/v1/sync-vehicle-catalog`;
 const vehicleBatch = 500;
 for (let offset = 0; offset < vehicles.length; offset += vehicleBatch) {
@@ -22,20 +20,22 @@ for (let offset = 0; offset < vehicles.length; offset += vehicleBatch) {
 }
 console.log(`VEHICLES_SOURCE_CATALOG=${vehicles.length}`);
 
+// Resume immediately after the last successful batch from the failed run.
+// Once this recovery run completes, reset this value to null for normal nightly syncs.
+let afterId = '4e175564-ac50-4984-8495-ba0f54ed9fbb';
 const functionUrl = `${SUPABASE_URL}/functions/v1/sync-part-fitments`;
-const totalParts = 196220;
-const groupSize = 40000;
 const functionBatch = 500;
-for (let groupOffset = 0; groupOffset < totalParts; groupOffset += groupSize) {
-  const groupEnd = Math.min(groupOffset + groupSize, totalParts);
-  console.log(`FITMENT_GROUP start=${groupOffset} end=${groupEnd}`);
-  for (let offset = groupOffset; offset < groupEnd; offset += functionBatch) {
-    const limit = Math.min(functionBatch, groupEnd - offset);
-    const r = await fetch(functionUrl, { method: 'POST', headers: auth, body: JSON.stringify({ limit, offset }) });
-    const text = await r.text();
-    if (!r.ok) throw new Error(`Fitment batch offset ${offset} failed: ${r.status} ${text}`);
-    console.log(`FITMENT_BATCH offset=${offset} limit=${limit} result=${text}`);
-  }
-  console.log(`FITMENT_GROUP_DONE start=${groupOffset} end=${groupEnd}`);
+let batchNo = 0;
+while (true) {
+  const r = await fetch(functionUrl, { method: 'POST', headers: auth, body: JSON.stringify({ limit: functionBatch, after_id: afterId }) });
+  const text = await r.text();
+  if (!r.ok) throw new Error(`Fitment recovery batch after ${afterId} failed: ${r.status} ${text}`);
+  let result;
+  try { result = JSON.parse(text); } catch { throw new Error(`Invalid fitment response: ${text}`); }
+  batchNo++;
+  console.log(`FITMENT_RECOVERY_BATCH=${batchNo} after_id=${afterId} result=${text}`);
+  const nextId = result.last_id;
+  if (!result.has_more || !nextId || nextId === afterId) break;
+  afterId = nextId;
 }
-console.log('FITMENT_SYNC_COMPLETE');
+console.log('FITMENT_SYNC_RECOVERY_COMPLETE');
