@@ -39,10 +39,13 @@ jobs:
       - name: Expand to Turkey make scope
         run: node scripts/vehicle-catalog/expand_turkey_makes.mjs
 
+      - name: Restore compatibility exports
+        run: node scripts/vehicle-catalog/fix_generated_exports.mjs
+
       - name: Validate generated catalog
         run: |
           node --check src/lib/vehicle-catalog.js
-          node -e "import('./src/lib/vehicle-catalog.js').then(m=>{if(!m.vehicleCatalog?.length) process.exit(1); console.log('vehicles:',m.vehicleCatalog.length)})"
+          node -e "import('./src/lib/vehicle-catalog.js').then(m=>{if(!m.vehicleCatalog?.length) process.exit(1); if(!m.getMakes||!m.getModels||!m.getYears) process.exit(1); console.log('vehicles:',m.vehicleCatalog.length)})"
 
       - name: Commit merged catalog
         run: |
