@@ -21,16 +21,28 @@ export async function signIn({ email, password }) {
   return data;
 }
 
-export async function startPhoneVerification(phone) {
-  const { data, error } = await requireSupabase().auth.updateUser({ phone });
+async function callPhoneOtp(action, phone, token = '') {
+  const { data, error } = await requireSupabase().functions.invoke('textbee-phone-otp', {
+    body: { action, phone, ...(token ? { token } : {}) },
+  });
   if (error) throw error;
+  if (data?.error) throw new Error(data.error);
   return data;
 }
 
+export async function startPhoneVerification(phone) {
+  return callPhoneOtp('send', phone);
+}
+
 export async function verifyPhoneOtp(phone, token) {
-  const { data, error } = await requireSupabase().auth.verifyOtp({ phone, token, type: 'phone_change' });
-  if (error) throw error;
-  return data;
+  const result = await callPhoneOtp('verify', phone, token);
+  await requireSupabase().auth.refreshSession();
+  return result;
+}
+
+export async function claimVerifiedPhoneIdentity() {
+  await requireSupabase().auth.refreshSession();
+  return getCurrentUser();
 }
 
 export async function signOut() {
