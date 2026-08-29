@@ -186,6 +186,16 @@ async function handleSignup(event) {
   const address = String(data.get('address') || '').trim();
   if (!/^\+90\d{10}$/.test(phone)) return window.__showToast?.('Geçerli bir Türkiye telefon numarası gir.');
   if (password !== confirm) return window.__showToast?.('Şifreler eşleşmiyor.');
+  const currentUser = await getCurrentUser().catch(() => null);
+  const pending = getPending();
+  if (currentUser && pending && !currentUser.phone_confirmed_at && pending.email === email && normalizePhone(pending.phone) === phone) {
+    const age = pending.startedAt ? Date.now() - Number(pending.startedAt) : 0;
+    if (age < PHONE_OTP_UI_TTL_MS) {
+      await openVerification(phone, false);
+      return;
+    }
+    clearPending();
+  }
   if (!TURNSTILE_SITE_KEY) return window.__showToast?.('Kayıt güvenliği henüz yapılandırılmamış. Turnstile anahtarı eklenmeden kayıt açılamaz.');
   const submit = form.querySelector('button[type="submit"], button:not([type])');
   const captcha = form.querySelector('[data-turnstile-signup]');
