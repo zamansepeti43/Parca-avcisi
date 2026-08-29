@@ -1,7 +1,8 @@
-import { getCurrentUser, onAuthStateChange, signUp, startPhoneVerification, verifyPhoneOtp } from './auth.js';
+import { getCurrentUser, onAuthStateChange, signUp, startPhoneVerification, verifyPhoneOtp, verifyEmailOtp } from './auth.js';
 import { supabaseConfigured } from './supabase.js';
 
 const PENDING_KEY = 'parca-avcisi-pending-phone-verification';
+const PENDING_EMAIL_KEY = 'parca-avcisi-pending-email-verification';
 const TURNSTILE_SITE_KEY = String(import.meta.env.VITE_TURNSTILE_SITE_KEY || '').trim();
 let turnstileReady = null;
 
@@ -17,16 +18,19 @@ function normalizePhone(value) {
 function getPending() { try { return JSON.parse(sessionStorage.getItem(PENDING_KEY) || 'null'); } catch { return null; } }
 function setPending(email, phone) { sessionStorage.setItem(PENDING_KEY, JSON.stringify({ email: String(email || '').toLowerCase(), phone })); }
 function clearPending() { sessionStorage.removeItem(PENDING_KEY); }
+function setPendingEmail(email, phone) { sessionStorage.setItem(PENDING_EMAIL_KEY, JSON.stringify({ email: String(email || '').trim().toLowerCase(), phone })); }
+function getPendingEmail() { try { return JSON.parse(sessionStorage.getItem(PENDING_EMAIL_KEY) || 'null'); } catch { return null; } }
+function clearPendingEmail() { sessionStorage.removeItem(PENDING_EMAIL_KEY); }
 
 function errorText(error) {
   const message = String(error?.message || '').trim();
   const lower = message.toLowerCase();
   if (/captcha|turnstile/i.test(message)) return 'İnsan doğrulaması başarısız. Lütfen güvenlik kontrolünü tekrar tamamla.';
-  if (/twilio|sms.*provider|phone.*provider|provider.*phone|sms.*not.*configured|missing.*account.*sid/i.test(message)) return 'Telefon SMS sağlayıcısı henüz yapılandırılmamış.';
-  if (/rate.?limit|too many|frequency/i.test(message)) return 'Çok sık SMS istendi. Lütfen biraz bekleyip tekrar dene.';
+  if (/rate.?limit|too many|frequency/i.test(message)) return 'Çok sık kod istendi. Lütfen biraz bekleyip tekrar dene.';
+  if (/expired|invalid.*token|invalid.*otp|token.*expired|otp.*expired/i.test(lower)) return 'Kod geçersiz veya süresi dolmuş. Yeni kod iste.';
   if (/user already registered|email.*already|email.*exists|already.*registered.*email/i.test(lower)) return 'Bu e-posta adresi zaten bir hesapta kayıtlı. Farklı bir e-posta kullan veya mevcut hesabınla giriş yap.';
   if (/phone.*already|already.*phone|phone.*exists|phone.*used|phone.*linked/i.test(lower)) return 'Bu telefon numarası başka bir hesapta doğrulanmış. Başka bir numara kullan.';
-  return message || 'SMS doğrulaması başlatılamadı.';
+  return message || 'Doğrulama başlatılamadı.';
 }
 
 async function loadTurnstile() {
@@ -70,8 +74,8 @@ async function getCaptchaToken(container) {
   });
 }
 
-function modalHtml(phone) {
-  return '<div id="signupPhoneVerifyModal" class="app-modal show" aria-hidden="false"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signupPhoneVerifyTitle"><span class="eyebrow">KAYIT DOĞRULAMA</span><h2 id="signupPhoneVerifyTitle">Telefonunu doğrula</h2><p>Hesabını tamamlamak için <strong>' + phone + '</strong> numarasına gönderilen 6 haneli SMS kodunu gir.</p><form id="signupPhoneVerifyForm" class="stack-form"><input name="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required placeholder="6 haneli SMS kodu"><button>Telefonu Doğrula</button><button type="button" data-resend-signup-sms class="secondary">SMS kodunu tekrar gönder</button><small data-signup-phone-status role="status"></small></form></div></div>';
+function emailModalHtml(email) {
+  return '<div id="signupEmailVerifyModal" class="app-modal show" aria-hidden="false"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signupEmailVerifyTitle"><span class="eyebrow">KAYIT DOĞRULAMA</span><h2 id="signupEmailVerifyTitle">E-postanı doğrula</h2><p><strong>' + email + '</strong> adresine gönderdiğimiz 6 haneli kodu gir.</p><form id="signupEmailVerifyForm" class="stack-form"><input name="emailOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required placeholder="6 haneli e-posta kodu"><button>E-postayı Doğrula</button><button type="button" data-resend-email-code class="secondary">Kodu tekrar gönder</button><small data-signup-email-status role="status"></small></form></div></div>';
 }
 
 function closeSignupParentModal() {
@@ -79,6 +83,47 @@ function closeSignupParentModal() {
   if (!parent) return;
   parent.classList.remove('show');
   parent.setAttribute('aria-hidden', 'true');
+}
+
+async function openEmailVerification(email, phone) {
+  const existing = document.querySelector('#signupEmailVerifyModal');
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML('beforeend', emailModalHtml(email));
+  const modal = document.querySelector('#signupEmailVerifyModal');
+  const form = document.querySelector('#signupEmailVerifyForm');
+  const status = form.querySelector('[data-signup-email-status]');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const button = form.querySelector('button:not([data-resend-email-code])');
+    button.disabled = true;
+    status.textContent = 'E-posta kodu doğrulanıyor…';
+    try {
+      await verifyEmailOtp(email, form.elements.emailOtp.value.trim());
+      clearPendingEmail();
+      modal.remove();
+      const user = await getCurrentUser().catch(() => null);
+      if (user) {
+        await openVerification(phone);
+      } else {
+        window.__showToast?.('E-posta doğrulandı. Şimdi giriş yap.');
+      }
+    } catch (error) { status.textContent = errorText(error); button.disabled = false; }
+  });
+  form.querySelector('[data-resend-email-code]').addEventListener('click', async () => {
+    const button = form.querySelector('[data-resend-email-code]');
+    button.disabled = true;
+    status.textContent = 'Yeni e-posta kodu gönderiliyor…';
+    try {
+      const captchaToken = TURNSTILE_SITE_KEY ? await getCaptchaToken(document.createElement('div')) : undefined;
+      const result = await signUp({ email, password: window.__parcaPendingSignupPassword || '', fullName: window.__parcaPendingSignupName || '', phone, address: window.__parcaPendingSignupAddress || '', captchaToken });
+      if (!result?.error) status.textContent = 'Yeni e-posta kodu gönderildi.';
+    } catch (error) { status.textContent = errorText(error); }
+    finally { button.disabled = false; }
+  });
+}
+
+function modalHtml(phone) {
+  return '<div id="signupPhoneVerifyModal" class="app-modal show" aria-hidden="false"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signupPhoneVerifyTitle"><span class="eyebrow">KAYIT DOĞRULAMA</span><h2 id="signupPhoneVerifyTitle">Telefonunu doğrula</h2><p>Telefonuna gönderilen 6 haneli SMS kodunu gir.</p><form id="signupPhoneVerifyForm" class="stack-form"><input name="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required placeholder="6 haneli SMS kodu"><button>Telefonu Doğrula</button><button type="button" data-resend-signup-sms class="secondary">SMS kodunu tekrar gönder</button><small data-signup-phone-status role="status"></small></form></div></div>';
 }
 
 async function openVerification(phone, resend = false) {
@@ -125,7 +170,7 @@ async function handleSignup(event) {
   const data = new FormData(form);
   const firstName = String(data.get('firstName') || '').trim();
   const lastName = String(data.get('lastName') || '').trim();
-  const email = String(data.get('email') || '').trim();
+  const email = String(data.get('email') || '').trim().toLowerCase();
   const phone = normalizePhone(data.get('phone'));
   const password = String(data.get('password') || '');
   const confirm = String(data.get('confirm') || '');
@@ -139,12 +184,18 @@ async function handleSignup(event) {
   if (submit) submit.disabled = true;
   try {
     const captchaToken = await getCaptchaToken(captcha);
+    window.__parcaPendingSignupPassword = password;
+    window.__parcaPendingSignupName = `${firstName} ${lastName}`.trim();
+    window.__parcaPendingSignupAddress = address;
     const result = await signUp({ email, password, fullName: `${firstName} ${lastName}`.trim(), phone, address, captchaToken });
     setPending(email, phone);
     if (result?.session) {
       await openVerification(phone);
     } else {
-      window.__showToast?.('Kayıt başlatıldı. E-postanı doğrula; giriş yaptığında telefon SMS doğrulaması açılacak.');
+      setPendingEmail(email, phone);
+      closeSignupParentModal();
+      await openEmailVerification(email, phone);
+      window.__showToast?.('E-posta doğrulama kodunu girdikten sonra SMS doğrulaması başlayacak.');
     }
   } catch (error) { window.__showToast?.(errorText(error)); }
   finally { if (submit) submit.disabled = false; }
