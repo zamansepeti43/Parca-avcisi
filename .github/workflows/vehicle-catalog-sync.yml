@@ -53,3 +53,5 @@ jobs:
             git commit -m 'chore: auto-expand vehicle catalog'
             git push
           fi
+
+      # Force a fresh run from the current main revision after catalog API repair.
