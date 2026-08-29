@@ -10,6 +10,7 @@ on:
       - 'scripts/vehicle-catalog/**'
       - 'scripts/catalog-sync.mjs'
       - '.github/workflows/vehicle-catalog-sync.yml'
+      - 'src/lib/vehicle-catalog.js'
 
 permissions:
   contents: write
@@ -27,9 +28,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
-      - name: Verify catalog API
-        run: node -e "import('./src/lib/vehicle-catalog.js').then(m=>console.log('catalog API OK:', typeof m.getMakes, typeof m.getModels, typeof m.getYears))"
 
       - name: Merge free vehicle sources
         env:
@@ -53,5 +51,3 @@ jobs:
             git commit -m 'chore: auto-expand vehicle catalog'
             git push
           fi
-
-      # Force a fresh run from the current main revision after catalog API repair.
