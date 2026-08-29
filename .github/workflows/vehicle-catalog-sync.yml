@@ -1,4 +1,4 @@
-name: Vehicle Catalog Sync
+name: Vehicle Catalog + Fitment Sync
 
 on:
   schedule:
@@ -39,6 +39,13 @@ jobs:
 
       - name: Build application
         run: npm install --no-audit --no-fund && npm run build
+
+      - name: Verify fitment pipeline
+        run: |
+          test -f scripts/vehicle-catalog/build_fitments.py
+          test -f scripts/vehicle-catalog/fitment_normalizer.py
+          python -m py_compile scripts/vehicle-catalog/build_fitments.py scripts/vehicle-catalog/fitment_normalizer.py
+          echo 'Fitment pipeline is valid.'
 
       - name: Commit catalog changes
         run: |
