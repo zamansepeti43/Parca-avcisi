@@ -53,7 +53,6 @@ async function post(rows) {
 
 let written = 0, parts = 0, apps = 0;
 
-// Keyset pagination avoids the expensive OFFSET scans that previously timed out.
 const vehicles = [];
 let vehicleCursor = null;
 for (;;) {
@@ -119,7 +118,10 @@ for (;;) {
         modelN = names.find(m => m.length >= 3 && textN.includes(m)) ?? '';
       }
 
-      let matches = modelN ? (vehiclesByMakeModel.get(`${makeN}|${modelN}`) ?? []) : cand;
+      // CRITICAL: never fall back to every vehicle of a make.
+      // If no model can be identified, skip this application rather than
+      // creating thousands of false-positive fitments.
+      let matches = modelN ? (vehiclesByMakeModel.get(`${makeN}|${modelN}`) ?? []) : [];
       const yf = Number.parseInt(a.year_from, 10);
       const yt = Number.parseInt(a.year_to, 10);
       if (Number.isFinite(yf) || Number.isFinite(yt)) {
@@ -144,7 +146,6 @@ for (;;) {
     }
   }
 
-  // Flush the page before advancing the durable checkpoint.
   await post(buffer);
   buffer = [];
   lastPartId = rows[rows.length - 1].id;
@@ -154,5 +155,6 @@ for (;;) {
 }
 
 await post(buffer);
+buffer = [];
 await saveProgress(null);
 console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'parts_applications_direct', parts_processed: parts, applications_processed: apps, fitments_written: written }));
