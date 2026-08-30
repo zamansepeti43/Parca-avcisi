@@ -2,8 +2,8 @@ const BASE = process.env.SUPABASE_URL?.replace(/\/$/, '');
 const KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!BASE || !KEY) throw new Error('Missing Supabase secrets');
 const H = { apikey: KEY, Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json' };
-const PAGE = 1000;
-const FLUSH = 500;
+const PAGE = 250;
+const FLUSH = 250;
 const norm = v => String(v ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]+/g, '');
 const tokens = v => String(v ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toUpperCase().match(/[A-Z0-9]+/g) ?? [];
 const overlap = (a, b, c, d) => (a ?? 0) <= (d ?? 9999) && (c ?? 0) <= (b ?? 9999);
@@ -88,40 +88,35 @@ for (;;) {
   if (rows.length < PAGE) break;
 }
 
-const vehiclesByMake = new Map();
 const vehiclesByMakeModel = new Map();
 const modelAliasesByMake = new Map();
 const modelNamesByMake = new Map();
 for (const v of vehicles) {
-  const makeN = norm(v.make);
-  const modelN = norm(v.model);
+  const makeN = norm(v.make), modelN = norm(v.model);
   if (!makeN || !modelN) continue;
   const vehicle = { ...v, makeN, modelN, engineN: norm(v.engine_code) };
-  if (!vehiclesByMake.has(makeN)) vehiclesByMake.set(makeN, []);
-  vehiclesByMake.get(makeN).push(vehicle);
   const key = `${makeN}|${modelN}`;
   if (!vehiclesByMakeModel.has(key)) vehiclesByMakeModel.set(key, []);
   vehiclesByMakeModel.get(key).push(vehicle);
   if (!modelNamesByMake.has(makeN)) modelNamesByMake.set(makeN, []);
   modelNamesByMake.get(makeN).push(modelN);
   for (const alias of modelAliases(v.model)) {
-    if (alias.length < 2) continue;
     const akey = `${makeN}|${alias}`;
     if (!modelAliasesByMake.has(akey)) modelAliasesByMake.set(akey, []);
     modelAliasesByMake.get(akey).push(vehicle);
   }
 }
 for (const [k, arr] of modelNamesByMake) modelNamesByMake.set(k, [...new Set(arr)].sort((a, b) => b.length - a.length));
-const makes = [...vehiclesByMake.keys()].sort((a, b) => b.length - a.length);
+const makes = [...modelNamesByMake.keys()].sort((a, b) => b.length - a.length);
 
 let lastPartId = await getProgress();
 console.log(`FITMENT_RESUME last_part_id=${lastPartId ?? 'START'}`);
 let buffer = [];
-const seen = new Set();
 
 for (;;) {
   const rows = await get('parts', 'id,applications,brand,part_number', lastPartId);
   if (!rows.length) break;
+  const seen = new Set();
 
   for (const p of rows) {
     parts++;
@@ -133,58 +128,38 @@ for (;;) {
       const model = String(a.model ?? a.model_type ?? '').trim();
       const text = String(a.raw ?? a.raw_text ?? a.text ?? '');
       const textN = norm(text);
-
-      // Prefer an explicit application make, but recover it from raw text when missing.
       if (!make) {
         const hit = makes.find(m => textN.includes(m));
         if (hit) make = hit;
       }
       const makeN = norm(make);
       if (!makeN) continue;
-      const cand = vehiclesByMake.get(makeN);
-      if (!cand?.length) continue;
 
       let matches = [];
       const explicitModelN = norm(model);
       if (explicitModelN) matches = vehiclesByMakeModel.get(`${makeN}|${explicitModelN}`) ?? [];
 
-      // When the structured model is absent or did not resolve, scan the raw application
-      // against every known model alias for this make. This is the important multi-fit fix:
-      // one application can legitimately produce many vehicle rows.
       if (!matches.length) {
-        const names = modelNamesByMake.get(makeN) ?? [];
-        const hits = [];
-        for (const modelN of names) {
-          if (modelN.length < 2) continue;
-          if (boundaryContains(text, modelN)) hits.push(modelN);
-        }
-        if (hits.length) {
-          const longest = Math.max(...hits.map(x => x.length));
-          const strong = hits.filter(x => x.length >= Math.max(2, longest - 2));
-          for (const hit of strong) matches.push(...(vehiclesByMakeModel.get(`${makeN}|${hit}`) ?? []));
+        for (const modelN of (modelNamesByMake.get(makeN) ?? [])) {
+          if (modelN.length >= 2 && boundaryContains(text, modelN)) {
+            matches = vehiclesByMakeModel.get(`${makeN}|${modelN}`) ?? [];
+            break;
+          }
         }
       }
-
       if (!matches.length && explicitModelN) {
         for (const alias of modelAliases(model)) {
           const hit = modelAliasesByMake.get(`${makeN}|${alias}`) ?? [];
           if (hit.length) { matches = hit; break; }
         }
       }
-
-      // Compact numeric-letter models such as "320 i" / "A 4" in raw text.
       if (!matches.length) {
         const numeric = text.match(/\b(\d{1,4})\s*([A-Za-z])\b/);
-        if (numeric) {
-          const alias = norm(`${numeric[1]}${numeric[2]}`);
-          matches = modelAliasesByMake.get(`${makeN}|${alias}`) ?? [];
-        }
+        if (numeric) matches = modelAliasesByMake.get(`${makeN}|${norm(`${numeric[1]}${numeric[2]}`)}`) ?? [];
       }
-
       if (!matches.length) continue;
 
-      const yf = Number.parseInt(a.year_from, 10);
-      const yt = Number.parseInt(a.year_to, 10);
+      const yf = Number.parseInt(a.year_from, 10), yt = Number.parseInt(a.year_to, 10);
       if (Number.isFinite(yf) || Number.isFinite(yt)) {
         matches = matches.filter(v => overlap(v.year_from, v.year_to, Number.isFinite(yf) ? yf : 0, Number.isFinite(yt) ? yt : 9999));
       }
@@ -200,22 +175,17 @@ for (;;) {
         if (seen.has(k)) continue;
         seen.add(k);
         buffer.push({ part_id: p.id, vehicle_id: v.id, match_method: 'catalog_direct', confidence: eng && v.engineN === eng ? 0.97 : 0.95, source_record_id: null });
-        if (buffer.length >= FLUSH * 2) {
-          await post(buffer);
-          buffer = [];
-        }
+        if (buffer.length >= FLUSH) { await post(buffer); buffer = []; }
       }
     }
   }
 
-  await post(buffer);
-  buffer = [];
+  if (buffer.length) { await post(buffer); buffer = []; }
   lastPartId = rows[rows.length - 1].id;
   await saveProgress(lastPartId);
   console.log(`DIRECT_PROGRESS parts=${parts} apps=${apps} written=${written} candidate_matches=${matchedCandidates} checkpoint=${lastPartId}`);
   if (rows.length < PAGE) break;
 }
 
-await post(buffer);
 await saveProgress(null);
 console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'full_parts_rescan_multi_vehicle', parts_processed: parts, applications_processed: apps, candidate_matches: matchedCandidates, fitments_written: written }));
