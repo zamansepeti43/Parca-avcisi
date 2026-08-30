@@ -51,13 +51,21 @@ jobs:
         run: node scripts/supabase/sync-direct-fitments-from-parts.mjs
       - name: Commit catalog changes
         run: |
+          set -e
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git fetch origin main
-          git rebase origin/main
           git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json data/vehicle-catalog-sync.json src/lib/vehicle-catalog.js
           if git diff --cached --quiet; then
             echo 'No catalog changes detected.'
+            exit 0
+          fi
+          git stash push --include-untracked -m 'catalog-sync-generated-changes'
+          git fetch origin main
+          git rebase origin/main
+          git stash pop
+          git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json data/vehicle-catalog-sync.json src/lib/vehicle-catalog.js
+          if git diff --cached --quiet; then
+            echo 'No catalog changes after rebase.'
             exit 0
           fi
           git commit -m 'chore: auto-expand vehicle catalog'
