@@ -7,10 +7,10 @@ const FLUSH = 500;
 const norm = v => String(v ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]+/g, '');
 const overlap = (a, b, c, d) => (a ?? 0) <= (d ?? 9999) && (c ?? 0) <= (b ?? 9999);
 
-async function get(table, select, afterId = null) {
+async function get(table, select, afterId = null, order = 'id.asc') {
   const u = new URL(`${BASE}/rest/v1/${table}`);
   u.searchParams.set('select', select);
-  u.searchParams.set('order', 'id.asc');
+  u.searchParams.set('order', order);
   u.searchParams.set('limit', String(PAGE));
   if (afterId) u.searchParams.set('id', `gt.${afterId}`);
   const r = await fetch(u, { headers: H });
@@ -51,7 +51,52 @@ async function post(rows) {
   }
 }
 
-let written = 0, parts = 0, apps = 0;
+async function getMatchedPartIds() {
+  const ids = new Set();
+  let cursor = null;
+  for (;;) {
+    const u = new URL(`${BASE}/rest/v1/part_vehicle_fitments`);
+    u.searchParams.set('select', 'part_id');
+    u.searchParams.set('order', 'part_id.asc');
+    u.searchParams.set('limit', String(PAGE));
+    if (cursor) u.searchParams.set('part_id', `gt.${cursor}`);
+    const r = await fetch(u, { headers: H });
+    if (!r.ok) throw new Error(`fitments ${r.status}: ${(await r.text()).slice(0, 300)}`);
+    const rows = await r.json();
+    if (!rows.length) break;
+    for (const row of rows) ids.add(row.part_id);
+    cursor = rows[rows.length - 1].part_id;
+    if (rows.length < PAGE) break;
+  }
+  return ids;
+}
+
+function addAlias(map, makeN, alias, vehicle) {
+  const a = norm(alias);
+  if (!a || a.length < 3) return;
+  const key = `${makeN}|${a}`;
+  if (!map.has(key)) map.set(key, []);
+  map.get(key).push(vehicle);
+}
+
+function modelAliases(model) {
+  const raw = String(model ?? '').trim();
+  const n = norm(raw);
+  const out = new Set();
+  if (n.length >= 3) out.add(n);
+
+  // Vehicle catalog models often contain body-style suffixes such as
+  // "320d Sedan" while source applications contain only "320d".
+  const first = raw.split(/[\s/-]+/).filter(Boolean)[0] ?? '';
+  if (first.length >= 3) out.add(norm(first));
+
+  // BMW/VAG-style numeric model text may contain spaces: "320 i".
+  const numeric = raw.match(/\b(\d{3,4})\s*([A-Za-z])\b/);
+  if (numeric) out.add(norm(`${numeric[1]}${numeric[2]}`));
+  return [...out];
+}
+
+let written = 0, parts = 0, apps = 0, skippedMatched = 0;
 
 const vehicles = [];
 let vehicleCursor = null;
@@ -65,23 +110,28 @@ for (;;) {
 
 const vehiclesByMake = new Map();
 const vehiclesByMakeModel = new Map();
+const modelAliasesByMake = new Map();
 const modelNamesByMake = new Map();
 for (const v of vehicles) {
   const makeN = norm(v.make);
   const modelN = norm(v.model);
   if (!makeN) continue;
+  const vehicle = { ...v, makeN, modelN, engineN: norm(v.engine_code) };
   if (!vehiclesByMake.has(makeN)) vehiclesByMake.set(makeN, []);
-  vehiclesByMake.get(makeN).push({ ...v, makeN, modelN, engineN: norm(v.engine_code) });
+  vehiclesByMake.get(makeN).push(vehicle);
   const key = `${makeN}|${modelN}`;
   if (!vehiclesByMakeModel.has(key)) vehiclesByMakeModel.set(key, []);
-  vehiclesByMakeModel.get(key).push({ ...v, makeN, modelN, engineN: norm(v.engine_code) });
+  vehiclesByMakeModel.get(key).push(vehicle);
   if (modelN) {
     if (!modelNamesByMake.has(makeN)) modelNamesByMake.set(makeN, []);
     modelNamesByMake.get(makeN).push(modelN);
+    for (const alias of modelAliases(v.model)) addAlias(modelAliasesByMake, makeN, alias, vehicle);
   }
 }
 for (const [k, arr] of modelNamesByMake) modelNamesByMake.set(k, [...new Set(arr)].sort((a, b) => b.length - a.length));
 const makes = [...vehiclesByMake.keys()].sort((a, b) => b.length - a.length);
+const matchedPartIds = await getMatchedPartIds();
+console.log(`FITMENT_FILTER matched_parts=${matchedPartIds.size}`);
 
 let lastPartId = await getProgress();
 console.log(`FITMENT_RESUME last_part_id=${lastPartId ?? 'START'}`);
@@ -94,6 +144,10 @@ for (;;) {
 
   for (const p of rows) {
     parts++;
+    if (matchedPartIds.has(p.id)) {
+      skippedMatched++;
+      continue;
+    }
     const arr = Array.isArray(p.applications) ? p.applications : [];
     for (const raw of arr) {
       apps++;
@@ -113,15 +167,43 @@ for (;;) {
       if (!cand?.length) continue;
 
       let modelN = norm(model);
-      if (!modelN) {
+      let matches = [];
+      if (modelN) matches = vehiclesByMakeModel.get(`${makeN}|${modelN}`) ?? [];
+
+      // First try exact model aliases (e.g. "320 i" -> "320i", or
+      // "320d Sedan" -> "320d"). This is conservative and does not fall
+      // back to every vehicle of a make.
+      if (!matches.length) {
+        const aliases = modelN ? modelAliases(model) : [];
+        for (const alias of aliases) {
+          const hit = modelAliasesByMake.get(`${makeN}|${alias}`) ?? [];
+          if (hit.length) {
+            matches = hit;
+            break;
+          }
+        }
+      }
+
+      // If the source omitted the model field, extract only strong numeric
+      // model tokens such as "320 i" or "520 d". Do NOT interpret arbitrary
+      // dimensions/part numbers as vehicle models.
+      if (!matches.length && !modelN) {
+        const numeric = text.match(/\b(\d{3,4})\s*([A-Za-z])\b/);
+        if (numeric) {
+          const alias = norm(`${numeric[1]}${numeric[2]}`);
+          matches = modelAliasesByMake.get(`${makeN}|${alias}`) ?? [];
+        }
+      }
+
+      if (!matches.length) {
         const names = modelNamesByMake.get(makeN) ?? [];
-        modelN = names.find(m => m.length >= 3 && textN.includes(m)) ?? '';
+        const hit = names.find(m => m.length >= 5 && textN.includes(m));
+        if (hit) matches = vehiclesByMakeModel.get(`${makeN}|${hit}`) ?? [];
       }
 
       // CRITICAL: never fall back to every vehicle of a make.
-      // If no model can be identified, skip this application rather than
-      // creating thousands of false-positive fitments.
-      let matches = modelN ? (vehiclesByMakeModel.get(`${makeN}|${modelN}`) ?? []) : [];
+      if (!matches.length) continue;
+
       const yf = Number.parseInt(a.year_from, 10);
       const yt = Number.parseInt(a.year_to, 10);
       if (Number.isFinite(yf) || Number.isFinite(yt)) {
@@ -150,11 +232,11 @@ for (;;) {
   buffer = [];
   lastPartId = rows[rows.length - 1].id;
   await saveProgress(lastPartId);
-  console.log(`DIRECT_PROGRESS parts=${parts} apps=${apps} written=${written} checkpoint=${lastPartId}`);
+  console.log(`DIRECT_PROGRESS parts=${parts} apps=${apps} written=${written} skipped_matched=${skippedMatched} checkpoint=${lastPartId}`);
   if (rows.length < PAGE) break;
 }
 
 await post(buffer);
 buffer = [];
 await saveProgress(null);
-console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'parts_applications_direct', parts_processed: parts, applications_processed: apps, fitments_written: written }));
+console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'unmatched_parts_conservative', parts_processed: parts, applications_processed: apps, fitments_written: written, skipped_matched: skippedMatched }));
