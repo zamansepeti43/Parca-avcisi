@@ -48,8 +48,7 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: |
-          node scripts/supabase/sync-direct-fitments-from-parts.mjs
+        run: node scripts/supabase/sync-direct-fitments-from-parts.mjs
       - name: Commit catalog changes
         run: |
           git config user.name 'github-actions[bot]'
@@ -57,8 +56,17 @@ jobs:
           git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json data/vehicle-catalog-sync.json src/lib/vehicle-catalog.js
           if git diff --cached --quiet; then
             echo 'No catalog changes detected.'
-          else
-            git commit -m 'chore: auto-expand vehicle catalog'
-            git pull --rebase --autostash origin main
-            git push origin HEAD:main
+            exit 0
           fi
+          git commit -m 'chore: auto-expand vehicle catalog'
+          git fetch origin main
+          git stash push --include-untracked --message 'workflow-build-leftovers' || true
+          git rebase origin/main
+          if git stash list | grep -q 'workflow-build-leftovers'; then git stash pop; fi
+          git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json data/vehicle-catalog-sync.json src/lib/vehicle-catalog.js
+          if git diff --cached --quiet; then
+            echo 'No additional catalog changes after rebase.'
+          else
+            git commit -m 'chore: reconcile catalog after rebase'
+          fi
+          git push origin HEAD:main
