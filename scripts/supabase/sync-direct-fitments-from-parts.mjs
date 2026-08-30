@@ -9,14 +9,14 @@ async function get(table,select,offset){
  const u=new URL(`${BASE}/rest/v1/${table}`);u.searchParams.set('select',select);u.searchParams.set('order','id.asc');u.searchParams.set('limit',PAGE);u.searchParams.set('offset',offset);
  const r=await fetch(u,{headers:H});if(!r.ok)throw new Error(`${table} ${r.status}: ${(await r.text()).slice(0,300)}`);return r.json();
 }
-async function post(rows){if(!rows.length)return;for(let i=0;i<rows.length;i+=FLUSH){const b=rows.slice(i,i+FLUSH);const r=await fetch(`${BASE}/rest/v1/part_vehicle_fitments?on_conflict=part_id,vehicle_id`,{method:'POST',headers:{...H,Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify(b)});if(!r.ok)throw new Error(`fitment ${r.status}: ${(await r.text()).slice(0,300)}`);written+=b.length;}}
+async function post(rows){if(!rows.length)return;for(let i=0;i<rows.length;i+=FLUSH){const b=rows.slice(i,i+FLUSH);const r=await fetch(`${BASE}/rest/v1/rpc/insert_fitment_batch`,{method:'POST',headers:{...H,Prefer:'return=minimal'},body:JSON.stringify({p_rows:b})});if(!r.ok)throw new Error(`fitment ${r.status}: ${(await r.text()).slice(0,300)}`);written+=b.length;}}
 let written=0,parts=0,apps=0;
 const vehicles=[];for(let o=0;;o+=PAGE){const rows=await get('vehicles','id,make,model,year_from,year_to,engine_code',o);vehicles.push(...rows);if(rows.length<PAGE)break;}
 const makes=[...new Set(vehicles.map(v=>v.make).filter(Boolean))].sort((a,b)=>b.length-a.length);
 let buffer=[];const seen=new Set();
 for(let o=0;;o+=PAGE){
  const rows=await get('parts','id,applications,brand,part_number',o);if(!rows.length)break;
- for(const p of rows){parts++;const arr=Array.isArray(p.applications)?p.applications:[];for(const raw of arr){apps++;let a=raw&&typeof raw==='object'?raw:{raw:String(raw??'')};let make=String(a.make??'').trim();let model=String(a.model??a.model_type??'').trim();let text=String(a.raw??a.raw_text??'');
+ for(const p of rows){parts++;const arr=Array.isArray(p.applications)?p.applications:[];for(const raw of arr){apps++;let a=raw&&typeof raw==='object'?raw:{raw:String(raw??'')};let make=String(a.make??'').trim();let model=String(a.model??a.model_type??'').trim();let text=String(a.raw??a.raw_text??a.text??'');
    if(!make){const hit=makes.find(m=>norm(text).includes(norm(m)));if(hit)make=hit;}
    if(!make)continue;const cand=vehicles.filter(v=>norm(v.make)===norm(make));if(!cand.length)continue;
    if(!model){let best=null;for(const v of cand){const m=norm(v.model);if(m.length>=3&&norm(text).includes(m)&&(!best||m.length>best.length))best=m;}if(best)model=cand.find(v=>norm(v.model)===best)?.model??'';}
