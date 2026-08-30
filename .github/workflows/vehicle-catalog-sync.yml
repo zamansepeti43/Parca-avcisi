@@ -53,20 +53,12 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git rebase origin/main
           git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json data/vehicle-catalog-sync.json src/lib/vehicle-catalog.js
           if git diff --cached --quiet; then
             echo 'No catalog changes detected.'
             exit 0
           fi
           git commit -m 'chore: auto-expand vehicle catalog'
-          git fetch origin main
-          git stash push --include-untracked --message 'workflow-build-leftovers' || true
-          git rebase origin/main
-          if git stash list | grep -q 'workflow-build-leftovers'; then git stash pop; fi
-          git add data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json data/vehicle-catalog-sync.json src/lib/vehicle-catalog.js
-          if git diff --cached --quiet; then
-            echo 'No additional catalog changes after rebase.'
-          else
-            git commit -m 'chore: reconcile catalog after rebase'
-          fi
           git push origin HEAD:main
