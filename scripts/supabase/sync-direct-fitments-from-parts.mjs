@@ -1,3 +1,5 @@
+// FITMENT FULL RESCAN RESET: checkpoint was based on UUID ordering and could skip catalog rows.
+// This run starts from a cleared checkpoint and then persists the UUID keyset checkpoint after every page.
 const BASE = process.env.SUPABASE_URL?.replace(/\/$/, '');
 const KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!BASE || !KEY) throw new Error('Missing Supabase secrets');
@@ -187,5 +189,4 @@ for (;;) {
   if (rows.length < PAGE) break;
 }
 
-// IMPORTANT: keep the final checkpoint. A future run must not rescan the catalog from the beginning.
 console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'resume_keyset_multi_vehicle', parts_processed: parts, applications_processed: apps, candidate_matches: matchedCandidates, fitments_written: written, last_part_id: lastPartId }));
