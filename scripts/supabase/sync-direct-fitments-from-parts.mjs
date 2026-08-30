@@ -5,6 +5,7 @@ const H = { apikey: KEY, Authorization: `Bearer ${KEY}`, 'Content-Type': 'applic
 const PAGE = 1000;
 const FLUSH = 500;
 const norm = v => String(v ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]+/g, '');
+const tokens = v => String(v ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toUpperCase().match(/[A-Z0-9]+/g) ?? [];
 const overlap = (a, b, c, d) => (a ?? 0) <= (d ?? 9999) && (c ?? 0) <= (b ?? 9999);
 
 async function get(table, select, afterId = null, order = 'id.asc') {
@@ -53,24 +54,28 @@ async function post(rows) {
   }
 }
 
-function addAlias(map, makeN, alias, vehicle) {
-  const a = norm(alias);
-  if (!a || a.length < 3) return;
-  const key = `${makeN}|${a}`;
-  if (!map.has(key)) map.set(key, []);
-  map.get(key).push(vehicle);
-}
-
 function modelAliases(model) {
   const raw = String(model ?? '').trim();
-  const n = norm(raw);
   const out = new Set();
-  if (n.length >= 3) out.add(n);
-  const first = raw.split(/[\s/-]+/).filter(Boolean)[0] ?? '';
-  if (first.length >= 3) out.add(norm(first));
-  const numeric = raw.match(/\b(\d{3,4})\s*([A-Za-z])\b/);
-  if (numeric) out.add(norm(`${numeric[1]}${numeric[2]}`));
+  const compact = norm(raw);
+  if (compact.length >= 2) out.add(compact);
+  const words = tokens(raw);
+  if (words.length > 1) {
+    out.add(words.join(''));
+    for (const w of words) if (w.length >= 3) out.add(w);
+  }
+  const numericLetter = raw.match(/\b(\d{1,4})\s*([A-Za-z])\b/i);
+  if (numericLetter) out.add(norm(`${numericLetter[1]}${numericLetter[2]}`));
+  const numeric = raw.match(/\b(\d{1,4})\b/);
+  if (numeric && Number(numeric[1]) >= 10) out.add(numeric[1]);
   return [...out];
+}
+
+function boundaryContains(text, value) {
+  const n = norm(value);
+  if (!n || n.length < 2) return false;
+  if (/^\d+[A-Z]?$/.test(n)) return new RegExp(`(?:^|[^A-Z0-9])${n}(?:$|[^A-Z0-9])`, 'i').test(String(text));
+  return norm(text).includes(n);
 }
 
 const vehicles = [];
@@ -99,7 +104,12 @@ for (const v of vehicles) {
   vehiclesByMakeModel.get(key).push(vehicle);
   if (!modelNamesByMake.has(makeN)) modelNamesByMake.set(makeN, []);
   modelNamesByMake.get(makeN).push(modelN);
-  for (const alias of modelAliases(v.model)) addAlias(modelAliasesByMake, makeN, alias, vehicle);
+  for (const alias of modelAliases(v.model)) {
+    if (alias.length < 2) continue;
+    const akey = `${makeN}|${alias}`;
+    if (!modelAliasesByMake.has(akey)) modelAliasesByMake.set(akey, []);
+    modelAliasesByMake.get(akey).push(vehicle);
+  }
 }
 for (const [k, arr] of modelNamesByMake) modelNamesByMake.set(k, [...new Set(arr)].sort((a, b) => b.length - a.length));
 const makes = [...vehiclesByMake.keys()].sort((a, b) => b.length - a.length);
@@ -120,10 +130,11 @@ for (;;) {
       apps++;
       const a = raw && typeof raw === 'object' ? raw : { raw: String(raw ?? '') };
       let make = String(a.make ?? '').trim();
-      let model = String(a.model ?? a.model_type ?? '').trim();
+      const model = String(a.model ?? a.model_type ?? '').trim();
       const text = String(a.raw ?? a.raw_text ?? a.text ?? '');
       const textN = norm(text);
 
+      // Prefer an explicit application make, but recover it from raw text when missing.
       if (!make) {
         const hit = makes.find(m => textN.includes(m));
         if (hit) make = hit;
@@ -133,37 +144,43 @@ for (;;) {
       const cand = vehiclesByMake.get(makeN);
       if (!cand?.length) continue;
 
-      let modelN = norm(model);
       let matches = [];
-      if (modelN) matches = vehiclesByMakeModel.get(`${makeN}|${modelN}`) ?? [];
+      const explicitModelN = norm(model);
+      if (explicitModelN) matches = vehiclesByMakeModel.get(`${makeN}|${explicitModelN}`) ?? [];
 
+      // When the structured model is absent or did not resolve, scan the raw application
+      // against every known model alias for this make. This is the important multi-fit fix:
+      // one application can legitimately produce many vehicle rows.
       if (!matches.length) {
-        const aliases = modelN ? modelAliases(model) : [];
-        for (const alias of aliases) {
-          const hit = modelAliasesByMake.get(`${makeN}|${alias}`) ?? [];
-          if (hit.length) {
-            matches = hit;
-            break;
-          }
+        const names = modelNamesByMake.get(makeN) ?? [];
+        const hits = [];
+        for (const modelN of names) {
+          if (modelN.length < 2) continue;
+          if (boundaryContains(text, modelN)) hits.push(modelN);
+        }
+        if (hits.length) {
+          const longest = Math.max(...hits.map(x => x.length));
+          const strong = hits.filter(x => x.length >= Math.max(2, longest - 2));
+          for (const hit of strong) matches.push(...(vehiclesByMakeModel.get(`${makeN}|${hit}`) ?? []));
         }
       }
 
-      if (!matches.length && !modelN) {
-        const numeric = text.match(/\b(\d{3,4})\s*([A-Za-z])\b/);
+      if (!matches.length && explicitModelN) {
+        for (const alias of modelAliases(model)) {
+          const hit = modelAliasesByMake.get(`${makeN}|${alias}`) ?? [];
+          if (hit.length) { matches = hit; break; }
+        }
+      }
+
+      // Compact numeric-letter models such as "320 i" / "A 4" in raw text.
+      if (!matches.length) {
+        const numeric = text.match(/\b(\d{1,4})\s*([A-Za-z])\b/);
         if (numeric) {
           const alias = norm(`${numeric[1]}${numeric[2]}`);
           matches = modelAliasesByMake.get(`${makeN}|${alias}`) ?? [];
         }
       }
 
-      if (!matches.length) {
-        const names = modelNamesByMake.get(makeN) ?? [];
-        const hit = names.find(m => m.length >= 4 && textN.includes(m));
-        if (hit) matches = vehiclesByMakeModel.get(`${makeN}|${hit}`) ?? [];
-      }
-
-      // Never fall back to every vehicle of a make: an application without a
-      // defensible model remains unmatched rather than creating false fits.
       if (!matches.length) continue;
 
       const yf = Number.parseInt(a.year_from, 10);
@@ -201,4 +218,4 @@ for (;;) {
 
 await post(buffer);
 await saveProgress(null);
-console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'full_parts_rescan_conservative', parts_processed: parts, applications_processed: apps, candidate_matches: matchedCandidates, fitments_written: written }));
+console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'full_parts_rescan_multi_vehicle', parts_processed: parts, applications_processed: apps, candidate_matches: matchedCandidates, fitments_written: written }));
