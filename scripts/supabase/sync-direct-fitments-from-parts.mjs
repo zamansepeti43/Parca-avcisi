@@ -38,6 +38,8 @@ async function saveProgress(lastPartId) {
   if (!r.ok) throw new Error(`progress ${r.status}: ${(await r.text()).slice(0, 300)}`);
 }
 
+let written = 0, parts = 0, apps = 0, matchedCandidates = 0;
+
 async function post(rows) {
   for (let i = 0; i < rows.length; i += FLUSH) {
     const b = rows.slice(i, i + FLUSH);
@@ -49,26 +51,6 @@ async function post(rows) {
     if (!r.ok) throw new Error(`fitment ${r.status}: ${(await r.text()).slice(0, 300)}`);
     written += b.length;
   }
-}
-
-async function getMatchedPartIds() {
-  const ids = new Set();
-  let cursor = null;
-  for (;;) {
-    const u = new URL(`${BASE}/rest/v1/part_vehicle_fitments`);
-    u.searchParams.set('select', 'part_id');
-    u.searchParams.set('order', 'part_id.asc');
-    u.searchParams.set('limit', String(PAGE));
-    if (cursor) u.searchParams.set('part_id', `gt.${cursor}`);
-    const r = await fetch(u, { headers: H });
-    if (!r.ok) throw new Error(`fitments ${r.status}: ${(await r.text()).slice(0, 300)}`);
-    const rows = await r.json();
-    if (!rows.length) break;
-    for (const row of rows) ids.add(row.part_id);
-    cursor = rows[rows.length - 1].part_id;
-    if (rows.length < PAGE) break;
-  }
-  return ids;
 }
 
 function addAlias(map, makeN, alias, vehicle) {
@@ -84,19 +66,12 @@ function modelAliases(model) {
   const n = norm(raw);
   const out = new Set();
   if (n.length >= 3) out.add(n);
-
-  // Vehicle catalog models often contain body-style suffixes such as
-  // "320d Sedan" while source applications contain only "320d".
   const first = raw.split(/[\s/-]+/).filter(Boolean)[0] ?? '';
   if (first.length >= 3) out.add(norm(first));
-
-  // BMW/VAG-style numeric model text may contain spaces: "320 i".
   const numeric = raw.match(/\b(\d{3,4})\s*([A-Za-z])\b/);
   if (numeric) out.add(norm(`${numeric[1]}${numeric[2]}`));
   return [...out];
 }
-
-let written = 0, parts = 0, apps = 0, skippedMatched = 0;
 
 const vehicles = [];
 let vehicleCursor = null;
@@ -115,23 +90,19 @@ const modelNamesByMake = new Map();
 for (const v of vehicles) {
   const makeN = norm(v.make);
   const modelN = norm(v.model);
-  if (!makeN) continue;
+  if (!makeN || !modelN) continue;
   const vehicle = { ...v, makeN, modelN, engineN: norm(v.engine_code) };
   if (!vehiclesByMake.has(makeN)) vehiclesByMake.set(makeN, []);
   vehiclesByMake.get(makeN).push(vehicle);
   const key = `${makeN}|${modelN}`;
   if (!vehiclesByMakeModel.has(key)) vehiclesByMakeModel.set(key, []);
   vehiclesByMakeModel.get(key).push(vehicle);
-  if (modelN) {
-    if (!modelNamesByMake.has(makeN)) modelNamesByMake.set(makeN, []);
-    modelNamesByMake.get(makeN).push(modelN);
-    for (const alias of modelAliases(v.model)) addAlias(modelAliasesByMake, makeN, alias, vehicle);
-  }
+  if (!modelNamesByMake.has(makeN)) modelNamesByMake.set(makeN, []);
+  modelNamesByMake.get(makeN).push(modelN);
+  for (const alias of modelAliases(v.model)) addAlias(modelAliasesByMake, makeN, alias, vehicle);
 }
 for (const [k, arr] of modelNamesByMake) modelNamesByMake.set(k, [...new Set(arr)].sort((a, b) => b.length - a.length));
 const makes = [...vehiclesByMake.keys()].sort((a, b) => b.length - a.length);
-const matchedPartIds = await getMatchedPartIds();
-console.log(`FITMENT_FILTER matched_parts=${matchedPartIds.size}`);
 
 let lastPartId = await getProgress();
 console.log(`FITMENT_RESUME last_part_id=${lastPartId ?? 'START'}`);
@@ -144,10 +115,6 @@ for (;;) {
 
   for (const p of rows) {
     parts++;
-    if (matchedPartIds.has(p.id)) {
-      skippedMatched++;
-      continue;
-    }
     const arr = Array.isArray(p.applications) ? p.applications : [];
     for (const raw of arr) {
       apps++;
@@ -170,9 +137,6 @@ for (;;) {
       let matches = [];
       if (modelN) matches = vehiclesByMakeModel.get(`${makeN}|${modelN}`) ?? [];
 
-      // First try exact model aliases (e.g. "320 i" -> "320i", or
-      // "320d Sedan" -> "320d"). This is conservative and does not fall
-      // back to every vehicle of a make.
       if (!matches.length) {
         const aliases = modelN ? modelAliases(model) : [];
         for (const alias of aliases) {
@@ -184,9 +148,6 @@ for (;;) {
         }
       }
 
-      // If the source omitted the model field, extract only strong numeric
-      // model tokens such as "320 i" or "520 d". Do NOT interpret arbitrary
-      // dimensions/part numbers as vehicle models.
       if (!matches.length && !modelN) {
         const numeric = text.match(/\b(\d{3,4})\s*([A-Za-z])\b/);
         if (numeric) {
@@ -197,11 +158,12 @@ for (;;) {
 
       if (!matches.length) {
         const names = modelNamesByMake.get(makeN) ?? [];
-        const hit = names.find(m => m.length >= 5 && textN.includes(m));
+        const hit = names.find(m => m.length >= 4 && textN.includes(m));
         if (hit) matches = vehiclesByMakeModel.get(`${makeN}|${hit}`) ?? [];
       }
 
-      // CRITICAL: never fall back to every vehicle of a make.
+      // Never fall back to every vehicle of a make: an application without a
+      // defensible model remains unmatched rather than creating false fits.
       if (!matches.length) continue;
 
       const yf = Number.parseInt(a.year_from, 10);
@@ -215,11 +177,12 @@ for (;;) {
         if (exact.length) matches = exact;
       }
 
+      matchedCandidates += matches.length;
       for (const v of matches) {
         const k = `${p.id}|${v.id}`;
         if (seen.has(k)) continue;
         seen.add(k);
-        buffer.push({ part_id: p.id, vehicle_id: v.id, match_method: 'catalog_direct', confidence: 0.95, source_record_id: null });
+        buffer.push({ part_id: p.id, vehicle_id: v.id, match_method: 'catalog_direct', confidence: eng && v.engineN === eng ? 0.97 : 0.95, source_record_id: null });
         if (buffer.length >= FLUSH * 2) {
           await post(buffer);
           buffer = [];
@@ -232,11 +195,10 @@ for (;;) {
   buffer = [];
   lastPartId = rows[rows.length - 1].id;
   await saveProgress(lastPartId);
-  console.log(`DIRECT_PROGRESS parts=${parts} apps=${apps} written=${written} skipped_matched=${skippedMatched} checkpoint=${lastPartId}`);
+  console.log(`DIRECT_PROGRESS parts=${parts} apps=${apps} written=${written} candidate_matches=${matchedCandidates} checkpoint=${lastPartId}`);
   if (rows.length < PAGE) break;
 }
 
 await post(buffer);
-buffer = [];
 await saveProgress(null);
-console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'unmatched_parts_conservative', parts_processed: parts, applications_processed: apps, fitments_written: written, skipped_matched: skippedMatched }));
+console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'full_parts_rescan_conservative', parts_processed: parts, applications_processed: apps, candidate_matches: matchedCandidates, fitments_written: written }));
