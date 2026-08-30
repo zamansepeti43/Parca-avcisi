@@ -9,8 +9,6 @@ on:
       - 'data/**'
       - 'scripts/vehicle-catalog/**'
       - 'scripts/catalog-sync.mjs'
-      - 'scripts/supabase/**'
-      - '.github/workflows/vehicle-catalog-sync.yml'
       - 'src/lib/vehicle-catalog.js'
 
 permissions:
