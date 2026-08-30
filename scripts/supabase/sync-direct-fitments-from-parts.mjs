@@ -187,5 +187,5 @@ for (;;) {
   if (rows.length < PAGE) break;
 }
 
-await saveProgress(null);
-console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'full_parts_rescan_multi_vehicle', parts_processed: parts, applications_processed: apps, candidate_matches: matchedCandidates, fitments_written: written }));
+// IMPORTANT: keep the final checkpoint. A future run must not rescan the catalog from the beginning.
+console.log(JSON.stringify({ FITMENT_SYNC_COMPLETE: true, mode: 'resume_keyset_multi_vehicle', parts_processed: parts, applications_processed: apps, candidate_matches: matchedCandidates, fitments_written: written, last_part_id: lastPartId }));
