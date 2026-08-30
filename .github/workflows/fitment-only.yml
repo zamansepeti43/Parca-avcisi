@@ -2,6 +2,11 @@ name: Fitment Only Sync
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/supabase/sync-direct-fitments-from-parts.mjs'
+      - '.github/workflows/fitment-only.yml'
 
 permissions:
   contents: read
