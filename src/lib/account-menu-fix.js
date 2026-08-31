@@ -1,15 +1,16 @@
 // Account sidebar navigation hardening.
-// The account center is rendered dynamically, so delegation is required.
-// Capture phase guarantees the sidebar buttons receive the click before any
-// unrelated document-level handlers can consume it.
+// Menu items are real routes. The previous handler opened the account modal,
+// which prevented account-page-navigation.js from ever receiving the click.
 document.addEventListener('click', (event) => {
   const paneButton = event.target.closest?.('.account-menu [data-pane]');
   if (!paneButton) return;
 
   const pane = paneButton.dataset.pane;
-  if (!pane || typeof window.__openAccountCenter !== 'function') return;
+  if (!pane) return;
 
-  event.preventDefault();
-  event.stopImmediatePropagation();
-  window.__openAccountCenter(pane);
+  const navigation = window.__accountPageNavigation;
+  if (navigation?.navigateToPane?.(pane)) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
 }, true);
