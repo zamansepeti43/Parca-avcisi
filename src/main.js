@@ -7,6 +7,7 @@ import './lib/listing-entry-flow.js';
 import './lib/ui-flows.js';
 import './lib/listing-detail.js';
 import './lib/listing-view.js';
+import './lib/part-icons-ui.js';
 import './lib/vehicle-search-ui.js';
 import './lib/listing-filters-ui.js';
 import './lib/listing-creator.js';
