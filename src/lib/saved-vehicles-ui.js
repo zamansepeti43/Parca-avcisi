@@ -100,6 +100,12 @@ async function activate(event) {
 }
 window.__openSavedVehicles = activate;
 
+function goToSavedVehiclesPage(event) {
+  event?.preventDefault();
+  event?.stopPropagation();
+  window.location.assign('/araclarim');
+}
+
 function ensureMenu() {
   const root = menu();
   if (!root || root.querySelector('[data-saved-vehicles]')) return;
@@ -107,7 +113,7 @@ function ensureMenu() {
   button.type = 'button';
   button.dataset.savedVehicles = '';
   button.textContent = 'Araçlarım';
-  button.addEventListener('click', activate);
+  button.addEventListener('click', goToSavedVehiclesPage);
   const profile = root.querySelector('[data-pane="profilim"]');
   if (profile?.parentNode) profile.parentNode.insertBefore(button, profile.nextSibling);
   else root.prepend(button);
@@ -119,7 +125,7 @@ function ensureMenu() {
     navButton.className = 'nav-drop saved-vehicles-nav';
     navButton.dataset.openSavedVehicles = '';
     navButton.textContent = 'Araçlarım';
-    navButton.addEventListener('click', activate);
+    navButton.addEventListener('click', goToSavedVehiclesPage);
     nav.appendChild(navButton);
   }
 }
