@@ -21,6 +21,7 @@ import './lib/listing-report-ui.js';
 import './lib/part-requests-ui.js';
 import './lib/requests-home.js';
 import './lib/requests-search.js';
+import './lib/empty-request-cta.js';
 import './lib/auth-verification.js';
 import './lib/signup-phone-verification.js';
 import './lib/platform-settings.js';
