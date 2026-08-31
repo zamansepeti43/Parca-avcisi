@@ -1,5 +1,24 @@
-/* Account pages use the same responsive surface as the marketplace. */
-.account-route-shell{width:100%;max-width:1180px;margin:0 auto;padding:28px 20px 56px;box-sizing:border-box;}
+/* Account pages: marketplace-grade responsive surface. */
+.account-route-shell{width:100%;max-width:1180px;margin:0 auto;padding:28px 20px 64px;box-sizing:border-box;}
 .account-route-inner{width:100%;}
-.account-route-shell .modal-card{width:100%;max-width:none;box-sizing:border-box;}
-@media (max-width:700px){.account-route-shell{padding:16px 12px 40px}.account-route-inner{min-width:0}.account-route-shell button,.account-route-shell a{min-height:44px}.account-route-shell input,.account-route-shell select,.account-route-shell textarea{font-size:16px;}}
+.account-route-shell .modal-card{width:100%;max-width:none;box-sizing:border-box;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.08);}
+.account-route-shell .account-pane{min-width:0;}
+.account-route-shell .saved-vehicle-row{display:flex;align-items:center;gap:18px;transition:transform .16s ease,box-shadow .16s ease;}
+.account-route-shell .saved-vehicle-row:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.account-route-shell .saved-vehicle-row .grow{min-width:0;}
+.account-route-shell .saved-vehicle-row small{display:block;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.account-route-shell .saved-vehicle-row .pane-actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.account-route-shell .saved-vehicle-row .pane-actions .pane-btn{white-space:nowrap;}
+.account-route-shell .account-pane-head h2{letter-spacing:-.02em;}
+.account-route-shell .form-grid{gap:14px;}
+.account-route-shell select,.account-route-shell input{width:100%;box-sizing:border-box;}
+@media (max-width:700px){
+ .account-route-shell{padding:16px 12px 40px;}
+ .account-route-inner{min-width:0;}
+ .account-route-shell .modal-card{border-radius:16px;}
+ .account-route-shell button,.account-route-shell a{min-height:44px;}
+ .account-route-shell input,.account-route-shell select,.account-route-shell textarea{font-size:16px;}
+ .account-route-shell .saved-vehicle-row{display:block;padding:16px;}
+ .account-route-shell .saved-vehicle-row .pane-actions{margin-top:14px;display:grid;grid-template-columns:1fr auto;gap:8px;}
+ .account-route-shell .saved-vehicle-row .pane-actions .pane-btn{width:100%;}
+}
