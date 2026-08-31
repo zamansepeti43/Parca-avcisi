@@ -17,8 +17,10 @@ function menu() { return document.querySelector('.account-menu'); }
 function options(field) {
   const opts = resolver.getOptions(selection, field) || [];
   const previous = field === 'type' ? '' : ({ make: 'type', model: 'make', year: 'model', engine: 'year' }[field]);
-  const disabled = Boolean(previous && !selection[previous]);
-  return '<select data-saved-vehicle-field="' + field + '"' + (disabled ? ' disabled' : '') + '><option value="">Seçiniz</option>' +
+  const blocked = Boolean(previous && !selection[previous]);
+  const hasNoData = !blocked && field !== 'type' && opts.length === 0;
+  const placeholder = blocked ? 'Önce ' + ({ make: 'araç tipini', model: 'markayı', year: 'modeli', engine: 'yılı' }[field] || 'önceki alanı') + ' seç' : hasNoData ? 'Katalogda veri yok — isteğe bağlı' : 'Seçiniz';
+  return '<select data-saved-vehicle-field="' + field + '"' + (blocked ? ' disabled' : '') + '><option value="">' + placeholder + '</option>' +
     opts.map((v) => '<option value="' + esc(v) + '"' + (String(selection[field]) === String(v) ? ' selected' : '') + '>' + esc(v) + '</option>').join('') + '</select>';
 }
 
@@ -32,7 +34,7 @@ function renderForm() {
     '<label>Yıl' + options('year') + '</label>' +
     '<label>Versiyon' + options('engine') + '</label>' +
     '<label>Takma Ad (opsiyonel)<input name="nickname" placeholder="Örn. Benim Golf" maxlength="60"></label>' +
-    '</div><button class="pane-btn primary" type="submit">+ Aracı Kaydet</button></form>';
+    '</div><div style="margin:10px 0 0;color:#737b84;font-size:12px">Yıl veya versiyon katalogda yoksa boş bırakıp aracı yine de kaydedebilirsin.</div><button class="pane-btn primary" type="submit">+ Aracı Kaydet</button></form>';
 }
 
 function renderList(items) {
