@@ -1,12 +1,13 @@
 import { getCurrentUser } from './auth.js';
 import { VehicleResolver } from './vehicle-resolver.js';
-import { getSavedVehicles, saveVehicle, deleteSavedVehicle } from './saved-vehicles.js';
+import { getSavedVehicles, saveVehicle, updateSavedVehicle, deleteSavedVehicle } from './saved-vehicles.js';
 import { requireSupabase, supabaseConfigured } from './supabase.js';
 import { getListingThumbnailUrl } from './listing-images.js';
 
 const resolver = new VehicleResolver();
 let active = false;
 let selection = { type: '', make: '', model: '', year: '', engine: '' };
+let editingId = null;
 
 const esc = (v) => String(v ?? '').replace(/[&<>'\"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
 const money = (value) => new Intl.NumberFormat('tr-TR').format(Number(value) || 0) + ' TL';
@@ -24,8 +25,12 @@ function options(field) {
     opts.map((v) => '<option value="' + esc(v) + '"' + (String(selection[field]) === String(v) ? ' selected' : '') + '>' + esc(v) + '</option>').join('') + '</select>';
 }
 
-function renderForm() {
-  return '<div class="account-pane-head"><div><h2>Araçlarım</h2><p style="margin:4px 0 0;color:#6e747c">Aracını kaydet. Tek dokunuşla o araca uyumlu parçaları ve aktif ilanları bul.</p></div></div>' +
+function renderForm(editItem = null) {
+  const editing = Boolean(editItem);
+  if (editItem) {
+    selection = { type: editItem.vehicle_type || '', make: editItem.make || '', model: editItem.model || '', year: editItem.year || '', engine: editItem.version || '' };
+  }
+  return '<div class="account-pane-head"><div><h2>' + (editing ? 'Aracı Düzenle' : 'Araçlarım') + '</h2><p style="margin:4px 0 0;color:#6e747c">' + (editing ? 'Araç bilgilerini güncelle. Uyumlu parça eşleşmeleri korunur.' : 'Aracını kaydet. Tek dokunuşla o araca uyumlu parçaları ve aktif ilanları bul.') + '</p></div></div>' +
     '<form id="savedVehicleForm" class="pane-form" style="margin-top:18px">' +
     '<div class="form-grid">' +
     '<label>Araç Tipi' + options('type') + '</label>' +
@@ -33,15 +38,17 @@ function renderForm() {
     '<label>Model' + options('model') + '</label>' +
     '<label>Yıl' + options('year') + '</label>' +
     '<label>Versiyon' + options('engine') + '</label>' +
-    '<label>Takma Ad (opsiyonel)<input name="nickname" placeholder="Örn. Benim Golf" maxlength="60"></label>' +
-    '</div><div style="margin:10px 0 0;color:#737b84;font-size:12px">Yıl veya versiyon katalogda yoksa boş bırakıp aracı yine de kaydedebilirsin.</div><button class="pane-btn primary" type="submit">+ Aracı Kaydet</button></form>';
+    '<label>Takma Ad (opsiyonel)<input name="nickname" value="' + esc(editItem?.nickname || '') + '" placeholder="Örn. Benim Golf" maxlength="60"></label>' +
+    '</div><div style="margin:10px 0 0;color:#737b84;font-size:12px">Yıl veya versiyon katalogda yoksa boş bırakıp aracı yine de kaydedebilirsin.</div>' +
+    '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button class="pane-btn primary" type="submit">' + (editing ? 'Değişiklikleri Kaydet' : '+ Aracı Kaydet') + '</button>' +
+    (editing ? '<button class="pane-btn" type="button" data-cancel-edit>Vazgeç</button>' : '') + '</div></form>';
 }
 
 function renderList(items) {
   if (!items.length) return '<div class="pane-empty" style="margin-top:18px"><strong>Henüz kayıtlı aracın yok</strong><span>Yukarıdan ilk aracını ekle.</span></div>';
   return '<div class="pane-list" style="margin-top:18px">' + items.map((item) =>
     '<div class="pane-row saved-vehicle-row" data-open-saved-vehicle="' + esc(item.id) + '" role="button" tabindex="0" title="Aracıma ait parçaları göster"><div class="grow"><strong>' + esc(item.nickname || [item.make, item.model].filter(Boolean).join(' ')) + '</strong><small>' + esc([item.vehicle_type, item.make, item.model, item.year, item.version].filter(Boolean).join(' · ')) + '</small></div>' +
-    '<div class="pane-actions"><button class="pane-btn" type="button" data-open-saved-vehicle="' + esc(item.id) + '">Aracıma Ait Parçaları Bul</button><button class="danger" data-delete-saved-vehicle="' + esc(item.id) + '">Sil</button></div></div>'
+    '<div class="pane-actions"><button class="pane-btn" type="button" data-open-saved-vehicle="' + esc(item.id) + '">Aracıma Ait Parçaları Bul</button><button class="pane-btn" type="button" data-edit-saved-vehicle="' + esc(item.id) + '">Düzenle</button><button class="danger" type="button" data-delete-saved-vehicle="' + esc(item.id) + '">Sil</button></div></div>'
   ).join('') + '</div>';
 }
 
@@ -83,7 +90,9 @@ async function render() {
   target.innerHTML = '<div class="pane-loading">Yükleniyor…</div>';
   try {
     const items = await getSavedVehicles();
-    target.innerHTML = renderForm() + renderList(items);
+    const editingItem = editingId ? items.find((item) => String(item.id) === String(editingId)) : null;
+    if (editingId && !editingItem) editingId = null;
+    target.innerHTML = renderForm(editingItem) + renderList(items);
   } catch (error) {
     target.innerHTML = '<div class="pane-empty"><strong>Araçlar yüklenemedi</strong><span>' + esc(error.message) + '</span></div>';
   }
@@ -95,6 +104,7 @@ async function activate(event) {
   const user = await getCurrentUser().catch(() => null);
   if (!user) return;
   active = true;
+  editingId = null;
   document.querySelectorAll('[data-pane]').forEach((button) => button.classList.remove('active'));
   document.querySelector('[data-saved-vehicles]')?.classList.add('active');
   selection = { type: '', make: '', model: '', year: '', engine: '' };
@@ -149,10 +159,15 @@ document.addEventListener('submit', async (event) => {
   const nickname = event.target.elements.nickname?.value || '';
   try {
     const resolved = resolver.resolve?.(selection) || null;
-    await saveVehicle({ vehicleId: resolved?.id || null, vehicleType: selection.type, make: selection.make, model: selection.model, year: selection.year, version: selection.engine, nickname });
+    if (editingId) {
+      await updateSavedVehicle(editingId, { vehicle_id: resolved?.id || null, vehicle_type: selection.type, make: selection.make, model: selection.model, year: selection.year, version: selection.engine, nickname });
+    } else {
+      await saveVehicle({ vehicleId: resolved?.id || null, vehicleType: selection.type, make: selection.make, model: selection.model, year: selection.year, version: selection.engine, nickname });
+    }
+    editingId = null;
     selection = { type: '', make: '', model: '', year: '', engine: '' };
     const toast = document.querySelector('#toast');
-    if (toast) { toast.textContent = 'Araç kaydedildi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2200); }
+    if (toast) { toast.textContent = editingId ? 'Araç güncellendi.' : 'Araç kaydedildi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2200); }
     await render();
   } catch (error) {
     const toast = document.querySelector('#toast');
@@ -161,9 +176,27 @@ document.addEventListener('submit', async (event) => {
 });
 
 document.addEventListener('click', async (event) => {
+  const edit = event.target.closest('[data-edit-saved-vehicle]');
+  if (edit && active) {
+    event.preventDefault();
+    event.stopPropagation();
+    editingId = edit.dataset.editSavedVehicle;
+    await render();
+    pane()?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  const cancel = event.target.closest('[data-cancel-edit]');
+  if (cancel && active) {
+    event.preventDefault();
+    event.stopPropagation();
+    editingId = null;
+    selection = { type: '', make: '', model: '', year: '', engine: '' };
+    await render();
+    return;
+  }
   const open = event.target.closest('[data-open-saved-vehicle]');
   if (open && active) {
-    if (event.target.closest('[data-delete-saved-vehicle]')) return;
+    if (event.target.closest('[data-delete-saved-vehicle]') || event.target.closest('[data-edit-saved-vehicle]')) return;
     event.preventDefault();
     event.stopPropagation();
     await openCompatibleVehicle(open.dataset.openSavedVehicle);
@@ -175,6 +208,7 @@ document.addEventListener('click', async (event) => {
   event.stopPropagation();
   try {
     await deleteSavedVehicle(button.dataset.deleteSavedVehicle);
+    if (String(editingId) === String(button.dataset.deleteSavedVehicle)) editingId = null;
     await render();
   } catch (error) {
     const toast = document.querySelector('#toast');
