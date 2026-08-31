@@ -7,6 +7,20 @@ const TYPES = [
   ['Motosiklet', 'Motosiklet'], ['Pickup / Kamyonet', 'Pickup / Kamyonet'],
 ];
 
+const ACCOUNT_ITEMS = [
+  ['profilim', 'Profilim', '👤'],
+  ['ilanlarim', 'İlanlarım', '▤'],
+  ['taleplerim', 'Taleplerim', '⌕'],
+  ['mesajlarim', 'Mesajlarım', '✉'],
+  ['favorilerim', 'Favorilerim', '♡'],
+  ['kayitli-aramalar', 'Kayıtlı Aramalarım', '⌑'],
+  ['bildirimler', 'Bildirimler', '♢'],
+  ['musterilerim', 'Müşterilerim', '♙'],
+  ['hesap-bilgileri', 'Hesap Bilgileri', '⚙'],
+  ['ayarlar', 'Ayarlar', '⚙'],
+  ['yardim', 'Yardım & Destek', '?'],
+];
+
 const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (c) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', "'": '&#39;'
 }[c]));
@@ -14,6 +28,7 @@ const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (c) => ({
 let isOpen = false;
 let vehicleType = '';
 let expanded = new Set();
+let accountExpanded = false;
 
 const backdrop = document.createElement('div');
 backdrop.className = 'category-layer-backdrop';
@@ -21,11 +36,11 @@ backdrop.className = 'category-layer-backdrop';
 const drawer = document.createElement('aside');
 drawer.className = 'category-drawer';
 drawer.setAttribute('role', 'dialog');
-drawer.setAttribute('aria-label', 'Parça kategorileri');
+drawer.setAttribute('aria-label', 'Parça Avcısı menüsü');
 drawer.innerHTML = `
   <div class="category-drawer-head">
     <div class="category-drawer-title-row">
-      <div><div class="category-eyebrow">KATEGORİLER</div><h2>Parça kategorileri</h2></div>
+      <div><div class="category-eyebrow">PARÇA AVCISI</div><h2>Menü</h2></div>
       <button type="button" class="category-close" aria-label="Kapat">×</button>
     </div>
     <p>Araç tipini seç, ardından parça kategorisini seç.</p>
@@ -33,13 +48,26 @@ drawer.innerHTML = `
       ${TYPES.map(([label, type]) => `<button type="button" role="tab" data-vehicle-type="${esc(type)}">${esc(label)}</button>`).join('')}
     </div>
   </div>
-  <div class="category-list-title"><strong>Ana kategoriler</strong><span>Seçmek için dokun</span></div>
+  <div class="category-list-title"><strong>Parça Kategorileri</strong><span>Seçmek için dokun</span></div>
   <div class="category-list"></div>
+  <div class="account-menu-section">
+    <button type="button" class="account-menu-toggle" data-toggle-account aria-expanded="false">
+      <span class="account-menu-icon">♙</span>
+      <span class="account-menu-label"><strong>Hesabım</strong><small>Profil, ilanlar, mesajlar ve ayarlar</small></span>
+      <b aria-hidden="true">›</b>
+    </button>
+    <div class="account-menu-list" hidden>
+      ${ACCOUNT_ITEMS.map(([key, label, icon]) => `<button type="button" class="account-menu-link" data-account-pane="${esc(key)}"><span>${esc(icon)}</span><strong>${esc(label)}</strong></button>`).join('')}
+      <button type="button" class="account-menu-link account-signout-link" data-account-signout-menu><span>↪</span><strong>Çıkış Yap</strong></button>
+    </div>
+  </div>
 `;
 
 document.body.append(backdrop, drawer);
 const list = drawer.querySelector('.category-list');
 const closeButton = drawer.querySelector('.category-close');
+const accountToggle = drawer.querySelector('[data-toggle-account]');
+const accountList = drawer.querySelector('.account-menu-list');
 
 function render() {
   drawer.querySelectorAll('[data-vehicle-type]').forEach((button) => {
@@ -60,6 +88,10 @@ function render() {
       </div>
     </div>`;
   }).join('');
+
+  accountToggle.classList.toggle('expanded', accountExpanded);
+  accountToggle.setAttribute('aria-expanded', String(accountExpanded));
+  accountList.hidden = !accountExpanded;
 }
 
 function setOpen(next) {
@@ -93,6 +125,17 @@ function goToCategory(category, subcategory) {
   window.location.assign(`/ilanlar?${params.toString()}`);
 }
 
+function openAccountPane(pane) {
+  setOpen(false);
+  if (typeof window.__openAccountCenter === 'function') {
+    window.__openAccountCenter(pane);
+    return;
+  }
+  window.setTimeout(() => {
+    if (typeof window.__openAccountCenter === 'function') window.__openAccountCenter(pane);
+  }, 0);
+}
+
 // Menü içindeki tüm pointer/click olaylarını tüket. Global UI handler'ları etkilenmez.
 const consumePointer = (event) => event.stopPropagation();
 drawer.addEventListener('pointerdown', consumePointer);
@@ -109,6 +152,26 @@ drawer.addEventListener('click', (event) => {
     event.preventDefault();
     const item = subButton.closest('.category-item');
     goToCategory(item?.querySelector('[data-category]')?.dataset.category || '', subButton.dataset.subcategory || '');
+    return;
+  }
+  const toggle = event.target.closest('[data-toggle-account]');
+  if (toggle) {
+    event.preventDefault();
+    accountExpanded = !accountExpanded;
+    render();
+    return;
+  }
+  const accountPane = event.target.closest('[data-account-pane]');
+  if (accountPane) {
+    event.preventDefault();
+    openAccountPane(accountPane.dataset.accountPane || 'profilim');
+    return;
+  }
+  const signout = event.target.closest('[data-account-signout-menu]');
+  if (signout) {
+    event.preventDefault();
+    setOpen(false);
+    if (typeof window.__accountSignout === 'function') window.__accountSignout();
   }
 });
 
