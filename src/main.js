@@ -19,6 +19,7 @@ import './lib/account-menu-fix.js';
 import './lib/account-drawer-ui.js';
 import './lib/account-page-navigation.js';
 import './lib/account-route-shell.js';
+import './lib/account-route-shell.css';
 import './lib/saved-vehicles-ui.js';
 import './lib/listing-report.css';
 import './lib/listing-report-ui.js';
