@@ -5,7 +5,7 @@ const ACCOUNT_ROUTES = {
   '/ayarlar': 'ayarlar', '/yardim-destek': 'yardim-destek', '/araclarim': 'araclarim'
 };
 
-function renderAccountRoute() {
+async function renderAccountRoute() {
   const pane = ACCOUNT_ROUTES[window.location.pathname.replace(/\/+$/, '')];
   if (!pane) return;
 
@@ -15,7 +15,7 @@ function renderAccountRoute() {
 
   if (pane === 'araclarim') {
     if (typeof window.__openSavedVehicles !== 'function') return;
-    window.__openSavedVehicles();
+    await window.__openSavedVehicles();
   } else {
     if (typeof window.__openAccountCenter !== 'function') return;
     window.__openAccountCenter(pane);
@@ -44,8 +44,8 @@ function renderAccountRoute() {
 
 function boot() {
   renderAccountRoute();
-  window.setTimeout(renderAccountRoute, 250);
-  window.setTimeout(renderAccountRoute, 750);
+  window.setTimeout(() => renderAccountRoute(), 250);
+  window.setTimeout(() => renderAccountRoute(), 750);
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
