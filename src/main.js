@@ -16,6 +16,7 @@ import './lib/listing-creator.js';
 import './lib/photo-limit-ui.js';
 import './lib/account-center.js';
 import './lib/account-menu-fix.js';
+import './lib/account-drawer-ui.js';
 import './lib/saved-vehicles-ui.js';
 import './lib/listing-report.css';
 import './lib/listing-report-ui.js';
