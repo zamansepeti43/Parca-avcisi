@@ -31,6 +31,7 @@ import './lib/empty-request-cta.js';
 import './lib/auth-verification.js';
 import './lib/signup-phone-verification.js';
 import './lib/platform-settings.js';
+import './lib/mobile-account-entry-fix.js';
 import { initRequestRealtime } from './lib/request-realtime.js';
 import './lib/route-pages.js';
 import './lib/listing-page.js';
