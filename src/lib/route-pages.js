@@ -2,7 +2,11 @@ import './route-pages.css';
 
 const path = window.location.pathname.replace(/\/+$/, '') || '/';
 const isListingsPage = path === '/ilanlar';
+const ACCOUNT_PATHS = new Set(['/profilim','/ilanlarim','/taleplerim','/mesajlarim','/favorilerim','/kayitli-aramalarim','/bildirimler','/musterilerim','/hesap-bilgileri','/ayarlar','/yardim-destek']);
+const isAccountPage = ACCOUNT_PATHS.has(path);
 document.body.classList.toggle('is-listings-page', isListingsPage);
+document.body.classList.toggle('is-account-page', isAccountPage);
+if (isAccountPage) document.documentElement.dataset.page = 'account';
 
 function updateNavigation() {
   document.querySelectorAll('.desktop-nav a').forEach((link) => {
@@ -18,7 +22,9 @@ function updateNavigation() {
   document.querySelectorAll('.desktop-nav a').forEach((link) => link.classList.remove('active'));
   const active = isListingsPage
     ? document.querySelector('.desktop-nav a[href="/ilanlar"]')
-    : document.querySelector('.desktop-nav a[href="/"]');
+    : !isAccountPage
+      ? document.querySelector('.desktop-nav a[href="/"]')
+      : null;
   active?.classList.add('active');
 }
 
