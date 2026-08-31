@@ -10,6 +10,7 @@ import './lib/listing-view.js';
 import './lib/part-icons-ui.js';
 import './lib/vin-ui-bridge.js';
 import './lib/vehicle-search-ui.js';
+import './lib/listing-card-click.js';
 import './lib/listing-filters-ui.js';
 import './lib/listing-creator.js';
 import './lib/photo-limit-ui.js';
