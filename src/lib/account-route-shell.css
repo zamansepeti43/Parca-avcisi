@@ -1,0 +1,5 @@
+/* Account pages use the same responsive surface as the marketplace. */
+.account-route-shell{width:100%;max-width:1180px;margin:0 auto;padding:28px 20px 56px;box-sizing:border-box;}
+.account-route-inner{width:100%;}
+.account-route-shell .modal-card{width:100%;max-width:none;box-sizing:border-box;}
+@media (max-width:700px){.account-route-shell{padding:16px 12px 40px}.account-route-inner{min-width:0}.account-route-shell button,.account-route-shell a{min-height:44px}.account-route-shell input,.account-route-shell select,.account-route-shell textarea{font-size:16px;}}
