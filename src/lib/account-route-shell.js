@@ -2,19 +2,25 @@ const ACCOUNT_ROUTES = {
   '/profilim': 'profilim', '/ilanlarim': 'ilanlarim', '/taleplerim': 'taleplerim',
   '/mesajlarim': 'mesajlarim', '/favorilerim': 'favorilerim', '/kayitli-aramalarim': 'kayitli-aramalarim',
   '/bildirimler': 'bildirimler', '/musterilerim': 'musterilerim', '/hesap-bilgileri': 'hesap-bilgileri',
-  '/ayarlar': 'ayarlar', '/yardim-destek': 'yardim-destek'
+  '/ayarlar': 'ayarlar', '/yardim-destek': 'yardim-destek', '/araclarim': 'araclarim'
 };
 
 function renderAccountRoute() {
   const pane = ACCOUNT_ROUTES[window.location.pathname.replace(/\/+$/, '')];
-  if (!pane || typeof window.__openAccountCenter !== 'function') return;
+  if (!pane) return;
 
   const modal = document.querySelector('#appModal');
   const content = document.querySelector('#modalContent');
   if (!content) return;
 
-  // Ask the existing account center to render its tested panel, then transplant only its markup.
-  window.__openAccountCenter(pane);
+  if (pane === 'araclarim') {
+    if (typeof window.__openSavedVehicles !== 'function') return;
+    window.__openSavedVehicles();
+  } else {
+    if (typeof window.__openAccountCenter !== 'function') return;
+    window.__openAccountCenter(pane);
+  }
+
   const html = content.innerHTML;
   if (!html) return;
 
