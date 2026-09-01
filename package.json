@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "node scripts/lint.mjs",
+    "seo:sitemap": "node scripts/seo/generate-sitemap.mjs",
     "seo:vehicle-sitemap": "node scripts/seo/generate-vehicle-sitemap.mjs"
   },
   "dependencies": {
