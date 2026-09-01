@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /profilim
+Disallow: /ilanlarim
+Disallow: /taleplerim
+Disallow: /mesajlarim
+Disallow: /favorilerim
+Disallow: /kayitli-aramalarim
+Disallow: /bildirimler
+Disallow: /musterilerim
+Disallow: /hesap-bilgileri
+Disallow: /ayarlar
+Disallow: /yardim-destek
+Disallow: /araclarim
+Disallow: /ilanlar?q=
+Disallow: /ilanlar?category=
+Sitemap: https://parca-avcisi.vercel.app/sitemap.xml
