@@ -50,11 +50,18 @@ jobs:
           node --check src/lib/vehicle-catalog.js
           node -e "import('./src/lib/vehicle-catalog.js').then(m=>{if(!m.vehicleCatalog?.length) process.exit(1); if(!m.getMakes||!m.getModels||!m.getYears) process.exit(1); console.log('vehicles:',m.vehicleCatalog.length)})"
 
-      - name: Commit merged catalog and audit
+      - name: Generate vehicle SEO sitemap
+        run: npm run seo:vehicle-sitemap
+
+      - name: Validate vehicle SEO sitemap
+        run: |
+          node -e "const fs=require('fs');const x=fs.readFileSync('public/vehicle-sitemap.xml','utf8');const n=(x.match(/<url>/g)||[]).length;if(n<1){console.error('vehicle sitemap is empty');process.exit(1)}console.log('vehicle SEO URLs:',n)"
+
+      - name: Commit merged catalog, audit and SEO sitemap
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-sources/turkey-makes.json data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json src/lib/vehicle-catalog.js
+          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-sources/turkey-makes.json data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json src/lib/vehicle-catalog.js public/vehicle-sitemap.xml
           git diff --cached --quiet && exit 0
-          git commit -m 'data: expand Turkey vehicle catalog and audit coverage'
+          git commit -m 'data: expand Turkey vehicle catalog, audit and SEO sitemap'
           git push
