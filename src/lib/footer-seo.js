@@ -28,17 +28,17 @@ function renderFooterNavigation() {
 
   inner.innerHTML = `
     <div class="footer-brand-block">
-      <a class="brand" href="#top" aria-label="Parça Avcısı ana sayfa">
+      <a class="brand" href="/#top" aria-label="Parça Avcısı ana sayfa">
         <img class="brand-mark" src="/app-logo.png" alt="Parça Avcısı" width="34" height="34">
         <span>PARÇA <strong>AVCISI</strong></span>
       </a>
       <p>Aradığın her parça Parça Avcısı'nda.</p>
       <nav class="footer-primary-links" aria-label="Site bağlantıları">
-        <a href="#ilanlar">Tüm İlanlar</a>
-        <a href="#aracini-sec">Aracını Seç</a>
-        <a href="#sss">Sık Sorulan Sorular</a>
-        <a href="#hakkimizda">Hakkımızda</a>
-        <a href="#iletisim">İletişim</a>
+        <a href="/ilanlar">Tüm İlanlar</a>
+        <a href="/#aracini-sec">Aracını Seç</a>
+        <a href="/#sss">Sık Sorulan Sorular</a>
+        <a href="/#hakkimizda">Hakkımızda</a>
+        <a href="/#iletisim">İletişim</a>
       </nav>
     </div>
     <div class="footer-category-block">
