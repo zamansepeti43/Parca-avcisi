@@ -8,6 +8,7 @@ import './lib/internal-linking-seo.js';
 import './lib/schema-seo.js';
 import './lib/performance.js';
 import './lib/performance.css';
+import './lib/search-console-seo.js';
 import './lib/mobile-nav-fix.css';
 import './lib/mobile-header-fix.js';
 import './lib/categories-menu.js';
