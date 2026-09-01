@@ -23,8 +23,12 @@ jobs:
         with:
           node-version: 22
       - run: npm install
+      - name: Generate core SEO sitemap
+        run: npm run seo:sitemap
+      - name: Validate core sitemap
+        run: node -e "const fs=require('fs');const x=fs.readFileSync('public/sitemap.xml','utf8');if(!x.includes('<urlset')||!x.includes('</urlset>'))process.exit(1);console.log('core sitemap bytes:',x.length)"
       - name: Generate vehicle SEO sitemap
         run: npm run seo:vehicle-sitemap
-      - name: Validate generated sitemap
+      - name: Validate vehicle sitemap
         run: node -e "const fs=require('fs');const x=fs.readFileSync('public/vehicle-sitemap.xml','utf8');if(!x.includes('<urlset')||!x.includes('</urlset>'))process.exit(1);console.log('vehicle sitemap bytes:',x.length)"
       - run: npm run build
