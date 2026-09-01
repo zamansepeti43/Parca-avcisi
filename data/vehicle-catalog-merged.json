@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-31",
+  "version": "2026-09-01",
   "scope": "TR-first vehicle catalog",
   "policy": "No inferred fitment; explicit source provenance is preserved.",
   "sources": [
@@ -20,7 +20,7 @@
     },
     {
       "id": "FleetByte",
-      "status": "loaded",
+      "status": "optional",
       "fetched": 0
     },
     {
