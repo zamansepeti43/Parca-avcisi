@@ -6,6 +6,7 @@ import './lib/canonical-noindex.js';
 import './lib/service-seo-page.js';
 import './lib/internal-linking-seo.js';
 import './lib/schema-seo.js';
+import './lib/faq-seo.js';
 import './lib/performance.js';
 import './lib/performance.css';
 import './lib/search-console-seo.js';
