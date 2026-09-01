@@ -3,6 +3,7 @@ import { ListingAnalyzer } from './listing-analyzer.js';
 import { getCurrentUser } from './auth.js';
 import { createListing } from './listings.js';
 import { attachImagesToListing } from './listing-images.js';
+import { optimizeImageFiles } from './image-optimization.js';
 
 const analyzer = new ListingAnalyzer();
 const modal = document.querySelector('#appModal');
@@ -29,8 +30,9 @@ function upload(multiple) {
     button.disabled = true;
     button.textContent = 'AI analiz ediyor…';
     try {
-      const drafts = await Promise.all(selected.map((file) => analyzer.analyze(file)));
-      renderDrafts(drafts, multiple, selected);
+      const optimized = await optimizeImageFiles(selected);
+      const drafts = await Promise.all(optimized.map((file) => analyzer.analyze(file)));
+      renderDrafts(drafts, multiple, optimized);
     } catch (error) {
       notice(error.message || 'AI analizi başarısız.');
       button.disabled = false;
