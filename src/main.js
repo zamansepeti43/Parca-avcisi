@@ -2,6 +2,7 @@ import './app.js';
 import './lib/seo.js';
 import './lib/vehicle-seo-page.js';
 import './lib/seo-title-optimizer.js';
+import './lib/canonical-noindex.js';
 import './lib/service-seo-page.js';
 import './lib/internal-linking-seo.js';
 import './lib/mobile-nav-fix.css';
