@@ -15,11 +15,13 @@ const services = [
   'elektrik-servisi', 'kaporta-boya', 'suspansiyon', 'diagnostik'
 ];
 
+const legalPages = ['/gizlilik', '/kullanim-sartlari'];
 const urls = [
   '/',
   '/ilanlar',
   ...categories.map((slug) => `/parcalar/${slug}`),
-  ...services.map((slug) => `/servisler/${slug}`)
+  ...services.map((slug) => `/servisler/${slug}`),
+  ...legalPages
 ];
 
 const xmlEscape = (value) => String(value)
