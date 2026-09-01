@@ -1,0 +1,22 @@
+import { vehicleCatalog } from './vehicle-catalog.js';
+
+const SITE_URL=(import.meta.env.VITE_SITE_URL||'https://parca-avcisi.vercel.app').replace(/\/$/,'');
+const path=window.location.pathname.replace(/\/+$/,'')||'/';
+const params=new URLSearchParams(window.location.search);
+const p=path.split('/').filter(Boolean);
+const categorySlugs=new Set(['motor','sanziman','kaporta','aydinlatma','fren-sistemi','suspansiyon','elektrik','ic-aksam','egzoz','klima','filtreler','yakit-sistemi','direksiyon','jant-lastik','cam-ayna','sogutma-sistemi','aktarma','diger']);
+const accountPaths=new Set(['/profilim','/ilanlarim','/taleplerim','/mesajlarim','/favorilerim','/kayitli-aramalarim','/bildirimler','/musterilerim','/hesap-bilgileri','/ayarlar','/yardim-destek','/araclarim']);
+const slug=v=>String(v??'').trim().toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ı/g,'i').replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s').replace(/ö/g,'o').replace(/ç/g,'c').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+const setMeta=(name,content)=>{let e=document.head.querySelector(`meta[name="${name}"]`);if(!e){e=document.createElement('meta');e.name=name;document.head.appendChild(e)}e.content=content};
+const setCanonical=url=>{let e=document.head.querySelector('link[rel="canonical"]');if(!e){e=document.createElement('link');e.rel='canonical';document.head.appendChild(e)}e.href=url};
+const validVehicle=p[0]==='arac'&&p.length===3&&vehicleCatalog.some(v=>slug(v.make??v.brand)===p[1]&&slug(v.model)===p[2]);
+const validCategory=p[0]==='parcalar'&&p.length===2&&categorySlugs.has(p[1]);
+const publicPage=path==='/'||path==='/ilanlar'||validCategory||validVehicle;
+const hasQuery=[...params.keys()].length>0;
+const shouldNoindex=accountPaths.has(path)||!publicPage||hasQuery||(p[0]==='arac'&&!validVehicle);
+const canonical=validVehicle?`${SITE_URL}/arac/${p[1]}/${p[2]}`:validCategory?`${SITE_URL}/parcalar/${p[1]}`:path==='/ilanlar'?`${SITE_URL}/ilanlar`:`${SITE_URL}${path==='/'?'':path}`;
+setCanonical(canonical);
+setMeta('robots',shouldNoindex?'noindex,follow':'index,follow');
+setMeta('googlebot',shouldNoindex?'noindex,follow':'index,follow,max-image-preview:large');
+const ogUrl=document.head.querySelector('meta[property="og:url"]');if(ogUrl)ogUrl.content=canonical;
+export const canonicalNoindexReady=true;
