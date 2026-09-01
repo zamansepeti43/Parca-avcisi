@@ -1,5 +1,6 @@
 import './app.js';
 import './lib/seo.js';
+import './lib/vehicle-seo-page.js';
 import './lib/mobile-nav-fix.css';
 import './lib/mobile-header-fix.js';
 import './lib/categories-menu.js';
