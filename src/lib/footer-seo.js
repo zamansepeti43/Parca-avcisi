@@ -40,6 +40,10 @@ function renderFooterNavigation() {
         <a href="/#hakkimizda">Hakkımızda</a>
         <a href="/#iletisim">İletişim</a>
       </nav>
+      <nav class="footer-legal-links" aria-label="Yasal bilgiler">
+        <a href="/gizlilik">Gizlilik Politikası</a>
+        <a href="/kullanim-sartlari">Kullanım Şartları</a>
+      </nav>
     </div>
     <div class="footer-category-block">
       <h2>Oto Parça Kategorileri</h2>
