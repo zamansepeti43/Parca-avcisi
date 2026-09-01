@@ -8,6 +8,8 @@ import './lib/internal-linking-seo.js';
 import './lib/schema-seo.js';
 import './lib/faq-seo.js';
 import './lib/about-contact-seo.js';
+import './lib/footer-seo.js';
+import './lib/footer-seo.css';
 import './lib/performance.js';
 import './lib/performance.css';
 import './lib/search-console-seo.js';
