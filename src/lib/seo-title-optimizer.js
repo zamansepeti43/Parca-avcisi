@@ -1,0 +1,9 @@
+const SITE_URL=(import.meta.env.VITE_SITE_URL||'https://parca-avcisi.vercel.app').replace(/\/$/,'');
+const path=window.location.pathname.replace(/\/+$/,'')||'/';
+const p=path.split('/').filter(Boolean);
+const slug=v=>String(v??'').trim().toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ı/g,'i').replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s').replace(/ö/g,'o').replace(/ç/g,'c').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+const labels={motor:'Motor',sanziman:'Şanzıman',kaporta:'Kaporta',aydinlatma:'Aydınlatma','fren-sistemi':'Fren Sistemi',suspansiyon:'Süspansiyon',elektrik:'Elektrik','ic-aksam':'İç Aksam',egzoz:'Egzoz',klima:'Klima',filtreler:'Filtreler','yakit-sistemi':'Yakıt Sistemi',direksiyon:'Direksiyon','jant-lastik':'Jant & Lastik','cam-ayna':'Cam & Ayna'};
+const setMeta=(name,content)=>{let e=document.head.querySelector(`meta[name="${name}"]`);if(!e){e=document.createElement('meta');e.name=name;document.head.appendChild(e)}e.content=content};
+const setCanonical=url=>{let e=document.head.querySelector('link[rel="canonical"]');if(!e){e=document.createElement('link');e.rel='canonical';document.head.appendChild(e)}e.href=url};
+if(p[0]==='parcalar'&&labels[p[1]]){const label=labels[p[1]];document.title=`${label} Oto Yedek Parça | Parça Avcısı`;setMeta('description',`${label} yedek parçaları: sıfır, 2. el ve çıkma ilanları. Aracınıza uygun ${label.toLocaleLowerCase('tr-TR')} parçasını Parça Avcısı'nda bulun.`);setCanonical(`${SITE_URL}/parcalar/${slug(p[1])}`);}
+if(p[0]==='arac'&&p[1]&&p[2]){const make=p[1].replace(/-/g,' '),model=p[2].replace(/-/g,' '),year=p[3]||'';const name=`${make} ${model}${year?` ${year}`:''}`;document.title=`${name} Yedek Parça ve İlanlar | Parça Avcısı`;setMeta('description',`${name} için uyumlu oto yedek parçalarını ve ilanları bulun. Motor, fren, kaporta, elektrik ve diğer parçaları karşılaştırın.`);setCanonical(`${SITE_URL}${path}`);}
