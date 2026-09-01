@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   build:
-    name: Install and build
+    name: Install, generate SEO assets and build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,4 +23,5 @@ jobs:
         with:
           node-version: 22
       - run: npm install
+      - run: npm run seo:vehicle-sitemap
       - run: npm run build
