@@ -1,10 +1,9 @@
 import { vehicleCatalog } from './vehicle-catalog.js';
 
-const SITE_URL=(import.meta.env.VITE_SITE_URL||'https://parca-avcisi.vercel.app').replace(/\/$/,'');
 const path=window.location.pathname.replace(/\/+$/,'')||'/';
 const slug=(v)=>String(v??'').trim().toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ı/g,'i').replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s').replace(/ö/g,'o').replace(/ç/g,'c').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 const escapeHtml=(v)=>String(v??'').replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const addLinks=(links)=>{const main=document.querySelector('main');if(!main||document.querySelector('#seo-internal-links'))return;const section=document.createElement('section');section.id='seo-internal-links';section.className='section';section.innerHTML=`<div class="container"><span class="eyebrow">PARÇA AVCISI KATALOĞU</span><h2>Aracınıza Uygun Parçaları Keşfedin</h2><p>Araç, model, motor ve parça kategorileri arasında ilerleyerek doğru yedek parçaya ulaşın.</p><nav aria-label="İlgili bağlantılar" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">${links.map(({href,label})=>`<a class="text-btn" href="${href}">${escapeHtml(label)} →</a>`).join('')}</nav></div>`;main.appendChild(section);};
+const addLinks=(links,extra='')=>{const main=document.querySelector('main');if(!main||document.querySelector('#seo-internal-links'))return;const section=document.createElement('section');section.id='seo-internal-links';section.className='section';section.innerHTML=`<div class="container"><span class="eyebrow">PARÇA AVCISI KATALOĞU</span><h2>Aracınıza Uygun Parçaları Keşfedin</h2><p>Araç, model, motor ve parça kategorileri arasında ilerleyerek doğru yedek parçaya ulaşın.</p>${extra}<nav aria-label="İlgili bağlantılar" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">${links.map(({href,label})=>`<a class="text-btn" href="${href}">${escapeHtml(label)} →</a>`).join('')}</nav></div>`;main.appendChild(section);};
 const p=path.split('/').filter(Boolean);
 if(p[0]==='arac'&&p[1]&&p[2]){
  const row=vehicleCatalog.find(v=>slug(v.make??v.brand)===p[1]&&slug(v.model)===p[2]);
@@ -12,9 +11,9 @@ if(p[0]==='arac'&&p[1]&&p[2]){
   const make=row.make??row.brand,model=row.model;
   const engines=[...(Array.isArray(row.engines)?row.engines:[])].filter(Boolean).slice(0,8);
   const links=[{href:`/ilanlar?vehicleMake=${encodeURIComponent(make)}&vehicleModel=${encodeURIComponent(model)}`,label:`${make} ${model} parçaları`}];
-  engines.forEach(engine=>links.push({href:`/ilanlar?vehicleMake=${encodeURIComponent(make)}&vehicleModel=${encodeURIComponent(model)}&engine=${encodeURIComponent(engine)}`,label:`${engine} motor parçaları`}));
   ['Motor','Fren Sistemi','Kaporta','Elektrik','Süspansiyon','Klima'].forEach(category=>links.push({href:`/ilanlar?category=${encodeURIComponent(category)}&vehicleMake=${encodeURIComponent(make)}&vehicleModel=${encodeURIComponent(model)}`,label:`${make} ${model} ${category}`}));
-  addLinks(links.slice(0,15));
+  const engineText=engines.length?`<p class="seo-vehicle-details"><strong>Motor seçenekleri:</strong> ${escapeHtml(engines.join(', '))}</p>`:'';
+  addLinks(links,engineText);
  }
 }
 if(p[0]==='parcalar'&&p[1]){
