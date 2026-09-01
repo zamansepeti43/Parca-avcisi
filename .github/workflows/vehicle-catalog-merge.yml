@@ -26,37 +26,28 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-
       - name: Merge vehicle sources
         env:
           FLEETBYTE: ${{ github.event_name == 'schedule' && '1' || (github.event.inputs.fleetbyte == 'true' && '1' || '0') }}
         run: node scripts/vehicle-catalog/merge_turkey_catalog.mjs
-
       - name: Expand to Turkey make scope
         run: node scripts/vehicle-catalog/expand_turkey_makes.mjs
-
       - name: Restore compatibility exports
         run: node scripts/vehicle-catalog/fix_generated_exports.mjs
-
       - name: Audit catalog coverage
         run: node scripts/vehicle-catalog/audit_catalog.mjs
-
       - name: Validate generated catalog
         run: |
           node --check src/lib/vehicle-catalog.js
           node -e "import('./src/lib/vehicle-catalog.js').then(m=>{if(!m.vehicleCatalog?.length) process.exit(1); if(!m.getMakes||!m.getModels||!m.getYears) process.exit(1); console.log('vehicles:',m.vehicleCatalog.length)})"
-
       - name: Generate vehicle SEO sitemap
         run: npm run seo:vehicle-sitemap
-
       - name: Validate vehicle SEO sitemap
         run: |
           node -e "const fs=require('fs');const x=fs.readFileSync('public/vehicle-sitemap.xml','utf8');const n=(x.match(/<url>/g)||[]).length;if(n<1){console.error('vehicle sitemap is empty');process.exit(1)}console.log('vehicle SEO URLs:',n)"
-
       - name: Commit merged catalog, audit and SEO sitemap
         run: |
           git config user.name 'github-actions[bot]'
