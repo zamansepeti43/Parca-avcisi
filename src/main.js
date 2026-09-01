@@ -6,6 +6,7 @@ import './lib/canonical-noindex.js';
 import './lib/service-seo-page.js';
 import './lib/internal-linking-seo.js';
 import './lib/schema-seo.js';
+import './lib/performance.js';
 import './lib/mobile-nav-fix.css';
 import './lib/mobile-header-fix.js';
 import './lib/categories-menu.js';
