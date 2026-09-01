@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /hesabim
+Disallow: /favoriler
+Disallow: /mesajlar
+Disallow: /bildirimler
+Disallow: /kayitli-arama
+
+Sitemap: https://parca-avcisi.vercel.app/sitemap.xml
+Sitemap: https://parca-avcisi.vercel.app/vehicle-sitemap.xml
