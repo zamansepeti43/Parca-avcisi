@@ -23,5 +23,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - run: npm run seo:vehicle-sitemap
+      - name: Generate vehicle SEO sitemap
+        run: npm run seo:vehicle-sitemap
+      - name: Validate generated sitemap
+        run: node -e "const fs=require('fs');const x=fs.readFileSync('public/vehicle-sitemap.xml','utf8');if(!x.includes('<urlset')||!x.includes('</urlset>'))process.exit(1);console.log('vehicle sitemap bytes:',x.length)"
       - run: npm run build
