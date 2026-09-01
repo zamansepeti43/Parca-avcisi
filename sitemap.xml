@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://parca-avcisi.vercel.app/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://parca-avcisi.vercel.app/ilanlar</loc>
-    <changefreq>hourly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <url><loc>https://parca-avcisi.vercel.app/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/ilanlar</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/motor</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/sanziman</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/kaporta</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/aydinlatma</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/fren-sistemi</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/suspansiyon</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/elektrik</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/ic-aksam</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/egzoz</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/klima</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/filtreler</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/yakit-sistemi</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/direksiyon</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/jant-lastik</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/cam-ayna</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/sogutma-sistemi</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/aktarma</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parca-avcisi.vercel.app/parcalar/diger</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
