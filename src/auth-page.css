@@ -1,0 +1,29 @@
+:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f4f5f7;background:#090b0e;color-scheme:dark;--gold:#d9ad55;--muted:#a9adb5;--panel:#11151a;--line:#2a3038}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% -10%,#252014 0,#101319 34%,#090b0e 72%);}
+.auth-page{min-height:100vh;display:grid;place-items:center;padding:28px 16px}
+.auth-card{width:min(100%,520px);background:rgba(17,21,26,.96);border:1px solid #2a3038;border-radius:22px;padding:34px;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.auth-brand{display:flex;align-items:center;justify-content:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;letter-spacing:.12em;margin-bottom:30px}
+.auth-brand img{width:38px;height:38px;object-fit:contain;border-radius:10px}
+.eyebrow{display:block;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.16em;margin-bottom:9px}
+h1{font-size:32px;line-height:1.12;margin:0 0 10px}
+.auth-intro{color:var(--muted);line-height:1.6;margin:0 0 24px}
+.auth-form{display:grid;gap:15px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:grid;gap:7px;color:#dfe2e7;font-size:13px;font-weight:700}
+input,textarea{width:100%;border:1px solid var(--line);border-radius:11px;background:#0b0e12;color:#fff;padding:13px 14px;font:inherit;font-weight:500;outline:none;transition:border-color .15s,box-shadow .15s}
+input{height:48px}
+textarea{min-height:100px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(217,173,85,.12)}
+button{font:inherit;cursor:pointer}
+.primary-btn{height:50px;border:1px solid var(--gold);border-radius:11px;background:var(--gold);color:#111;font-weight:900;margin-top:3px}
+.primary-btn:disabled{opacity:.6;cursor:wait}
+.text-btn{border:0;background:transparent;color:var(--gold);padding:14px 0 0;font-weight:700;text-align:center;width:100%}
+.auth-switch{text-align:center;color:var(--muted);font-size:14px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.auth-switch a,.back-home{color:var(--gold);font-weight:800;text-decoration:none}
+.back-home{display:block;text-align:center;margin-top:22px;font-size:13px}
+.auth-message{border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin:0 0 16px;font-size:13px;line-height:1.45;color:#dfe2e7}
+.auth-message.success{border-color:#3d7d5b;color:#bfe8cc;background:rgba(45,105,71,.12)}
+.auth-message.error{border-color:#8b4545;color:#ffc6c6;background:rgba(139,69,69,.12)}
+.auth-form.is-busy{opacity:.75}
+@media(max-width:560px){.auth-page{padding:14px}.auth-card{padding:26px 20px;border-radius:18px}.form-grid{grid-template-columns:1fr}h1{font-size:28px}.auth-brand{margin-bottom:24px}}
