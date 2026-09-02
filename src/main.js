@@ -25,6 +25,7 @@ import './lib/auth-header-bootstrap.js';
 import './lib/ui-flows.js';
 import './lib/auth-header-pages.js';
 import './lib/header-vehicles.js';
+import './lib/header-navigation-final.js';
 import './lib/listing-detail.js';
 import './lib/listing-view.js';
 import './lib/part-icons-ui.js';
