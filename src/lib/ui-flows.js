@@ -163,20 +163,195 @@ function syncPhotoPreviews(form) {
   const grid = form.querySelector('[data-photo-previews]');
   if (!grid) return;
   grid.innerHTML = photoPreviewsHtml();
-  grid.hidden = selectedPhotos.length === 0;
+  grid.hidden = !selectedPhotos.length;
   const count = form.querySelector('[data-photo-count]');
-  if (count) { count.textContent = selectedPhotos.length ? selectedPhotos.length + ' fotoğraf seçildi.' : ''; count.hidden = selectedPhotos.length === 0; }
+  if (count) {
+    count.hidden = !selectedPhotos.length;
+    count.textContent = selectedPhotos.length === 1
+      ? '1 fotoğraf seçildi — ilki kapak fotoğrafı olarak kullanılır.'
+      : selectedPhotos.length + ' fotoğraf seçildi — ilki kapak fotoğrafı olarak kullanılır.';
+  }
 }
-function addPhotos(files, form) {
-  const valid = [...files].filter(isPhotoFile);
-  selectedPhotos = selectedPhotos.concat(valid).slice(0, 8);
+function wirePhotoPicker(form) {
+  const input = form.querySelector('[data-photo-input]');
+  if (!input) return;
+  input.addEventListener('change', (event) => {
+    const all = [...event.target.files];
+    const valid = all.filter(isPhotoFile);
+    if (valid.length !== all.length) showToast('Yalnızca JPG, JPEG, PNG ve WEBP fotoğraflar eklenebilir.');
+    if (valid.length) { selectedPhotos.push(...valid); syncPhotoPreviews(form); }
+    input.value = '';
+  });
+  form.addEventListener('click', (event) => {
+    if (event.target.closest('[data-photo-add]')) { event.preventDefault(); input.click(); return; }
+    const thumb = event.target.closest('[data-photo-index]');
+    if (!thumb) return;
+    const index = Number(thumb.dataset.photoIndex);
+    const move = event.target.closest('[data-photo-move]');
+    if (move) {
+      const target = index + Number(move.dataset.dir);
+      if (target >= 0 && target < selectedPhotos.length) {
+        const [item] = selectedPhotos.splice(index, 1);
+        selectedPhotos.splice(target, 0, item);
+      }
+    }
+    if (event.target.closest('[data-photo-remove]')) selectedPhotos.splice(index, 1);
+    if (event.target.closest('[data-photo-cover]') && index > 0) {
+      const [item] = selectedPhotos.splice(index, 1);
+      selectedPhotos.unshift(item);
+    }
+    syncPhotoPreviews(form);
+  });
+  form.addEventListener('keydown', (event) => {
+    if (event.target.closest('[data-photo-add]') && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault(); input.click();
+    }
+  });
   syncPhotoPreviews(form);
 }
-function openPhotoPicker(form) { form.querySelector('[data-photo-input]')?.click(); }
-
-function openListingForm() { if (window.__openListingCreator) window.__openListingCreator(); else showToast('İlan ekranı yüklenemedi.'); }
-function openSellChoice() { openModal('<span class="eyebrow">İLAN VER</span><h2>Ne yapmak istiyorsun?</h2><div class="auth-choices"><button data-choice-sell>İlan Ver</button><button data-choice-request class="secondary">Parça Talebi Oluştur</button></div>'); }
-
+function vehicleFieldsHtml() {
+  const sel = (field, value) => selection[field] === String(value);
+  const opt = (values, field) => values.map((value) => '<option value="' + escapeHtml(String(value)) + '"' + (sel(field, value) ? ' selected' : '') + '>' + escapeHtml(String(value)) + '</option>').join('');
+  const types = resolver.getOptions({}, 'type');
+  const makes = selection.type ? resolver.getOptions({ type: selection.type }, 'make') : [];
+  const models = selection.type && selection.make ? resolver.getOptions(selection, 'model') : [];
+  const years = selection.type && selection.make && selection.model ? resolver.getOptions(selection, 'year') : [];
+  const engines = selection.type && selection.make && selection.model ? resolver.getOptions(selection, 'engine') : [];
+  const modelDisabled = !selection.make;
+  const yearDisabled = !selection.model;
+  const engineDisabled = !selection.model;
+  return '<label>Araç Tipi<select name="formType" data-form-vehicle="type"><option value="">Araç Tipi Seçiniz</option>' + opt(types, 'type') + '</select></label>'
+    + '<div class="field-row"><label>Araç Markası<select name="formMake" data-form-vehicle="make"' + (selection.type ? '' : ' disabled') + '><option value="">Marka Seçiniz</option>' + opt(makes, 'make') + '</select></label>'
+    + '<label>Araç Modeli<select name="formModel" data-form-vehicle="model"' + (modelDisabled ? ' disabled' : '') + '><option value="">Model Seçiniz</option>' + opt(models, 'model') + '</select></label></div>'
+    + '<div class="field-row"><label>Yıl<select name="formYear" data-form-vehicle="year"' + (yearDisabled ? ' disabled' : '') + '><option value="">Yıl Seçiniz</option>' + opt(years, 'year') + '</select></label>'
+    + '<label>Versiyon<select name="formEngine" data-form-vehicle="engine"' + (engineDisabled ? ' disabled' : '') + '><option value="">Versiyon (opsiyonel)</option>' + opt(engines, 'engine') + '</select></label></div>';
+}
+function subcategorySlotHtml(category) {
+  const subs = getSubcategories(selection.type || '', category);
+  if (!category || !subs.length) return '<label>Alt Kategori<select name="subCategory" disabled><option value="">Önce kategori seç</option></select></label>';
+  return '<label>Alt Kategori<select name="subCategory"><option value="">Alt kategori (opsiyonel)</option>' + subs.map((name) => '<option value="' + name + '">' + name + '</option>').join('') + '</select></label>';
+}
+function categoryFieldsHtml() {
+  const categories = getMainCategories(selection.type || '');
+  return '<label>Parça Kategorisi<span class="category-search"><input type="text" data-category-search placeholder="Kategori ara (örn. aydınlatma)"></span><select name="category" required><option value="">Parça Kategorisi Seçiniz</option>' + categories.map((name) => '<option value="' + name + '">' + name + '</option>').join('') + '</select></label>'
+    + '<div data-subcategory-slot>' + subcategorySlotHtml('') + '</div>';
+}
+function wireListingFormFields(form) {
+  form.addEventListener('change', (event) => {
+    const vf = event.target.closest('[data-form-vehicle]');
+    if (vf) {
+      const changed = vf.dataset.formVehicle;
+      selection[changed] = vf.value;
+      const order = ['type', 'make', 'model', 'year', 'trim', 'engine'];
+      order.slice(order.indexOf(changed) + 1).forEach((key) => { selection[key] = ''; });
+      const container = form.querySelector('[data-vehicle-fields]');
+      if (container) container.innerHTML = vehicleFieldsHtml();
+      if (changed === 'type') {
+        const categorySelect = form.querySelector('[name="category"]');
+        if (categorySelect) {
+          categorySelect.innerHTML = '<option value="">Parça Kategorisi Seçiniz</option>'
+            + getMainCategories(selection.type || '').map((name) => '<option value="' + name + '">' + name + '</option>').join('');
+        }
+        const slot = form.querySelector('[data-subcategory-slot]');
+        if (slot) slot.innerHTML = subcategorySlotHtml('');
+      }
+      return;
+    }
+    if (event.target.matches('[name="category"]')) {
+      const slot = form.querySelector('[data-subcategory-slot]');
+      if (slot) slot.innerHTML = subcategorySlotHtml(event.target.value);
+      return;
+    }
+  });
+  form.addEventListener('input', (event) => {
+    if (!event.target.matches('[data-category-search]')) return;
+    const q = event.target.value.trim().toLocaleLowerCase('tr-TR');
+    const select = form.querySelector('[name="category"]');
+    if (!select) return;
+    for (const option of select.options) {
+      if (!option.value) continue;
+      option.hidden = Boolean(q) && !option.text.toLocaleLowerCase('tr-TR').includes(q);
+    }
+  });
+}
+function openSellChoice() {
+  openModal('<span class="eyebrow">PARÇA AVCISI</span><h2>Ne yapmak istiyorsun?</h2><div class="sell-choice-grid">'
+    + '<button type="button" class="sell-choice" data-choice-sell><b>🔧</b><strong>Parça Satıyorum</strong><span>Sıfır, 2. el veya çıkma parçanı ilanla.</span></button>'
+    + '<button type="button" class="sell-choice" data-choice-request><b>🔎</b><strong>Parça Arıyorum</strong><span>Bulamadığın parçayı talep et; satıcılar sana ulaşsın.</span></button>'
+    + '</div>'
+    + '<button type="button" class="sell-choice-alt" data-easy-listing>📸 Fotoğraftan ilan oluşturmayı tercih ediyorsan burayı kullan</button>');
+}
+function openListingForm() {
+  selectedPhotos = [];
+  const deliveryOptions = '<option value="">Teslimat tercihi (opsiyonel)</option>' + DELIVERY_OPTIONS.map((option) => '<option value="' + option.value + '">' + option.label + '</option>').join('');
+  openModal('<span class="eyebrow">YENİ İLAN</span><h2>İlanını hazırla</h2><form id="listingForm" class="stack-form"><select name="condition" required><option value="">Durum</option><option value="new">Sıfır</option><option value="used">2. El</option><option value="salvage">Çıkma</option></select><div data-vehicle-fields>' + vehicleFieldsHtml() + '</div>' + categoryFieldsHtml() + '<input name="partName" placeholder="Parça adı" required><input name="oemNumber" placeholder="OEM / parça numarası"><textarea name="description" placeholder="Açıklama"></textarea><div class="field-row"><input name="price" type="number" min="0" required placeholder="Fiyat"><input name="city" required placeholder="Şehir"></div><label>Teslimat<select name="delivery">' + deliveryOptions + '</select></label>' + photoPickerHtml() + '<button>Önizlemeye Geç</button></form>');
+  const form = document.querySelector('#listingForm');
+  wirePhotoPicker(form);
+  wireListingFormFields(form);
+}
+function previewPhotosHtml(files) {
+  const list = Array.isArray(files) ? files.filter((file) => file instanceof File && file.size > 0) : [];
+  if (!list.length) return '';
+  return '<div class="preview-photos"><span class="eyebrow">FOTOĞRAFLAR</span><div class="preview-photos-grid">'
+    + list.map((file, index) => '<figure class="preview-photo' + (index === 0 ? ' is-cover' : '') + '"><img src="' + photoUrl(file) + '" alt="' + escapeHtml(file.name) + '"><figcaption>' + (index === 0 ? 'Kapak' : 'Fotoğraf ' + (index + 1)) + '</figcaption></figure>').join('')
+    + '</div></div>';
+}
+function conditionKeyLabel(key) {
+  return { new: 'Sıfır', used: '2. El', salvage: 'Çıkma' }[key] || key || '';
+}
+function previewDetailsHtml(data) {
+  const delivery = deliveryLabel(data.delivery || '');
+  return '<div class="preview-grid">'
+    + '<b>' + escapeHtml(data.vehicle || 'Araç belirtilmedi') + '</b>'
+    + '<span>' + escapeHtml(data.category || 'Kategori seçilmedi') + (data.subCategory ? ' › ' + escapeHtml(data.subCategory) : '') + '</span>'
+    + '<span>' + escapeHtml(conditionKeyLabel(data.condition)) + ' · ' + escapeHtml(data.partName) + (data.oemNumber ? ' · OEM: ' + escapeHtml(data.oemNumber) : '') + '</span>'
+    + '<strong>' + Number(data.price).toLocaleString('tr-TR') + ' TL</strong>'
+    + '<span>⌖ ' + escapeHtml(data.city) + '</span>'
+    + (delivery ? '<span>Kargo: ' + escapeHtml(delivery) + '</span>' : '')
+    + '</div>';
+}
+function openPreview(data) {
+  openModal('<span class="eyebrow">İLAN ÖNİZLEME</span><h2>' + escapeHtml(data.partName) + '</h2>' + previewPhotosHtml(data.photos) + previewDetailsHtml(data) + '<p>' + escapeHtml(data.description || 'Açıklama eklenmedi.') + '</p><button id="publishListing">İlanı Yayınla</button><button id="saveDraftListing" class="secondary">Taslak Kaydet</button>');
+  document.querySelector('#publishListing').onclick = () => createListingWithPhotos(data, 'active');
+  document.querySelector('#saveDraftListing').onclick = () => createListingWithPhotos(data, 'draft');
+}
+async function createListingWithPhotos(data, status) {
+  try {
+    const listing = await createListing({
+      title: data.partName,
+      description: data.description,
+      condition: data.condition,
+      price: data.price,
+      city: data.city,
+      oemNumber: data.oemNumber,
+      category: data.category || null,
+      subcategory: data.subCategory || null,
+      vehicle: data.vehicle || null,
+      delivery: data.delivery || null,
+      status,
+    });
+    window.dispatchEvent(new CustomEvent('parca:listings-updated'));
+    const photos = Array.isArray(data.photos) ? data.photos.filter((file) => file instanceof File && file.size > 0) : [];
+    let photoError = '';
+    if (photos.length) {
+      try { await attachImagesToListing(listing.id, photos); }
+      catch (imgError) { photoError = imgError.message || 'Fotoğraf yüklenemedi.'; }
+    }
+    closeModal();
+    const verb = status === 'active' ? 'İlan yayınlandı ve listeye eklendi.' : 'Taslak kaydedildi.';
+    showToast(photoError ? verb + ' Fotoğraf yüklenemedi: ' + photoError : verb);
+    openDetail(listing.id);
+  } catch (error) { showToast(error.message || 'İlan oluşturulamadı.'); }
+}
+function galleryHtml(images = []) {
+  const urls = images.filter((image) => image.url).map((image) => image.url);
+  if (!urls.length) return '<div class="detail-photo">PARÇA AVCISI</div>';
+  const main = '<div class="gallery-main"><img class="gallery-main-img" src="' + escapeHtml(urls[0]) + '" alt="İlan fotoğrafı" loading="lazy"></div>';
+  const thumbs = urls.length > 1
+    ? '<div class="gallery-thumbs">' + urls.map((url, index) => '<button type="button" class="gallery-thumb' + (index === 0 ? ' active' : '') + '" data-gallery="' + index + '"><img class="gallery-thumb-img" src="' + escapeHtml(url) + '" alt="" loading="lazy"></button>').join('') + '</div>'
+    : '';
+  return '<div class="detail-gallery">' + main + thumbs + '</div>';
+}
 function renderListingDetail(listing) {
   const statusText = statusLabels[listing.status] || '';
   const contactBtn = listing.sellerId
@@ -272,26 +447,47 @@ document.addEventListener('submit', async (event) => {
       if (/confirm/i.test(message)) {
         emailVerificationRequired = true;
         pendingAction = null;
-        openEmailVerify();
-      } else showToast(message);
+        showToast('E-posta adresini doğrulaman gerekiyor. Doğrulama bağlantısı için kayıt e-postanı kontrol et.');
+        return;
+      }
+      showToast(message);
     }
   }
   if (event.target.id === 'signupForm') {
     event.preventDefault();
     const data = new FormData(event.target);
+    const fullName = (String(data.get('firstName') || '').trim() + ' ' + String(data.get('lastName') || '').trim()).trim();
+    const phone = String(data.get('phone') || '').trim();
+    const address = String(data.get('address') || '').trim();
+    if (!fullName) return showToast('Ad ve soyad zorunlu.');
+    if (phone.replace(/\D/g, '').length < 10) return showToast('Geçerli bir telefon numarası gir.');
+    if (!address) return showToast('Adres zorunlu.');
     if (data.get('password') !== data.get('confirm')) return showToast('Şifreler eşleşmiyor.');
     try {
-      const fullName = [data.get('firstName'), data.get('lastName')].filter(Boolean).join(' ').trim();
-      const result = await signUp({ email: data.get('email'), password: data.get('password'), fullName, phone: data.get('phone'), address: data.get('address') });
-      if (result?.session) { closeModal(); renderAuthUI(result.user); showToast('Kayıt tamamlandı.'); }
-      else openEmailVerify();
-    } catch (error) { showToast(error.message || 'Kayıt oluşturulamadı.'); }
+      const result = await signUp({ email: data.get('email'), password: data.get('password'), fullName, phone, address });
+      if (result.session) {
+        const action = pendingAction;
+        pendingAction = null;
+        closeModal();
+        showToast('Kayıt tamamlandı.');
+        renderAuthUI(result.session.user);
+        if (action) action();
+      } else {
+        emailVerificationRequired = true;
+        pendingAction = null;
+        openEmailVerify();
+        showToast('Kayıt tamamlandı. E-postanı doğrulamayı unutma.');
+      }
+    } catch (error) { showToast(error.message || 'Kayıt tamamlanamadı.'); }
   }
   if (event.target.id === 'forgotForm') {
     event.preventDefault();
     const data = new FormData(event.target);
-    try { await resetPassword(data.get('email')); showToast('Şifre yenileme bağlantısı gönderildi.'); }
-    catch (error) { showToast(error.message || 'Bağlantı gönderilemedi.'); }
+    try {
+      await resetPassword(data.get('email'));
+      closeModal();
+      showToast('Şifre sıfırlama bağlantısı e-postana gönderildi.');
+    } catch (error) { showToast(error.message || 'Bağlantı gönderilemedi.'); }
   }
   if (event.target.id === 'resetPasswordForm') {
     event.preventDefault();
