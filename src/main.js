@@ -23,7 +23,6 @@ import './lib/home-redesign.css';
 import './lib/listing-entry-flow.js';
 import './lib/auth-header-bootstrap.js';
 import './lib/ui-flows.js';
-import './lib/auth-button-fallback.js';
 import './lib/listing-detail.js';
 import './lib/listing-view.js';
 import './lib/part-icons-ui.js';
