@@ -53,6 +53,7 @@ function renderLogin() {
 }
 
 function renderForgot() {
+  window.history.replaceState(null, '', '/giris#sifremi-unuttum');
   content.innerHTML = `
     <span class="eyebrow">PARÇA AVCISI ÜYELİK</span>
     <h1 id="authTitle">Şifreni mi unuttun?</h1>
@@ -77,7 +78,10 @@ function renderForgot() {
       setMessage(error?.message || 'Bağlantı gönderilemedi.', 'error');
     } finally { setBusy(form, false); }
   });
-  document.querySelector('#backLoginBtn').addEventListener('click', renderLogin);
+  document.querySelector('#backLoginBtn').addEventListener('click', () => {
+    window.history.replaceState(null, '', '/giris');
+    renderLogin();
+  });
 }
 
 function renderSignup() {
@@ -123,5 +127,5 @@ if (!supabaseConfigured) {
 } else {
   getCurrentUser().then((user) => { if (user) window.location.href = homeUrl; }).catch(() => {});
   onAuthStateChange((event) => { if (event === 'SIGNED_IN') window.location.href = homeUrl; });
-  if (mode === 'signup') renderSignup(); else renderLogin();
+  if (mode === 'signup') renderSignup(); else if (window.location.hash === '#sifremi-unuttum') renderForgot(); else renderLogin();
 }
