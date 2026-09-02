@@ -4,6 +4,7 @@
   "rewrites": [
     { "source": "/giris", "destination": "/giris.html" },
     { "source": "/kayit", "destination": "/kayit.html" },
+    { "source": "/araclarim", "destination": "/araclarim.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
