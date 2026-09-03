@@ -1,7 +1,8 @@
 /* Account pages: direct, full-page marketplace surface. */
+body.has-account-route{background:#0b0d10;min-height:100vh;}
+body.has-account-route > #root{display:none!important;}
 .account-route-shell{width:100%;max-width:1180px;margin:0 auto;padding:28px 20px 64px;box-sizing:border-box;}
 .account-route-inner{width:100%;min-width:0;}
-/* The legacy modal wrapper is reused only as a content shell; it must never look like a popup. */
 .account-route-shell .modal-card{width:100%;max-width:none;min-height:0;margin:0;padding:0;box-sizing:border-box;border:0;border-radius:0;background:transparent;box-shadow:none;}
 .account-route-shell .modal-close{display:none!important;}
 .account-route-shell .account-shell{width:100%;max-width:none;}
