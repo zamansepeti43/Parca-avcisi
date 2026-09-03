@@ -1,5 +1,6 @@
 import { vehicleCatalog } from './vehicle-catalog.js';
 import { VehicleResolver } from './vehicle-resolver.js';
+import { turkeyCurrentModelRegistry } from './turkey-current-models.generated.js';
 
 // Turkey-facing catalog hygiene. The upstream TSB scope contains passenger cars,
 // buses, trucks, body builders, RVs and industrial/special-use manufacturers.
@@ -28,17 +29,15 @@ const MAKE_ALIASES = new Map([
   ['KGMOBILITY', 'KGMOBILITY'],
 ]);
 
-// These sources identify a Turkey-market vehicle family. IMPORTANT: provenance is
-// attached to individual variant rows, so filtering rows directly was too strict:
-// a valid Turkey model could have some variants coming only from an enrichment feed.
-// We therefore promote Turkey provenance to the MODEL level, then allow all
-// enrichment variants belonging to that verified model family.
+// Turkey-market evidence is promoted to the MODEL FAMILY level. Individual
+// variant rows may come from enrichment feeds, but a model family is allowed when
+// it is present in either our Turkey seed/FleetByte data or the current Turkey
+// market registry generated weekly from the public 2026 Turkey model reference.
 const TURKEY_MODEL_PROVENANCE = new Set(['ParcaAvcisiLegacy', 'FleetByte']);
 
 // Verified Turkey Ford passenger model families. This is deliberately a model
-// family list, not a trim/engine list. Variants still come from the catalog feeds.
-// Current and used-market evidence includes these families; F-150 is excluded from
-// the normal passenger tree because it is not officially sold in Turkey.
+// family list, not a trim/engine list. It is a safety net for historically common
+// Ford families that may be absent from a particular upstream feed.
 const VERIFIED_TURKEY_PASSENGER_MODELS = new Map([
   ['FORD', new Set([
     'B-MAX', 'C-MAX', 'ESCORT', 'FIESTA', 'FOCUS', 'FUSION', 'GALAXY', 'GRAND C-MAX',
@@ -62,10 +61,23 @@ function hasTurkeyModelProvenance(row) {
   return Array.isArray(row.provenance) && row.provenance.some((source) => TURKEY_MODEL_PROVENANCE.has(source));
 }
 
+function registryModelKeys() {
+  const keys = new Set();
+  for (const entry of Array.isArray(turkeyCurrentModelRegistry) ? turkeyCurrentModelRegistry : []) {
+    const make = canonicalMake(entry.make);
+    for (const model of (entry.models || [])) {
+      keys.add(`${norm(make)}::${modelKey(model)}`);
+    }
+  }
+  return keys;
+}
+
+const currentTurkeyModelKeys = registryModelKeys();
+
 // Build the verified Turkey model-family set once. A model is trusted when at least
-// one row for that make/model carries Turkey provenance. This fixes the old bug where
-// a model disappeared merely because its richer variant rows came from InformationCar.
-const turkeyVerifiedModelKeys = new Set();
+// one row for that make/model carries Turkey provenance. Current-market registry
+// entries are an additional independent Turkey signal.
+const turkeyVerifiedModelKeys = new Set(currentTurkeyModelKeys);
 for (const row of (Array.isArray(vehicleCatalog) ? vehicleCatalog : [])) {
   const type = cleanLabel(row.type || row.vehicle_type);
   if (type && type !== 'Otomobil') continue;
@@ -163,6 +175,7 @@ VehicleResolver.prototype.getOptions = function patchedGetOptions(selection = {}
 
 window.__turkeyVehicleCatalogFix = {
   nonPassengerMakes: NON_PASSENGER_MAKES.size,
+  currentTurkeyModelCount: currentTurkeyModelKeys.size,
   verifiedTurkeyModelCount: turkeyVerifiedModelKeys.size,
   turkeyModelProvenance: [...TURKEY_MODEL_PROVENANCE],
   explicitFallbackMakes: [...VERIFIED_TURKEY_PASSENGER_MODELS.keys()],
