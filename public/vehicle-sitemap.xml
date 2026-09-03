@@ -82,8 +82,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/alfa-romeo/stelvio</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/alfa-romeo/sz</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/alfa-romeo/tonale</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/alke/atx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/alke/atx340eh</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/audi/100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/audi/200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/audi/4000</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -158,43 +156,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/audi/tts-coupe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/audi/tts</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/audi/v8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/2-axle-rigid-body</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/3-litre</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/arnage</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/azure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/bentayga</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/brooklands</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/continental-flying-spur</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/continental-gt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/continental-gtc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/continental-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/continental-sc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/continental-supersports</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/continental-t</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/continental</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/corniche</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/eight</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/flying-spur</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/mark-6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/mark</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/mk</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/mk6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/mulsanne</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/r-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/s-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/s1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/s2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/s3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/speed-six</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/sports</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/t-series</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/t</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/t1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/t2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/turbo-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bentley/turbo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/bmc/tughra</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/bmw/1-series</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/bmw/100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/bmw/100rs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -514,315 +475,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/bmw/z3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/bmw/z4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/bmw/z8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/atto-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/atto-3-evo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/atto-3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/dolphin-g</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/dolphin-surf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/dolphin</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/e6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/e6h</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/e6y</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/ebus</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/enviro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/etp3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/han</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/m6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/sea-lion-07</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/seagull</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/seal-6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/seal-design-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/seal-u</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/seal</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/sealion-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/sealion-6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/sealion-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/sealion</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/song-pro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/t3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/tang-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/tang</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/yuan-plus</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/yuan-pro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/byd/yuan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/caterham/s3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/caterham/seven</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/caterham/super-seven</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cenntro/logistar-260</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cenntro/logistar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cenntro/metro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/changan/deepal-s07-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/changan/lumin-l-dc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/changan/uni-k</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/eq1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/icaur-v23</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/icaur-03</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/jaecoo-j5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/jaecoo-j7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/jaecoo-j8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/jetour-x70</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/omoda-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/omoda-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo-2-pro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo-4-pro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo-4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo-7-pro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo-8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chery/tiggo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/1314</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/150</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/1500-pickup</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/1934</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/20</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/210</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/2dr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/30</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/3100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/350</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/3500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/3800</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/4-d</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/490</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/4x4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/6503</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/alero</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/apache</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/astro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/avalanche</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/aveo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/beauville</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/bel-air</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/beretta</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/biscayne</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/blazer-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/blazer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/bolt-euv</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/bolt-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/bolt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/brookwood</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/business</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c-10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c-20</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c-2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c-30</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c-3500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c-50</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c15</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/c2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/camaro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/capitol</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/caprice</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/captiva</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/cargo-van</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/cargo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/cavalier</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/celebrity</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/chevelle</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/chevette</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/chevy-van</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/chevy</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/cheyenne</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/citation</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/classic</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/coach</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/cobalt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/colorado</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/confederate</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/corsica</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/corvair</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/corvette</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/cruze</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/custom</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/de-luxe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/delivery</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/delray</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/eagle</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/el-camino</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/epica</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/equinox-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/equinox</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/evanda</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/explorer-van</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/explorer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/express</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/fleetline</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/fleetmaster</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/fleetside-pick-up</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/fleetside</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/g10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/g1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/g20</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/g2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/g30</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/g3500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/gmc-jimmy</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/gmc-safari</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/grumman</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/hhr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/impala-caprice</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/impala</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/independence</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/international</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/k10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/k1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/k2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/k2500hd</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/k3500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/kalos</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/kingswood</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/lacetti</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/lumina-monte-carlo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/lumina</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/m200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/m300</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/malibu</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/matiz</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/metro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/monte-carlo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/monza</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/national</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/niva</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/nomad</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/nova</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/nubira</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/optra</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/orlando</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/parkwood</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/phaeton</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/pick-up</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/pick</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/s-10-ls</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/s10-pickup</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/s10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/scottsdale</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sedan-delivery</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sierra</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/silverado-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/silverado</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sonic</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/spark-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/spark</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/special-deluxe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/special</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sport</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sports</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sportside</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sportvan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sprint</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/ss</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/ssr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/standard</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/starcraft</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/step-side</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/stepside-pick-up</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/styleline</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/stylemaster</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/suburban</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/super</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/superior</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/sw</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/t10-blazer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/t10-pick-up</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/tacuma</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/tahoe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/tourer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/touring</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/tracker</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/trail-blazer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/trans-sport</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/traverse</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/trax</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/truck</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/two-ten</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/two</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/universal</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/uplander</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/van-1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/van-cg21305</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/van</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/vega</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/venture</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/volt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chevrolet/yeoman</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/180</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/300-c</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/300-h</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/300-m</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/300-srt8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/300</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/300c-srt8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/300l</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/65</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/66</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/70</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/72</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/75</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/airstream</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/alpine</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/aspen</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/avenger</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/c300</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/ch</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/charger</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/cherokee</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/cirrus</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/cj</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/cm</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/concorde</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/conquest</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/cordoba</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/crossfire</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/de-luxe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/de-soto</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/dodge-charger</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/dodge</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/dynasty</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/fifth-avenue</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/g70</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/grand-cherokee</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/grand-voyager</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/gs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/hunter</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/imperial</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/intrepid</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/jeep-grand-cherokee</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/jeep</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/laser</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/le-baron</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/lhs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/neon</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/new-yorker-brougham</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/new-yorker-deluxe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/new-yorker-lhs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/new-yorker</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/newport</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/pacifica</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/plymouth</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/prowler</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/pt-cruiser</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/ram</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/regal</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/royal</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/saratoga</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/sebring</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/six</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/stratus</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/sunbeam</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/tc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/town-country</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/valiant</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/viper</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/vision</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/voyager</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/windsor</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/chrysler/ypsilon</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/citroen/11-bl-sport</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/citroen/11-legere</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/citroen/11</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -934,15 +586,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/citroen/xsara-picasso</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/citroen/xsara</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/citroen/zx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/crrc/es</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/crrc/et</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cupra/ateca</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cupra/born</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cupra/formentor</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cupra/leon</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cupra/raval</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cupra/tavascan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/cupra/terramar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/dacia/1310</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/dacia/bigster</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/dacia/dokker</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -954,82 +597,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/dacia/sandero-stepway</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/dacia/sandero</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/dacia/spring</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/1600</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/1700</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/230</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/2300</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/33</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/45</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/530</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/55</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/75</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/85</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/95</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/95xf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ad</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ae</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/as</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/cf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/cf65</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/cf75</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/cf85</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fa</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fad</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fag</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fak</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fam</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/far</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fas</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fat</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fax</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ft</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ftg</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ftm</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ftp</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ftr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/fts</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ftt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/lf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/lf45</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/lf55</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ngd</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/sb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/te</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/v1600dd</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xd-ft</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xd</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xdc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xf105</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xfc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xg-530</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/xg</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/daf/ya</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/580</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/c31</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/c32</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/c35</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/e5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/ec31</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/ec35</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/ec75</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/fengon-500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/fengon-600</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/k01h</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/loadhopper</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/dfsk/seres-3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ds/ds-3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ds/ds-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ds/ds-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ds/ds-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ds/ds-n-4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ds/ds-n-8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/faw/e-hs9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/faw/hongqi-ehs7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/fiat/102</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/fiat/1100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/fiat/1200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -1483,82 +1050,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/ford/y</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/ford/zephyr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/ford/zodiac</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/foton/aumark</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/foton/bj</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/foton/tunland</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gaz/21</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gaz/24</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gaz/2401</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gaz/69</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gaz/69m</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gaz/m21</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gaz/volga</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/c13e</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/e5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/emgrand-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/ex5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/galaxy-e5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/geely</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/jl50qt-36</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/lc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/mk</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/geely/starray-em-i</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/250</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/3500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/acadia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/blazer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/c1500-suburban</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/canyon-at4x-aev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/canyon-at4x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/canyon-crew-cab</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/canyon</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/cckw</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/chevrolet-camaro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/coach</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/envoy-slt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/envoy-xuv</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/envoy</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/hummer-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/hummer-h3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/hummer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/jimmy</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/k2500-sierra</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/k2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/lav</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/palm-beach</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/panel-van</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/pick-up</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/s15-jimmy</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/safari-van</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/safari</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/savana-1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/savana-cargo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/savana-passenger</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/savana</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra-15</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra-1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra-at4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra-classic-1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra-classic</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra-denali</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra-grande</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sierra</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/sonoma</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/suburban</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/syclone</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/terrain-denali</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/terrain</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/typhoon</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/vandura-2500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/vandura-35</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/vandura</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/yukon-denali</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/gmc/yukon</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/grove/gmk</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/honda/125</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/honda/125sl</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/honda/150</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -2821,84 +2312,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/isuzu/ubs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/isuzu/vehicross</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/isuzu/visigo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jac/js4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jac/js6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaecoo/5-pure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaecoo/jaecoo-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaecoo/jaecoo-6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaecoo/jaecoo-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaecoo/jaecoo-8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/24</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/240</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/3-8s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/340-mk</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/340-mkii</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/340</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/385</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/420-g</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/420</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/c-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/d-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/e-pace</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/e-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/f-pace</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/f-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/fp-rd</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/i-pace</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-11</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-i</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-ix</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark-x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mark</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk-7-m</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk-i</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk-ix</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk-x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk11</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mk9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/mkii</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/s-type-v6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/s-type-v8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/s-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/sovereign</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/ss</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/ss100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/super-v8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/vanden-plas</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/x-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xfr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xj-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xj</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xj12</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xj220</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xj40</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xj42</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xj6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xj8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xjr-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xjr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xk</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xk120</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xk140</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xk150</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xk8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xkr-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/jaguar/xkr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/jeep/avenger</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/jeep/cherokee-sport</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/jeep/cherokee-wagoneer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -2931,10 +2344,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/jeep/wrangler-rubicon</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/jeep/wrangler-unlimited</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/jeep/wrangler</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/karsan/e-atak</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/kenworth/w900</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/kenworth/w900b</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/kenworth/w900l</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/kia/amanti</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/kia/avella</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/kia/borrego</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -2994,197 +2403,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/kia/telluride</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/kia/venga</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/kia/x-ceed</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1050-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1090-adventure-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1090-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1190-adventure-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1190-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1190</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1190rc8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1190rc8r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/125-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/125-enduro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/125</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/125exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/125lc2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/125smc-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/125xc-w</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-super-adventure-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-super-adventure-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-super-adventure-t</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-super-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-super-duke-gt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-super-duke-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-super-duke-rr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-superduke-se</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290-superduke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1290</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1390-super-adventure-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1390-super-adventure-s-evo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1390-super-duke-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1390-super-duke-rr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1390-superduke-r24</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/1390</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/150exc-tpi</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/150exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/200-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/200exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/250-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/250</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/250exc-tpi</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/250exc-f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/250exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/250r-freeride</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/250sx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/300</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/300exc-tpi</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/300exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/350-freeride</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/350</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/350exc-f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/350exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/390-adventure-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/390-adventure-x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/390-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/390-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/390-enduro-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/390-enduro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/390</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/390smc-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/400</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/400exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/450-rally-factory-replica</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/450</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/450exc-f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/450exc-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/450exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/450sx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/500exc-f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/500exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/520exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/520sx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/525exc-racing</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/525exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/525sx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/530exc-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/530exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/620-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/625</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/625smc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/625sxc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/640-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/640-supermoto</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/640</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/640lc4-e-supermoto</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/640lc4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/640lc4sm</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/640sm</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/660-rallye</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/660-supermoto</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/660</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/660smc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690-duke-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690-enduro-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690-enduro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690lc4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690sm</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690smc-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/690smc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/790-adventure-r-rally</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/790-adventure-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/790-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/790-duke-l</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/790-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/790</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/890-adventure-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/890-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/890-duke-l</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/890-duke-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/890-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/890</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/890sm-t</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/950-adventure-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/950-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/950-super-enduro-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/950-superenduro-72kw</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/950-superenduro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/950-supermoto-72kw</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/950-supermoto</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-adventure-efi</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-duke-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-superduke-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-superduke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-supermoto-85kw</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-supermoto-t</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990-supermoto</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990rc-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/990smt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/brabus-1300r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/duke-ii</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/duke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/e-sm</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/exc-f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/exc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/exc125</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/freeride-250</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/freeride-250f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/freeride-350</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/freeride-e-xc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/freeride</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/gs125</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/gs600lc4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/lc4-640</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/lc4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/lc8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/rc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/rc125</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/rc390</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/super-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/superduke</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ktm/x-bow</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/110</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/111</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1117</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1119</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/112</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1200-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1300-sl</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1300</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1500-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/1600</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2101</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2102</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2103</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2104</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2105</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2106</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2107</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2109</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2121</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2172</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2192</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/2194</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/4x4-urban</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/4x4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/cossack</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/granta</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/largus</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/niva-1600</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/niva-2121</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/niva</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/samara</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/vaz-2101</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/vesta</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lada/xray</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/land-rover/101</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/land-rover/109</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/land-rover/110</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -3213,12 +2431,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/land-rover/series-i</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/land-rover/series-iia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/land-rover/series</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/leapmotor/b05</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/leapmotor/b10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/leapmotor/c10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/leapmotor/t03</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/levc/tx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/levc/vn5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/lexus/ct</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/lexus/es</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/lexus/gs-200t</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -3250,109 +2462,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/lexus/sc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/lexus/tx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/lexus/ux</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/2-eleven</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/cortina</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/eclat</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elan-2-s130</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elan-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elan-s2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elan-s4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elan-se-turbo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elan-se</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elan-sprint</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/eletre</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elise-cup-250</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elise-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elise-sport-220</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elise-sport-240</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elise</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/elite</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/emeya-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/emeya</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/emira-turbo-se</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/emira</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/esprit-s3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/esprit-turbo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/esprit-v8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/esprit</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/europa-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/europa-s2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/europa</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/evora</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/excel</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/exige-s-auto</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/exige</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/mk6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/mk7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/s4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/seven-s3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/seven-s4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/seven</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/super-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/super-seven</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/lotus/turbo-esprit</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/12-170f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/12</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/18ml</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/28</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/415</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/735</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/8-150-f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/91</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/etgs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/etgx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/h25</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/h36</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/h39</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/hn19f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/jf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/l200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/l2000</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/le</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/le12</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/le14</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/le220</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/le8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/lion-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/mkd</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/n14</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/n16</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/nd</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/rr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/sl</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tg</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tg460a</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tga</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tge-3-140</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tge-multicab</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tge</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tgl</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tgm</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tgs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/man/tgx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/deliver-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/deliver-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/deliver</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/e-terron-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/edeliver-3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/edeliver-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/edeliver-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/edeliver-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/euniq-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/euniq-6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/mifa-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/t60-max</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/t60</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/t90-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/t90</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maxus/v80</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maybach/57-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maybach/57-zeppelin</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maybach/57</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maybach/62</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maybach/62s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/maybach/landaulet</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mazda/1000</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mazda/110s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mazda/1200</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -3429,28 +2538,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/mazda/xedos-6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mazda/xedos-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mazda/xedos</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/540c</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/570gt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/570s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/600lt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/620r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/650s-spider</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/650s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/675lt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/720s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/750s-spider</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/750s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/765lt-spider</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/765lt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/artura-spider</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/artura</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/gt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/gts</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/mp4-12c</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/mp4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/p1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/senna</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mclaren/speedtail</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mercedes-benz/1013</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mercedes-benz/1017</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mercedes-benz/1018</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -4049,63 +3136,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/mercedes/slc-180</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mercedes/slc-300</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mercedes/slc-43-amg</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/1100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/13</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/1300</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/1500</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/350</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/cyberster</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/ehs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/ep</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/extender</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/gs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/gt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/hs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/im5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/im6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/j2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/k</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/l</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/m</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/maestro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/magna</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/magnette</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/marvel-r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/metro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mg3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mg4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mg5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mg6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mga</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mgb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mgc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mgf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mgs5-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mgs6-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/mgs9-phev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/midget</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/montego</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/pb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/q-type</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/roadster</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/rv8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/sa</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/t-f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/t</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/ta</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/tb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/tc</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/td-tf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/td</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/tf-midget</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/va</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/ya</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/yb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/yt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/zr</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/zs-ev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/zs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/mg/zt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mini/1000-special-deluxe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mini/1000-van</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mini/1000</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -4195,35 +3225,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/mitsubishi/xforce</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mitsubishi/xpander-cross</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/mitsubishi/xpander</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/1600</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/3000</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/4-4-series</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/44</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/aero-8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/aero</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/plus-4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/plus-6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/plus-8-pi</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/plus-8</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/plus-eight</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/plus-four</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/plus-six-supersport</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/plus-six</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/roadster</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/morgan/sports</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/116</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/216</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/2216</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/316</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/cityliner</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/jetliner</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/n122</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/skyliner</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/starliner</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neoplan/tourliner</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neta/v-ii</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neta/v</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/neta/x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/nissan/100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/nissan/100nx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/nissan/180sx</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -4353,10 +3354,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/nissan/x-trail</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/nissan/xterra</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/nissan/z</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/omoda/omoda-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/omoda/omoda-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/omoda/omoda-9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/omoda/omoda-e5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/opel/adam</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/opel/admiral</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/opel/agila</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -4414,7 +3411,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/opel/vivaro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/opel/zafira-life</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/opel/zafira</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ora/good-cat</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/peugeot/1007</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/peugeot/101</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/peugeot/103</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -4548,42 +3544,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/peugeot/xp</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/peugeot/xps</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/peugeot/zenith</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/polestar/polestar-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/polestar/polestar-3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/polestar/polestar-4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/356</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/718</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/904</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/911</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/912</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/914</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/918</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/924</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/928</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/944</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/968</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/boxster</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/cayenne</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/cayman</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/gt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/macan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/panamera</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/porsche/taycan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/e-mas-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/e-mas-7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/gen-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/iriz</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/jumbuck</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/persona</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/s70</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/saga</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/satria</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/suprima</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/x50</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/x70</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/proton/x90</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ravon/r2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/ravon/r4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/renault/10</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/renault/11</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/renault/12</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -4695,77 +3655,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/renault/vel-satis</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/renault/wind</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/renault/zoe</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/20-hp</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/20</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/2025</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/40-50-hp-phantom</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/40-50-silver-ghost</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/black-badge-cullinan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/black-badge-ghost</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/black-badge-spectre</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/camargue</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/cloud</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/corniche-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/corniche</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/cullinan-black-badge</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/cullinan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/dawn-black-badge</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/dawn</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/flying-spur</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/ghost-black-badge</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/ghost-ewb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/ghost-extended</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/ghost</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/park-ward</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/phantom-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/phantom-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/phantom-drophead</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/phantom-ewb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/phantom-extended</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/phantom-i</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/phantom</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/royce</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/seraph</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-cloud-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-cloud-11</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-cloud-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-cloud-3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-cloud</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-dawn</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-ghost</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-seraph</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-shadow-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-shadow-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-shadow-i</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-shadow-lwb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-shadow</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-spirit-2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-spirit</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-spur</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-wraith</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver-cloud-i</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/silver</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/spectre</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/spirit</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/wraith-black-badge</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/rolls-royce/wraith</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/9-2x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/9-3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/9-4-x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/9-5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/9-7-x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/90</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/900</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/9000</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/92</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/93</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/95</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/95e-v4-van</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/96</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/99</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/sonett</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/saab/v4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/sany/sac</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/seat/127</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/seat/600</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/seat/800</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -4784,29 +3673,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/seat/mii</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/seat/tarraco</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/seat/toledo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/integro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/k-setra</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s210h</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s213</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s309</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s315</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s315h</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s317</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s411</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s415</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s415h</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s416</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s417</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s418</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s419</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s431</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s431dt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s511</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s515</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s516</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s517</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s519</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/setra/s531</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/skoda/100</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/skoda/105</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/skoda/110-l</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -4844,8 +3710,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/skoda/scala</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/skoda/superb</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/skoda/yeti</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/skywell/be11</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/skywell/et5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/smart/1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/smart/3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/smart/5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -5392,36 +4256,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/suzuki/zr50k</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/suzuki/zz</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/suzuki/zz50</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/g01f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/g03f</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/gran-milano</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/gran-turismo</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/hoku-125</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/rs125r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/silver-vase</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/six-days</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/sm125r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/sm500r</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/sm650</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/superdual-t</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/superdual</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/urban-525</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/swm/varez-125</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/tadano-faun/atf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/tata/safari</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/temsa/hd</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/temsa/md</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/temsa/md9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/temsa/opalin</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/temsa/prestij</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/temsa/safari</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/temsa/tourmalin</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/tesla/cybertruck</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/tesla/model-3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/tesla/model-s</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/tesla/model-x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/tesla/model-y</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/tesla/roadster</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/tofas/dogan</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/tofas/kartal</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/tofas/murat-124</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -5429,7 +4263,6 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/tofas/murat-132</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/tofas/serce</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/tofas/sahin</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/togg/t10x</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/toyota/1000</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/toyota/1000kp36l-pick-up</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/toyota/2000gt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -5841,14 +4674,4 @@
   <url><loc>https://parca-avcisi.vercel.app/arac/volvo/xc60</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/volvo/xc70</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://parca-avcisi.vercel.app/arac/volvo/xc90</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/voyah/courage</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/voyah/free</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/xev/yoyo-pro</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/xpeng/g6-long-range</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/xpeng/g6-standard-range</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/xpeng/g6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/xpeng/g9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/xpeng/p7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/xpeng/p7i</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://parca-avcisi.vercel.app/arac/xpeng/x9</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>
