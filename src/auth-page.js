@@ -125,7 +125,14 @@ function renderSignup() {
 if (!supabaseConfigured) {
   content.innerHTML = '<span class="eyebrow">PARÇA AVCISI</span><h1>Üyelik şu an hazır değil</h1><p class="auth-intro">Supabase bağlantısı yapılandırılmadığı için giriş ve kayıt kullanılamıyor.</p><div id="authMessage" class="auth-message error">Yönetici: VITE_SUPABASE_URL ve VITE_SUPABASE_ANON_KEY değişkenlerini kontrol et.</div>';
 } else {
-  getCurrentUser().then((user) => { if (user) window.location.href = homeUrl; }).catch(() => {});
-  onAuthStateChange((event) => { if (event === 'SIGNED_IN') window.location.href = homeUrl; });
+  // Kayıt sayfası açılır açılmaz mevcut oturum nedeniyle ana sayfaya kaçmasın.
+  // Sadece giriş sayfasında mevcut oturum varsa otomatik ana sayfaya dön.
+  if (mode !== 'signup') {
+    getCurrentUser().then((user) => { if (user) window.location.href = homeUrl; }).catch(() => {});
+  }
+  onAuthStateChange((event) => {
+    // Signup sırasında Supabase SIGNED_IN olayı üretse bile form sayfasını kapatma.
+    if (event === 'SIGNED_IN' && mode !== 'signup') window.location.href = homeUrl;
+  });
   if (mode === 'signup') renderSignup(); else if (window.location.hash === '#sifremi-unuttum') renderForgot(); else renderLogin();
 }
