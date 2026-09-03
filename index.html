@@ -25,11 +25,12 @@
   <link rel="stylesheet" href="/src/home-mobile-premium.css">
   <link rel="manifest" href="/manifest.json">
   <script type="speculationrules">
-  {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/(profilim|ilanlarim|araclarim|taleplerim|mesajlarim|favorilerim|kayitli-aramalarim|bildirimler|musterilerim|hesap-bilgileri|ayarlar|yardim-destek)"},{"not":{"href_matches":"/api/*"}}]},"eagerness":"moderate"}]} 
+  {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/(profilim|ilanlarim|araclarim|taleplerim|mesajlarim|favorilerim|kayitli-aramalarim|bildirimler|musterilerim|hesap-bilgileri|ayarlar|yardim-destek)"},{"not":{"href_matches":"/api/*"}}]},"eagerness":"moderate"}]}
   </script>
 </head>
 <body>
   <div id="root"></div>
+  <script type="module" src="/src/lib/listing-vehicle-link.js"></script>
   <script type="module" src="/src/lib/listing-catalog-assist.js"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
