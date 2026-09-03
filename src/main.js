@@ -43,9 +43,20 @@ async function bootHome() {
     import('./lib/account-vehicles-menu.js'), import('./lib/home-redesign.css'), import('./lib/listing-entry-flow.js'),
     import('./lib/auth-header-bootstrap.js')
   ]);
-  // Must run before ui-flows: it patches VehicleResolver for Turkey-market filtering and variants.
+  // VehicleResolver must be patched before any UI module that creates a resolver instance.
   await turkeyFix;
+  // ui-flows initializes the home vehicle/listing form and must run before route modules that
+  // wait for its globals. Keep that dependency explicit, then fetch the remaining features together.
+  await import('./lib/ui-flows.js');
+  await Promise.all([
+    import('./lib/listing-route-page.js'), import('./lib/auth-header-pages.js'), import('./lib/header-vehicles.js'),
+    import('./lib/listing-detail.js'), import('./lib/listing-view.js'), import('./lib/part-icons-ui.js'),
+    import('./lib/vin-ui-bridge.js'), import('./lib/vehicle-search-ui.js'), import('./lib/listing-card-click.js'),
+    import('./lib/listing-filters-ui.js'), import('./lib/listing-creator.js'), import('./lib/photo-limit-ui.js'),
+    import('./lib/account-center.js'), import('./lib/account-menu-fix.js'), import('./lib/account-drawer-ui.js'),
+    import('./lib/account-page-navigation.js'), import('./lib/account-route-shell.js'), import('./lib/saved-vehicles-ui.js'),
+    import('./lib/listing-report-ui.js')
+  ]);
   await nonCritical;
-  await import('./lib/ui-flows.js'); await import('./lib/listing-route-page.js'); await import('./lib/auth-header-pages.js'); await import('./lib/header-vehicles.js'); await import('./lib/listing-detail.js'); await import('./lib/listing-view.js'); await import('./lib/part-icons-ui.js'); await import('./lib/vin-ui-bridge.js'); await import('./lib/vehicle-search-ui.js'); await import('./lib/listing-card-click.js'); await import('./lib/listing-filters-ui.js'); await import('./lib/listing-creator.js'); await import('./lib/photo-limit-ui.js'); await import('./lib/account-center.js'); await import('./lib/account-menu-fix.js'); await import('./lib/account-drawer-ui.js'); await import('./lib/account-page-navigation.js'); await import('./lib/account-route-shell.js'); await import('./lib/saved-vehicles-ui.js'); await import('./lib/listing-report-ui.js');
 }
 if (path === '/araclarim') bootSavedVehiclesRoute(); else if (ACCOUNT_ROUTES.has(path)) bootAccountRoute(); else bootHome();
