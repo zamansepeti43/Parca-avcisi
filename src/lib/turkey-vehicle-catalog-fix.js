@@ -29,15 +29,9 @@ const MAKE_ALIASES = new Map([
   ['KGMOBILITY', 'KGMOBILITY'],
 ]);
 
-// Turkey-market evidence is promoted to the MODEL FAMILY level. Individual
-// variant rows may come from enrichment feeds, but a model family is allowed when
-// it is present in either our Turkey seed/FleetByte data or the current Turkey
-// market registry generated weekly from the public 2026 Turkey model reference.
-const TURKEY_MODEL_PROVENANCE = new Set(['ParcaAvcisiLegacy', 'FleetByte']);
-
-// Verified Turkey Ford passenger model families. This is deliberately a model
-// family list, not a trim/engine list. It is a safety net for historically common
-// Ford families that may be absent from a particular upstream feed.
+// Turkey-market model-family fallback. This is intentionally a model-family
+// registry, not invented engine/fitment data. Existing catalog rows remain the
+// only source for engines, years, bodies and fitments.
 const VERIFIED_TURKEY_PASSENGER_MODELS = new Map([
   ['FORD', new Set([
     'B-MAX', 'C-MAX', 'ESCORT', 'FIESTA', 'FOCUS', 'FUSION', 'GALAXY', 'GRAND C-MAX',
@@ -58,26 +52,23 @@ const unique = (values) => [...new Set((values || [])
   .sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
 
 function hasTurkeyModelProvenance(row) {
-  return Array.isArray(row.provenance) && row.provenance.some((source) => TURKEY_MODEL_PROVENANCE.has(source));
+  return Array.isArray(row.provenance) && row.provenance.some((source) =>
+    source === 'ParcaAvcisiLegacy' || source === 'FleetByte'
+  );
 }
 
 function registryModelKeys() {
   const keys = new Set();
   for (const entry of Array.isArray(turkeyCurrentModelRegistry) ? turkeyCurrentModelRegistry : []) {
     const make = canonicalMake(entry.make);
-    for (const model of (entry.models || [])) {
-      keys.add(`${norm(make)}::${modelKey(model)}`);
-    }
+    for (const model of (entry.models || [])) keys.add(`${norm(make)}::${modelKey(model)}`);
   }
   return keys;
 }
 
 const currentTurkeyModelKeys = registryModelKeys();
-
-// Build the verified Turkey model-family set once. A model is trusted when at least
-// one row for that make/model carries Turkey provenance. Current-market registry
-// entries are an additional independent Turkey signal.
 const turkeyVerifiedModelKeys = new Set(currentTurkeyModelKeys);
+
 for (const row of (Array.isArray(vehicleCatalog) ? vehicleCatalog : [])) {
   const type = cleanLabel(row.type || row.vehicle_type);
   if (type && type !== 'Otomobil') continue;
@@ -90,9 +81,7 @@ function isVerifiedTurkeyModel(row) {
   const make = canonicalMake(row.make);
   const key = `${norm(make)}::${modelKey(row.model)}`;
   if (turkeyVerifiedModelKeys.has(key)) return true;
-
-  const explicit = VERIFIED_TURKEY_PASSENGER_MODELS.get(norm(make));
-  return Boolean(explicit?.has(modelKey(row.model)));
+  return Boolean(VERIFIED_TURKEY_PASSENGER_MODELS.get(norm(make))?.has(modelKey(row.model)));
 }
 
 function yearMatches(row, year) {
@@ -136,7 +125,24 @@ function makeOptions(selection = {}) {
 }
 
 function modelOptions(selection = {}) {
-  return unique(turkeyRows(selection).map((row) => row.model));
+  const catalogModels = turkeyRows(selection).map((row) => row.model);
+
+  // A verified Turkey model family must remain selectable even if the current
+  // merged feed has no variant row for that family. This prevents the previous
+  // "Ford = 5 models" regression. We do NOT fabricate its engine/fitment data.
+  const explicit = selection.make
+    ? [...(VERIFIED_TURKEY_PASSENGER_MODELS.get(norm(canonicalMake(selection.make))) || [])]
+    : [];
+
+  const current = selection.make
+    ? (Array.isArray(turkeyCurrentModelRegistry)
+      ? turkeyCurrentModelRegistry
+          .filter((entry) => sameMake(entry.make, selection.make))
+          .flatMap((entry) => entry.models || [])
+      : [])
+    : [];
+
+  return unique([...catalogModels, ...explicit, ...current]);
 }
 
 function variantOptions(selection = {}) {
@@ -177,7 +183,6 @@ window.__turkeyVehicleCatalogFix = {
   nonPassengerMakes: NON_PASSENGER_MAKES.size,
   currentTurkeyModelCount: currentTurkeyModelKeys.size,
   verifiedTurkeyModelCount: turkeyVerifiedModelKeys.size,
-  turkeyModelProvenance: [...TURKEY_MODEL_PROVENANCE],
   explicitFallbackMakes: [...VERIFIED_TURKEY_PASSENGER_MODELS.keys()],
   aliases: MAKE_ALIASES.size,
 };
