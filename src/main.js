@@ -74,7 +74,7 @@ async function bootHome() {
     import('./lib/auth-header-pages.js'), import('./lib/header-vehicles.js'),
     import('./lib/part-icons-ui.js'), import('./lib/vin-ui-bridge.js'), import('./lib/vehicle-search-ui.js'),
     import('./lib/listing-card-click.js'), import('./lib/listing-filters-ui.js'), import('./lib/photo-limit-ui.js'),
-    import('./lib/account-center.js'), import('./lib.account-menu-fix.js').catch(() => import('./lib/account-menu-fix.js')), import('./lib/account-drawer-ui.js'),
+    import('./lib/account-center.js'), import('./lib/account-menu-fix.js'), import('./lib/account-drawer-ui.js'),
     import('./lib/account-page-navigation.js'), import('./lib/account-route-shell.js'), import('./lib/saved-vehicles-ui.js'),
     import('./lib/listing-report-ui.js'), listingViewReady
   ]);
