@@ -41,7 +41,9 @@ export function toListingCard(listing) {
   };
 }
 
-const listingSelect = 'id, title, description, condition, price, city, district, oem_number, category, subcategory, vehicle, stock_count, status, delivery, created_at, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
+// Cards only request fields actually rendered in listing grids. Detail-only fields stay out of this hot path.
+const listingCardSelect = 'id, title, condition, price, city, category, subcategory, vehicle, status, delivery, oem_number, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
+const listingDetailSelect = 'id, title, description, condition, price, city, district, oem_number, category, subcategory, vehicle, stock_count, status, delivery, created_at, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
 
 export async function getActiveListings({ page = 0, pageSize = DEFAULT_PAGE_SIZE, category = null, subcategory = null } = {}) {
   if (!supabaseConfigured) return null;
@@ -52,7 +54,7 @@ export async function getActiveListings({ page = 0, pageSize = DEFAULT_PAGE_SIZE
   const params = new URLSearchParams(window.location.search);
   const activeCategory = category || params.get('category') || '';
   const activeSubcategory = subcategory || params.get('subcategory') || '';
-  let query = requireSupabase().from('listings').select(listingSelect).eq('status', 'active').order('created_at', { ascending: false });
+  let query = requireSupabase().from('listings').select(listingCardSelect).eq('status', 'active').order('created_at', { ascending: false });
   if (activeCategory) query = query.eq('category', activeCategory);
   if (activeSubcategory) query = query.eq('subcategory', activeSubcategory);
   const { data, error } = await query.range(from, to);
@@ -66,14 +68,14 @@ export async function getMyListings() {
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) return [];
-  const { data, error } = await client.from('listings').select(listingSelect).eq('seller_id', authData.user.id).order('created_at', { ascending: false });
+  const { data, error } = await client.from('listings').select(listingCardSelect).eq('seller_id', authData.user.id).order('created_at', { ascending: false });
   if (error) throw error;
   return data.map(toListingCard);
 }
 
 export async function getListingById(id) {
   if (!supabaseConfigured) return null;
-  const { data, error } = await requireSupabase().from('listings').select(listingSelect).eq('id', id).maybeSingle();
+  const { data, error } = await requireSupabase().from('listings').select(listingDetailSelect).eq('id', id).maybeSingle();
   if (error) throw error;
   if (!data) return null;
   const images = sortedImages(data).map((image) => ({
@@ -99,7 +101,7 @@ export async function getListingById(id) {
 
 export async function getSellerActiveListings(sellerId, { excludeId } = {}) {
   if (!supabaseConfigured) return [];
-  let query = requireSupabase().from('listings').select(listingSelect).eq('seller_id', sellerId).eq('status', 'active').order('created_at', { ascending: false }).limit(8);
+  let query = requireSupabase().from('listings').select(listingCardSelect).eq('seller_id', sellerId).eq('status', 'active').order('created_at', { ascending: false }).limit(8);
   if (excludeId) query = query.neq('id', excludeId);
   const { data, error } = await query;
   if (error) throw error;
