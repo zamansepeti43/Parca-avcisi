@@ -3,9 +3,12 @@ import { requireSupabase, supabaseConfigured } from './supabase.js';
 export async function getFavoriteListingIds() {
   if (!supabaseConfigured) return [];
   const client = requireSupabase();
-  const { data: authData } = await client.auth.getUser();
-  if (!authData.user) return [];
-  const { data, error } = await client.from('favorites').select('listing_id').eq('user_id', authData.user.id);
+  // The homepage only needs the local session identity to query the RLS-protected
+  // favorites table. Avoid getUser(), which can add an auth network roundtrip.
+  const { data: sessionData } = await client.auth.getSession();
+  const userId = sessionData?.session?.user?.id;
+  if (!userId) return [];
+  const { data, error } = await client.from('favorites').select('listing_id').eq('user_id', userId);
   if (error) throw error;
   return data.map(({ listing_id: listingId }) => listingId);
 }
