@@ -31,7 +31,8 @@ function extractBrandLinks(html) {
     const text = clean(match[2]);
     if (!slug || !text || !/Aktif/i.test(text)) continue;
     if (['markalar', 'fiyat-listesi', 'blog', 'elektrikli', 'suv', 'karsilastir', 'favoriler'].includes(slug)) continue;
-    const label = text.replace(/\s*Aktif\s*$/i, '').trim();
+    const label = text.split('👁️')[0].replace(/\s*Aktif\s*$/i, '').trim();
+    if (!label) continue;
     if (!links.some((x) => x.slug === slug)) links.push({ slug, label });
   }
   return links;
@@ -48,11 +49,11 @@ function extractModels(html, brandLabel) {
 
     const priceIndex = text.toLocaleLowerCase('tr-TR').indexOf('başlangıç fiyatı');
     let candidate = text.slice(0, priceIndex).trim();
+    candidate = candidate.replace(/[🚗🚙👁️]/gu, '').replace(/\s+/g, ' ').trim();
     const candidateLower = candidate.toLocaleLowerCase('tr-TR');
     if (!candidateLower.startsWith(`${brandPrefix} `)) continue;
 
     candidate = candidate.slice(brandLabel.length).trim();
-    candidate = candidate.replace(/[🚗🚙]/gu, '').trim();
     if (!candidate || candidate.length > 100) continue;
     models.add(candidate);
   }
