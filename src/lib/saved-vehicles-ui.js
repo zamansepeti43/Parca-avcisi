@@ -30,7 +30,7 @@ function fallbackOptions(field) {
     (!selection.model || x.model === selection.model)
   );
   if (field === 'type') return uniqueSorted(rows.map((x) => x.type || x.vehicle_type));
-  if (field === 'make') return uniqueSorted(matches.map((x) => x.make));
+  if (field === 'make') return uniqueSorted(rows.filter((x) => !selection.type || (x.type || x.vehicle_type) === selection.type).map((x) => x.make));
   if (field === 'model') return uniqueSorted(matches.map((x) => x.model));
   if (field === 'year') return uniqueSorted(matches.flatMap((x) => Array.isArray(x.years) && x.years.length ? x.years : (x.year_from ? Array.from({ length: Math.max(0, Number(x.year_to || x.year_from) - Number(x.year_from)) + 1 }, (_, i) => Number(x.year_from) + i) : [])));
   if (field === 'engine') return uniqueSorted(matches.filter((x) => !selection.year || String(x.year || '').includes(String(selection.year)) || !x.year).flatMap((x) => [x.engine, x.version, x.trim]));
@@ -39,7 +39,10 @@ function fallbackOptions(field) {
 function options(field) {
   let opts = [];
   try {
-    const raw = resolver.getOptions(selection, field);
+    // A selected make must never constrain the make selector itself. This keeps
+    // the full Turkey catalog available when the user re-opens the dropdown.
+    const resolverSelection = field === 'make' ? { ...selection, make: '' } : selection;
+    const raw = resolver.getOptions(resolverSelection, field);
     opts = Array.isArray(raw) ? raw : Array.from(raw || []);
   } catch (_) {
     opts = fallbackOptions(field);
