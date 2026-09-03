@@ -29,8 +29,6 @@ async function bootAccountRoute() {
   mount.querySelectorAll('.account-menu [data-pane]').forEach((button) => button.addEventListener('click', (event) => { const route = ACCOUNT_MENU.find(([key]) => key === button.dataset.pane)?.[2]; if (!route) return; event.preventDefault(); window.location.assign(route); }));
 }
 async function bootHome() {
-  // Paint the home shell first. Independent SEO/navigation modules can download in parallel
-  // instead of creating a long serial import waterfall.
   await import('./app.js');
   const turkeyFix = import('./lib/turkey-vehicle-catalog-fix.js');
   const nonCritical = Promise.all([
@@ -43,20 +41,27 @@ async function bootHome() {
     import('./lib/account-vehicles-menu.js'), import('./lib/home-redesign.css'), import('./lib/listing-entry-flow.js'),
     import('./lib/auth-header-bootstrap.js')
   ]);
-  // VehicleResolver must be patched before any UI module that creates a resolver instance.
   await turkeyFix;
-  // ui-flows initializes the home vehicle/listing form and must run before route modules that
-  // wait for its globals. Keep that dependency explicit, then fetch the remaining features together.
   await import('./lib/ui-flows.js');
   await Promise.all([
-    import('./lib/listing-route-page.js'), import('./lib/auth-header-pages.js'), import('./lib/header-vehicles.js'),
-    import('./lib/listing-detail.js'), import('./lib/listing-view.js'), import('./lib/part-icons-ui.js'),
-    import('./lib/vin-ui-bridge.js'), import('./lib/vehicle-search-ui.js'), import('./lib/listing-card-click.js'),
-    import('./lib/listing-filters-ui.js'), import('./lib/listing-creator.js'), import('./lib/photo-limit-ui.js'),
+    import('./lib/auth-header-pages.js'), import('./lib/header-vehicles.js'),
+    import('./lib/part-icons-ui.js'), import('./lib/vin-ui-bridge.js'), import('./lib/vehicle-search-ui.js'),
+    import('./lib/listing-card-click.js'), import('./lib/listing-filters-ui.js'), import('./lib/photo-limit-ui.js'),
     import('./lib/account-center.js'), import('./lib/account-menu-fix.js'), import('./lib/account-drawer-ui.js'),
     import('./lib/account-page-navigation.js'), import('./lib/account-route-shell.js'), import('./lib/saved-vehicles-ui.js'),
-    import('./lib/listing-report-ui.js')
+    import('./lib/listing-report-ui.js'), import('./lib/listing-view.js')
   ]);
+  // Detail pages are hash routes. Keep the heavy gallery/profile/favorites bundle out of
+  // the initial home load, but load it immediately for a direct detail URL and on navigation.
+  const loadDetail = () => import('./lib/listing-detail.js');
+  if (/^#\/ilan\/[^#]+$/.test(window.location.hash || '')) await loadDetail();
+  else window.addEventListener('hashchange', () => { if (/^#\/ilan\/[^#]+$/.test(window.location.hash || '')) void loadDetail(); }, { once: false });
+  // The advanced listing creator is only needed on the listing route.
+  if (path === '/ilan-ver') await import('./lib/listing-route-page.js');
+  else window.addEventListener('click', (event) => {
+    const target = event.target?.closest?.('#sellBtn,#mobileSell');
+    if (target) void import('./lib/listing-route-page.js');
+  }, { capture: true, once: true });
   await nonCritical;
 }
 if (path === '/araclarim') bootSavedVehiclesRoute(); else if (ACCOUNT_ROUTES.has(path)) bootAccountRoute(); else bootHome();
