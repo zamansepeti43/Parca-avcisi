@@ -29,6 +29,13 @@ const MAKE_ALIASES = new Map([
   ['KGMOBILITY', 'KGMOBILITY'],
 ]);
 
+// Current-model sources can contain commercial products under a make's page.
+// They must not enter the passenger-car selector. They remain valid for the
+// separate commercial-vehicle catalog.
+const NON_PASSENGER_MODEL_KEYS = new Map([
+  ['FORD', new Set(['JOURNEY', 'TOURNEO', 'TRANSIT', 'COURIER', 'RANGER'])],
+]);
+
 // Turkey-market model-family fallback. This is intentionally a model-family
 // registry, not invented engine/fitment data. Existing catalog rows remain the
 // only source for engines, years, bodies and fitments.
@@ -51,6 +58,35 @@ const unique = (values) => [...new Set((values || [])
   .filter(Boolean))]
   .sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
 
+function isNonPassengerModel(make, model) {
+  return Boolean(NON_PASSENGER_MODEL_KEYS.get(norm(canonicalMake(make)))?.has(modelKey(model)));
+}
+
+function uniqueModelLabels(values) {
+  const byKey = new Map();
+  for (const value of values || []) {
+    const label = cleanLabel(value);
+    if (!label) continue;
+    const key = modelKey(label);
+    if (!key || byKey.has(key)) continue;
+    byKey.set(key, label);
+  }
+
+  // If upstream feeds contain the same model in different casing (e.g.
+  // Galaxy/GALAXY), prefer the human-readable mixed-case label.
+  for (const value of values || []) {
+    const label = cleanLabel(value);
+    const key = modelKey(label);
+    if (!key || !byKey.has(key)) continue;
+    const current = byKey.get(key);
+    const labelIsAllCaps = label === label.toLocaleUpperCase('tr-TR');
+    const currentIsAllCaps = current === current.toLocaleUpperCase('tr-TR');
+    if (currentIsAllCaps && !labelIsAllCaps) byKey.set(key, label);
+  }
+
+  return [...byKey.values()].sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
+}
+
 function hasTurkeyModelProvenance(row) {
   return Array.isArray(row.provenance) && row.provenance.some((source) =>
     source === 'ParcaAvcisiLegacy' || source === 'FleetByte'
@@ -61,7 +97,10 @@ function registryModelKeys() {
   const keys = new Set();
   for (const entry of Array.isArray(turkeyCurrentModelRegistry) ? turkeyCurrentModelRegistry : []) {
     const make = canonicalMake(entry.make);
-    for (const model of (entry.models || [])) keys.add(`${norm(make)}::${modelKey(model)}`);
+    for (const model of (entry.models || [])) {
+      if (isNonPassengerModel(make, model)) continue;
+      keys.add(`${norm(make)}::${modelKey(model)}`);
+    }
   }
   return keys;
 }
@@ -72,13 +111,14 @@ const turkeyVerifiedModelKeys = new Set(currentTurkeyModelKeys);
 for (const row of (Array.isArray(vehicleCatalog) ? vehicleCatalog : [])) {
   const type = cleanLabel(row.type || row.vehicle_type);
   if (type && type !== 'Otomobil') continue;
-  if (hasTurkeyModelProvenance(row)) {
+  if (hasTurkeyModelProvenance(row) && !isNonPassengerModel(row.make, row.model)) {
     turkeyVerifiedModelKeys.add(`${norm(canonicalMake(row.make))}::${modelKey(row.model)}`);
   }
 }
 
 function isVerifiedTurkeyModel(row) {
   const make = canonicalMake(row.make);
+  if (isNonPassengerModel(make, row.model)) return false;
   const key = `${norm(make)}::${modelKey(row.model)}`;
   if (turkeyVerifiedModelKeys.has(key)) return true;
   return Boolean(VERIFIED_TURKEY_PASSENGER_MODELS.get(norm(make))?.has(modelKey(row.model)));
@@ -128,8 +168,8 @@ function modelOptions(selection = {}) {
   const catalogModels = turkeyRows(selection).map((row) => row.model);
 
   // A verified Turkey model family must remain selectable even if the current
-  // merged feed has no variant row for that family. This prevents the previous
-  // "Ford = 5 models" regression. We do NOT fabricate its engine/fitment data.
+  // merged feed has no variant row for that family. We do NOT fabricate its
+  // engine/fitment data.
   const explicit = selection.make
     ? [...(VERIFIED_TURKEY_PASSENGER_MODELS.get(norm(canonicalMake(selection.make))) || [])]
     : [];
@@ -139,10 +179,11 @@ function modelOptions(selection = {}) {
       ? turkeyCurrentModelRegistry
           .filter((entry) => sameMake(entry.make, selection.make))
           .flatMap((entry) => entry.models || [])
+          .filter((model) => !isNonPassengerModel(selection.make, model))
       : [])
     : [];
 
-  return unique([...catalogModels, ...explicit, ...current]);
+  return uniqueModelLabels([...catalogModels, ...explicit, ...current]);
 }
 
 function variantOptions(selection = {}) {
