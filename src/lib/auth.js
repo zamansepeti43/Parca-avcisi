@@ -24,8 +24,10 @@ export async function resendEmailOtp(email) {
   return data;
 }
 
-export async function signIn({ email, password }) {
-  const { data, error } = await requireSupabase().auth.signInWithPassword({ email, password });
+export async function signIn({ email, password, captchaToken }) {
+  const options = {};
+  if (captchaToken) options.captchaToken = captchaToken;
+  const { data, error } = await requireSupabase().auth.signInWithPassword({ email, password, options });
   if (error) throw error;
   return data;
 }
