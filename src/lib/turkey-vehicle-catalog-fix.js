@@ -198,12 +198,14 @@ function variantOptions(selection = {}) {
     ]),
   ]);
 
-  // Compatibility layer for the known Turkey-market Escort naming.
+  // Compatibility layer for the known Turkey-market Escort naming. These are
+  // model/trim labels, not invented engine specifications. Valve-count variants
+  // are added only when the verified source/catalog actually supplies them.
   if (sameMake(selection.make, 'Ford') && modelKey(selection.model) === 'ESCORT') {
     const year = Number(selection.year);
     if (!Number.isFinite(year) || (year >= 1995 && year <= 1997)) {
       values.push(
-        '1.6 CL', '1.6 CL 8V', '1.6 CL HB', '1.6 CL Sedan',
+        '1.6 CL', '1.6 CL HB', '1.6 CL Sedan',
         '1.6 CL 16V', '1.6 CL 16V HB', '1.6 CL 16V Sedan',
         '1.3 CLX HB', '1.3 CLX Sedan',
         '1.6 C HB', '1.6 C Sedan',
