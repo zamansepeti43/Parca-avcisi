@@ -4,7 +4,10 @@ const INDEX_URL = 'https://www.sifirarababul.com/markalar';
 const OUT = 'src/lib/turkey-current-models.generated.js';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const stripTags = (html) => html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ');
+const stripTags = (html) => html
+  .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+  .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+  .replace(/<[^>]+>/g, ' ');
 const decode = (text) => text
   .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
   .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ')
@@ -22,30 +25,36 @@ async function get(url) {
 
 function extractBrandLinks(html) {
   const links = [];
-  const re = /<a\\b[^>]*href=["']\\/([^"'/?#]+)["'][^>]*>([\\s\\S]*?)<\\/a>/gi;
+  const re = /<a\b[^>]*href=["']\/([^"'/?#]+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   for (const match of html.matchAll(re)) {
     const slug = match[1].trim();
     const text = clean(match[2]);
     if (!slug || !text || !/Aktif/i.test(text)) continue;
     if (['markalar', 'fiyat-listesi', 'blog', 'elektrikli', 'suv', 'karsilastir', 'favoriler'].includes(slug)) continue;
-    if (!links.some((x) => x.slug === slug)) links.push({ slug, label: text.replace(/\\s*Aktif\\s*$/i, '').trim() });
+    const label = text.replace(/\s*Aktif\s*$/i, '').trim();
+    if (!links.some((x) => x.slug === slug)) links.push({ slug, label });
   }
   return links;
 }
 
 function extractModels(html, brandLabel) {
   const models = new Set();
-  const re = /<a\\b[^>]*>([\\s\\S]*?)<\\/a>/gi;
-  const escapedBrand = brandLabel.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\$&');
-  const pattern = new RegExp(`^${escapedBrand}\\\\s+(.+?)\\\\s*(?:🚗|\\\\u{1F697})?\\\\s*Başlangıç fiyatı`, 'iu');
+  const re = /<a\b[^>]*>([\s\S]*?)<\/a>/gi;
+  const brandPrefix = brandLabel.toLocaleLowerCase('tr-TR');
 
   for (const match of html.matchAll(re)) {
     const text = clean(match[1]);
-    const found = text.match(pattern);
-    if (!found) continue;
-    const model = found[1].replace(/^[^A-Za-z0-9ÇĞİÖŞÜçğıöşü]+/, '').trim();
-    if (!model || model.length > 80) continue;
-    models.add(model);
+    if (!/Başlangıç fiyatı/i.test(text)) continue;
+
+    const priceIndex = text.toLocaleLowerCase('tr-TR').indexOf('başlangıç fiyatı');
+    let candidate = text.slice(0, priceIndex).trim();
+    const candidateLower = candidate.toLocaleLowerCase('tr-TR');
+    if (!candidateLower.startsWith(`${brandPrefix} `)) continue;
+
+    candidate = candidate.slice(brandLabel.length).trim();
+    candidate = candidate.replace(/[🚗🚙]/gu, '').trim();
+    if (!candidate || candidate.length > 100) continue;
+    models.add(candidate);
   }
 
   return [...models].sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
@@ -61,7 +70,7 @@ for (const brand of brands) {
     const html = await get(`https://www.sifirarababul.com/${brand.slug}`);
     const models = extractModels(html, brand.label);
     if (models.length) registry.push({ make: brand.label, models, source: 'SifirArabaBul-2026' });
-    console.log(`${brand.label}: ${models.length} current models`);
+    console.log(`${brand.label}: ${models.length} current model labels`);
   } catch (error) {
     console.warn(`Skipping ${brand.label}: ${error.message}`);
   }
