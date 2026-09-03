@@ -2,10 +2,9 @@ const isListingRoute = window.location.pathname.replace(/\/+$/, '') === '/ilan-v
 
 async function boot() {
   if (!isListingRoute) return;
-  for (let attempt = 0; attempt < 30; attempt += 1) {
-    const trigger = document.querySelector('[data-open-sell]') || document.querySelector('#sellBtn') || document.querySelector('#mobileSell');
-    if (trigger) {
-      trigger.click();
+  for (let attempt = 0; attempt < 40; attempt += 1) {
+    if (typeof window.__openListingForm === 'function') {
+      window.__openListingForm();
       return;
     }
     await new Promise((resolve) => window.setTimeout(resolve, 50));
