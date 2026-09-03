@@ -2,7 +2,12 @@ import { requireSupabase, supabaseConfigured } from './supabase.js';
 
 export async function getCurrentUser() {
   if (!supabaseConfigured) return null;
-  const { data, error } = await requireSupabase().auth.getUser();
+  const client = requireSupabase();
+  // Route guards and UI rendering do not need a round-trip to /auth/v1/user.
+  // The local session is immediately available and is still enforced by Supabase RLS.
+  const { data: sessionData } = await client.auth.getSession();
+  if (sessionData?.session?.user) return sessionData.session.user;
+  const { data, error } = await client.auth.getUser();
   if (error) throw error;
   return data.user;
 }
