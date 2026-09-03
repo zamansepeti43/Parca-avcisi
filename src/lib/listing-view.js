@@ -2,13 +2,12 @@ import { getActiveListings } from './listings.js';
 import { getFavoriteListingIds, toggleFavorite } from './favorites.js';
 import { requireSupabase, supabaseConfigured } from './supabase.js';
 import { demoListings } from './demo-listings.js';
-import { vehicleCatalog } from './vehicle-catalog.js';
 
 const grid = document.querySelector('#listingGrid');
 const toast = document.querySelector('#toast');
 const PAGE_SIZE = 24;
 const money = (value) => new Intl.NumberFormat('tr-TR').format(value) + ' TL';
-const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+const escapeHtml = (value) => String(value).replace(/[&<>'\"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
 const titleCase = (value) => String(value ?? '').trim().split(/\s+/).filter(Boolean).map((word) => {
   const upper = word.toLocaleUpperCase('tr-TR');
   if (upper === word && word.length > 1) return word;
@@ -23,7 +22,22 @@ const state = {
 };
 const VEHICLE_TYPE_KEYWORDS = { Kamyon: ['kamyon'], Otobüs: ['otobüs'], Motosiklet: ['motosiklet'], 'Pickup / Kamyonet': ['pickup', 'kamyonet'] };
 const typeVehicleMap = {};
-for (const record of vehicleCatalog) { const combo = (record.make + ' ' + record.model).toLocaleLowerCase('tr-TR'); (typeVehicleMap[record.type] = typeVehicleMap[record.type] || new Set()).add(combo); }
+let vehicleCatalogPromise = null;
+function ensureVehicleTypeCatalog() {
+  if (vehicleCatalogPromise) return vehicleCatalogPromise;
+  vehicleCatalogPromise = import('./vehicle-catalog.js').then(({ vehicleCatalog }) => {
+    for (const record of vehicleCatalog) {
+      const combo = (record.make + ' ' + record.model).toLocaleLowerCase('tr-TR');
+      (typeVehicleMap[record.type] = typeVehicleMap[record.type] || new Set()).add(combo);
+    }
+    return true;
+  }).catch((error) => {
+    vehicleCatalogPromise = null;
+    console.warn('Araç tipi kataloğu yüklenemedi.', error);
+    return false;
+  });
+  return vehicleCatalogPromise;
+}
 function matchesVehicleType(item, type) {
   if (!type) return true;
   const text = String(item.vehicle || '').toLocaleLowerCase('tr-TR');
@@ -71,11 +85,11 @@ async function load({ page = 0, refreshMeta = false } = {}) { if (!supabaseConfi
 async function goToPage(page) { const target = Math.max(0, Math.min(Number(page) || 0, state.totalPages - 1)); if (!state.live || target === state.page || state.loadingPage) return; await load({ page: target }); document.querySelector('#ilanlar')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 async function refresh() { await load({ page: 0, refreshMeta: true }); }
 function search(query) { state.query = query || ''; state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean); if (state.tokens.length) state.categoryFilter = null; syncUrl(); render(); }
-function setCategoryFilter(filter) { const category = (filter && filter.category) || '', subcategory = (filter && filter.subcategory) || '', vehicleType = (filter && filter.vehicleType) || ''; state.categoryFilter = { category, subcategory, vehicleType }; const params = new URLSearchParams(window.location.search); const vehicleTerms = [params.get('vehicleMake'), params.get('vehicleModel'), params.get('vehicleYear')].filter(Boolean); state.query = [category, subcategory, ...vehicleTerms].join(' '); state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean); const input = document.querySelector('#searchInput'); if (input) input.value = state.query; syncUrl(); load({ page: 0 }); }
+function setCategoryFilter(filter) { const category = (filter && filter.category) || '', subcategory = (filter && filter.subcategory) || '', vehicleType = (filter && filter.vehicleType) || ''; state.categoryFilter = { category, subcategory, vehicleType }; const params = new URLSearchParams(window.location.search); const vehicleTerms = [params.get('vehicleMake'), params.get('vehicleModel'), params.get('vehicleYear')].filter(Boolean); state.query = [category, subcategory, ...vehicleTerms].join(' '); state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean); const input = document.querySelector('#searchInput'); if (input) input.value = state.query; syncUrl(); if (vehicleType) ensureVehicleTypeCatalog().then(() => render()); load({ page: 0 }); }
 function clearCategoryFilter() { state.categoryFilter = null; state.query = ''; state.tokens = []; const input = document.querySelector('#searchInput'); if (input) input.value = ''; syncUrl(); load({ page: 0 }); }
 function setCondition(condition) { state.condition = condition || 'Tümü'; load({ page: 0 }); }
 document.addEventListener('click', async (event) => { const clearButton = event.target.closest('[data-clear-category]'); if (clearButton) { event.preventDefault(); clearCategoryFilter(); return; } const pageButton = event.target.closest('[data-page]'); if (pageButton) { event.preventDefault(); await goToPage(pageButton.dataset.page); return; } const prevButton = event.target.closest('[data-prev-page]'); if (prevButton) { event.preventDefault(); await goToPage(state.page - 1); return; } const nextButton = event.target.closest('[data-next-page]'); if (nextButton) { event.preventDefault(); await goToPage(state.page + 1); return; } const button = event.target.closest('[data-live-save]'); if (!button) return; event.preventDefault(); const id = button.dataset.liveSave; if (!supabaseConfigured) { const isSaved = button.textContent === '♥'; button.textContent = isSaved ? '♡' : '♥'; if (isSaved) state.favoriteIds.delete(id); else state.favoriteIds.add(id); showToast(isSaved ? 'İlan favorilerden çıkarıldı.' : 'İlan favorilere eklendi.'); return; } try { const isFavorite = await toggleFavorite(id); button.textContent = isFavorite ? '♥' : '♡'; showToast(isFavorite ? 'İlan favorilere eklendi.' : 'İlan favorilerden çıkarıldı.'); } catch (error) { showToast(error.message || 'Favori işlemi tamamlanamadı.'); } });
 window.addEventListener('parca:listings-updated', () => { refresh(); });
 window.__listingView = { search, setCondition, refresh, load, goToPage, setCategoryFilter, clearCategoryFilter };
-(function restoreCategoryFilter() { try { const params = new URLSearchParams(window.location.search), category = params.get('category'); if (!category) return; const subcategory = params.get('subcategory') || '', vehicleType = params.get('vehicleType') || '', vehicleTerms = [params.get('vehicleMake'), params.get('vehicleModel'), params.get('vehicleYear')].filter(Boolean); state.categoryFilter = { category, subcategory, vehicleType }; state.query = [category, subcategory, ...vehicleTerms].join(' '); state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean); const input = document.querySelector('#searchInput'); if (input) input.value = state.query; } catch (error) { console.warn('Kategori filtresi geri yüklenemedi.', error); } })();
+(function restoreCategoryFilter() { try { const params = new URLSearchParams(window.location.search), category = params.get('category'); if (!category) return; const subcategory = params.get('subcategory') || '', vehicleType = params.get('vehicleType') || '', vehicleTerms = [params.get('vehicleMake'), params.get('vehicleModel'), params.get('vehicleYear')].filter(Boolean); state.categoryFilter = { category, subcategory, vehicleType }; state.query = [category, subcategory, ...vehicleTerms].join(' '); state.tokens = state.query.trim().toLocaleLowerCase('tr-TR').split(/\s+/).filter(Boolean); const input = document.querySelector('#searchInput'); if (input) input.value = state.query; if (vehicleType) ensureVehicleTypeCatalog().then(() => render()); } catch (error) { console.warn('Kategori filtresi geri yüklenemedi.', error); } })();
 load({ page: 0, refreshMeta: true });
