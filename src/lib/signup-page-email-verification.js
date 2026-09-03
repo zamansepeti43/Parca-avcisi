@@ -154,3 +154,5 @@ window.setTimeout(() => {
   const pending = getPending();
   if (pending?.email) openEmailModal(pending.email);
 }, 0);
+
+// Signup verification intentionally owns the signup submit event so the legacy handler cannot reset the form.
