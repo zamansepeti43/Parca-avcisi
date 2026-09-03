@@ -25,6 +25,7 @@ import './lib/home-redesign.css';
 import './lib/listing-entry-flow.js';
 import './lib/auth-header-bootstrap.js';
 import './lib/ui-flows.js';
+import './lib/listing-route-page.js';
 import './lib/auth-header-pages.js';
 import './lib/header-vehicles.js';
 import './lib/listing-detail.js';
