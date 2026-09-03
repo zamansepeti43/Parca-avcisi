@@ -94,7 +94,7 @@ async function activate(event) {
   active = true;
   editingId = null;
   document.querySelectorAll('[data-pane]').forEach((button) => button.classList.remove('active'));
-  document.querySelector('[data-saved-vehicles]')?.classList.add('active');
+  document.querySelector('[data-saved-vehicles], [data-pane="araclarim"]')?.classList.add('active');
   selection = { type: '', make: '', model: '', year: '', engine: '' };
   await render();
 }
@@ -103,14 +103,14 @@ window.__openSavedVehicles = activate;
 function goToSavedVehiclesPage(event) {
   event?.preventDefault();
   event?.stopPropagation();
-  window.location.assign('/araclarim');
+  if (window.location.pathname !== '/araclarim') window.location.assign('/araclarim');
 }
 
 function ensureMenu() {
   const root = menu();
-  if (!root || root.querySelector('[data-saved-vehicles]')) return;
+  if (!root || root.querySelector('[data-saved-vehicles], [data-pane="araclarim"]')) return;
   const button = document.createElement('button');
-  button.type = 'button'; button.className = 'account-menu-link'; button.dataset.accountPane = 'araclarim'; button.innerHTML = '<span aria-hidden="true">🚗</span><strong>Araçlarım</strong>';
+  button.type = 'button'; button.className = 'account-menu-link'; button.dataset.accountPane = 'araclarim'; button.dataset.pane = 'araclarim'; button.dataset.savedVehicles = ''; button.innerHTML = '<span aria-hidden="true">🚗</span><strong>Araçlarım</strong>';
   listInsert(root, button);
   const nav = document.querySelector('.desktop-nav');
   if (nav && !nav.querySelector('[data-open-saved-vehicles]') && !nav.querySelector('#headerVehicleLink')) {
