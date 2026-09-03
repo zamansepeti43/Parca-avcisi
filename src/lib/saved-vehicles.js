@@ -8,9 +8,17 @@ function requireUser() {
   });
 }
 
+async function getLocalUser() {
+  const { data, error } = await requireSupabase().auth.getSession();
+  if (error) throw error;
+  const user = data?.session?.user;
+  if (!user) throw new Error('Bu işlem için giriş yapmalısın.');
+  return user;
+}
+
 export async function getSavedVehicles() {
   if (!supabaseConfigured) return [];
-  const user = await requireUser();
+  const user = await getLocalUser();
   const { data, error } = await requireSupabase()
     .from('user_vehicles')
     .select('id, vehicle_id, vehicle_type, make, model, year, version, nickname, created_at, updated_at')
@@ -25,16 +33,7 @@ export async function saveVehicle({ vehicleId = null, vehicleType = '', make, mo
   const user = await requireUser();
   const { data, error } = await requireSupabase()
     .from('user_vehicles')
-    .insert({
-      user_id: user.id,
-      vehicle_id: vehicleId || null,
-      vehicle_type: vehicleType || null,
-      make,
-      model,
-      year: year || null,
-      version: version || null,
-      nickname: nickname || null,
-    })
+    .insert({ user_id: user.id, vehicle_id: vehicleId || null, vehicle_type: vehicleType || null, make, model, year: year || null, version: version || null, nickname: nickname || null })
     .select()
     .single();
   if (error) {
