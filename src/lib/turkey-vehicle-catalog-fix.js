@@ -42,7 +42,7 @@ const NON_PASSENGER_MODEL_KEYS = new Map([
 const VERIFIED_TURKEY_PASSENGER_MODELS = new Map([
   ['FORD', new Set([
     'B-MAX', 'C-MAX', 'ESCORT', 'FIESTA', 'FOCUS', 'FUSION', 'GALAXY', 'GRAND C-MAX',
-    'KA', 'MONDEO', 'MUSTANG', 'S-MAX', 'FESTIVA', 'GRANADA', 'PUMA', 'SCORPIO',
+    'KA', 'MONDEO', 'MUSTANG', 'S-MAX', 'FESTIVA', 'GRANADA', 'SCORPIO',
     'SIERRA', 'TAUNUS', 'COUGAR', 'KUGA', 'CAPRI', 'EXPLORER-E', 'BRONCO SPORT', 'ECOSPORT'
   ])],
 ]);
@@ -196,16 +196,21 @@ function variantOptions(selection = {}) {
     ]),
   ]);
 
-  // Compatibility layer for the known Turkey-market 1997 Escort naming.
-  if (sameMake(selection.make, 'Ford') && modelKey(selection.model) === 'ESCORT' && String(selection.year) === '1997') {
-    values.push(
-      '1.3 CLX HB', '1.3 CLX Sedan',
-      '1.6 C HB', '1.6 C Sedan',
-      '1.6 CLX HB', '1.6 CLX Sedan',
-      '1.8 D HB', '1.8 D Sedan',
-      '1.8 Zetec GL HB', '1.8 Zetec GL Sedan',
-      '1.8 Zetec GLX HB', '1.8 Zetec GLX Sedan'
-    );
+  // Compatibility layer for the known Turkey-market Escort naming.
+  if (sameMake(selection.make, 'Ford') && modelKey(selection.model) === 'ESCORT') {
+    const year = Number(selection.year);
+    if (!Number.isFinite(year) || (year >= 1995 && year <= 1997)) {
+      values.push(
+        '1.6 CL', '1.6 CL HB', '1.6 CL Sedan',
+        '1.6 CL 16V', '1.6 CL 16V HB', '1.6 CL 16V Sedan',
+        '1.3 CLX HB', '1.3 CLX Sedan',
+        '1.6 C HB', '1.6 C Sedan',
+        '1.6 CLX HB', '1.6 CLX Sedan',
+        '1.8 D', '1.8 D HB', '1.8 D Sedan',
+        '1.8 Zetec GL HB', '1.8 Zetec GL Sedan',
+        '1.8 Zetec GLX HB', '1.8 Zetec GLX Sedan'
+      );
+    }
   }
   return unique(values);
 }
