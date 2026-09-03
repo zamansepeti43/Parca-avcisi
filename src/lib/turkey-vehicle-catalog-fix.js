@@ -30,35 +30,15 @@ const MAKE_ALIASES = new Map([
   ['KGMOBILITY', 'KGMOBILITY'],
 ]);
 
-// Model labels also come from mixed vehicle databases. Some feeds put an engine,
-// capacity, body configuration or commercial designation in the model column.
-// Keep the real model family in the selector and leave engine/package detail to
-// the later fields. This is intentionally generic so the cleanup applies to
-// every make, not just Ford.
-const MODEL_ALIASES = new Map([
-  ['B MAX', 'B-Max'],
-  ['C MAX', 'C-Max'],
-  ['GRAND C MAX', 'Grand C-Max'],
-  ['S MAX', 'S-Max'],
-  ['ECO SPORT', 'EcoSport'],
-  ['MUSTANG MACH E', 'Mustang Mach-E'],
-  ['MUSTANG MACH-E', 'Mustang Mach-E'],
-]);
-
-const MODEL_NOISE = new Set([
-  '5 WINDOW',
-  '12M', '15M', '17M', '17 M', '20M', '20 M', '26M', '26 M',
-  '18', '20', '40', '48', '1300', '150', '350'
-]);
+// Only these provenance sources are authoritative for the Turkey-facing
+// passenger model tree. InformationCar/VehiclesDB are useful enrichment feeds,
+// but they contain global/historical model names that are not a Turkey catalog.
+// Keeping them as variant data is fine; exposing their raw model names is not.
+const TURKEY_MODEL_PROVENANCE = new Set(['ParcaAvcisiLegacy', 'FleetByte']);
 
 const norm = (v) => String(v ?? '').trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleUpperCase('tr-TR');
 const canonicalMake = (v) => MAKE_ALIASES.get(norm(v)) || String(v ?? '').trim();
 const sameMake = (a, b) => norm(canonicalMake(a)) === norm(canonicalMake(b));
-const canonicalModel = (v) => {
-  const raw = cleanLabel(v);
-  return MODEL_ALIASES.get(norm(raw)) || raw;
-};
-const sameModel = (a, b) => norm(canonicalModel(a)) === norm(canonicalModel(b));
 const cleanLabel = (v) => String(v ?? '').replace(/\s+/g, ' ').trim();
 const unique = (values) => [...new Set((values || [])
   .flatMap((v) => Array.isArray(v) ? v : [v])
@@ -66,16 +46,8 @@ const unique = (values) => [...new Set((values || [])
   .filter(Boolean))]
   .sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
 
-function isModelNoise(value) {
-  const label = cleanLabel(value);
-  const key = norm(label);
-  if (!label) return true;
-  if (MODEL_NOISE.has(label) || MODEL_NOISE.has(key)) return true;
-
-  // Common database leakage: bus/panel/utility labels such as "5 Window",
-  // tonnage and chassis/body descriptors appearing in the passenger model field.
-  if (/^\d+(?:[.,]\d+)?\s*(?:WINDOWS?|TONS?|TON|M|MM)$/i.test(label)) return true;
-  if (/^\d+\s*(?:SEATER|PERSON|KAPILI)$/i.test(label)) return true;
+function hasTurkeyModelProvenance(row) {
+  if (Array.isArray(row.provenance)) return row.provenance.some((source) => TURKEY_MODEL_PROVENANCE.has(source));
   return false;
 }
 
@@ -87,7 +59,7 @@ function yearMatches(row, year) {
 
   const from = Number(row.year_from ?? row.yearStart ?? row.from);
   const to = Number(row.year_to ?? row.yearEnd ?? row.to ?? from);
-  if (Number.isFinite(from)) return y >= from && y <= (Number.isFinite(to) ? to : from);
+  if (Number.isFinite(from)) return y >= from && y <= (Number.isFinite(to) ? Number(to) : from);
 
   const single = Number(row.year);
   return Number.isFinite(single) ? single === y : true;
@@ -101,13 +73,18 @@ function isPassengerRow(row) {
 function turkeyRows(selection = {}) {
   return (Array.isArray(vehicleCatalog) ? vehicleCatalog : []).filter((row) => {
     const make = canonicalMake(row.make);
-    const rowModel = canonicalModel(row.model);
+    const type = cleanLabel(row.type || row.vehicle_type);
+
     if (NON_PASSENGER_MAKES.has(norm(make)) && (!selection.type || selection.type === 'Otomobil')) return false;
-    if (selection.type === 'Otomobil' && !isPassengerRow(row)) return false;
-    if (selection.type && cleanLabel(row.type || row.vehicle_type) && cleanLabel(row.type || row.vehicle_type) !== selection.type) return false;
+    if (selection.type === 'Otomobil') {
+      if (!isPassengerRow(row)) return false;
+      // Fail closed for passenger model names: only Turkey seed/FleetByte rows
+      // are allowed to define what a Turkish user can select.
+      if (!hasTurkeyModelProvenance(row)) return false;
+    }
+    if (selection.type && type && type !== selection.type) return false;
     if (selection.make && !sameMake(row.make, selection.make)) return false;
-    if (isModelNoise(rowModel)) return false;
-    if (selection.model && !sameModel(row.model, selection.model)) return false;
+    if (selection.model && cleanLabel(row.model) !== cleanLabel(selection.model)) return false;
     return true;
   });
 }
@@ -117,7 +94,7 @@ function makeOptions(selection = {}) {
 }
 
 function modelOptions(selection = {}) {
-  return unique(turkeyRows(selection).map((row) => canonicalModel(row.model)));
+  return unique(turkeyRows(selection).map((row) => row.model));
 }
 
 function variantOptions(selection = {}) {
@@ -147,7 +124,7 @@ function variantOptions(selection = {}) {
 const originalGetOptions = VehicleResolver.prototype.getOptions;
 VehicleResolver.prototype.getOptions = function patchedGetOptions(selection = {}, field) {
   // Own the Turkey-facing make/model chain instead of delegating these fields to
-  // the raw merged feed, which is where non-passenger/special-use entries leak in.
+  // the raw merged feed, which is where non-Turkey/global entries leak in.
   if (field === 'make') return makeOptions(selection);
   if (field === 'model') return modelOptions(selection);
   if (field === 'engine') return variantOptions(selection);
@@ -158,6 +135,6 @@ VehicleResolver.prototype.getOptions = function patchedGetOptions(selection = {}
 
 window.__turkeyVehicleCatalogFix = {
   nonPassengerMakes: NON_PASSENGER_MAKES.size,
-  modelNoiseRules: MODEL_NOISE.size,
-  aliases: MAKE_ALIASES.size + MODEL_ALIASES.size,
+  turkeyModelProvenance: [...TURKEY_MODEL_PROVENANCE],
+  aliases: MAKE_ALIASES.size,
 };
