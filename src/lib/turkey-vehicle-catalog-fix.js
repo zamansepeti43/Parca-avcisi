@@ -191,8 +191,10 @@ function variantOptions(selection = {}) {
   const values = rows.flatMap((row) => [
     ...(row.trims || []),
     ...(row.engines || []),
+    ...(row.valves || row.valveCounts || []),
     ...(row.engineDetails || []).flatMap((detail) => [
       detail.name, detail.label, detail.engine, detail.version, detail.trim,
+      detail.valves, detail.valveCount, detail.valf, detail.valfSayisi,
     ]),
   ]);
 
@@ -201,7 +203,7 @@ function variantOptions(selection = {}) {
     const year = Number(selection.year);
     if (!Number.isFinite(year) || (year >= 1995 && year <= 1997)) {
       values.push(
-        '1.6 CL', '1.6 CL HB', '1.6 CL Sedan',
+        '1.6 CL', '1.6 CL 8V', '1.6 CL HB', '1.6 CL Sedan',
         '1.6 CL 16V', '1.6 CL 16V HB', '1.6 CL 16V Sedan',
         '1.3 CLX HB', '1.3 CLX Sedan',
         '1.6 C HB', '1.6 C Sedan',
