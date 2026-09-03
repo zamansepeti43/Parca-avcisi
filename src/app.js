@@ -32,6 +32,9 @@ root.innerHTML = `
   <nav class="mobile-nav" aria-label="Mobil menü"><a href="#top">⌂<small>Ana Sayfa</small></a><button type="button" data-open-categories aria-expanded="false" aria-controls="catMenu">▦<small>Kategoriler</small></button><button id="mobileSell" type="button">+<small>İlan Ver</small></button><a href="#favorilerim" id="favoriteLink">♡<small>Favoriler</small></a><a href="#hesabim" id="accountLink">◉<small id="accountLabel">Hesabım</small></a></nav><div class="toast" id="toast" role="status" aria-live="polite"></div>
 `;
 
+// Keep below-the-fold sections cheap to paint; browsers can defer rendering until they approach the viewport.
+document.querySelectorAll('main > .section:not(.vehicle-section)').forEach((section) => { section.style.contentVisibility = 'auto'; section.style.containIntrinsicSize = '1px 620px'; });
+
 const searchInput=document.querySelector('#searchInput'),makeSelect=document.querySelector('#make'),modelSelect=document.querySelector('#model'),yearSelect=document.querySelector('#year');
 function escapeHtml(value){return String(value||'').replace(/[&<>'"]/g,(char)=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));}
 const listingView=()=>window.__listingView; let searchMode='listings'; const SEARCH_MODE_KEY='pa:searchMode';
