@@ -30,15 +30,54 @@ const MAKE_ALIASES = new Map([
   ['KGMOBILITY', 'KGMOBILITY'],
 ]);
 
+// Model labels also come from mixed vehicle databases. Some feeds put an engine,
+// capacity, body configuration or commercial designation in the model column.
+// Keep the real model family in the selector and leave engine/package detail to
+// the later fields. This is intentionally generic so the cleanup applies to
+// every make, not just Ford.
+const MODEL_ALIASES = new Map([
+  ['B MAX', 'B-Max'],
+  ['C MAX', 'C-Max'],
+  ['GRAND C MAX', 'Grand C-Max'],
+  ['S MAX', 'S-Max'],
+  ['ECO SPORT', 'EcoSport'],
+  ['MUSTANG MACH E', 'Mustang Mach-E'],
+  ['MUSTANG MACH-E', 'Mustang Mach-E'],
+]);
+
+const MODEL_NOISE = new Set([
+  '5 WINDOW',
+  '12M', '15M', '17M', '17 M', '20M', '20 M', '26M', '26 M',
+  '18', '20', '40', '48', '1300', '150', '350'
+]);
+
 const norm = (v) => String(v ?? '').trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleUpperCase('tr-TR');
 const canonicalMake = (v) => MAKE_ALIASES.get(norm(v)) || String(v ?? '').trim();
 const sameMake = (a, b) => norm(canonicalMake(a)) === norm(canonicalMake(b));
+const canonicalModel = (v) => {
+  const raw = cleanLabel(v);
+  return MODEL_ALIASES.get(norm(raw)) || raw;
+};
+const sameModel = (a, b) => norm(canonicalModel(a)) === norm(canonicalModel(b));
 const cleanLabel = (v) => String(v ?? '').replace(/\s+/g, ' ').trim();
 const unique = (values) => [...new Set((values || [])
   .flatMap((v) => Array.isArray(v) ? v : [v])
   .map(cleanLabel)
   .filter(Boolean))]
   .sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
+
+function isModelNoise(value) {
+  const label = cleanLabel(value);
+  const key = norm(label);
+  if (!label) return true;
+  if (MODEL_NOISE.has(label) || MODEL_NOISE.has(key)) return true;
+
+  // Common database leakage: bus/panel/utility labels such as "5 Window",
+  // tonnage and chassis/body descriptors appearing in the passenger model field.
+  if (/^\d+(?:[.,]\d+)?\s*(?:WINDOWS?|TONS?|TON|M|MM)$/i.test(label)) return true;
+  if (/^\d+\s*(?:SEATER|PERSON|KAPILI)$/i.test(label)) return true;
+  return false;
+}
 
 function yearMatches(row, year) {
   if (!year) return true;
@@ -62,11 +101,13 @@ function isPassengerRow(row) {
 function turkeyRows(selection = {}) {
   return (Array.isArray(vehicleCatalog) ? vehicleCatalog : []).filter((row) => {
     const make = canonicalMake(row.make);
+    const rowModel = canonicalModel(row.model);
     if (NON_PASSENGER_MAKES.has(norm(make)) && (!selection.type || selection.type === 'Otomobil')) return false;
     if (selection.type === 'Otomobil' && !isPassengerRow(row)) return false;
     if (selection.type && cleanLabel(row.type || row.vehicle_type) && cleanLabel(row.type || row.vehicle_type) !== selection.type) return false;
     if (selection.make && !sameMake(row.make, selection.make)) return false;
-    if (selection.model && cleanLabel(row.model) !== cleanLabel(selection.model)) return false;
+    if (isModelNoise(rowModel)) return false;
+    if (selection.model && !sameModel(row.model, selection.model)) return false;
     return true;
   });
 }
@@ -76,7 +117,7 @@ function makeOptions(selection = {}) {
 }
 
 function modelOptions(selection = {}) {
-  return unique(turkeyRows(selection).map((row) => row.model));
+  return unique(turkeyRows(selection).map((row) => canonicalModel(row.model)));
 }
 
 function variantOptions(selection = {}) {
@@ -117,5 +158,6 @@ VehicleResolver.prototype.getOptions = function patchedGetOptions(selection = {}
 
 window.__turkeyVehicleCatalogFix = {
   nonPassengerMakes: NON_PASSENGER_MAKES.size,
-  aliases: MAKE_ALIASES.size,
+  modelNoiseRules: MODEL_NOISE.size,
+  aliases: MAKE_ALIASES.size + MODEL_ALIASES.size,
 };
