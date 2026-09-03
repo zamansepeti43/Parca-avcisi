@@ -31,6 +31,10 @@ async function bootAccountRoute() {
 async function bootHome() {
   await import('./app.js');
   const turkeyFix = import('./lib/turkey-vehicle-catalog-fix.js');
+  // Start the listing view at the same time as the Turkey catalog hygiene layer.
+  // The catalog is shared/deduplicated by the module loader, so this removes an
+  // unnecessary waterfall before the first listing cards can render.
+  const listingViewReady = import('./lib/listing-view.js');
   const nonCritical = Promise.all([
     import('./lib/route-actions.js'), import('./lib/header-navigation-final.js'), import('./lib/seo.js'),
     import('./lib/vehicle-seo-page.js'), import('./lib/seo-title-optimizer.js'), import('./lib/canonical-noindex.js'),
@@ -47,9 +51,9 @@ async function bootHome() {
     import('./lib/auth-header-pages.js'), import('./lib/header-vehicles.js'),
     import('./lib/part-icons-ui.js'), import('./lib/vin-ui-bridge.js'), import('./lib/vehicle-search-ui.js'),
     import('./lib/listing-card-click.js'), import('./lib/listing-filters-ui.js'), import('./lib/photo-limit-ui.js'),
-    import('./lib/account-center.js'), import('./lib/account-menu-fix.js'), import('./lib/account-drawer-ui.js'),
+    import('./lib/account-center.js'), import('./lib.account-menu-fix.js').catch(() => import('./lib/account-menu-fix.js')), import('./lib/account-drawer-ui.js'),
     import('./lib/account-page-navigation.js'), import('./lib/account-route-shell.js'), import('./lib/saved-vehicles-ui.js'),
-    import('./lib/listing-report-ui.js'), import('./lib/listing-view.js')
+    import('./lib/listing-report-ui.js'), listingViewReady
   ]);
   // Detail pages are hash routes. Keep the heavy gallery/profile/favorites bundle out of
   // the initial home load, but load it immediately for a direct detail URL and on navigation.
