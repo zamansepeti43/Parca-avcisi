@@ -3,24 +3,35 @@ const ACCOUNT_ROUTES = new Set(['/profilim','/ilanlarim','/araclarim','/talepler
 
 async function bootAccountRoute() {
   document.body.className = 'account-page-runtime';
-  document.body.style.cssText = 'margin:0;background:#0b0d10;color:#eef1f4;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;';
+  document.body.style.cssText = 'margin:0;background:#0b0d10;color:#eef1f4;--gold:#d8ad4a;--ink:#0b0d10;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;';
   document.body.innerHTML = '<header style="height:64px;border-bottom:1px solid #29313a;background:#0e1217;display:flex;align-items:center;justify-content:space-between;padding:0 20px;box-sizing:border-box;position:sticky;top:0;z-index:20"><a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:900;letter-spacing:.03em"><img src="/app-logo.png" width="38" height="38" style="border-radius:10px" alt="Parça Avcısı"><span>PARÇA AVCISI</span></a><a href="/" style="color:#aeb6bf;text-decoration:none;font-size:13px;font-weight:700">← Ana Sayfa</a></header><main style="width:100%;max-width:1180px;margin:0 auto;padding:28px 20px 64px;box-sizing:border-box"><div id="accountRouteMount"><div style="padding:40px 0;text-align:center;color:#89939d">Yükleniyor…</div></div></main><div id="appModal" class="app-modal" aria-hidden="true"><div class="modal-card" role="dialog" aria-modal="true"><button class="modal-close" data-close-modal aria-label="Kapat">×</button><div id="modalContent"></div></div></div><div class="toast" id="toast" role="status" aria-live="polite"></div>';
-  await import('./lib/account-center.js');
-  await import('./lib/account-page-navigation.js');
-  const pane = ({'/profilim':'profilim','/ilanlarim':'ilanlarim','/taleplerim':'taleplerim','/mesajlarim':'mesajlarim','/favorilerim':'favorilerim','/kayitli-aramalarim':'kayitli-aramalar','/bildirimler':'bildirimler','/musterilerim':'musterilerim','/hesap-bilgileri':'hesap-bilgileri','/ayarlar':'ayarlar','/yardim-destek':'yardim'}[path]);
-  const mount = document.querySelector('#accountRouteMount');
-  if (!pane || typeof window.__openAccountCenter !== 'function') {
-    mount.innerHTML = '<div style="padding:40px;border:1px solid #29313a;border-radius:16px">Sayfa yüklenemedi. Lütfen tekrar dene.</div>';
+  const { getCurrentUser } = await import('./lib/auth.js');
+  const user = await getCurrentUser().catch(() => null);
+  if (!user) {
+    window.location.assign('/giris');
     return;
   }
-  await window.__openAccountCenter(pane);
+  await import('./lib/account-center.js');
+  const mount = document.querySelector('#accountRouteMount');
+  if (path === '/araclarim') {
+    await import('./lib/saved-vehicles-ui.js');
+    await window.__openAccountCenter('profilim');
+    if (typeof window.__openSavedVehicles === 'function') await window.__openSavedVehicles();
+  } else {
+    const pane = ({'/profilim':'profilim','/ilanlarim':'ilanlarim','/taleplerim':'taleplerim','/mesajlarim':'mesajlarim','/favorilerim':'favorilerim','/kayitli-aramalarim':'kayitli-aramalar','/bildirimler':'bildirimler','/musterilerim':'musterilerim','/hesap-bilgileri':'hesap-bilgileri','/ayarlar':'ayarlar','/yardim-destek':'yardim'}[path]);
+    if (!pane || typeof window.__openAccountCenter !== 'function') {
+      mount.innerHTML = '<div style="padding:40px;border:1px solid #29313a;border-radius:16px">Sayfa yüklenemedi. Lütfen tekrar dene.</div>';
+      return;
+    }
+    await window.__openAccountCenter(pane);
+  }
   const content = document.querySelector('#modalContent');
-  mount.innerHTML = content.innerHTML;
+  mount.innerHTML = content?.innerHTML || '<div style="padding:40px">İçerik yüklenemedi.</div>';
   document.querySelector('#appModal')?.remove();
   mount.querySelectorAll('.account-menu [data-pane]').forEach((button) => {
     button.addEventListener('click', (event) => {
       event.preventDefault();
-      const routes = {profilim:'/profilim',ilanlarim:'/ilanlarim',taleplerim:'/taleplerim',mesajlarim:'/mesajlarim',favorilerim:'/favorilerim','kayitli-aramalar':'/kayitli-aramalarim',bildirimler:'/bildirimler',musterilerim:'/musterilerim','hesap-bilgileri':'/hesap-bilgileri',ayarlar:'/ayarlar',yardim:'/yardim-destek'};
+      const routes = {profilim:'/profilim',ilanlarim:'/ilanlarim',araclarim:'/araclarim',taleplerim:'/taleplerim',mesajlarim:'/mesajlarim',favorilerim:'/favorilerim','kayitli-aramalar':'/kayitli-aramalarim',bildirimler:'/bildirimler',musterilerim:'/musterilerim','hesap-bilgileri':'/hesap-bilgileri',ayarlar:'/ayarlar',yardim:'/yardim-destek'};
       if (routes[button.dataset.pane]) window.location.assign(routes[button.dataset.pane]);
     });
   });
