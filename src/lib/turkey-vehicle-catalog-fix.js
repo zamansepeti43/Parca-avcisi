@@ -14,8 +14,6 @@ const NON_PASSENGER_MAKES = new Set([
   'WEINSBERG','WMA','ZIRAI TRAKTOR','ZOOMLION'
 ]);
 
-// Upstream feeds use small spelling/alias differences. Treat them as one make
-// so the selector never shows duplicates such as Citroen + Citroën.
 const MAKE_ALIASES = new Map([
   ['CITROEN', 'Citroën'],
   ['CITROËN', 'Citroën'],
@@ -30,16 +28,30 @@ const MAKE_ALIASES = new Map([
   ['KGMOBILITY', 'KGMOBILITY'],
 ]);
 
-// Only these provenance sources are authoritative for the Turkey-facing
-// passenger model tree. InformationCar/VehiclesDB are useful enrichment feeds,
-// but they contain global/historical model names that are not a Turkey catalog.
-// Keeping them as variant data is fine; exposing their raw model names is not.
+// These sources identify a Turkey-market vehicle family. IMPORTANT: provenance is
+// attached to individual variant rows, so filtering rows directly was too strict:
+// a valid Turkey model could have some variants coming only from an enrichment feed.
+// We therefore promote Turkey provenance to the MODEL level, then allow all
+// enrichment variants belonging to that verified model family.
 const TURKEY_MODEL_PROVENANCE = new Set(['ParcaAvcisiLegacy', 'FleetByte']);
+
+// Verified Turkey Ford passenger model families. This is deliberately a model
+// family list, not a trim/engine list. Variants still come from the catalog feeds.
+// Current and used-market evidence includes these families; F-150 is excluded from
+// the normal passenger tree because it is not officially sold in Turkey.
+const VERIFIED_TURKEY_PASSENGER_MODELS = new Map([
+  ['FORD', new Set([
+    'B-MAX', 'C-MAX', 'ESCORT', 'FIESTA', 'FOCUS', 'FUSION', 'GALAXY', 'GRAND C-MAX',
+    'KA', 'MONDEO', 'MUSTANG', 'S-MAX', 'FESTIVA', 'GRANADA', 'PUMA', 'SCORPIO',
+    'SIERRA', 'TAUNUS', 'COUGAR', 'KUGA', 'CAPRI', 'EXPLORER-E', 'BRONCO SPORT', 'ECOSPORT'
+  ])],
+]);
 
 const norm = (v) => String(v ?? '').trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleUpperCase('tr-TR');
 const canonicalMake = (v) => MAKE_ALIASES.get(norm(v)) || String(v ?? '').trim();
 const sameMake = (a, b) => norm(canonicalMake(a)) === norm(canonicalMake(b));
 const cleanLabel = (v) => String(v ?? '').replace(/\s+/g, ' ').trim();
+const modelKey = (v) => norm(cleanLabel(v)).replace(/[–—]/g, '-').replace(/\s*[-/]\s*/g, '-');
 const unique = (values) => [...new Set((values || [])
   .flatMap((v) => Array.isArray(v) ? v : [v])
   .map(cleanLabel)
@@ -47,8 +59,28 @@ const unique = (values) => [...new Set((values || [])
   .sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
 
 function hasTurkeyModelProvenance(row) {
-  if (Array.isArray(row.provenance)) return row.provenance.some((source) => TURKEY_MODEL_PROVENANCE.has(source));
-  return false;
+  return Array.isArray(row.provenance) && row.provenance.some((source) => TURKEY_MODEL_PROVENANCE.has(source));
+}
+
+// Build the verified Turkey model-family set once. A model is trusted when at least
+// one row for that make/model carries Turkey provenance. This fixes the old bug where
+// a model disappeared merely because its richer variant rows came from InformationCar.
+const turkeyVerifiedModelKeys = new Set();
+for (const row of (Array.isArray(vehicleCatalog) ? vehicleCatalog : [])) {
+  const type = cleanLabel(row.type || row.vehicle_type);
+  if (type && type !== 'Otomobil') continue;
+  if (hasTurkeyModelProvenance(row)) {
+    turkeyVerifiedModelKeys.add(`${norm(canonicalMake(row.make))}::${modelKey(row.model)}`);
+  }
+}
+
+function isVerifiedTurkeyModel(row) {
+  const make = canonicalMake(row.make);
+  const key = `${norm(make)}::${modelKey(row.model)}`;
+  if (turkeyVerifiedModelKeys.has(key)) return true;
+
+  const explicit = VERIFIED_TURKEY_PASSENGER_MODELS.get(norm(make));
+  return Boolean(explicit?.has(modelKey(row.model)));
 }
 
 function yearMatches(row, year) {
@@ -78,13 +110,11 @@ function turkeyRows(selection = {}) {
     if (NON_PASSENGER_MAKES.has(norm(make)) && (!selection.type || selection.type === 'Otomobil')) return false;
     if (selection.type === 'Otomobil') {
       if (!isPassengerRow(row)) return false;
-      // Fail closed for passenger model names: only Turkey seed/FleetByte rows
-      // are allowed to define what a Turkish user can select.
-      if (!hasTurkeyModelProvenance(row)) return false;
+      if (!isVerifiedTurkeyModel(row)) return false;
     }
     if (selection.type && type && type !== selection.type) return false;
     if (selection.make && !sameMake(row.make, selection.make)) return false;
-    if (selection.model && cleanLabel(row.model) !== cleanLabel(selection.model)) return false;
+    if (selection.model && modelKey(row.model) !== modelKey(selection.model)) return false;
     return true;
   });
 }
@@ -108,7 +138,7 @@ function variantOptions(selection = {}) {
   ]);
 
   // Compatibility layer for the known Turkey-market 1997 Escort naming.
-  if (sameMake(selection.make, 'Ford') && norm(selection.model) === 'ESCORT' && String(selection.year) === '1997') {
+  if (sameMake(selection.make, 'Ford') && modelKey(selection.model) === 'ESCORT' && String(selection.year) === '1997') {
     values.push(
       '1.3 CLX HB', '1.3 CLX Sedan',
       '1.6 C HB', '1.6 C Sedan',
@@ -123,8 +153,6 @@ function variantOptions(selection = {}) {
 
 const originalGetOptions = VehicleResolver.prototype.getOptions;
 VehicleResolver.prototype.getOptions = function patchedGetOptions(selection = {}, field) {
-  // Own the Turkey-facing make/model chain instead of delegating these fields to
-  // the raw merged feed, which is where non-Turkey/global entries leak in.
   if (field === 'make') return makeOptions(selection);
   if (field === 'model') return modelOptions(selection);
   if (field === 'engine') return variantOptions(selection);
@@ -135,6 +163,8 @@ VehicleResolver.prototype.getOptions = function patchedGetOptions(selection = {}
 
 window.__turkeyVehicleCatalogFix = {
   nonPassengerMakes: NON_PASSENGER_MAKES.size,
+  verifiedTurkeyModelCount: turkeyVerifiedModelKeys.size,
   turkeyModelProvenance: [...TURKEY_MODEL_PROVENANCE],
+  explicitFallbackMakes: [...VERIFIED_TURKEY_PASSENGER_MODELS.keys()],
   aliases: MAKE_ALIASES.size,
 };
