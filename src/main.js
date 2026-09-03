@@ -29,9 +29,23 @@ async function bootAccountRoute() {
   mount.querySelectorAll('.account-menu [data-pane]').forEach((button) => button.addEventListener('click', (event) => { const route = ACCOUNT_MENU.find(([key]) => key === button.dataset.pane)?.[2]; if (!route) return; event.preventDefault(); window.location.assign(route); }));
 }
 async function bootHome() {
-  await import('./app.js'); await import('./lib/route-actions.js'); await import('./lib/header-navigation-final.js'); await import('./lib/seo.js'); await import('./lib/vehicle-seo-page.js'); await import('./lib/seo-title-optimizer.js'); await import('./lib/canonical-noindex.js'); await import('./lib/service-seo-page.js'); await import('./lib/internal-linking-seo.js'); await import('./lib/schema-seo.js'); await import('./lib/faq-seo.js'); await import('./lib/about-contact-seo.js'); await import('./lib/footer-seo.js'); await import('./lib/legal-seo.js'); await import('./lib/performance.js'); await import('./lib/search-console-seo.js'); await import('./lib/mobile-nav-fix.css'); await import('./lib/mobile-header-fix.js'); await import('./lib/categories-menu.js'); await import('./lib/account-vehicles-menu.js'); await import('./lib/home-redesign.css'); await import('./lib/listing-entry-flow.js'); await import('./lib/auth-header-bootstrap.js');
+  // Paint the home shell first. Independent SEO/navigation modules can download in parallel
+  // instead of creating a long serial import waterfall.
+  await import('./app.js');
+  const turkeyFix = import('./lib/turkey-vehicle-catalog-fix.js');
+  const nonCritical = Promise.all([
+    import('./lib/route-actions.js'), import('./lib/header-navigation-final.js'), import('./lib/seo.js'),
+    import('./lib/vehicle-seo-page.js'), import('./lib/seo-title-optimizer.js'), import('./lib/canonical-noindex.js'),
+    import('./lib/service-seo-page.js'), import('./lib/internal-linking-seo.js'), import('./lib/schema-seo.js'),
+    import('./lib/faq-seo.js'), import('./lib/about-contact-seo.js'), import('./lib/footer-seo.js'),
+    import('./lib/legal-seo.js'), import('./lib/performance.js'), import('./lib/search-console-seo.js'),
+    import('./lib/mobile-nav-fix.css'), import('./lib/mobile-header-fix.js'), import('./lib/categories-menu.js'),
+    import('./lib/account-vehicles-menu.js'), import('./lib/home-redesign.css'), import('./lib/listing-entry-flow.js'),
+    import('./lib/auth-header-bootstrap.js')
+  ]);
   // Must run before ui-flows: it patches VehicleResolver for Turkey-market filtering and variants.
-  await import('./lib/turkey-vehicle-catalog-fix.js');
+  await turkeyFix;
+  await nonCritical;
   await import('./lib/ui-flows.js'); await import('./lib/listing-route-page.js'); await import('./lib/auth-header-pages.js'); await import('./lib/header-vehicles.js'); await import('./lib/listing-detail.js'); await import('./lib/listing-view.js'); await import('./lib/part-icons-ui.js'); await import('./lib/vin-ui-bridge.js'); await import('./lib/vehicle-search-ui.js'); await import('./lib/listing-card-click.js'); await import('./lib/listing-filters-ui.js'); await import('./lib/listing-creator.js'); await import('./lib/photo-limit-ui.js'); await import('./lib/account-center.js'); await import('./lib/account-menu-fix.js'); await import('./lib/account-drawer-ui.js'); await import('./lib/account-page-navigation.js'); await import('./lib/account-route-shell.js'); await import('./lib/saved-vehicles-ui.js'); await import('./lib/listing-report-ui.js');
 }
 if (path === '/araclarim') bootSavedVehiclesRoute(); else if (ACCOUNT_ROUTES.has(path)) bootAccountRoute(); else bootHome();
