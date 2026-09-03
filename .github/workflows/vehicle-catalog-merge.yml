@@ -29,12 +29,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Merge vehicle sources
+      - name: Merge vehicle sources with Turkey variants
         env:
-          FLEETBYTE: ${{ github.event_name == 'schedule' && '1' || (github.event.inputs.fleetbyte == 'true' && '1' || '0') }}
+          FLEETBYTE: '1'
         run: node scripts/vehicle-catalog/merge_turkey_catalog.mjs
-      - name: Expand to Turkey make scope
-        run: node scripts/vehicle-catalog/expand_turkey_makes.mjs
       - name: Restore compatibility exports
         run: node scripts/vehicle-catalog/fix_generated_exports.mjs
       - name: Audit catalog coverage
@@ -54,5 +52,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-sources/turkey-makes.json data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json src/lib/vehicle-catalog.js public/vehicle-sitemap.xml
           git diff --cached --quiet && exit 0
-          git commit -m 'data: expand Turkey vehicle catalog, audit and SEO sitemap'
+          git commit -m 'data: refresh Turkey catalog with real variants'
           git push
