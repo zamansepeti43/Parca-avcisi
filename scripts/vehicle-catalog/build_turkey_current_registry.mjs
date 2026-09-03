@@ -38,6 +38,15 @@ function extractBrandLinks(html) {
   return links;
 }
 
+function normalizeModelLabel(value) {
+  return value
+    .replace(/[🚗🚙👁️]/gu, '')
+    .replace(/\s+\d+\s*(?:donanım|paket).*$/iu, '')
+    .replace(/\s+\d+(?:[.,]\d+)?\s*B\s*$/iu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function extractModels(html, brandLabel) {
   const models = new Set();
   const text = clean(html).replace(/\s+/g, ' ');
@@ -45,11 +54,8 @@ function extractModels(html, brandLabel) {
   const re = new RegExp(`${brand}\\s+(.{1,100}?)\\s*(?:🚗|🚙|👁️)?\\s*Başlangıç fiyatı`, 'giu');
 
   for (const match of text.matchAll(re)) {
-    let model = match[1].replace(/[🚗🚙👁️]/gu, '').trim();
-    model = model.replace(/\s+/g, ' ').trim();
+    const model = normalizeModelLabel(match[1]);
     if (!model || model.length > 100) continue;
-    // Strip obvious price/count artifacts that can sit between the model name and label.
-    model = model.replace(/\s+\d+(?:[.,]\d+)?\s*B$/i, '').trim();
     models.add(model);
   }
 
@@ -66,7 +72,7 @@ for (const brand of brands) {
     const html = await get(`https://www.sifirarababul.com/${brand.slug}`);
     const models = extractModels(html, brand.label);
     if (models.length) registry.push({ make: brand.label, models, source: 'SifirArabaBul-2026' });
-    console.log(`${brand.label}: ${models.length} current model labels`);
+    console.log(`${brand.label}: ${models.length} current model families`);
   } catch (error) {
     console.warn(`Skipping ${brand.label}: ${error.message}`);
   }
@@ -77,4 +83,4 @@ if (registry.length < 20) throw new Error(`Turkey current model registry failed:
 
 const output = `// AUTO-GENERATED. DO NOT HAND-EDIT.\n// Source: ${INDEX_URL}\n// Refreshed: ${new Date().toISOString()}\nexport const turkeyCurrentModelRegistry = ${JSON.stringify(registry, null, 2)};\n`;
 await fs.writeFile(OUT, output, 'utf8');
-console.log(`Wrote ${OUT}: ${registry.length} brands / ${registry.reduce((n, x) => n + x.models.length, 0)} raw current model labels`);
+console.log(`Wrote ${OUT}: ${registry.length} brands / ${registry.reduce((n, x) => n + x.models.length, 0)} current model families`);
