@@ -2,8 +2,8 @@ import './account-drawer-ui.css';
 import { getCurrentUser, signOut } from './auth.js';
 import { getUnreadNotificationsCount } from './notifications.js';
 
-const LABELS=[['profilim','Profilim'],['ilanlarim','İlanlarım'],['taleplerim','Taleplerim'],['mesajlarim','Mesajlarım'],['favorilerim','Favorilerim'],['kayitli-aramalar','Kayıtlı Aramalarım'],['bildirimler','Bildirimler'],['musterilerim','Müşterilerim'],['hesap-bilgileri','Hesap Bilgileri'],['ayarlar','Ayarlar'],['yardim','Yardım & Destek']];
-const ROUTES={profilim:'/profilim',ilanlarim:'/ilanlarim',taleplerim:'/taleplerim',mesajlarim:'/mesajlarim',favorilerim:'/favorilerim','kayitli-aramalar':'/kayitli-aramalarim',bildirimler:'/bildirimler',musterilerim:'/musterilerim','hesap-bilgileri':'/hesap-bilgileri',ayarlar:'/ayarlar',yardim:'/yardim-destek'};
+const LABELS=[['profilim','Profilim'],['ilanlarim','İlanlarım'],['araclarim','Araçlarım'],['taleplerim','Taleplerim'],['mesajlarim','Mesajlarım'],['favorilerim','Favorilerim'],['kayitli-aramalar','Kayıtlı Aramalarım'],['bildirimler','Bildirimler'],['musterilerim','Müşterilerim'],['hesap-bilgileri','Hesap Bilgileri'],['ayarlar','Ayarlar'],['yardim','Yardım & Destek']];
+const ROUTES={profilim:'/profilim',ilanlarim:'/ilanlarim',araclarim:'/araclarim',taleplerim:'/taleplerim',mesajlarim:'/mesajlarim',favorilerim:'/favorilerim','kayitli-aramalar':'/kayitli-aramalarim',bildirimler:'/bildirimler',musterilerim:'/musterilerim','hesap-bilgileri':'/hesap-bilgileri',ayarlar:'/ayarlar',yardim:'/yardim-destek'};
 
 async function renderAccount(){
  const drawer=document.querySelector('.category-drawer'); if(!drawer||drawer.querySelector('.account-drawer-section'))return;
