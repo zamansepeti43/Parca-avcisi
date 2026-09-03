@@ -43,12 +43,22 @@ document.querySelectorAll('[data-search-mode]').forEach(tab=>tab.addEventListene
 // The vehicle catalog is intentionally loaded after the visible home shell is painted.
 // It is the largest browser asset in the app (~1.8 MB source), so it must not block first paint.
 const vehicleCatalogReady=import('./lib/vehicle-catalog.js').then(({getMakes,getModels,getYears})=>{
-  makeSelect.innerHTML='<option value="">Marka Seçiniz</option>'+getMakes().map(name=>`<option>${escapeHtml(name)}</option>`).join('');
-  makeSelect.disabled=false;
+  const renderMakes = (selected = makeSelect.value) => {
+    makeSelect.innerHTML='<option value="">Marka Seçiniz</option>'+getMakes().map(name=>`<option value="${escapeHtml(name)}"${String(name)===String(selected)?' selected':''}>${escapeHtml(name)}</option>`).join('');
+    makeSelect.disabled=false;
+  };
+  renderMakes();
   function resetModelYear(){modelSelect.innerHTML='<option value="">Model Seçiniz</option>';modelSelect.disabled=!makeSelect.value;yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>';yearSelect.disabled=true;}
   function resetYear(){yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>';yearSelect.disabled=!modelSelect.value;}
-  makeSelect.addEventListener('change',()=>{const models=getModels(makeSelect.value);resetModelYear();modelSelect.innerHTML='<option value="">Model Seçiniz</option>'+models.map(name=>`<option>${escapeHtml(name)}</option>`).join('');});
-  modelSelect.addEventListener('change',()=>{const years=getYears(makeSelect.value,modelSelect.value);resetYear();yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>'+years.map(value=>`<option>${value}</option>`).join('');});
+  // Marka her açıldığında kaynak katalogdaki TÜM markaları yeniden kur. Böylece
+  // Ford/Toyota vb. seçilmiş olsa bile kullanıcı markayı değiştirmek istediğinde
+  // dropdown yalnızca mevcut seçime daralmaz.
+  const restoreFullMakeCatalog = () => renderMakes(makeSelect.value);
+  makeSelect.addEventListener('focus', restoreFullMakeCatalog);
+  makeSelect.addEventListener('mousedown', restoreFullMakeCatalog);
+  makeSelect.addEventListener('click', restoreFullMakeCatalog);
+  makeSelect.addEventListener('change',()=>{const models=getModels(makeSelect.value);resetModelYear();modelSelect.innerHTML='<option value="">Model Seçiniz</option>'+models.map(name=>`<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join('');});
+  modelSelect.addEventListener('change',()=>{const years=getYears(makeSelect.value,modelSelect.value);resetYear();yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>'+years.map(value=>`<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join('');});
 }).catch(()=>{makeSelect.innerHTML='<option value="">Marka yüklenemedi</option>';makeSelect.disabled=true;});
 
 // Keep the form responsive even while the catalog chunk is arriving.
