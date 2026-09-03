@@ -1,5 +1,6 @@
 import { getCurrentUser } from './auth.js';
 import { VehicleResolver } from './vehicle-resolver.js';
+import { vehicleCatalog } from './vehicle-catalog.js';
 import { getSavedVehicles, saveVehicle, updateSavedVehicle, deleteSavedVehicle } from './saved-vehicles.js';
 import { requireSupabase, supabaseConfigured } from './supabase.js';
 import { getListingThumbnailUrl } from './listing-images.js';
@@ -8,6 +9,7 @@ const resolver = new VehicleResolver();
 let active = false;
 let selection = { type: '', make: '', model: '', year: '', engine: '' };
 let editingId = null;
+let savedItems = [];
 
 const esc = (v) => String(v ?? '').replace(/[&<>'\"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
 const money = (value) => new Intl.NumberFormat('tr-TR').format(Number(value) || 0) + ' TL';
@@ -15,8 +17,34 @@ const money = (value) => new Intl.NumberFormat('tr-TR').format(Number(value) || 
 function pane() { return document.querySelector('.account-pane'); }
 function menu() { return document.querySelector('.account-menu'); }
 
+function catalogRows() { return Array.isArray(vehicleCatalog) ? vehicleCatalog : []; }
+function uniqueSorted(values) {
+  return [...new Set(values.flatMap((v) => Array.isArray(v) ? v : [v]).filter((v) => v !== undefined && v !== null && String(v).trim() !== '').map(String))]
+    .sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
+}
+function fallbackOptions(field) {
+  const rows = catalogRows();
+  const matches = rows.filter((x) =>
+    (!selection.type || (x.type || x.vehicle_type) === selection.type) &&
+    (!selection.make || x.make === selection.make) &&
+    (!selection.model || x.model === selection.model)
+  );
+  if (field === 'type') return uniqueSorted(rows.map((x) => x.type || x.vehicle_type));
+  if (field === 'make') return uniqueSorted(matches.map((x) => x.make));
+  if (field === 'model') return uniqueSorted(matches.map((x) => x.model));
+  if (field === 'year') return uniqueSorted(matches.flatMap((x) => Array.isArray(x.years) && x.years.length ? x.years : (x.year_from ? Array.from({ length: Math.max(0, Number(x.year_to || x.year_from) - Number(x.year_from)) + 1 }, (_, i) => Number(x.year_from) + i) : [])));
+  if (field === 'engine') return uniqueSorted(matches.filter((x) => !selection.year || String(x.year || '').includes(String(selection.year)) || !x.year).flatMap((x) => [x.engine, x.version, x.trim]));
+  return [];
+}
 function options(field) {
-  const opts = resolver.getOptions(selection, field) || [];
+  let opts = [];
+  try {
+    const raw = resolver.getOptions(selection, field);
+    opts = Array.isArray(raw) ? raw : Array.from(raw || []);
+  } catch (_) {
+    opts = fallbackOptions(field);
+  }
+  if (!opts.length) opts = fallbackOptions(field);
   const previous = field === 'type' ? '' : ({ make: 'type', model: 'make', year: 'model', engine: 'year' }[field]);
   const blocked = Boolean(previous && !selection[previous]);
   const hasNoData = !blocked && field !== 'type' && opts.length === 0;
@@ -69,17 +97,17 @@ async function openCompatibleVehicle(id) {
   }
 }
 
-async function render() {
+async function render({ refresh = true } = {}) {
   const target = pane();
   if (!target) return;
-  target.innerHTML = '<div class="pane-loading">Yükleniyor…</div>';
+  if (refresh || !savedItems.length) target.innerHTML = '<div class="pane-loading">Araçların hazırlanıyor…</div>';
   try {
-    const items = await getSavedVehicles();
-    const editingItem = editingId ? items.find((item) => String(item.id) === String(editingId)) : null;
+    if (refresh || !savedItems.length) savedItems = await getSavedVehicles();
+    const editingItem = editingId ? savedItems.find((item) => String(item.id) === String(editingId)) : null;
     if (editingId && !editingItem) editingId = null;
-    target.innerHTML = renderForm(editingItem) + renderList(items);
+    target.innerHTML = renderForm(editingItem) + renderList(savedItems);
   } catch (error) {
-    target.innerHTML = '<div class="pane-empty"><strong>Araçlar yüklenemedi</strong><span>' + esc(error.message) + '</span></div>';
+    target.innerHTML = '<div class="pane-empty"><strong>Araçlar yüklenemedi</strong><span>' + esc(error.message || 'Kayıtlı araçlar alınamadı.') + '</span></div>';
   }
 }
 
@@ -87,16 +115,13 @@ async function activate(event) {
   event?.preventDefault();
   event?.stopPropagation();
   const user = await getCurrentUser().catch(() => null);
-  if (!user) {
-    window.location.assign('/giris');
-    return;
-  }
+  if (!user) { window.location.assign('/giris'); return; }
   active = true;
   editingId = null;
+  selection = { type: '', make: '', model: '', year: '', engine: '' };
   document.querySelectorAll('[data-pane]').forEach((button) => button.classList.remove('active'));
   document.querySelector('[data-saved-vehicles], [data-pane="araclarim"]')?.classList.add('active');
-  selection = { type: '', make: '', model: '', year: '', engine: '' };
-  await render();
+  await render({ refresh: true });
 }
 window.__openSavedVehicles = activate;
 
@@ -132,7 +157,7 @@ document.addEventListener('change', (event) => {
   const order = ['type', 'make', 'model', 'year', 'engine'];
   const index = order.indexOf(field);
   order.slice(index + 1).forEach((key) => { selection[key] = ''; });
-  render().catch(() => {});
+  render({ refresh: false }).catch(() => {});
 });
 
 document.addEventListener('submit', async (event) => {
@@ -149,7 +174,7 @@ document.addEventListener('submit', async (event) => {
     selection = { type: '', make: '', model: '', year: '', engine: '' };
     const toast = document.querySelector('#toast');
     if (toast) { toast.textContent = wasEditing ? 'Araç güncellendi.' : 'Araç kaydedildi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2200); }
-    await render();
+    await render({ refresh: true });
   } catch (error) {
     const toast = document.querySelector('#toast');
     if (toast) { toast.textContent = error.message || 'Araç kaydedilemedi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
@@ -158,15 +183,15 @@ document.addEventListener('submit', async (event) => {
 
 document.addEventListener('click', async (event) => {
   const edit = event.target.closest('[data-edit-saved-vehicle]');
-  if (edit && active) { event.preventDefault(); event.stopPropagation(); editingId = edit.dataset.editSavedVehicle; await render(); pane()?.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+  if (edit && active) { event.preventDefault(); event.stopPropagation(); editingId = edit.dataset.editSavedVehicle; await render({ refresh: false }); pane()?.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
   const cancel = event.target.closest('[data-cancel-edit]');
-  if (cancel && active) { event.preventDefault(); event.stopPropagation(); editingId = null; selection = { type: '', make: '', model: '', year: '', engine: '' }; await render(); return; }
+  if (cancel && active) { event.preventDefault(); event.stopPropagation(); editingId = null; selection = { type: '', make: '', model: '', year: '', engine: '' }; await render({ refresh: false }); return; }
   const open = event.target.closest('[data-open-saved-vehicle]');
   if (open && active) { if (event.target.closest('[data-delete-saved-vehicle]') || event.target.closest('[data-edit-saved-vehicle]')) return; event.preventDefault(); event.stopPropagation(); await openCompatibleVehicle(open.dataset.openSavedVehicle); return; }
   const button = event.target.closest('[data-delete-saved-vehicle]');
   if (!button || !active) return;
   event.preventDefault(); event.stopPropagation();
-  try { await deleteSavedVehicle(button.dataset.deleteSavedVehicle); if (String(editingId) === String(button.dataset.deleteSavedVehicle)) editingId = null; await render(); }
+  try { await deleteSavedVehicle(button.dataset.deleteSavedVehicle); if (String(editingId) === String(button.dataset.deleteSavedVehicle)) editingId = null; await render({ refresh: true }); }
   catch (error) { const toast = document.querySelector('#toast'); if (toast) { toast.textContent = error.message || 'Araç silinemedi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); } }
 });
 
