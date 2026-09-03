@@ -1,3 +1,4 @@
+import './listing-compatibility-ui.css';
 import { getListingById } from './listings.js';
 
 const normalize = (value) => String(value ?? '').trim();
