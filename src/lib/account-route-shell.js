@@ -18,7 +18,7 @@ async function renderAccountRoute() {
     await window.__openSavedVehicles();
   } else {
     if (typeof window.__openAccountCenter !== 'function') return;
-    window.__openAccountCenter(pane);
+    await window.__openAccountCenter(pane);
   }
 
   const html = content.innerHTML;
@@ -29,8 +29,7 @@ async function renderAccountRoute() {
     shell = document.createElement('main');
     shell.id = 'accountRouteShell';
     shell.className = 'account-route-shell';
-    const app = document.querySelector('#app') || document.querySelector('main') || document.body;
-    app.prepend(shell);
+    document.body.prepend(shell);
   }
   shell.innerHTML = '<div class="account-route-inner">' + html + '</div>';
 
@@ -42,11 +41,18 @@ async function renderAccountRoute() {
   document.body.classList.add('has-account-route');
 }
 
-function boot() {
-  renderAccountRoute();
-  window.setTimeout(() => renderAccountRoute(), 250);
-  window.setTimeout(() => renderAccountRoute(), 750);
+async function boot() {
+  const path = window.location.pathname.replace(/\/+$/, '');
+  if (!ACCOUNT_ROUTES[path]) return;
+
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    if (document.querySelector('#appModal') && (typeof window.__openAccountCenter === 'function' || typeof window.__openSavedVehicles === 'function')) {
+      await renderAccountRoute();
+      return;
+    }
+    await new Promise((resolve) => window.setTimeout(resolve, 50));
+  }
 }
 
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
 else boot();
