@@ -29,6 +29,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Build current Turkey model registry
+        run: node scripts/vehicle-catalog/build_turkey_current_registry.mjs
       - name: Merge vehicle sources with Turkey variants
         env:
           FLEETBYTE: '1'
@@ -50,7 +52,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-sources/turkey-makes.json data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json src/lib/vehicle-catalog.js public/vehicle-sitemap.xml
+          git add data/vehicle-catalog-sources/legacy-seed.json data/vehicle-catalog-sources/turkey-makes.json data/vehicle-catalog-merged.json data/vehicle-catalog-audit.json src/lib/vehicle-catalog.js src/lib/turkey-current-models.generated.js public/vehicle-sitemap.xml
           git diff --cached --quiet && exit 0
-          git commit -m 'data: refresh Turkey catalog with real variants'
+          git commit -m 'data: refresh Turkey catalog with current market registry'
           git push
