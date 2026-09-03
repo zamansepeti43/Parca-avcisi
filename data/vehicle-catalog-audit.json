@@ -1,15 +1,67 @@
 {
-  "generated_at": "2026-09-03T09:41:13.463Z",
+  "generated_at": "2026-09-03T11:00:24.706Z",
   "source": "ParcaAvcisi vehicle-catalog-merged.json",
   "parca_avcisi": {
     "marka_sayisi": 39,
-    "model_sayisi": 4687,
+    "model_sayisi": 4677,
     "motor_sayisi": 798,
     "donanim_paket_sayisi": 1624,
     "motor_veya_versiyon_sayisi": 2422,
     "kasa_govde_sayisi": 10,
     "yil_sayisi": 59,
     "kayit_sayisi": 6374
+  },
+  "variant_quality_audit": {
+    "valve_distinction_family_count": 0,
+    "valve_distinction_families": [],
+    "ambiguous_valve_label_count": 0,
+    "ambiguous_valve_labels": [],
+    "duplicate_model_label_family_count": 6,
+    "duplicate_model_labels": [
+      {
+        "family": "HYUNDAİ|SANTA FE",
+        "labels": [
+          "Santa Fe",
+          "Santa FE"
+        ]
+      },
+      {
+        "family": "MAZDA|MAZDA6",
+        "labels": [
+          "Mazda6",
+          "MAZDA6"
+        ]
+      },
+      {
+        "family": "SSANGYONG|XLV",
+        "labels": [
+          "Xlv",
+          "XLV"
+        ]
+      },
+      {
+        "family": "SUBARU|BRZ",
+        "labels": [
+          "Brz",
+          "BRZ"
+        ]
+      },
+      {
+        "family": "SUBARU|XV",
+        "labels": [
+          "Xv",
+          "XV"
+        ]
+      },
+      {
+        "family": "TOYOTA|RAV4",
+        "labels": [
+          "Rav4",
+          "RAV4"
+        ]
+      }
+    ],
+    "policy": "8V and 16V are distinct engine variants. Do not merge them. Unqualified labels are review candidates only when the same make/model/displacement is already proven to contain both valve families."
   },
   "sahibinden": {
     "marka_sayisi": null,
