@@ -1,4 +1,5 @@
 import './app.js';
+import './lib/route-actions.js';
 import './lib/header-navigation-final.js';
 import './lib/seo.js';
 import './lib/vehicle-seo-page.js';
