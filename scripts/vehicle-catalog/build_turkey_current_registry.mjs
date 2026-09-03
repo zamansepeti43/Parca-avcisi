@@ -40,22 +40,17 @@ function extractBrandLinks(html) {
 
 function extractModels(html, brandLabel) {
   const models = new Set();
-  const re = /<a\b[^>]*>([\s\S]*?)<\/a>/gi;
-  const brandPrefix = brandLabel.toLocaleLowerCase('tr-TR');
+  const text = clean(html).replace(/\s+/g, ' ');
+  const brand = brandLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`${brand}\\s+(.{1,100}?)\\s*(?:🚗|🚙|👁️)?\\s*Başlangıç fiyatı`, 'giu');
 
-  for (const match of html.matchAll(re)) {
-    const text = clean(match[1]);
-    if (!/Başlangıç fiyatı/i.test(text)) continue;
-
-    const priceIndex = text.toLocaleLowerCase('tr-TR').indexOf('başlangıç fiyatı');
-    let candidate = text.slice(0, priceIndex).trim();
-    candidate = candidate.replace(/[🚗🚙👁️]/gu, '').replace(/\s+/g, ' ').trim();
-    const candidateLower = candidate.toLocaleLowerCase('tr-TR');
-    if (!candidateLower.startsWith(`${brandPrefix} `)) continue;
-
-    candidate = candidate.slice(brandLabel.length).trim();
-    if (!candidate || candidate.length > 100) continue;
-    models.add(candidate);
+  for (const match of text.matchAll(re)) {
+    let model = match[1].replace(/[🚗🚙👁️]/gu, '').trim();
+    model = model.replace(/\s+/g, ' ').trim();
+    if (!model || model.length > 100) continue;
+    // Strip obvious price/count artifacts that can sit between the model name and label.
+    model = model.replace(/\s+\d+(?:[.,]\d+)?\s*B$/i, '').trim();
+    models.add(model);
   }
 
   return [...models].sort((a, b) => a.localeCompare(b, 'tr', { numeric: true }));
