@@ -1,6 +1,5 @@
 import './styles.css';
 import './landing-theme.css';
-import { getMakes, getModels, getYears } from './lib/vehicle-catalog.js';
 
 const root = document.querySelector('#root');
 const brandLogo = '/parca-avcisi-logo.png';
@@ -23,7 +22,7 @@ root.innerHTML = `
       <div class="hero-trust"><span>✓ Binlerce parça</span><span>✓ Türkiye geneli</span><span>✓ Sıfır & 2. el</span></div>
     </div><div class="hero-visual" aria-hidden="true"><div class="hero-emblem-glow"></div><img class="hero-emblem" src="/app-logo.png" alt=""></div></div></section>
     <section class="section marketplace-cta" id="piyasa"><div class="container marketplace-grid"><article class="marketplace-card request"><span class="eyebrow">ARADIN, BULAMADIN MI?</span><div class="marketplace-icon">🔎</div><h2>Parça Arıyorum</h2><p>Bulamadığın parçayı talep et; sende olan satıcılar sana ulaşsın.</p><button class="marketplace-btn" data-open-request>Hemen Parça Talebi Oluştur</button></article><article class="marketplace-card sell"><span class="eyebrow">ELİNDE FAZLA PARÇA MI VAR?</span><div class="marketplace-icon">🔧</div><h2>Parça Satıyorum</h2><p>Sıfır, 2. el veya çıkma parçanı ilanla; arayan alıcılarla buluş.</p><button class="marketplace-btn" data-open-sell>Hemen İlan Ver</button></article></div></section>
-    <section class="section vehicle-section" id="aracini-sec"><div class="container vehicle-card"><div><span class="eyebrow">ARACINI SEÇ</span><h2>Aracına uygun parçayı <em>bul.</em></h2><p>Marka, model ve yılı seç; uyumlu parçaları keşfet.</p></div><form class="vehicle-form" id="vehicleForm"><select id="make"><option value="">Marka Seçiniz</option></select><select id="model" disabled><option value="">Model Seçiniz</option></select><select id="year" disabled><option value="">Yıl Seçiniz</option></select><button type="submit">Aracıma Uygun Parçaları Bul →</button></form></div></section>
+    <section class="section vehicle-section" id="aracini-sec"><div class="container vehicle-card"><div><span class="eyebrow">ARACINI SEÇ</span><h2>Aracına uygun parçayı <em>bul.</em></h2><p>Marka, model ve yılı seç; uyumlu parçaları keşfet.</p></div><form class="vehicle-form" id="vehicleForm"><select id="make" disabled><option value="">Marka yükleniyor…</option></select><select id="model" disabled><option value="">Model Seçiniz</option></select><select id="year" disabled><option value="">Yıl Seçiniz</option></select><button type="submit">Aracıma Uygun Parçaları Bul →</button></form></div></section>
     <section class="section requests-section arayan-bul-section" id="arayan-bul" hidden><div class="container"><div class="section-head"><div><span class="eyebrow">PARÇA ARAYANI BUL</span><h2>Bu parçayı arayan müşteriler</h2></div><button class="text-btn" id="arayanBack">← İlanlara Dön</button></div><p class="requests-intro">Alıcıların aktif taleplerini ara; elindeki parçaya "Bende Var" de ve mesajlaşmaya başla.</p><div id="arayanFilters"></div><div class="listing-grid request-grid" id="arayanGrid"></div><div class="center-action" id="arayanAction"></div></div></section>
     <section class="section listings-section" id="ilanlar"><div class="container"><div class="section-head"><div><span class="eyebrow">SATILAN PARÇALAR · YENİ EKLENENLER</span><h2>Yeni eklenen parçalar</h2></div><div class="filters"><button class="filter active" data-condition="Tümü">Tümü</button><button class="filter" data-condition="Sıfır">Sıfır</button><button class="filter" data-condition="2. El">2. El</button><button class="filter" data-condition="Çıkma">Çıkma</button></div></div><div class="listing-grid" id="listingGrid"></div><div class="center-action"><button class="dark-btn" id="allListings">Tüm ilanları gör</button></div></div></section>
     <section class="section requests-section" id="talep-market"><div class="container"><div class="section-head"><div><span class="eyebrow">MÜŞTERİLERİN ARADIĞI PARÇALAR</span><h2>Alıcılar bu parçaları arıyor</h2></div><button class="text-btn" id="allRequestsBtn">Hepsini Gör →</button></div><p class="requests-intro">Aradığın parça burada yoksa, başka bir müşteri de senin elindeki parçayı arıyor olabilir. Sende olan parçaya "Bende Var" de, alıcıyla mesajlaşmayı başlat.</p><div class="listing-grid request-grid" id="requestMarketGrid"></div><div class="center-action"><button class="dark-btn" data-open-request>Parça ARIYORUM — Talep Oluştur</button></div></div></section>
@@ -40,11 +39,19 @@ function setSearchMode(mode){searchMode=mode==='requests'?'requests':'listings';
 function search(query){searchInput.value=query;if(searchMode==='requests'){if(window.__searchRequests){window.__searchRequests(query);return;}setSearchMode('listings');}if(window.__hideArayanSection)window.__hideArayanSection();if(listingView())listingView().search(query);document.querySelector('#ilanlar').scrollIntoView({behavior:'smooth',block:'start'});}
 document.querySelectorAll('[data-search-mode]').forEach(tab=>tab.addEventListener('click',()=>setSearchMode(tab.dataset.searchMode)));
 (function restoreSearchMode(){try{if(localStorage.getItem(SEARCH_MODE_KEY)==='requests')setSearchMode('requests');}catch{}})();
-makeSelect.innerHTML='<option value="">Marka Seçiniz</option>'+getMakes().map(name=>`<option>${escapeHtml(name)}</option>`).join('');
-function resetModelYear(){modelSelect.innerHTML='<option value="">Model Seçiniz</option>';modelSelect.disabled=!makeSelect.value;yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>';yearSelect.disabled=true;}
-function resetYear(){yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>';yearSelect.disabled=!modelSelect.value;}
-makeSelect.addEventListener('change',()=>{const models=getModels(makeSelect.value);resetModelYear();modelSelect.innerHTML='<option value="">Model Seçiniz</option>'+models.map(name=>`<option>${escapeHtml(name)}</option>`).join('');});
-modelSelect.addEventListener('change',()=>{const years=getYears(makeSelect.value,modelSelect.value);resetYear();yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>'+years.map(value=>`<option>${value}</option>`).join('');});
+
+// The vehicle catalog is intentionally loaded after the visible home shell is painted.
+// It is the largest browser asset in the app (~1.8 MB source), so it must not block first paint.
+const vehicleCatalogReady=import('./lib/vehicle-catalog.js').then(({getMakes,getModels,getYears})=>{
+  makeSelect.innerHTML='<option value="">Marka Seçiniz</option>'+getMakes().map(name=>`<option>${escapeHtml(name)}</option>`).join('');
+  makeSelect.disabled=false;
+  function resetModelYear(){modelSelect.innerHTML='<option value="">Model Seçiniz</option>';modelSelect.disabled=!makeSelect.value;yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>';yearSelect.disabled=true;}
+  function resetYear(){yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>';yearSelect.disabled=!modelSelect.value;}
+  makeSelect.addEventListener('change',()=>{const models=getModels(makeSelect.value);resetModelYear();modelSelect.innerHTML='<option value="">Model Seçiniz</option>'+models.map(name=>`<option>${escapeHtml(name)}</option>`).join('');});
+  modelSelect.addEventListener('change',()=>{const years=getYears(makeSelect.value,modelSelect.value);resetYear();yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>'+years.map(value=>`<option>${value}</option>`).join('');});
+}).catch(()=>{makeSelect.innerHTML='<option value="">Marka yüklenemedi</option>';makeSelect.disabled=true;});
+
+// Keep the form responsive even while the catalog chunk is arriving.
 document.querySelector('#searchForm').addEventListener('submit',event=>{event.preventDefault();search(searchInput.value);});
 document.querySelectorAll('[data-query]').forEach(button=>button.addEventListener('click',()=>search(button.dataset.query)));
 document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(item=>item.classList.remove('active'));button.classList.add('active');if(listingView())listingView().setCondition(button.dataset.condition);}));
@@ -54,3 +61,4 @@ document.querySelector('#allListings').addEventListener('click',()=>{document.qu
 const vehicleLink=document.querySelector('#headerVehicleLink');vehicleLink?.addEventListener('click',event=>{event.preventDefault();document.querySelector('#aracini-sec')?.scrollIntoView({behavior:'smooth',block:'start'});});
 const arayanBack=document.querySelector('#arayanBack');if(arayanBack)arayanBack.addEventListener('click',()=>{setSearchMode('listings');search(searchInput.value);});
 window.__homeSearch=search;
+void vehicleCatalogReady;
