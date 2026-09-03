@@ -4,7 +4,19 @@
   "rewrites": [
     { "source": "/giris", "destination": "/giris.html" },
     { "source": "/kayit", "destination": "/kayit.html" },
+    { "source": "/profilim", "destination": "/profilim.html" },
+    { "source": "/ilanlarim", "destination": "/ilanlarim.html" },
     { "source": "/araclarim", "destination": "/araclarim.html" },
+    { "source": "/taleplerim", "destination": "/taleplerim.html" },
+    { "source": "/mesajlarim", "destination": "/mesajlarim.html" },
+    { "source": "/favorilerim", "destination": "/favorilerim.html" },
+    { "source": "/kayitli-aramalarim", "destination": "/kayitli-aramalarim.html" },
+    { "source": "/bildirimler", "destination": "/bildirimler.html" },
+    { "source": "/musterilerim", "destination": "/musterilerim.html" },
+    { "source": "/hesap-bilgileri", "destination": "/hesap-bilgileri.html" },
+    { "source": "/ayarlar", "destination": "/ayarlar.html" },
+    { "source": "/yardim-destek", "destination": "/yardim-destek.html" },
+    { "source": "/ilan-ver", "destination": "/ilan-ver.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
