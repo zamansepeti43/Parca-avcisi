@@ -16,9 +16,8 @@ const unique = (values) => [...new Set((values || []).flatMap((v) => Array.isArr
 
 const originalGetOptions = VehicleResolver.prototype.getOptions;
 VehicleResolver.prototype.getOptions = function patchedGetOptions(selection = {}, field) {
-  const options = Array.isArray(originalGetOptions.call(this, selection, field))
-    ? originalGetOptions.call(this, selection, field)
-    : Array.from(originalGetOptions.call(this, selection, field) || []);
+  const raw = originalGetOptions.call(this, selection, field);
+  const options = Array.isArray(raw) ? raw : Array.from(raw || []);
 
   if (field === 'make' && (!selection.type || selection.type === 'Otomobil')) {
     return unique(options.filter((make) => !NON_PASSENGER_MAKES.has(norm(make))));
