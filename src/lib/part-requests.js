@@ -226,11 +226,12 @@ export async function attachRequestImages(requestId, files) {
 
   const { data: existing, error: existingError } = await client
     .from('part_request_images')
-    .select('id')
+    .select('id, sort_order, is_cover')
     .eq('request_id', requestId)
-    .limit(1);
+    .order('sort_order', { ascending: true });
   if (existingError) throw existingError;
-  const hasCover = Boolean(existing && existing.length);
+  const hasCover = Boolean(existing && existing.some((image) => image.is_cover));
+  const nextSortOrder = (existing || []).reduce((max, image) => Math.max(max, Number(image.sort_order || 0)), -1) + 1;
 
   const uploaded = [];
   try {
@@ -246,7 +247,7 @@ export async function attachRequestImages(requestId, files) {
 
       const { data: row, error: insertError } = await client
         .from('part_request_images')
-        .insert({ request_id: requestId, storage_path: path, sort_order: i, is_cover: !hasCover && i === 0 })
+        .insert({ request_id: requestId, storage_path: path, sort_order: nextSortOrder + i, is_cover: !hasCover && i === 0 })
         .select()
         .single();
       if (insertError) throw new Error('Fotoğraf kaydı oluşturulamadı: ' + insertError.message);
@@ -262,12 +263,29 @@ export async function attachRequestImages(requestId, files) {
   }
 }
 
+async function ensureRequestImageCover(requestId) {
+  const client = requireSupabase();
+  const { data: remaining, error } = await client
+    .from('part_request_images')
+    .select('id, is_cover')
+    .eq('request_id', requestId)
+    .order('sort_order', { ascending: true });
+  if (error) throw error;
+  if (!remaining?.length || remaining.some((image) => image.is_cover)) return;
+  const { error: coverError } = await client
+    .from('part_request_images')
+    .update({ is_cover: true })
+    .eq('id', remaining[0].id)
+    .eq('request_id', requestId);
+  if (coverError) throw coverError;
+}
+
 export async function deleteRequestImage(imageId) {
   if (!supabaseConfigured) return;
   const client = requireSupabase();
   const { data: row, error } = await client
     .from('part_request_images')
-    .select('storage_path')
+    .select('request_id, storage_path')
     .eq('id', imageId)
     .maybeSingle();
   if (error) throw error;
@@ -275,4 +293,5 @@ export async function deleteRequestImage(imageId) {
   try { await client.storage.from(BUCKET).remove([row.storage_path]); } catch (_) { /* best effort */ }
   const { error: deleteError } = await client.from('part_request_images').delete().eq('id', imageId);
   if (deleteError) throw deleteError;
+  if (row.request_id) await ensureRequestImageCover(row.request_id);
 }

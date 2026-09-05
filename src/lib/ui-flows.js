@@ -7,6 +7,7 @@ import { getMainCategories, getSubcategories } from './part-catalog.js';
 import { DELIVERY_OPTIONS, deliveryLabel } from './delivery.js';
 import { sendMessage } from './messages.js';
 import { supabaseConfigured } from './supabase.js';
+import { isFullyVerifiedUser, openPhoneVerification } from './auth-verification.js';
 
 const resolver = new VehicleResolver();
 let selection = { type: '', make: '', model: '', generation: '', year: '', engine: '', trim: '' };
@@ -281,7 +282,21 @@ function openSellChoice() {
     + '</div>'
     + '<button type="button" class="sell-choice-alt" data-easy-listing>📸 Fotoğraftan ilan oluşturmayı tercih ediyorsan burayı kullan</button>');
 }
-function openListingForm() {
+async function ensureVerifiedSeller() {
+  const user = await getCurrentUser().catch(() => null);
+  if (!user) {
+    if (window.__openAuth) window.__openAuth();
+    else openAuth();
+    return null;
+  }
+  if (isFullyVerifiedUser(user)) return user;
+  if (!user.email_confirmed_at) openVerifyEmailRequired();
+  else openPhoneVerification(user);
+  return null;
+}
+async function openListingForm() {
+  const user = await ensureVerifiedSeller();
+  if (!user) return;
   selectedPhotos = [];
   const deliveryOptions = '<option value="">Teslimat tercihi (opsiyonel)</option>' + DELIVERY_OPTIONS.map((option) => '<option value="' + option.value + '">' + option.label + '</option>').join('');
   openModal('<span class="eyebrow">YENİ İLAN</span><h2>İlanını hazırla</h2><form id="listingForm" class="stack-form"><select name="condition" required><option value="">Durum</option><option value="new">Sıfır</option><option value="used">2. El</option><option value="salvage">Çıkma</option></select><div data-vehicle-fields>' + vehicleFieldsHtml() + '</div>' + categoryFieldsHtml() + '<input name="partName" placeholder="Parça adı" required><input name="oemNumber" placeholder="OEM / parça numarası"><textarea name="description" placeholder="Açıklama"></textarea><div class="field-row"><input name="price" type="number" min="0" required placeholder="Fiyat"><input name="city" required placeholder="Şehir"></div><label>Teslimat<select name="delivery">' + deliveryOptions + '</select></label>' + photoPickerHtml() + '<button>Önizlemeye Geç</button></form>');
@@ -378,6 +393,7 @@ window.__requireMember = requireMember;
 window.__showToast = showToast;
 window.__closeModal = closeModal;
 window.__openAuth = openAuth;
+window.__openVerifyEmailRequired = openVerifyEmailRequired;
 window.__signOutUser = signOutUser;
 async function openMyListings() {
   const user = await getCurrentUser().catch(() => null);
@@ -391,7 +407,7 @@ document.addEventListener('click', async (event) => {
   if (event.target.closest('[data-open-picker]')) vehicleSection.scrollIntoView({ behavior: 'smooth' });
   if (event.target.closest('[data-focus-oem]')) { document.querySelector('#searchInput').focus(); document.querySelector('#searchInput').placeholder = 'OEM / parça numarası ara...'; }
   if (event.target.closest('#sellBtn, #mobileSell')) { event.preventDefault(); await requireMember(openSellChoice); }
-  if (event.target.closest('[data-choice-sell]')) { event.preventDefault(); closeModal(); openListingForm(); return; }
+  if (event.target.closest('[data-choice-sell]')) { event.preventDefault(); closeModal(); await openListingForm(); return; }
   if (event.target.closest('[data-choice-request]')) {
     event.preventDefault();
     closeModal();
