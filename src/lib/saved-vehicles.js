@@ -1,5 +1,36 @@
 import { requireSupabase, supabaseConfigured } from './supabase.js';
 
+const CACHE_PREFIX = 'parca-avcisi:saved-vehicles:';
+let memoryUserId = null;
+let memoryVehicles = null;
+let refreshPromise = null;
+
+function cacheKey(userId) {
+  return CACHE_PREFIX + String(userId || '');
+}
+
+function readCachedVehicles(userId) {
+  if (!userId) return [];
+  if (memoryUserId === userId && Array.isArray(memoryVehicles)) return memoryVehicles;
+  try {
+    const raw = localStorage.getItem(cacheKey(userId));
+    const parsed = raw ? JSON.parse(raw) : null;
+    if (Array.isArray(parsed)) {
+      memoryUserId = userId;
+      memoryVehicles = parsed;
+      return parsed;
+    }
+  } catch (_) {}
+  return [];
+}
+
+function writeCachedVehicles(userId, vehicles) {
+  if (!userId || !Array.isArray(vehicles)) return;
+  memoryUserId = userId;
+  memoryVehicles = vehicles;
+  try { localStorage.setItem(cacheKey(userId), JSON.stringify(vehicles)); } catch (_) {}
+}
+
 function requireUser() {
   return requireSupabase().auth.getUser().then(({ data, error }) => {
     if (error) throw error;
@@ -16,16 +47,33 @@ async function getLocalUser() {
   return user;
 }
 
-export async function getSavedVehicles() {
-  if (!supabaseConfigured) return [];
-  const user = await getLocalUser();
+async function fetchSavedVehicles(userId) {
   const { data, error } = await requireSupabase()
     .from('user_vehicles')
     .select('id, vehicle_id, vehicle_type, make, model, year, version, nickname, created_at, updated_at')
-    .eq('user_id', user.id)
+    .eq('user_id', userId)
     .order('created_at', { ascending: false });
   if (error) throw error;
-  return data || [];
+  const vehicles = data || [];
+  writeCachedVehicles(userId, vehicles);
+  return vehicles;
+}
+
+export async function getSavedVehicles() {
+  if (!supabaseConfigured) return [];
+  const user = await getLocalUser();
+  const cached = readCachedVehicles(user.id);
+
+  // Stale-while-revalidate: return known vehicles immediately and refresh silently.
+  // This removes the 2–3 second blank/loading state when revisiting Araçlarım.
+  if (cached.length || (memoryUserId === user.id && Array.isArray(memoryVehicles))) {
+    if (!refreshPromise) {
+      refreshPromise = fetchSavedVehicles(user.id).catch(() => cached).finally(() => { refreshPromise = null; });
+    }
+    return cached;
+  }
+
+  return fetchSavedVehicles(user.id);
 }
 
 export async function saveVehicle({ vehicleId = null, vehicleType = '', make, model, year = '', version = '', nickname = '' }) {
@@ -40,6 +88,8 @@ export async function saveVehicle({ vehicleId = null, vehicleType = '', make, mo
     if (/duplicate|unique/i.test(String(error.message || ''))) throw new Error('Bu araç zaten Araçlarımda kayıtlı.');
     throw error;
   }
+  const current = readCachedVehicles(user.id);
+  writeCachedVehicles(user.id, [data, ...current]);
   return data;
 }
 
@@ -51,10 +101,14 @@ export async function updateSavedVehicle(id, fields) {
   }
   const { error } = await requireSupabase().from('user_vehicles').update(payload).eq('id', id).eq('user_id', user.id);
   if (error) throw error;
+  const current = readCachedVehicles(user.id);
+  writeCachedVehicles(user.id, current.map((item) => String(item.id) === String(id) ? { ...item, ...payload } : item));
 }
 
 export async function deleteSavedVehicle(id) {
   const user = await requireUser();
   const { error } = await requireSupabase().from('user_vehicles').delete().eq('id', id).eq('user_id', user.id);
   if (error) throw error;
+  const current = readCachedVehicles(user.id);
+  writeCachedVehicles(user.id, current.filter((item) => String(item.id) !== String(id)));
 }
