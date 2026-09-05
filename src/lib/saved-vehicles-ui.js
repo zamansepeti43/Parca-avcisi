@@ -1,3 +1,5 @@
+import './account-center.css';
+import './account-route-shell.css';
 import { getCurrentUser } from './auth.js';
 import { VehicleResolver } from './vehicle-resolver.js';
 import { vehicleCatalog } from './vehicle-catalog.js';
@@ -39,8 +41,6 @@ function fallbackOptions(field) {
 function options(field) {
   let opts = [];
   try {
-    // A selected make must never constrain the make selector itself. This keeps
-    // the full Turkey catalog available when the user re-opens the dropdown.
     const resolverSelection = field === 'make' ? { ...selection, make: '' } : selection;
     const raw = resolver.getOptions(resolverSelection, field);
     opts = Array.isArray(raw) ? raw : Array.from(raw || []);
@@ -90,10 +90,13 @@ async function openCompatibleVehicle(id) {
     const { data: saved, error: savedError } = await requireSupabase().from('user_vehicles').select('id, vehicle_id, make, model, year, version, nickname').eq('id', id).maybeSingle();
     if (savedError) throw savedError;
     if (!saved) throw new Error('Kayıtlı araç bulunamadı.');
-    const { data, error } = await requireSupabase().rpc('search_saved_vehicle_listings', { p_user_vehicle_id: id, p_limit: 100 });
-    if (error) throw error;
-    const label = [saved.nickname, saved.make, saved.model, saved.year, saved.version].filter(Boolean).join(' · ');
-    renderCompatible(data || [], label);
+    const make = String(saved.make || '').trim();
+    const model = String(saved.model || '').trim();
+    if (!make || !model) throw new Error('Araç marka ve modeli eksik.');
+    const params = new URLSearchParams();
+    params.set('vehicleMake', make);
+    params.set('vehicleModel', model);
+    window.location.assign('/ilanlar?' + params.toString());
   } catch (error) {
     const toast = document.querySelector('#toast');
     if (toast) { toast.textContent = error.message || 'Aracına ait parçalar yüklenemedi.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
