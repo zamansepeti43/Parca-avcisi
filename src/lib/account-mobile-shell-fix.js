@@ -24,7 +24,12 @@ function ensureStyles() {
 function normalizeAccountMenu(menu) {
   if (!menu) return;
   const items = ACCOUNT_ORDER.map((key) => menu.querySelector('[data-pane="' + key + '"]')).filter(Boolean);
-  items.forEach((item) => menu.appendChild(item));
+  const current = items.map((item) => item.dataset.pane).join('|');
+  const desired = ACCOUNT_ORDER.filter((key) => items.some((item) => item.dataset.pane === key)).join('|');
+  if (current === desired) return;
+  const fragment = document.createDocumentFragment();
+  items.forEach((item) => fragment.appendChild(item));
+  menu.appendChild(fragment);
 }
 
 function ensureMobileNav() {
