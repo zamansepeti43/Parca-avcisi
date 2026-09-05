@@ -42,3 +42,4 @@
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:480px){.form-grid{grid-template-columns:1fr}}
 .listing-load-more{display:flex;justify-content:center;grid-column:1/-1;padding:22px 0 6px}.listing-load-more .dark-btn{min-width:220px}.listing-load-more .dark-btn:disabled{opacity:.65;cursor:wait}
+#aracini-sec{display:none!important}
