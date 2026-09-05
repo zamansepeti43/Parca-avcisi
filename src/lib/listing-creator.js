@@ -17,7 +17,10 @@ async function requireVerifiedSeller() {
  const user = await getCurrentUser().catch(() => null);
  if (!user) return null;
  if (isFullyVerifiedUser(user)) return user;
- if (!user.email_confirmed_at) notice('İlan vermek için önce e-posta adresini doğrulamalısın.');
+ if (!user.email_confirmed_at) {
+   if (window.__openVerifyEmailRequired) window.__openVerifyEmailRequired();
+   else notice('İlan vermek için önce e-posta adresini doğrulamalısın.');
+ }
  else openPhoneVerification(user);
  return null;
 }

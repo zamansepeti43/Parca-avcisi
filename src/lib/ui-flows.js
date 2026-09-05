@@ -392,6 +392,7 @@ window.__requireMember = requireMember;
 window.__showToast = showToast;
 window.__closeModal = closeModal;
 window.__openAuth = openAuth;
+window.__openVerifyEmailRequired = openVerifyEmailRequired;
 window.__signOutUser = signOutUser;
 async function openMyListings() {
   const user = await getCurrentUser().catch(() => null);
