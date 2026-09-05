@@ -16,7 +16,11 @@
     margin: 0 auto !important;
   }
 
-  .site-header .brand-logo {
+  /* Mobile keeps the compact P mark in the menu trigger, not the large hero emblem. */
+  .site-header .brand-logo,
+  .hero .hero-visual,
+  .hero .hero-emblem,
+  .hero .hero-emblem-glow {
     display: none !important;
   }
 }
