@@ -66,9 +66,24 @@ export async function verifyPhoneOtp(phone, token) {
   return result;
 }
 
-export async function claimVerifiedPhoneIdentity() {
-  await requireSupabase().auth.refreshSession();
-  return getCurrentUser();
+export async function claimVerifiedPhoneIdentity(phone) {
+  const client = requireSupabase();
+  const { data: user, error: userError } = await client.auth.getUser();
+  if (userError) throw userError;
+  if (!user.user) throw new Error('Kullanıcı giriş yapmamış.');
+  
+  // Normalize phone to E.164 format
+  const phoneE164 = String(phone || '').trim();
+  if (!phoneE164.startsWith('+')) throw new Error('Telefon numarası + ile başlamalı.');
+  
+  // Call the RPC to claim the verified phone identity
+  const { data, error } = await client.rpc('claim_verified_phone_identity', { p_phone_e164: phoneE164 });
+  if (error) throw error;
+  
+  // Refresh session to pick up any auth metadata changes
+  await client.auth.refreshSession();
+  
+  return data || user.user;
 }
 
 export async function signOut() {
