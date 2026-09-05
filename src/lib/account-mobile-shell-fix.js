@@ -44,8 +44,6 @@ function ensureAccountCenterBridge() {
   const open = window.__openAccountCenter;
   if (typeof open !== 'function' || accountCenterBridgeInstalled) return;
   const bridged = async (...args) => {
-    /* account-center captures its modal nodes at module load. Reattach that original
-       modal before every route render so SPA navigation never points at a dead DOM node. */
     if (accountModal) {
       const current = document.querySelector('#appModal');
       if (current && current !== accountModal) current.remove();
@@ -83,14 +81,16 @@ function ensureVehiclesTab(menu) {
 function normalizeAccountMenu(menu) {
   if (!menu) return;
   ensureVehiclesTab(menu);
-  const current = [...menu.children]
-    .map((item) => item.dataset?.pane)
+  const items = [...menu.children];
+  const paneItems = items.filter((item) => item.dataset?.pane);
+  const desired = ACCOUNT_ORDER
+    .map((key) => paneItems.find((item) => item.dataset.pane === key))
     .filter(Boolean);
-  const desired = ACCOUNT_ORDER.filter((key) => current.includes(key));
-  if (current.join('|') === desired.join('|')) return;
-  const items = desired.map((key) => menu.querySelector('[data-pane="' + key + '"]')).filter(Boolean);
+  const signOut = items.find((item) => item.classList?.contains('danger'));
+  const ordered = signOut ? [...desired, signOut] : desired;
+  if (items.length === ordered.length && items.every((item, index) => item === ordered[index])) return;
   const fragment = document.createDocumentFragment();
-  items.forEach((item) => fragment.appendChild(item));
+  ordered.forEach((item) => fragment.appendChild(item));
   menu.appendChild(fragment);
 }
 
