@@ -41,6 +41,7 @@ function fallbackOptions(field) {
 function options(field) {
   let opts = [];
   try {
+    // Keep the complete make catalog available even after a make has been selected.
     const resolverSelection = field === 'make' ? { ...selection, make: '' } : selection;
     const raw = resolver.getOptions(resolverSelection, field);
     opts = Array.isArray(raw) ? raw : Array.from(raw || []);
@@ -94,8 +95,7 @@ async function openCompatibleVehicle(id) {
     const model = String(saved.model || '').trim();
     if (!make || !model) throw new Error('Araç marka ve modeli eksik.');
     const params = new URLSearchParams();
-    params.set('vehicleMake', make);
-    params.set('vehicleModel', model);
+    params.set('q', [make, model].join(' '));
     window.location.assign('/ilanlar?' + params.toString());
   } catch (error) {
     const toast = document.querySelector('#toast');
