@@ -1,3 +1,6 @@
+import './lib/theme.js';
+import './lib/theme-fixes.css';
+
 const initialPath = window.location.pathname.replace(/\/+$/, '') || '/';
 let activePath = initialPath;
 const ACCOUNT_ROUTES = new Set(['/profilim','/ilanlarim','/araclarim','/taleplerim','/mesajlarim','/favorilerim','/kayitli-aramalarim','/bildirimler','/musterilerim','/hesap-bilgileri','/ayarlar','/yardim-destek']);
