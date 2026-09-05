@@ -285,7 +285,8 @@ function openSellChoice() {
 async function ensureVerifiedSeller() {
   const user = await getCurrentUser().catch(() => null);
   if (!user) {
-    openAuth();
+    if (window.__openAuth) window.__openAuth();
+    else openAuth();
     return null;
   }
   if (isFullyVerifiedUser(user)) return user;
