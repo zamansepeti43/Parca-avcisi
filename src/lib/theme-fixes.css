@@ -1,6 +1,10 @@
 /* Parça Avcısı — light theme completion layer.
    Only overrides the existing UI; no markup or navigation changes. */
 
+/* An empty notification badge must never render as a dot. The badge is filled
+   only when there are unread notifications. */
+.notif-badge:empty { display:none!important; }
+
 html[data-pa-theme="light"] body.has-account-route {
   background:#f5f6f7!important;
   color:#171a1e!important;
