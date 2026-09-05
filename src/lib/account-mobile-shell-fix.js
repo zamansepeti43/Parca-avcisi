@@ -4,6 +4,7 @@ const ACCOUNT_ORDER = ['profilim','araclarim','ilanlarim','taleplerim','mesajlar
 const STYLE_ID = 'account-mobile-shell-fix-css';
 let accountModal = null;
 let accountCenterBridgeInstalled = false;
+let accountCenterBridgeTimer = null;
 
 function ensureStyles() {
   if (document.getElementById(STYLE_ID)) return;
@@ -55,6 +56,16 @@ function ensureAccountCenterBridge() {
   bridged.__parcaAccountCenterBridge = true;
   window.__openAccountCenter = bridged;
   accountCenterBridgeInstalled = true;
+  if (accountCenterBridgeTimer) {
+    window.clearInterval(accountCenterBridgeTimer);
+    accountCenterBridgeTimer = null;
+  }
+}
+
+function ensureAccountCenterBridgeEventually() {
+  ensureAccountCenterBridge();
+  if (accountCenterBridgeInstalled || accountCenterBridgeTimer) return;
+  accountCenterBridgeTimer = window.setInterval(() => ensureAccountCenterBridge(), 100);
 }
 
 function ensureVehiclesTab(menu) {
@@ -104,7 +115,7 @@ function ensureMobileNav() {
 
 function apply() {
   if (!document.body.classList.contains('account-page-runtime')) return;
-  ensureAccountCenterBridge();
+  ensureAccountCenterBridgeEventually();
   normalizeAccountMenu(document.querySelector('.account-page-runtime #accountRouteMount .account-menu'));
   ensureMobileNav();
 }
