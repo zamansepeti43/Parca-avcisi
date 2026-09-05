@@ -2,6 +2,9 @@
 const ACCOUNT_ORDER = ['profilim','araclarim','ilanlarim','taleplerim','mesajlarim','favorilerim','kayitli-aramalar','bildirimler','musterilerim','hesap-bilgileri','ayarlar','yardim'];
 
 const STYLE_ID = 'account-mobile-shell-fix-css';
+let accountModal = null;
+let accountCenterBridgeInstalled = false;
+
 function ensureStyles() {
   if (document.getElementById(STYLE_ID)) return;
   const style = document.createElement('style');
@@ -26,6 +29,32 @@ function ensureStyles() {
     @media (min-width:761px){.account-mobile-nav{display:none!important;}}
   `;
   document.head.appendChild(style);
+}
+
+function rememberFirstAccountModal() {
+  if (!accountModal) {
+    const candidate = document.querySelector('#appModal');
+    if (candidate) accountModal = candidate;
+  }
+}
+
+function ensureAccountCenterBridge() {
+  rememberFirstAccountModal();
+  const open = window.__openAccountCenter;
+  if (typeof open !== 'function' || accountCenterBridgeInstalled) return;
+  const bridged = async (...args) => {
+    /* account-center captures its modal nodes at module load. Reattach that original
+       modal before every route render so SPA navigation never points at a dead DOM node. */
+    if (accountModal) {
+      const current = document.querySelector('#appModal');
+      if (current && current !== accountModal) current.remove();
+      if (!document.body.contains(accountModal)) document.body.appendChild(accountModal);
+    }
+    return open(...args);
+  };
+  bridged.__parcaAccountCenterBridge = true;
+  window.__openAccountCenter = bridged;
+  accountCenterBridgeInstalled = true;
 }
 
 function ensureVehiclesTab(menu) {
@@ -75,6 +104,7 @@ function ensureMobileNav() {
 
 function apply() {
   if (!document.body.classList.contains('account-page-runtime')) return;
+  ensureAccountCenterBridge();
   normalizeAccountMenu(document.querySelector('.account-page-runtime #accountRouteMount .account-menu'));
   ensureMobileNav();
 }
