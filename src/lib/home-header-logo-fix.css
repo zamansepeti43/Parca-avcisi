@@ -24,3 +24,8 @@
     display: none !important;
   }
 }
+
+/* Never flash an empty/zero notification badge during the initial auth load.
+   refreshBadge() explicitly switches display to grid only when unread > 0. */
+#notifBadge { display: none !important; }
+#notifBadge[style*="display: grid"] { display: grid !important; }
