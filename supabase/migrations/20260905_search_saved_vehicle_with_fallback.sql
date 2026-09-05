@@ -1,8 +1,5 @@
--- Enhanced saved vehicle search with text fallback
--- Searches ALL active listings for the saved vehicle's MAKE + MODEL.
--- Year/version are intentionally not used as a listing filter: a saved
--- 1997 Ford Escort should see every active Ford Escort listing, regardless
--- of the listing's model year/version.
+-- Search ALL active listings for a saved vehicle's MAKE + MODEL.
+-- Year/version are intentionally not listing filters.
 
 drop function if exists public.search_saved_vehicle_listings(uuid, int);
 
@@ -26,7 +23,6 @@ declare
   v_make text;
   v_model text;
 begin
-  -- Get the user's saved vehicle. Only make + model define this search.
   select uv.make, uv.model
     into v_make, v_model
     from public.user_vehicles uv
@@ -39,9 +35,10 @@ begin
     return;
   end if;
 
-  -- First priority: structured vehicle matches.
-  -- Do NOT constrain by saved year/version; the user asked for all listings
-  -- belonging to the same make + model.
+  -- Return every active listing that can be associated with the saved
+  -- vehicle's make + model. Structured vehicle links and legacy/text-only
+  -- listings are combined in ONE result set, so structured matches do not
+  -- hide additional text-only listings.
   return query
   select distinct
     l.id,
@@ -60,38 +57,17 @@ begin
     p.full_name as seller_name
   from public.listings l
   join public.profiles p on p.id = l.seller_id
-  join public.listing_vehicles lv on lv.listing_id = l.id
-  join public.vehicles v on v.id = lv.vehicle_id
   where l.status = 'active'
-    and v.make ilike v_make
-    and v.model ilike v_model
-  order by l.created_at desc
-  limit greatest(1, least(coalesce(p_limit, 100), 500));
-
-  -- If there are no structured matches, search the listing's vehicle/title
-  -- text. Both make AND model must be present, preventing unrelated parts
-  -- from being returned just because their category is "parça".
-  if not found then
-    return query
-    select distinct
-      l.id,
-      l.title,
-      l.price,
-      l.condition,
-      l.city,
-      (select storage_path
-         from public.listing_images
-        where listing_id = l.id
-        order by is_cover desc, sort_order
-        limit 1) as image_path,
-      l.category,
-      l.vehicle,
-      l.seller_id,
-      p.full_name as seller_name
-    from public.listings l
-    join public.profiles p on p.id = l.seller_id
-    where l.status = 'active'
-      and (
+    and (
+      exists (
+        select 1
+          from public.listing_vehicles lv
+          join public.vehicles v on v.id = lv.vehicle_id
+         where lv.listing_id = l.id
+           and v.make ilike v_make
+           and v.model ilike v_model
+      )
+      or (
         (l.vehicle ilike '%' || v_make || '%' and l.vehicle ilike '%' || v_model || '%')
         or (l.title ilike '%' || v_make || '%' and l.title ilike '%' || v_model || '%')
         or (
@@ -99,8 +75,8 @@ begin
           and (coalesce(l.vehicle, '') || ' ' || coalesce(l.title, '')) ilike '%' || v_model || '%'
         )
       )
-    order by l.created_at desc
-    limit greatest(1, least(coalesce(p_limit, 100), 500));
-  end if;
+    )
+  order by l.created_at desc
+  limit greatest(1, least(coalesce(p_limit, 100), 500));
 end;
 $$ language plpgsql stable security definer;
