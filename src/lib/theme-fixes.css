@@ -1,0 +1,103 @@
+/* Parça Avcısı — light theme completion layer.
+   Only overrides the existing UI; no markup or navigation changes. */
+
+html[data-pa-theme="light"] body.has-account-route {
+  background:#f5f6f7!important;
+  color:#171a1e!important;
+}
+
+/* Existing category drawer: keep every surface in the same light palette. */
+html[data-pa-theme="light"] .category-drawer,
+html[data-pa-theme="light"] .category-drawer-head,
+html[data-pa-theme="light"] .category-list-title,
+html[data-pa-theme="light"] .account-menu-section,
+html[data-pa-theme="light"] .account-menu-toggle {
+  background:#fff!important;
+  color:#171a1e!important;
+}
+html[data-pa-theme="light"] .category-drawer { border-color:#d9dee3!important; box-shadow:18px 0 60px rgba(30,36,42,.16)!important; }
+html[data-pa-theme="light"] .category-drawer h2 { color:#171a1e!important; }
+html[data-pa-theme="light"] .category-drawer-head p,
+html[data-pa-theme="light"] .category-list-title span { color:#6f7881!important; }
+html[data-pa-theme="light"] .category-list-title { border-top-color:#e1e4e7!important; }
+html[data-pa-theme="light"] .category-item { border-bottom-color:#e1e4e7!important; }
+html[data-pa-theme="light"] .category-main-button { color:#303840!important; }
+html[data-pa-theme="light"] .category-item.expanded .category-main-button { background:#f5f6f7!important; color:#9a7100!important; }
+html[data-pa-theme="light"] .category-main-button b { color:#7a838c!important; }
+html[data-pa-theme="light"] .category-item.expanded .category-main-button b { color:#b18200!important; }
+html[data-pa-theme="light"] .category-sub-button { color:#59636d!important; border-left-color:#d7dce1!important; }
+html[data-pa-theme="light"] .category-sub-button:active,
+html[data-pa-theme="light"] .category-sub-button:focus-visible { background:#f0f2f4!important; color:#171a1e!important; border-left-color:#d4a900!important; }
+html[data-pa-theme="light"] .category-types button { background:#fff!important; color:#626b74!important; border-color:#cfd5db!important; }
+html[data-pa-theme="light"] .category-types button.active { background:#f5b900!important; color:#171a1e!important; border-color:#f5b900!important; }
+html[data-pa-theme="light"] .category-close { background:#f7f8f9!important; color:#303840!important; border-color:#cfd5db!important; -webkit-tap-highlight-color:transparent; }
+html[data-pa-theme="light"] .category-close:focus-visible { outline:2px solid #d4a900!important; outline-offset:2px; }
+
+/* Real account menu used by categories-menu.js. */
+html[data-pa-theme="light"] .account-menu-section { border-top-color:#e1e4e7!important; }
+html[data-pa-theme="light"] .account-menu-toggle:hover,
+html[data-pa-theme="light"] .account-menu-toggle.expanded { background:#f7f8f9!important; }
+html[data-pa-theme="light"] .account-menu-label strong { color:#171a1e!important; }
+html[data-pa-theme="light"] .account-menu-label small { color:#747d86!important; }
+html[data-pa-theme="light"] .account-menu-toggle>b { color:#78818a!important; }
+html[data-pa-theme="light"] .account-menu-icon { background:#f3f5f6!important; border-color:#d5dbe0!important; color:#a27600!important; }
+html[data-pa-theme="light"] .account-menu-list { background:#fff!important; border-top-color:#e1e4e7!important; }
+html[data-pa-theme="light"] .account-menu-link { color:#56606a!important; border-left-color:transparent!important; }
+html[data-pa-theme="light"] .account-menu-link>span { color:#7a848d!important; }
+html[data-pa-theme="light"] .account-menu-link strong { color:inherit!important; }
+html[data-pa-theme="light"] .account-menu-link:hover,
+html[data-pa-theme="light"] .account-menu-link:focus-visible { background:#f0f2f4!important; color:#171a1e!important; border-left-color:#d4a900!important; }
+html[data-pa-theme="light"] .account-menu-link:hover>span,
+html[data-pa-theme="light"] .account-menu-link:focus-visible>span { color:#a27600!important; }
+html[data-pa-theme="light"] .account-theme-switch { background:#f4f6f7!important; border-color:#d9dee3!important; }
+html[data-pa-theme="light"] .account-theme-label { color:#69737d!important; }
+html[data-pa-theme="light"] .account-theme-option { background:#fff!important; color:#59636d!important; border-color:#cfd5db!important; }
+html[data-pa-theme="light"] .account-theme-option.active { background:#f5b900!important; color:#171a1e!important; border-color:#f5b900!important; }
+html[data-pa-theme="light"] .account-signout-link { border-top-color:#e1e4e7!important; color:#c34f4f!important; }
+
+/* Fix the actual account route class: the previous theme targeted a non-existent class. */
+html[data-pa-theme="light"] body.has-account-route .account-route-shell { background:#f5f6f7!important; color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .account-shell { color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .account-menu { background:#fff!important; border-color:#d9dee3!important; }
+html[data-pa-theme="light"] body.has-account-route .account-menu button { color:#5d6670!important; }
+html[data-pa-theme="light"] body.has-account-route .account-menu button:hover { background:#f0f2f4!important; color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .account-menu button.active { background:#f5b900!important; color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .account-menu button.danger { color:#c84c4c!important; }
+html[data-pa-theme="light"] body.has-account-route .account-pane { color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .account-pane-head h2,
+html[data-pa-theme="light"] body.has-account-route .account-pane h2,
+html[data-pa-theme="light"] body.has-account-route .account-pane h3 { color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .account-pane>p,
+html[data-pa-theme="light"] body.has-account-route .pane-loading,
+html[data-pa-theme="light"] body.has-account-route .pane-empty { color:#69737d!important; }
+html[data-pa-theme="light"] body.has-account-route .pane-empty strong { color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .profile-hero { background:linear-gradient(145deg,#fff,#f3f5f7)!important; border-color:#d9dee3!important; box-shadow:0 14px 32px rgba(30,36,42,.08)!important; }
+html[data-pa-theme="light"] body.has-account-route .profile-hero strong { color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .profile-hero small { color:#6e7780!important; }
+html[data-pa-theme="light"] body.has-account-route .pane-form label { color:#5f6872!important; }
+html[data-pa-theme="light"] body.has-account-route .pane-form input,
+html[data-pa-theme="light"] body.has-account-route .pane-form select,
+html[data-pa-theme="light"] body.has-account-route .pane-form textarea { background:#fff!important; color:#171a1e!important; border-color:#cfd5db!important; }
+html[data-pa-theme="light"] body.has-account-route .pane-row,
+html[data-pa-theme="light"] body.has-account-route .saved-vehicle-row { background:#fff!important; color:#171a1e!important; border-color:#d9dee3!important; }
+html[data-pa-theme="light"] body.has-account-route .pane-row .grow strong { color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .pane-row .grow small,
+html[data-pa-theme="light"] body.has-account-route .saved-vehicle-row small { color:#6f7881!important; }
+html[data-pa-theme="light"] body.has-account-route .pane-actions button,
+html[data-pa-theme="light"] body.has-account-route .pane-btn,
+html[data-pa-theme="light"] body.has-account-route .pane-tabs button { background:#fff!important; color:#505a64!important; border-color:#d0d6db!important; }
+html[data-pa-theme="light"] body.has-account-route .pane-actions button.primary,
+html[data-pa-theme="light"] body.has-account-route .pane-btn.primary,
+html[data-pa-theme="light"] body.has-account-route .pane-tabs button.active { background:#f5b900!important; color:#171a1e!important; border-color:#f5b900!important; }
+html[data-pa-theme="light"] body.has-account-route .chat-form input { background:#fff!important; color:#171a1e!important; border-color:#cfd5db!important; }
+html[data-pa-theme="light"] body.has-account-route .chat-bubble.sent { background:#eef1f3!important; color:#171a1e!important; }
+html[data-pa-theme="light"] body.has-account-route .chat-bubble.received { background:#e2e6e9!important; color:#171a1e!important; }
+
+/* The header logo asset has a light/white image field. Blend it into the light header instead of showing a rectangle. */
+html[data-pa-theme="light"] .site-header .brand-logo .brand-mark { mix-blend-mode:multiply; background:transparent!important; }
+html[data-pa-theme="light"] .site-header .brand-logo { background:transparent!important; }
+
+@media(max-width:700px){
+  html[data-pa-theme="light"] body.has-account-route .account-route-shell { padding-top:16px!important; }
+  html[data-pa-theme="light"] .account-theme-switch { grid-template-columns:auto minmax(0,1fr) minmax(0,1fr)!important; }
+}
