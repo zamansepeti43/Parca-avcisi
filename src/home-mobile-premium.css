@@ -305,3 +305,133 @@
     letter-spacing: .01em;
   }
 }
+
+/* Light-theme guardrail: this file is loaded after the main bundle on mobile,
+   so its dark mobile defaults must never override the selected light theme. */
+@media (max-width: 640px) {
+  html[data-pa-theme="light"] body {
+    background: #f5f6f7 !important;
+    color: #171a1e !important;
+  }
+
+  html[data-pa-theme="light"] .site-header {
+    background: rgba(255,255,255,.97) !important;
+    border-bottom: 1px solid #dfe3e7 !important;
+    box-shadow: 0 8px 24px rgba(20,26,32,.08) !important;
+  }
+
+  html[data-pa-theme="light"] .brand-logo,
+  html[data-pa-theme="light"] .brand-logo .brand-mark {
+    background: transparent !important;
+  }
+
+  html[data-pa-theme="light"] .brand-logo .brand-mark {
+    mix-blend-mode: multiply;
+  }
+
+  html[data-pa-theme="light"] #sellBtn {
+    background: #fff !important;
+    color: #171a1e !important;
+    border-color: #d2d8dd !important;
+    box-shadow: none !important;
+  }
+
+  html[data-pa-theme="light"] .hero {
+    background:
+      radial-gradient(circle at 92% 17%, rgba(246,185,0,.14), transparent 31%),
+      linear-gradient(180deg,#fff 0%,#f5f6f7 72%,#eef1f4 100%) !important;
+    color: #171a1e !important;
+  }
+
+  html[data-pa-theme="light"] .hero h1,
+  html[data-pa-theme="light"] .hero h2,
+  html[data-pa-theme="light"] .hero strong {
+    color: #171a1e !important;
+  }
+
+  html[data-pa-theme="light"] .hero p { color: #68727c !important; }
+
+  html[data-pa-theme="light"] .search-mode-tab,
+  html[data-pa-theme="light"] .quick-tags button,
+  html[data-pa-theme="light"] .hero-trust span {
+    background: #fff !important;
+    color: #59636d !important;
+    border-color: #d7dce1 !important;
+  }
+
+  html[data-pa-theme="light"] .search-box {
+    background: #fff !important;
+    border-color: #cfd5db !important;
+    box-shadow: 0 14px 34px rgba(20,26,32,.08) !important;
+  }
+
+  html[data-pa-theme="light"] .search-box input {
+    color: #171a1e !important;
+  }
+
+  html[data-pa-theme="light"] .marketplace-cta,
+  html[data-pa-theme="light"] .vehicle-section,
+  html[data-pa-theme="light"] .listings-section,
+  html[data-pa-theme="light"] .requests-section,
+  html[data-pa-theme="light"] .how,
+  html[data-pa-theme="light"] .benefits {
+    background: #f5f6f7 !important;
+    color: #171a1e !important;
+  }
+
+  html[data-pa-theme="light"] .marketplace-card,
+  html[data-pa-theme="light"] .vehicle-card,
+  html[data-pa-theme="light"] .listing-card,
+  html[data-pa-theme="light"] .benefit-grid article {
+    background: #fff !important;
+    color: #171a1e !important;
+    border-color: #d9dee3 !important;
+    box-shadow: 0 12px 28px rgba(20,26,32,.07) !important;
+  }
+
+  html[data-pa-theme="light"] .marketplace-card h2,
+  html[data-pa-theme="light"] .marketplace-card h3,
+  html[data-pa-theme="light"] .vehicle-card h2,
+  html[data-pa-theme="light"] .section h2,
+  html[data-pa-theme="light"] .section-head h2,
+  html[data-pa-theme="light"] .listing-card h3,
+  html[data-pa-theme="light"] .price {
+    color: #171a1e !important;
+  }
+
+  html[data-pa-theme="light"] .marketplace-card p,
+  html[data-pa-theme="light"] .vehicle-card p,
+  html[data-pa-theme="light"] .listing-card p,
+  html[data-pa-theme="light"] .benefit-grid span {
+    color: #68727c !important;
+  }
+
+  html[data-pa-theme="light"] .marketplace-btn,
+  html[data-pa-theme="light"] .vehicle-form button {
+    color: #171a1e !important;
+  }
+
+  html[data-pa-theme="light"] .vehicle-form select,
+  html[data-pa-theme="light"] .filter,
+  html[data-pa-theme="light"] .detail-btn {
+    background: #fff !important;
+    color: #505a64 !important;
+    border-color: #d0d6db !important;
+  }
+
+  html[data-pa-theme="light"] .mobile-nav {
+    background: #fff !important;
+    color: #59636d !important;
+    border-top: 1px solid #dfe3e7 !important;
+    box-shadow: 0 -10px 28px rgba(20,26,32,.10) !important;
+  }
+
+  html[data-pa-theme="light"] .mobile-nav a,
+  html[data-pa-theme="light"] .mobile-nav button {
+    color: #69737d !important;
+  }
+
+  html[data-pa-theme="light"] .mobile-nav button#mobileSell {
+    border-color: #fff !important;
+  }
+}
