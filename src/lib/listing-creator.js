@@ -4,6 +4,7 @@ import { getCurrentUser } from './auth.js';
 import { createListing } from './listings.js';
 import { attachImagesToListing } from './listing-images.js';
 import { optimizeImageFiles } from './image-optimization.js';
+import { isFullyVerifiedUser, openPhoneVerification } from './auth-verification.js';
 
 const analyzer = new ListingAnalyzer();
 const modal = document.querySelector('#appModal');
@@ -12,16 +13,26 @@ const toast = document.querySelector('#toast');
 const esc = (v) => String(v || '').replace(/[&<>'"]/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;', "'":'&#39;','"':'&quot;' }[c]));
 function open(html) { content.innerHTML = html; modal.querySelector('.modal-card').classList.remove('account-wide'); modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); }
 function notice(message) { toast.textContent=message; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2600); }
-
-async function openChoices() {
-  const user = await getCurrentUser().catch(() => null);
-  if (!user) return;
-  open('<span class="eyebrow">KOLAY İLAN VER</span><h2>Parçanın fotoğrafını çek. İlanını biz hazırlayalım.</h2><div class="creator-options"><button data-photo-flow><b>✦</b><strong>AI İlan Oluştur</strong><small>Fotoğraf → parça tanıma → kategori → ilan taslağı</small></button><button data-bulk-flow><b>▱</b><strong>AI Çoklu İlan Oluştur</strong><small>Birden fazla fotoğraftan ayrı ilan taslakları</small></button><button data-manual-flow><b>✍️</b><strong>Tekli İlan Oluştur</strong><small>Alanları kendin doldur</small></button></div>');
+async function requireVerifiedSeller() {
+ const user = await getCurrentUser().catch(() => null);
+ if (!user) return null;
+ if (isFullyVerifiedUser(user)) return user;
+ if (!user.email_confirmed_at) notice('İlan vermek için önce e-posta adresini doğrulamalısın.');
+ else openPhoneVerification(user);
+ return null;
 }
 
-function upload(multiple) {
-  open('<span class="eyebrow">AI İLAN OLUŞTUR</span><h2>Fotoğrafları seç</h2><p>AI parçayı, kategoriyi ve mümkün olan teknik bilgileri fotoğraftan çıkarır; yayınlamadan önce kontrol edebilirsin.</p><input id="analyzeFiles" type="file" accept="image/*" ' + (multiple ? 'multiple' : '') + '><small>Bir ilan için en fazla 5 fotoğraf kullanılabilir.</small><button id="startAnalysis">AI ile analiz et</button>');
-  document.querySelector('#startAnalysis').onclick = async () => {
+async function openChoices() {
+ const user = await requireVerifiedSeller();
+ if (!user) return;
+ open('<span class="eyebrow">KOLAY İLAN VER</span><h2>Parçanın fotoğrafını çek. İlanını biz hazırlayalım.</h2><div class="creator-options"><button data-photo-flow><b>✦</b><strong>AI İlan Oluştur</strong><small>Fotoğraf → parça tanıma → kategori → ilan taslağı</small></button><button data-bulk-flow><b>▱</b><strong>AI Çoklu İlan Oluştur</strong><small>Birden fazla fotoğraftan ayrı ilan taslakları</small></button><button data-manual-flow><b>✍️</b><strong>Tekli İlan Oluştur</strong><small>Alanları kendin doldur</small></button></div>');
+}
+
+async function upload(multiple) {
+ const user = await requireVerifiedSeller();
+ if (!user) return;
+ open('<span class="eyebrow">AI İLAN OLUŞTUR</span><h2>Fotoğrafları seç</h2><p>AI parçayı, kategoriyi ve mümkün olan teknik bilgileri fotoğraftan çıkarır; yayınlamadan önce kontrol edebilirsin.</p><input id="analyzeFiles" type="file" accept="image/*" ' + (multiple ? 'multiple' : '') + '><small>Bir ilan için en fazla 5 fotoğraf kullanılabilir.</small><button id="startAnalysis">AI ile analiz et</button>');
+ document.querySelector('#startAnalysis').onclick = async () => {
     const input = document.querySelector('#analyzeFiles');
     const selected = [...input.files];
     if (!selected.length) return notice('En az bir fotoğraf seç.');
@@ -67,11 +78,11 @@ function renderDrafts(drafts, bulk, files = []) {
 }
 
 document.addEventListener('click', (event) => {
-  if (event.target.closest('[data-photo-flow]')) upload(false);
-  if (event.target.closest('[data-bulk-flow]')) upload(true);
+  if (event.target.closest('[data-photo-flow]')) void upload(false);
+  if (event.target.closest('[data-bulk-flow]')) void upload(true);
   if (event.target.closest('[data-manual-flow]')) { modal.classList.remove('show'); if (window.__openListingForm) window.__openListingForm(); }
 });
 
 window.__openEasyListing = openChoices;
-window.__openPhotoListing = () => upload(false);
-window.__openBulkListing = () => upload(true);
+window.__openPhotoListing = () => { void upload(false); };
+window.__openBulkListing = () => { void upload(true); };
