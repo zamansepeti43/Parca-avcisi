@@ -26,6 +26,21 @@ function ensureStyles() {
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-nav a{color:#aeb7c0!important;}
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-nav a.active{color:#f0b900!important;}
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-sell small{color:#aeb7c0!important;}
+
+      /* The account tabs are a separate navigation layer. Keep them below the
+         sticky site header while the account content scrolls underneath. */
+      body.account-page-runtime #accountRouteMount .account-menu{
+        position:sticky!important;
+        top:60px!important;
+        z-index:40!important;
+        margin-bottom:14px!important;
+        background:#10151b!important;
+        box-shadow:0 8px 20px rgba(0,0,0,.18)!important;
+      }
+      html[data-pa-theme="light"] body.account-page-runtime #accountRouteMount .account-menu{
+        background:#fff!important;
+        box-shadow:0 8px 20px rgba(28,36,44,.10)!important;
+      }
     }
     @media (min-width:761px){.account-mobile-nav{display:none!important;}}
   `;
@@ -86,7 +101,11 @@ function normalizeAccountMenu(menu) {
   const desired = ACCOUNT_ORDER
     .map((key) => paneItems.find((item) => item.dataset.pane === key))
     .filter(Boolean);
-  const signOut = items.find((item) => item.classList?.contains('danger'));
+  const signOut = items.find((item) =>
+    item.classList?.contains('danger') ||
+    item.classList?.contains('account-signout-link') ||
+    item.dataset?.accountSignout !== undefined
+  );
   const ordered = signOut ? [...desired, signOut] : desired;
   if (items.length === ordered.length && items.every((item, index) => item === ordered[index])) return;
   const fragment = document.createDocumentFragment();
