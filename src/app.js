@@ -1,5 +1,6 @@
 import './styles.css';
 import './landing-theme.css';
+import './lib/mobile-marketplace-layout.css';
 
 const root = document.querySelector('#root');
 const brandLogo = '/parca-avcisi-logo.png';
@@ -36,7 +37,7 @@ root.innerHTML = `
 document.querySelectorAll('main > .section:not(.vehicle-section)').forEach((section) => { section.style.contentVisibility = 'auto'; section.style.containIntrinsicSize = '1px 620px'; });
 
 const searchInput=document.querySelector('#searchInput'),makeSelect=document.querySelector('#make'),modelSelect=document.querySelector('#model'),yearSelect=document.querySelector('#year');
-function escapeHtml(value){return String(value||'').replace(/[&<>'"]/g,(char)=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));}
+function escapeHtml(value){return String(value||'').replace(/[&<>'\"]/g,(char)=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));}
 const listingView=()=>window.__listingView; let searchMode='listings'; const SEARCH_MODE_KEY='pa:searchMode';
 function setSearchMode(mode){searchMode=mode==='requests'?'requests':'listings';try{localStorage.setItem(SEARCH_MODE_KEY,searchMode);}catch{}document.querySelectorAll('.search-mode-tab').forEach(tab=>{const active=tab.dataset.searchMode===searchMode;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',String(active));});const submit=document.querySelector('#searchForm button');if(submit)submit.textContent=searchMode==='requests'?'Arayanı Bul →':'Parçayı Bul →';const input=document.querySelector('#searchInput');if(input)input.placeholder=searchMode==='requests'?'Aranan parça, araç veya şehir ara...':'Parça, marka, model veya parça no ara...';if(window.__setRequestSearchMode)window.__setRequestSearchMode(searchMode);}
 function search(query){searchInput.value=query;if(searchMode==='requests'){if(window.__searchRequests){window.__searchRequests(query);return;}setSearchMode('listings');}if(window.__hideArayanSection)window.__hideArayanSection();if(listingView())listingView().search(query);document.querySelector('#ilanlar').scrollIntoView({behavior:'smooth',block:'start'});}
@@ -64,7 +65,6 @@ const vehicleCatalogReady=import('./lib/vehicle-catalog.js').then(({getMakes,get
   modelSelect.addEventListener('change',()=>{const years=getYears(makeSelect.value,modelSelect.value);resetYear();yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>'+years.map(value=>`<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join('');});
 }).catch(()=>{makeSelect.innerHTML='<option value="">Marka yüklenemedi</option>';makeSelect.disabled=true;});
 
-// Keep the form responsive even while the catalog chunk is arriving.
 document.querySelector('#searchForm').addEventListener('submit',event=>{event.preventDefault();search(searchInput.value);});
 document.querySelectorAll('[data-query]').forEach(button=>button.addEventListener('click',()=>search(button.dataset.query)));
 document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(item=>item.classList.remove('active'));button.classList.add('active');if(listingView())listingView().setCondition(button.dataset.condition);}));
