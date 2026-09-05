@@ -77,10 +77,13 @@ function renderDrafts(drafts, bulk, files = []) {
   };
 }
 
-document.addEventListener('click', (event) => {
+document.addEventListener('click', async (event) => {
   if (event.target.closest('[data-photo-flow]')) void upload(false);
   if (event.target.closest('[data-bulk-flow]')) void upload(true);
-  if (event.target.closest('[data-manual-flow]')) { modal.classList.remove('show'); if (window.__openListingForm) window.__openListingForm(); }
+  if (event.target.closest('[data-manual-flow]')) {
+    modal.classList.remove('show');
+    if (window.__openListingForm) await window.__openListingForm();
+  }
 });
 
 window.__openEasyListing = openChoices;
