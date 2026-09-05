@@ -42,8 +42,8 @@ export function toListingCard(listing) {
 }
 
 // Cards only request fields actually rendered in listing grids. Detail-only fields stay out of this hot path.
-const listingCardSelect = 'id, title, condition, price, city, category, subcategory, vehicle, status, delivery, oem_number, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
-const listingDetailSelect = 'id, title, description, condition, price, city, district, oem_number, category, subcategory, vehicle, stock_count, status, delivery, created_at, part:parts(name, category, subcategory, oem_number), seller:profiles!listings_seller_id_fkey(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
+const listingCardSelect = 'id, title, condition, price, city, category, subcategory, vehicle, status, delivery, oem_number, part:parts(name, category, subcategory, oem_number), seller:profiles(id, full_name), listing_vehicles(vehicle:vehicles(make, model, year_from, year_to, engine)), listing_images(storage_path, sort_order, is_cover)';
+const listingDetailSelect = 'id, title, description, condition, price, city, district, oem_number, category, subcategory, vehicle, stock_count, status, delivery, created_at, part:parts(name, category, subcategory, oem_number), seller:profiles(id, full_name), listing_vehicles(vehicle:vehicles(id, make, model, year_from, year_to, engine)), listing_images(id, storage_path, sort_order, is_cover)';
 
 export async function getActiveListings({ page = 0, pageSize = DEFAULT_PAGE_SIZE, category = null, subcategory = null } = {}) {
   if (!supabaseConfigured) return null;
@@ -108,17 +108,21 @@ export async function getSellerActiveListings(sellerId, { excludeId } = {}) {
   return data.map(toListingCard);
 }
 
-export async function createListing({ title, description, condition, price, city, district, oemNumber, stockCount = 1, partId, vehicleIds = [], category, subcategory, vehicle, delivery, status = 'draft' }) {
+export async function createListing({ title, description, condition, price, city, district, oemNumber, stockCount = 1, partId, vehicleIds = [], category, subcategory, vehicle, delivery, status = 'draft' } = {}) {
   const client = requireSupabase();
   const { data: authData, error: authError } = await client.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) throw new Error('İlan vermek için giriş yapmalısın.');
-  const { data: listing, error } = await client.from('listings').insert({ seller_id: authData.user.id, part_id: partId || null, title, description: description || null, condition, price, city: city || null, district: district || null, oem_number: oemNumber || null, category: category || null, subcategory: subcategory || null, vehicle: vehicle || null, delivery: delivery || null, stock_count: stockCount, status }).select().single();
+  const { data: listing, error } = await client.from('listings').insert({ seller_id: authData.user.id, part_id: partId || null, title, description: description || null, condition, price, city: city || null, district: district || null, oem_number: oemNumber || null, stock_count: Math.max(1, stockCount), category: category || null, subcategory: subcategory || null, vehicle: vehicle || null, delivery: delivery || null, status }).select().maybeSingle();
   if (error) throw error;
-  if (vehicleIds.length) {
+  if (!listing) throw new Error('İlan oluşturulamadı.');
+  
+  // Write structured vehicle links if provided
+  if (vehicleIds?.length > 0) {
     const { error: vehicleError } = await client.from('listing_vehicles').insert(vehicleIds.map((vehicleId) => ({ listing_id: listing.id, vehicle_id: vehicleId })));
-    if (vehicleError) throw vehicleError;
+    if (vehicleError) console.warn('Vehicle compatibility insert failed:', vehicleError);
   }
+  
   return listing;
 }
 
