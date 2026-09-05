@@ -1,3 +1,22 @@
-.site-header .brand-logo .brand-mark{content:url('/app-logo.png')!important;display:block!important;object-fit:contain!important;background:transparent!important}
-html[data-pa-theme="light"] .site-header .brand-logo .brand-mark{mix-blend-mode:multiply!important}
-@media(max-width:700px){.site-header .brand-logo .brand-mark{width:142px!important;max-width:142px!important;height:auto!important}}
+/* Original compact P mark belongs inside the hamburger trigger on the home header. */
+@media (max-width: 700px) {
+  .site-header .menu-trigger {
+    padding: 3px !important;
+    overflow: hidden !important;
+    background: transparent !important;
+  }
+
+  .site-header .menu-trigger .menu-trigger-logo {
+    display: block !important;
+    width: 34px !important;
+    height: 34px !important;
+    max-width: 34px !important;
+    max-height: 34px !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+  }
+
+  .site-header .brand-logo {
+    display: none !important;
+  }
+}
