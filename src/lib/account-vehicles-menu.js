@@ -16,8 +16,15 @@ function addVehiclesMenuItem() {
     button.dataset.pane = 'araclarim';
     button.innerHTML = '<span aria-hidden="true">🚗</span><strong>Araçlarım</strong>';
 
-    const before = list.querySelector('[data-account-signout], [data-account-signout-menu], .danger');
-    list.insertBefore(button, before || null);
+    // Araçlarım, Hesap menüsünde Profilim sekmesinin hemen altında görünmeli.
+    // Profilim henüz oluşmadıysa güvenli şekilde listenin başına ekle.
+    const profileItem = list.querySelector('[data-pane="profilim"], [data-account-pane="profilim"]');
+    if (profileItem) {
+      profileItem.insertAdjacentElement('afterend', button);
+    } else {
+      const before = list.querySelector('[data-account-signout], [data-account-signout-menu], .danger');
+      list.insertBefore(button, before || list.firstChild || null);
+    }
 
     button.addEventListener('click', (event) => {
       event.preventDefault();
