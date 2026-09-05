@@ -1,0 +1,396 @@
+/* Parça Avcısı — professional light theme normalization.
+   This layer intentionally overrides legacy dark/mobile defaults without changing markup or behavior. */
+html[data-pa-theme="light"] {
+  color-scheme: light;
+  --pa-bg: #f4f6f8;
+  --pa-panel: #ffffff;
+  --pa-panel2: #f8fafb;
+  --pa-line: #d8dee4;
+  --pa-muted: #69737d;
+  --pa-gold: #e6aa00;
+}
+
+html[data-pa-theme="light"] body,
+html[data-pa-theme="light"] #root {
+  background: #f4f6f8 !important;
+  color: #182028 !important;
+}
+
+/* Header / brand */
+html[data-pa-theme="light"] .site-header {
+  background: rgba(255,255,255,.97) !important;
+  border-bottom: 1px solid #dce2e7 !important;
+  box-shadow: 0 6px 22px rgba(25,32,40,.07) !important;
+}
+html[data-pa-theme="light"] .site-header .brand-logo,
+html[data-pa-theme="light"] .site-header .brand-mark {
+  background: transparent !important;
+}
+html[data-pa-theme="light"] .site-header .brand-mark {
+  mix-blend-mode: multiply !important;
+  filter: contrast(1.02) saturate(1.02) !important;
+}
+html[data-pa-theme="light"] .menu-trigger,
+html[data-pa-theme="light"] .site-header .mobile-listings-link,
+html[data-pa-theme="light"] .site-header .auth-account,
+html[data-pa-theme="light"] .site-header .notif-bell {
+  background: #fff !important;
+  color: #4f5963 !important;
+  border-color: #d4dbe1 !important;
+}
+html[data-pa-theme="light"] .site-header .mobile-listings-link small,
+html[data-pa-theme="light"] .site-header .auth-account span {
+  color: #69737d !important;
+}
+
+/* Hero */
+html[data-pa-theme="light"] .hero {
+  background:
+    radial-gradient(circle at 92% 16%, rgba(230,170,0,.13), transparent 30%),
+    radial-gradient(circle at 5% 70%, rgba(120,145,165,.08), transparent 28%),
+    linear-gradient(180deg,#ffffff 0%,#f4f6f8 72%,#edf1f4 100%) !important;
+  color: #182028 !important;
+}
+html[data-pa-theme="light"] .hero::after {
+  background: linear-gradient(90deg,rgba(255,255,255,.08),transparent 55%,rgba(230,170,0,.025)) !important;
+}
+html[data-pa-theme="light"] .hero h1,
+html[data-pa-theme="light"] .hero h2,
+html[data-pa-theme="light"] .hero strong,
+html[data-pa-theme="light"] .hero b {
+  color: #141a20 !important;
+}
+html[data-pa-theme="light"] .hero p,
+html[data-pa-theme="light"] .hero-trust,
+html[data-pa-theme="light"] .hero-trust span {
+  color: #68727c !important;
+}
+html[data-pa-theme="light"] .hero .eyebrow,
+html[data-pa-theme="light"] .hero h1 em {
+  color: #a87500 !important;
+}
+html[data-pa-theme="light"] .hero .eyebrow::before {
+  background: #d7a400 !important;
+}
+
+/* Search controls */
+html[data-pa-theme="light"] .search-mode-tab,
+html[data-pa-theme="light"] .quick-tags button,
+html[data-pa-theme="light"] .hero-trust span,
+html[data-pa-theme="light"] .search-box,
+html[data-pa-theme="light"] .search-box input {
+  color: #182028 !important;
+  background: #fff !important;
+  border-color: #d3dae0 !important;
+}
+html[data-pa-theme="light"] .search-mode-tab:not(.active),
+html[data-pa-theme="light"] .quick-tags button,
+html[data-pa-theme="light"] .hero-trust span {
+  color: #59636d !important;
+}
+html[data-pa-theme="light"] .search-mode-tab.active {
+  color: #161b20 !important;
+  background: #f2b500 !important;
+  border-color: #f2b500 !important;
+}
+html[data-pa-theme="light"] .search-box span,
+html[data-pa-theme="light"] .search-box input::placeholder {
+  color: #7b858e !important;
+}
+html[data-pa-theme="light"] .search-box button {
+  color: #171c21 !important;
+  background: #f2b500 !important;
+  border-color: #f2b500 !important;
+}
+html[data-pa-theme="light"] .quick-tags button:first-child {
+  color: #8f6900 !important;
+  border-color: #e0bd52 !important;
+  background: #fffdf4 !important;
+}
+
+/* All home sections */
+html[data-pa-theme="light"] .marketplace-cta,
+html[data-pa-theme="light"] .vehicle-section,
+html[data-pa-theme="light"] .listings-section,
+html[data-pa-theme="light"] .requests-section,
+html[data-pa-theme="light"] .how,
+html[data-pa-theme="light"] .benefits {
+  background: #f4f6f8 !important;
+  color: #182028 !important;
+  border-top-color: #dce2e7 !important;
+}
+html[data-pa-theme="light"] .marketplace-card,
+html[data-pa-theme="light"] .vehicle-card,
+html[data-pa-theme="light"] .listing-card,
+html[data-pa-theme="light"] .steps article,
+html[data-pa-theme="light"] .benefit-grid,
+html[data-pa-theme="light"] .benefit-grid article {
+  background: #fff !important;
+  color: #182028 !important;
+  border-color: #d8dee4 !important;
+  box-shadow: 0 10px 28px rgba(28,36,44,.065) !important;
+}
+html[data-pa-theme="light"] .marketplace-card *:not(button),
+html[data-pa-theme="light"] .vehicle-card *:not(button),
+html[data-pa-theme="light"] .listing-card *:not(button),
+html[data-pa-theme="light"] .benefit-grid article *:not(button),
+html[data-pa-theme="light"] .steps article *:not(button) {
+  border-color: inherit;
+}
+html[data-pa-theme="light"] .marketplace-card h2,
+html[data-pa-theme="light"] .marketplace-card h3,
+html[data-pa-theme="light"] .vehicle-card h2,
+html[data-pa-theme="light"] .vehicle-card h3,
+html[data-pa-theme="light"] .listing-card h2,
+html[data-pa-theme="light"] .listing-card h3,
+html[data-pa-theme="light"] .benefit-grid article h2,
+html[data-pa-theme="light"] .benefit-grid article h3,
+html[data-pa-theme="light"] .benefit-grid article strong,
+html[data-pa-theme="light"] .steps article h2,
+html[data-pa-theme="light"] .steps article h3,
+html[data-pa-theme="light"] .section h2,
+html[data-pa-theme="light"] .section-head h2 {
+  color: #182028 !important;
+  text-shadow: none !important;
+}
+html[data-pa-theme="light"] .marketplace-card p,
+html[data-pa-theme="light"] .vehicle-card p,
+html[data-pa-theme="light"] .listing-card p,
+html[data-pa-theme="light"] .listing-meta,
+html[data-pa-theme="light"] .seller-line,
+html[data-pa-theme="light"] .benefit-grid article span,
+html[data-pa-theme="light"] .benefit-grid article p,
+html[data-pa-theme="light"] .steps article p,
+html[data-pa-theme="light"] .requests-intro {
+  color: #68727c !important;
+}
+html[data-pa-theme="light"] .marketplace-card .eyebrow,
+html[data-pa-theme="light"] .benefit-grid .eyebrow {
+  color: #a87500 !important;
+}
+html[data-pa-theme="light"] .marketplace-icon,
+html[data-pa-theme="light"] .benefit-grid article > :first-child {
+  color: #d6a300 !important;
+}
+html[data-pa-theme="light"] .marketplace-btn,
+html[data-pa-theme="light"] .dark-btn,
+html[data-pa-theme="light"] .detail-btn,
+html[data-pa-theme="light"] .vehicle-form button {
+  color: #20262c !important;
+  background: #fff !important;
+  border-color: #d1d8de !important;
+}
+html[data-pa-theme="light"] .marketplace-btn:hover,
+html[data-pa-theme="light"] .vehicle-form button:hover {
+  background: #f8f9fa !important;
+  border-color: #bfc8cf !important;
+}
+html[data-pa-theme="light"] .price {
+  color: #9b7000 !important;
+}
+html[data-pa-theme="light"] .vehicle-form select,
+html[data-pa-theme="light"] .filter,
+html[data-pa-theme="light"] .advanced-filter-toggle,
+html[data-pa-theme="light"] .advanced-filter-panel,
+html[data-pa-theme="light"] .advanced-filter-grid input,
+html[data-pa-theme="light"] .advanced-filter-grid select {
+  background: #fff !important;
+  color: #283139 !important;
+  border-color: #d1d8de !important;
+}
+html[data-pa-theme="light"] .filters .filter.active,
+html[data-pa-theme="light"] .filters .filter:hover {
+  background: #f2b500 !important;
+  color: #171c21 !important;
+  border-color: #f2b500 !important;
+}
+html[data-pa-theme="light"] footer {
+  background: #edf1f4 !important;
+  color: #68727c !important;
+  border-top-color: #d8dee4 !important;
+}
+html[data-pa-theme="light"] footer a,
+html[data-pa-theme="light"] .footer-links a {
+  color: #59636d !important;
+}
+
+/* Mobile bottom navigation */
+@media (max-width: 640px) {
+  html[data-pa-theme="light"] .mobile-nav {
+    background: rgba(255,255,255,.98) !important;
+    color: #69737d !important;
+    border-top: 1px solid #dce2e7 !important;
+    box-shadow: 0 -10px 28px rgba(20,28,36,.10) !important;
+    backdrop-filter: blur(18px) !important;
+  }
+  html[data-pa-theme="light"] .mobile-nav a,
+  html[data-pa-theme="light"] .mobile-nav > button {
+    color: #66717b !important;
+    background: transparent !important;
+  }
+  html[data-pa-theme="light"] .mobile-nav small {
+    color: #7a848d !important;
+  }
+  html[data-pa-theme="light"] .mobile-nav a[href="#top"],
+  html[data-pa-theme="light"] .mobile-nav a[href="#top"] small {
+    color: #303940 !important;
+  }
+  html[data-pa-theme="light"] .mobile-nav #mobileSell {
+    background: #f2b500 !important;
+    color: #171c21 !important;
+    border-color: #fff !important;
+    box-shadow: 0 7px 22px rgba(198,148,0,.28),0 0 0 1px #e0e4e8 !important;
+  }
+  html[data-pa-theme="light"] .mobile-nav #mobileSell small {
+    color: #69737d !important;
+  }
+}
+
+/* Account drawer and account routes */
+html[data-pa-theme="light"] .category-drawer,
+html[data-pa-theme="light"] .account-drawer-section,
+html[data-pa-theme="light"] .account-drawer-list,
+html[data-pa-theme="light"] .account-menu-section,
+html[data-pa-theme="light"] .account-menu-list,
+html[data-pa-theme="light"] .account-route-shell,
+html[data-pa-theme="light"] body.has-account-route,
+html[data-pa-theme="light"] body.account-page-runtime {
+  background: #f4f6f8 !important;
+  color: #182028 !important;
+}
+html[data-pa-theme="light"] .category-drawer,
+html[data-pa-theme="light"] .account-menu,
+html[data-pa-theme="light"] body.has-account-route .account-menu {
+  background: #fff !important;
+  border-color: #d8dee4 !important;
+}
+html[data-pa-theme="light"] .account-drawer-head,
+html[data-pa-theme="light"] .account-menu-toggle {
+  background: #f8fafb !important;
+  color: #182028 !important;
+  border-color: #d4dbe1 !important;
+}
+html[data-pa-theme="light"] .account-drawer-name strong,
+html[data-pa-theme="light"] .account-menu-label strong,
+html[data-pa-theme="light"] .account-drawer-list button,
+html[data-pa-theme="light"] .account-menu-link,
+html[data-pa-theme="light"] body.has-account-route .account-menu button {
+  color: #4f5963 !important;
+}
+html[data-pa-theme="light"] .account-drawer-name small,
+html[data-pa-theme="light"] .account-menu-label small {
+  color: #77818a !important;
+}
+html[data-pa-theme="light"] .account-theme-switch {
+  background: #eef2f4 !important;
+  border-color: #d6dde2 !important;
+}
+html[data-pa-theme="light"] .account-theme-label {
+  color: #66717b !important;
+}
+html[data-pa-theme="light"] .account-theme-option {
+  background: #fff !important;
+  color: #59636d !important;
+  border-color: #cfd6dc !important;
+}
+html[data-pa-theme="light"] .account-theme-option.active,
+html[data-pa-theme="light"] body.has-account-route .account-menu button.active {
+  background: #f2b500 !important;
+  color: #171c21 !important;
+  border-color: #f2b500 !important;
+}
+html[data-pa-theme="light"] .account-signout-link,
+html[data-pa-theme="light"] .account-menu-link.danger {
+  color: #b94b4b !important;
+}
+
+html[data-pa-theme="light"] body.has-account-route .account-route-shell,
+html[data-pa-theme="light"] body.account-page-runtime .account-route-main,
+html[data-pa-theme="light"] body.account-page-runtime .account-shell,
+html[data-pa-theme="light"] body.has-account-route .account-pane,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane {
+  color: #182028 !important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-route-header {
+  background: #fff !important;
+  border-bottom-color: #dce2e7 !important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-route-header a {
+  color: #182028 !important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-route-header a:last-child {
+  color: #68727c !important;
+}
+html[data-pa-theme="light"] body.has-account-route .account-pane h1,
+html[data-pa-theme="light"] body.has-account-route .account-pane h2,
+html[data-pa-theme="light"] body.has-account-route .account-pane h3,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane h1,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane h2,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane h3 {
+  color: #182028 !important;
+}
+html[data-pa-theme="light"] body.has-account-route .account-pane p,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane p,
+html[data-pa-theme="light"] body.account-page-runtime .pane-loading,
+html[data-pa-theme="light"] body.account-page-runtime .pane-empty {
+  color: #68727c !important;
+}
+html[data-pa-theme="light"] body.has-account-route input,
+html[data-pa-theme="light"] body.has-account-route select,
+html[data-pa-theme="light"] body.has-account-route textarea,
+html[data-pa-theme="light"] body.account-page-runtime input,
+html[data-pa-theme="light"] body.account-page-runtime select,
+html[data-pa-theme="light"] body.account-page-runtime textarea {
+  background: #fff !important;
+  color: #182028 !important;
+  border-color: #cfd6dc !important;
+}
+html[data-pa-theme="light"] body.has-account-route label,
+html[data-pa-theme="light"] body.account-page-runtime label {
+  color: #59636d !important;
+}
+html[data-pa-theme="light"] body.has-account-route .pane-row,
+html[data-pa-theme="light"] body.has-account-route .saved-vehicle-row,
+html[data-pa-theme="light"] body.account-page-runtime .pane-row,
+html[data-pa-theme="light"] body.account-page-runtime .saved-vehicle-row,
+html[data-pa-theme="light"] body.has-account-route .profile-hero,
+html[data-pa-theme="light"] body.account-page-runtime .profile-hero {
+  background: #fff !important;
+  color: #182028 !important;
+  border-color: #d8dee4 !important;
+  box-shadow: 0 10px 28px rgba(28,36,44,.06) !important;
+}
+html[data-pa-theme="light"] body.has-account-route .pane-row strong,
+html[data-pa-theme="light"] body.account-page-runtime .pane-row strong,
+html[data-pa-theme="light"] body.has-account-route .profile-hero strong,
+html[data-pa-theme="light"] body.account-page-runtime .profile-hero strong {
+  color: #182028 !important;
+}
+html[data-pa-theme="light"] body.has-account-route .pane-row small,
+html[data-pa-theme="light"] body.account-page-runtime .pane-row small,
+html[data-pa-theme="light"] body.has-account-route .profile-hero small,
+html[data-pa-theme="light"] body.account-page-runtime .profile-hero small {
+  color: #68727c !important;
+}
+html[data-pa-theme="light"] body.has-account-route button,
+html[data-pa-theme="light"] body.account-page-runtime button {
+  color: #303940 !important;
+  background: #fff !important;
+  border-color: #cfd6dc !important;
+}
+html[data-pa-theme="light"] body.has-account-route button.primary,
+html[data-pa-theme="light"] body.account-page-runtime button.primary,
+html[data-pa-theme="light"] body.has-account-route .pane-tabs button.active,
+html[data-pa-theme="light"] body.account-page-runtime .pane-tabs button.active {
+  color: #171c21 !important;
+  background: #f2b500 !important;
+  border-color: #f2b500 !important;
+}
+html[data-pa-theme="light"] .modal-card {
+  background: #fff !important;
+  color: #182028 !important;
+  border-color: #d8dee4 !important;
+}
+html[data-pa-theme="light"] .modal-card p {
+  color: #68727c !important;
+}
