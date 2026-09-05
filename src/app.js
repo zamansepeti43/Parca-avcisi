@@ -1,6 +1,5 @@
 import './styles.css';
 import './landing-theme.css';
-import './lib/mobile-marketplace-layout.css';
 
 const root = document.querySelector('#root');
 const brandLogo = '/parca-avcisi-logo.png';
@@ -33,7 +32,6 @@ root.innerHTML = `
   <nav class="mobile-nav" aria-label="Mobil menü"><a href="#top">⌂<small>Ana Sayfa</small></a><button type="button" data-open-categories aria-expanded="false" aria-controls="catMenu">▦<small>Kategoriler</small></button><button id="mobileSell" type="button">+<small>İlan Ver</small></button><a href="#favorilerim" id="favoriteLink">♡<small>Favoriler</small></a><a href="#hesabim" id="accountLink">◉<small id="accountLabel">Hesabım</small></a></nav><div class="toast" id="toast" role="status" aria-live="polite"></div>
 `;
 
-// Keep below-the-fold sections cheap to paint; browsers can defer rendering until they approach the viewport.
 document.querySelectorAll('main > .section:not(.vehicle-section)').forEach((section) => { section.style.contentVisibility = 'auto'; section.style.containIntrinsicSize = '1px 620px'; });
 
 const searchInput=document.querySelector('#searchInput'),makeSelect=document.querySelector('#make'),modelSelect=document.querySelector('#model'),yearSelect=document.querySelector('#year');
@@ -44,8 +42,6 @@ function search(query){searchInput.value=query;if(searchMode==='requests'){if(wi
 document.querySelectorAll('[data-search-mode]').forEach(tab=>tab.addEventListener('click',()=>setSearchMode(tab.dataset.searchMode)));
 (function restoreSearchMode(){try{if(localStorage.getItem(SEARCH_MODE_KEY)==='requests')setSearchMode('requests');}catch{}})();
 
-// The vehicle catalog is intentionally loaded after the visible home shell is painted.
-// It is the largest browser asset in the app (~1.8 MB source), so it must not block first paint.
 const vehicleCatalogReady=import('./lib/vehicle-catalog.js').then(({getMakes,getModels,getYears})=>{
   const renderMakes = (selected = makeSelect.value) => {
     makeSelect.innerHTML='<option value="">Marka Seçiniz</option>'+getMakes().map(name=>`<option value="${escapeHtml(name)}"${String(name)===String(selected)?' selected':''}>${escapeHtml(name)}</option>`).join('');
@@ -54,9 +50,6 @@ const vehicleCatalogReady=import('./lib/vehicle-catalog.js').then(({getMakes,get
   renderMakes();
   function resetModelYear(){modelSelect.innerHTML='<option value="">Model Seçiniz</option>';modelSelect.disabled=!makeSelect.value;yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>';yearSelect.disabled=true;}
   function resetYear(){yearSelect.innerHTML='<option value="">Yıl Seçiniz</option>';yearSelect.disabled=!modelSelect.value;}
-  // Marka her açıldığında kaynak katalogdaki TÜM markaları yeniden kur. Böylece
-  // Ford/Toyota vb. seçilmiş olsa bile kullanıcı markayı değiştirmek istediğinde
-  // dropdown yalnızca mevcut seçime daralmaz.
   const restoreFullMakeCatalog = () => renderMakes(makeSelect.value);
   makeSelect.addEventListener('focus', restoreFullMakeCatalog);
   makeSelect.addEventListener('mousedown', restoreFullMakeCatalog);
