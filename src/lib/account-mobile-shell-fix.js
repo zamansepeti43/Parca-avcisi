@@ -60,8 +60,39 @@ function ensureMobileNav() {
   document.body.classList.add('has-account-mobile-nav');
 }
 
+/* account-center.js captures #appModal once at module import time. Keep that
+ * exact DOM node alive when the SPA replaces document.body during navigation. */
+let preservedAccountModal = document.querySelector('#appModal');
+let restoringAccountModal = false;
+
+function preserveAccountModal() {
+  const current = document.querySelector('#appModal');
+  if (!preservedAccountModal && current) {
+    preservedAccountModal = current;
+    return;
+  }
+  if (!preservedAccountModal || restoringAccountModal) return;
+  if (!preservedAccountModal.isConnected && document.body) {
+    restoringAccountModal = true;
+    document.body.appendChild(preservedAccountModal);
+    restoringAccountModal = false;
+  }
+  const replacement = document.querySelector('#appModal');
+  if (replacement && replacement !== preservedAccountModal) {
+    restoringAccountModal = true;
+    replacement.remove();
+    document.body.appendChild(preservedAccountModal);
+    const content = preservedAccountModal.querySelector('#modalContent');
+    if (content) content.innerHTML = '';
+    preservedAccountModal.classList.remove('show');
+    preservedAccountModal.setAttribute('aria-hidden', 'true');
+    restoringAccountModal = false;
+  }
+}
+
 function apply() {
   if (!document.body.classList.contains('account-page-runtime')) return;
+  preserveAccountModal();
   normalizeAccountMenu(document.querySelector('.account-page-runtime .account-menu'));
   ensureMobileNav();
 }
