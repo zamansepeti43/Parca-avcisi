@@ -5,6 +5,8 @@ const STYLE_ID = 'account-mobile-shell-fix-css';
 let accountModal = null;
 let accountCenterBridgeInstalled = false;
 let accountCenterBridgeTimer = null;
+let accountMenuScrollLeft = 0;
+let accountMenuScrollBound = false;
 
 function ensureStyles() {
   if (document.getElementById(STYLE_ID)) return;
@@ -93,9 +95,25 @@ function ensureVehiclesTab(menu) {
   else menu.prepend(link);
 }
 
+function bindAccountMenuScroll(menu) {
+  if (!menu || menu.dataset.accountScrollBound === '1') return;
+  menu.dataset.accountScrollBound = '1';
+  menu.addEventListener('scroll', () => {
+    accountMenuScrollLeft = menu.scrollLeft;
+  }, { passive: true });
+}
+
+function restoreAccountMenuScroll(menu) {
+  if (!menu) return;
+  requestAnimationFrame(() => {
+    if (document.contains(menu)) menu.scrollLeft = accountMenuScrollLeft;
+  });
+}
+
 function normalizeAccountMenu(menu) {
   if (!menu) return;
   ensureVehiclesTab(menu);
+  bindAccountMenuScroll(menu);
   const items = [...menu.children];
   const paneItems = items.filter((item) => item.dataset?.pane);
   const desired = ACCOUNT_ORDER
@@ -107,10 +125,14 @@ function normalizeAccountMenu(menu) {
     item.dataset?.accountSignout !== undefined
   );
   const ordered = signOut ? [...desired, signOut] : desired;
-  if (items.length === ordered.length && items.every((item, index) => item === ordered[index])) return;
+  if (items.length === ordered.length && items.every((item, index) => item === ordered[index])) {
+    restoreAccountMenuScroll(menu);
+    return;
+  }
   const fragment = document.createDocumentFragment();
   ordered.forEach((item) => fragment.appendChild(item));
   menu.appendChild(fragment);
+  restoreAccountMenuScroll(menu);
 }
 
 function ensureMobileNav() {
