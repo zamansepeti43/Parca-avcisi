@@ -139,4 +139,9 @@ html[data-pa-theme="light"] body.account-page-runtime .pane-empty { background:#
 html[data-pa-theme="light"] body.account-page-runtime .pane-empty strong { color:#182028!important; }
 html[data-pa-theme="light"] body.account-page-runtime .pane-empty .empty-action { display:inline-flex; align-items:center; justify-content:center; min-height:42px; margin-top:16px; padding:0 18px; border-radius:10px; background:#f2b500; color:#171c21!important; text-decoration:none; font-size:12px; font-weight:850; border:1px solid #e2ac00; }
 html[data-pa-theme="light"] body.account-page-runtime .pane-empty .empty-action.secondary { background:#fff; color:#4f5963!important; border-color:#cfd7de; }
-@media(max-width:760px){html[data-pa-theme="light"] body.has-account-route .account-route-shell{padding-top:16px!important}html[data-pa-theme="light"] .account-theme-switch{grid-template-columns:auto minmax(0,1fr) minmax(0,1fr)!important}body.account-page-runtime .account-route-main{padding-bottom:70px!important}html[data-pa-theme="light"] body.account-page-runtime .pane-empty{padding:34px 18px!important}}
+@media(max-width:760px){html[data-pa-theme="light"] body.has-account-route .account-route-shell{padding-top:16px!important}html[data-pa-theme="light"] .account-theme-switch{grid-template-columns:auto minmax(0,1fr) minmax(0,1fr)!important}body.account-page-runtime .account-route-main{padding-bottom:70px!important}}
+
+/* Account-center is used as an internal renderer while the real account page is visible. Hide only that staging modal, not other account-page dialogs. */
+@media(max-width:760px){
+  body.account-page-runtime .app-modal:has(.modal-card.account-wide:has(.account-shell)){display:none!important;}
+}
