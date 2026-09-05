@@ -65,7 +65,7 @@ async function bootHome() {
     import('./lib/faq-seo.js'), import('./lib/about-contact-seo.js'), import('./lib/footer-seo.js'),
     import('./lib/legal-seo.js'), import('./lib/performance.js'), import('./lib/search-console-seo.js'),
     import('./lib/mobile-nav-fix.css'), import('./lib/mobile-header-fix.js'), import('./lib/categories-menu.js'),
-    import('./lib/account-vehicles-menu.js'), import('./lib/account-drawer-ui.js'), import('./lib/home-redesign.css'), import('./lib/listing-entry-flow.js'),
+    import('./lib/account-vehicles-menu.js'), import('./lib/home-redesign.css'), import('./lib/listing-entry-flow.js'),
     import('./lib/auth-header-bootstrap.js')
   ]);
   await turkeyFix;
