@@ -10,12 +10,14 @@ function ensureStyles() {
     @media (max-width:760px){
       body.has-account-mobile-nav{padding-bottom:76px!important;}
       body.has-account-mobile-nav .account-mobile-nav{display:grid!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;height:68px!important;z-index:9999!important;grid-template-columns:repeat(5,1fr)!important;align-items:stretch!important;margin:0!important;padding:6px 6px calc(6px + env(safe-area-inset-bottom))!important;box-shadow:0 -8px 24px rgba(0,0,0,.12)!important;}
-      body.has-account-mobile-nav .account-mobile-nav a{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;min-width:0!important;min-height:52px!important;padding:5px 3px!important;color:#69737d!important;text-decoration:none!important;font:700 23px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;}
+      body.has-account-mobile-nav .account-mobile-nav a{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;min-width:0!important;min-height:52px!important;padding:5px 3px!important;color:#69737d!important;background:transparent!important;text-decoration:none!important;font:700 23px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;}
       body.has-account-mobile-nav .account-mobile-nav a small{font:600 10px/1.15 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;white-space:nowrap!important;}
       body.has-account-mobile-nav .account-mobile-nav a.active{color:#e2a900!important;}
       body.has-account-mobile-nav .account-mobile-nav .account-mobile-sell{position:relative;margin-top:-20px;min-height:62px!important;border:5px solid #fff!important;border-radius:50%!important;background:#f2b900!important;color:#101318!important;box-shadow:0 5px 18px rgba(0,0,0,.18)!important;font-size:30px!important;}
       body.has-account-mobile-nav .account-mobile-nav .account-mobile-sell small{color:#69737d!important;position:absolute!important;top:64px!important;}
       html[data-pa-theme="light"] body.has-account-mobile-nav .account-mobile-nav{background:#fff!important;border-top:1px solid #dfe3e7!important;}
+      html[data-pa-theme="light"] body.has-account-mobile-nav .account-mobile-nav a{color:#66717b!important;}
+      html[data-pa-theme="light"] body.has-account-mobile-nav .account-mobile-nav a.active{color:#b17f00!important;}
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-nav{background:#11161c!important;border-top:1px solid #2b333d!important;}
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-nav a{color:#aeb7c0!important;}
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-nav a.active{color:#f0b900!important;}
@@ -28,10 +30,12 @@ function ensureStyles() {
 
 function normalizeAccountMenu(menu) {
   if (!menu) return;
-  const items = ACCOUNT_ORDER.map((key) => menu.querySelector('[data-pane="' + key + '"]')).filter(Boolean);
-  const current = items.map((item) => item.dataset.pane).join('|');
-  const desired = ACCOUNT_ORDER.filter((key) => items.some((item) => item.dataset.pane === key)).join('|');
-  if (current === desired) return;
+  const current = [...menu.children]
+    .map((item) => item.dataset?.pane)
+    .filter(Boolean);
+  const desired = ACCOUNT_ORDER.filter((key) => current.includes(key));
+  if (current.join('|') === desired.join('|')) return;
+  const items = desired.map((key) => menu.querySelector('[data-pane="' + key + '"]')).filter(Boolean);
   const fragment = document.createDocumentFragment();
   items.forEach((item) => fragment.appendChild(item));
   menu.appendChild(fragment);
