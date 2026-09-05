@@ -1,4 +1,4 @@
-/* Keep account routes feeling like the same mobile app surface. */
+/* Keep account routes as one stable mobile app surface. */
 const ACCOUNT_ORDER = ['profilim','araclarim','ilanlarim','taleplerim','mesajlarim','favorilerim','kayitli-aramalar','bildirimler','musterilerim','hesap-bilgileri','ayarlar','yardim'];
 
 const STYLE_ID = 'account-mobile-shell-fix-css';
@@ -28,8 +28,21 @@ function ensureStyles() {
   document.head.appendChild(style);
 }
 
+function ensureVehiclesTab(menu) {
+  if (!menu || menu.querySelector('[data-pane="araclarim"]')) return;
+  const link = document.createElement('a');
+  link.className = 'account-menu-link';
+  link.dataset.pane = 'araclarim';
+  link.href = '/araclarim';
+  link.innerHTML = '<span aria-hidden="true">🚗</span><strong>Araçlarım</strong>';
+  const profile = menu.querySelector('[data-pane="profilim"]');
+  if (profile?.parentNode) profile.parentNode.insertBefore(link, profile.nextSibling);
+  else menu.prepend(link);
+}
+
 function normalizeAccountMenu(menu) {
   if (!menu) return;
+  ensureVehiclesTab(menu);
   const current = [...menu.children]
     .map((item) => item.dataset?.pane)
     .filter(Boolean);
@@ -60,40 +73,16 @@ function ensureMobileNav() {
   document.body.classList.add('has-account-mobile-nav');
 }
 
-/* account-center.js captures #appModal once at module import time. Keep that
- * exact DOM node alive when the SPA replaces document.body during navigation. */
-let preservedAccountModal = document.querySelector('#appModal');
-let restoringAccountModal = false;
-
-function preserveAccountModal() {
-  const current = document.querySelector('#appModal');
-  if (!preservedAccountModal && current) {
-    preservedAccountModal = current;
-    return;
-  }
-  if (!preservedAccountModal || restoringAccountModal) return;
-  if (!preservedAccountModal.isConnected && document.body) {
-    restoringAccountModal = true;
-    document.body.appendChild(preservedAccountModal);
-    restoringAccountModal = false;
-  }
-  const replacement = document.querySelector('#appModal');
-  if (replacement && replacement !== preservedAccountModal) {
-    restoringAccountModal = true;
-    replacement.remove();
-    document.body.appendChild(preservedAccountModal);
-    const content = preservedAccountModal.querySelector('#modalContent');
-    if (content) content.innerHTML = '';
-    preservedAccountModal.classList.remove('show');
-    preservedAccountModal.setAttribute('aria-hidden', 'true');
-    restoringAccountModal = false;
-  }
+function cleanupDuplicateAccountSurfaces() {
+  const mount = document.querySelector('#accountRouteMount');
+  if (!mount) return;
+  document.querySelectorAll('body.account-page-runtime #appModal').forEach((modal) => modal.remove());
 }
 
 function apply() {
   if (!document.body.classList.contains('account-page-runtime')) return;
-  preserveAccountModal();
-  normalizeAccountMenu(document.querySelector('.account-page-runtime .account-menu'));
+  cleanupDuplicateAccountSurfaces();
+  normalizeAccountMenu(document.querySelector('.account-page-runtime #accountRouteMount .account-menu'));
   ensureMobileNav();
 }
 
