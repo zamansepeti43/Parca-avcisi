@@ -36,3 +36,46 @@ html[data-pa-theme="light"] .pane-empty{background:#fff!important;color:#68727c!
 html[data-pa-theme="light"] .pane-empty strong{color:#182028!important}
 html[data-pa-theme="light"] .chat-bubble.sent{background:#eef1f3!important;color:#182028!important}
 html[data-pa-theme="light"] .chat-bubble.received{background:#e2e6e9!important;color:#182028!important}
+
+/* Saved vehicles: show the user's existing vehicles before the add-vehicle form. */
+@media(max-width:760px){
+  body.account-page-runtime .account-pane:has(#savedVehicleForm){display:flex;flex-direction:column;}
+  body.account-page-runtime .account-pane:has(#savedVehicleForm) .pane-list{order:-1;margin:0 0 14px!important;}
+  body.account-page-runtime .account-pane:has(#savedVehicleForm) .account-pane-head{order:0;}
+  body.account-page-runtime .account-pane:has(#savedVehicleForm) .pane-form{order:1;margin-top:0!important;}
+
+  /* Mobile account tabs should feel like a compact app category strip, not desktop buttons. */
+  body.account-page-runtime #accountRouteMount .account-menu{
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    gap:6px!important;
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    flex-wrap:nowrap!important;
+    scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+    padding:6px!important;
+    border-radius:12px!important;
+  }
+  body.account-page-runtime #accountRouteMount .account-menu::-webkit-scrollbar{display:none!important;}
+  body.account-page-runtime #accountRouteMount .account-menu button{
+    flex:0 0 auto!important;
+    min-height:38px!important;
+    padding:8px 12px!important;
+    border:1px solid #d4dbe1!important;
+    border-radius:999px!important;
+    font-size:12px!important;
+    line-height:1!important;
+    gap:5px!important;
+    justify-content:center!important;
+  }
+  html[data-pa-theme="light"] body.account-page-runtime #accountRouteMount .account-menu button{background:#f7f9fa!important;color:#5a6570!important;border-color:#d8dee4!important;}
+  html[data-pa-theme="light"] body.account-page-runtime #accountRouteMount .account-menu button.active{background:#f2b500!important;color:#171c21!important;border-color:#f2b500!important;}
+  html[data-pa-theme="light"] body.account-page-runtime #accountRouteMount .account-menu button.danger{background:#fff7f7!important;color:#b94b4b!important;border-color:#eccaca!important;}
+  html[data-pa-theme="dark"] body.account-page-runtime #accountRouteMount .account-menu button{background:#171d23!important;color:#aeb7c0!important;border-color:#303944!important;}
+  html[data-pa-theme="dark"] body.account-page-runtime #accountRouteMount .account-menu button.active{background:#f2b500!important;color:#171c21!important;border-color:#f2b500!important;}
+  html[data-pa-theme="dark"] body.account-page-runtime #accountRouteMount .account-menu button.danger{background:#261719!important;color:#ef8585!important;border-color:#553236!important;}
+}
