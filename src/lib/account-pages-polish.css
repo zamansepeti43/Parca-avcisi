@@ -1,0 +1,116 @@
+/* Account routes: final visual layer. Keep behavior in account-center; this file only normalizes presentation. */
+html[data-pa-theme="light"] body.account-page-runtime,
+html[data-pa-theme="light"] body.account-page-runtime .account-route-main,
+html[data-pa-theme="light"] body.account-page-runtime .account-shell,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane {
+  background:#f4f6f8!important;
+  color:#182028!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-route-header{
+  background:rgba(255,255,255,.98)!important;
+  border-bottom:1px solid #dce2e7!important;
+  box-shadow:0 6px 22px rgba(25,32,40,.07)!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-route-header a{
+  color:#182028!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-route-header a:last-child{
+  color:#68727c!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-menu{
+  background:#fff!important;
+  border-color:#d8dee4!important;
+  box-shadow:0 10px 26px rgba(28,36,44,.06)!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-menu-link{
+  background:transparent!important;
+  color:#59636d!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-menu-link:hover{
+  background:#f1f4f6!important;
+  color:#182028!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-menu-link.active{
+  background:#f2b500!important;
+  color:#171c21!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-menu-link.danger{
+  color:#b94b4b!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .account-pane h1,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane h2,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane h3,
+html[data-pa-theme="light"] body.account-page-runtime .account-pane strong{
+  color:#182028!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .profile-hero{
+  background:linear-gradient(145deg,#fff,#f7f9fa)!important;
+  border-color:#d8dee4!important;
+  box-shadow:0 12px 28px rgba(28,36,44,.07)!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .profile-hero strong{color:#182028!important}
+html[data-pa-theme="light"] body.account-page-runtime .profile-hero small{color:#68727c!important}
+html[data-pa-theme="light"] body.account-page-runtime .pane-form label{color:#66717b!important}
+html[data-pa-theme="light"] body.account-page-runtime .pane-form input,
+html[data-pa-theme="light"] body.account-page-runtime .pane-form select,
+html[data-pa-theme="light"] body.account-page-runtime .pane-form textarea,
+html[data-pa-theme="light"] body.account-page-runtime .chat-form input{
+  background:#fff!important;
+  color:#182028!important;
+  border:1px solid #cfd7de!important;
+  box-shadow:inset 0 1px 2px rgba(24,32,40,.03)!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .pane-form input::placeholder,
+html[data-pa-theme="light"] body.account-page-runtime .pane-form textarea::placeholder,
+html[data-pa-theme="light"] body.account-page-runtime .chat-form input::placeholder{
+  color:#8a949d!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .pane-form input:focus,
+html[data-pa-theme="light"] body.account-page-runtime .pane-form select:focus,
+html[data-pa-theme="light"] body.account-page-runtime .pane-form textarea:focus,
+html[data-pa-theme="light"] body.account-page-runtime .chat-form input:focus{
+  outline:2px solid rgba(230,170,0,.2)!important;
+  border-color:#e0ae16!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .pane-row{
+  background:#fff!important;
+  color:#182028!important;
+  border-color:#d8dee4!important;
+  box-shadow:0 6px 18px rgba(28,36,44,.045)!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .pane-row .grow strong{color:#182028!important}
+html[data-pa-theme="light"] body.account-page-runtime .pane-row .grow small,
+html[data-pa-theme="light"] body.account-page-runtime .pane-empty,
+html[data-pa-theme="light"] body.account-page-runtime .pane-loading,
+html[data-pa-theme="light"] body.account-page-runtime .pane-hint{color:#68727c!important}
+html[data-pa-theme="light"] body.account-page-runtime .pane-empty{
+  background:#fff!important;
+  border:1px dashed #c9d1d8!important;
+  box-shadow:0 8px 22px rgba(28,36,44,.045)!important;
+}
+html[data-pa-theme="light"] body.account-page-runtime .pane-empty strong{color:#182028!important}
+html[data-pa-theme="light"] body.account-page-runtime .pane-empty .empty-action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  margin-top:16px;
+  padding:0 18px;
+  border-radius:10px;
+  background:#f2b500;
+  color:#171c21!important;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:850;
+  border:1px solid #e2ac00;
+}
+html[data-pa-theme="light"] body.account-page-runtime .pane-empty .empty-action.secondary{
+  background:#fff;
+  color:#4f5963!important;
+  border-color:#cfd7de;
+}
+@media(max-width:760px){
+  body.account-page-runtime .account-route-main{padding-bottom:70px!important}
+  html[data-pa-theme="light"] body.account-page-runtime .account-menu{box-shadow:none!important}
+  html[data-pa-theme="light"] body.account-page-runtime .pane-empty{padding:34px 18px!important}
+}
