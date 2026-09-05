@@ -73,15 +73,8 @@ function ensureMobileNav() {
   document.body.classList.add('has-account-mobile-nav');
 }
 
-function cleanupDuplicateAccountSurfaces() {
-  const mount = document.querySelector('#accountRouteMount');
-  if (!mount) return;
-  document.querySelectorAll('body.account-page-runtime #appModal').forEach((modal) => modal.remove());
-}
-
 function apply() {
   if (!document.body.classList.contains('account-page-runtime')) return;
-  cleanupDuplicateAccountSurfaces();
   normalizeAccountMenu(document.querySelector('.account-page-runtime #accountRouteMount .account-menu'));
   ensureMobileNav();
 }
