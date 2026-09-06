@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-05T07:43:10.083Z",
+  "generatedAt": "2026-09-06T07:57:20.279Z",
   "sourceFiles": [
     "data/vehicle-catalog-merged.json"
   ],
   "counts": {
     "brands": 36,
-    "models": 4687,
-    "engineVariants": 12646,
-    "trims": 13766,
-    "vehicles": 13766
+    "models": 5110,
+    "engineVariants": 13097,
+    "trims": 14217,
+    "vehicles": 14217
   },
   "vehicles": [
     {
@@ -46,6 +46,16 @@
       "model": "147",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
+      "model": "155 V6 E2",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -353,6 +363,16 @@
     },
     {
       "make": "Alfa Romeo",
+      "model": "ALFA164",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
       "model": "Alfasud Sprint",
       "year": null,
       "body": "hatchback",
@@ -453,6 +473,16 @@
     },
     {
       "make": "Alfa Romeo",
+      "model": "Giuletta",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
       "model": "Giulia 1300 Ti",
       "year": null,
       "body": "sedan",
@@ -473,6 +503,16 @@
     },
     {
       "make": "Alfa Romeo",
+      "model": "Giulia 1600 Super",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
       "model": "Giulia 1600",
       "year": null,
       "body": "sedan",
@@ -486,6 +526,36 @@
       "model": "Giulia GT Junior",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
+      "model": "Giulia GT",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
+      "model": "Giulia Quadrifoglio Verde",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
+      "model": "Giulia Spider Veloce",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -693,6 +763,26 @@
     },
     {
       "make": "Alfa Romeo",
+      "model": "GT 1600 Junior",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
+      "model": "GT Junior 1300",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
       "model": "GT Junior 1600",
       "year": null,
       "body": "coupe",
@@ -734,6 +824,26 @@
     {
       "make": "Alfa Romeo",
       "model": "GTV 2000",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
+      "model": "Gtv 6 2",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Alfa Romeo",
+      "model": "Gtv V6 24V",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -923,9 +1033,49 @@
     },
     {
       "make": "Audi",
+      "model": "100 LS",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Audi",
+      "model": "100 S4",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Audi",
       "model": "100",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Audi",
+      "model": "100AV.-Quat",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Audi",
+      "model": "200 5T",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -973,9 +1123,29 @@
     },
     {
       "make": "Audi",
+      "model": "80 GL",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Audi",
       "model": "80",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Audi",
+      "model": "89",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -4793,6 +4963,16 @@
     },
     {
       "make": "Audi",
+      "model": "Ad",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Audi",
       "model": "Ai",
       "year": null,
       "body": "hatchback",
@@ -4806,6 +4986,16 @@
       "model": "Allroad",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Audi",
+      "model": "Cabrio",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -11983,6 +12173,16 @@
     },
     {
       "make": "BMW",
+      "model": "F900RA2",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
       "model": "F900XR A2",
       "year": null,
       "body": null,
@@ -13223,6 +13423,16 @@
     },
     {
       "make": "BMW",
+      "model": "R1200 Gsadventure",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
       "model": "R1200 Nine-T",
       "year": null,
       "body": null,
@@ -13254,6 +13464,16 @@
     {
       "make": "BMW",
       "model": "R1200C",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
+      "model": "R1200CL",
       "year": null,
       "body": null,
       "engine": null,
@@ -13533,6 +13753,16 @@
     },
     {
       "make": "BMW",
+      "model": "R21",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
       "model": "R25/3",
       "year": null,
       "body": null,
@@ -13653,7 +13883,7 @@
     },
     {
       "make": "BMW",
-      "model": "R60-5",
+      "model": "R60 2",
       "year": null,
       "body": null,
       "engine": null,
@@ -13663,7 +13893,7 @@
     },
     {
       "make": "BMW",
-      "model": "R60/2",
+      "model": "R60/5",
       "year": null,
       "body": null,
       "engine": null,
@@ -14016,6 +14246,26 @@
       "model": "S1000XR",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
+      "model": "Serie X1",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
+      "model": "X-Reihe",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -14403,9 +14653,39 @@
     },
     {
       "make": "BMW",
+      "model": "XDRIVE30D",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
       "model": "XM",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
+      "model": "Z 3 Roadster",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "BMW",
+      "model": "Z 4",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -14456,6 +14736,16 @@
       "model": "11 Bl Sport",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "11 Bl",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -14563,6 +14853,16 @@
     },
     {
       "make": "Citroën",
+      "model": "280L",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "290",
       "year": null,
       "body": null,
@@ -14573,9 +14873,29 @@
     },
     {
       "make": "Citroën",
+      "model": "290",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "5 Cv",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "743",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -14623,6 +14943,16 @@
     },
     {
       "make": "Citroën",
+      "model": "Ak",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "Allied",
       "year": null,
       "body": null,
@@ -14644,6 +14974,16 @@
     {
       "make": "Citroën",
       "model": "Ami 6",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "Ami 8",
       "year": null,
       "body": "sedan",
       "engine": null,
@@ -14693,6 +15033,16 @@
     },
     {
       "make": "Citroën",
+      "model": "Aycd Acadiane",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "Az 2CV",
       "year": null,
       "body": "sedan",
@@ -14706,6 +15056,16 @@
       "model": "Az A2",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "Azu 2CV",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -14746,6 +15106,16 @@
       "model": "B14G",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "Berlingo 1.9D",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -15573,6 +15943,26 @@
     },
     {
       "make": "Citroën",
+      "model": "Bx 14 Re",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "Bx 16V",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "BX",
       "year": null,
       "body": "hatchback",
@@ -15586,6 +15976,16 @@
       "model": "C 35",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "C Crosser",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -15660,16 +16060,6 @@
       "fuel": null,
       "transmission": null,
       "trim": "1.6 HDI 92HP M/T SHINE"
-    },
-    {
-      "make": "Citroën",
-      "model": "C-Crosser",
-      "year": null,
-      "body": "hatchback",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
     },
     {
       "make": "Citroën",
@@ -15776,6 +16166,16 @@
       "model": "C3 Pluriel",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "C3-1",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -18033,6 +18433,16 @@
     },
     {
       "make": "Citroën",
+      "model": "CX20RE",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "Dethleffs",
       "year": null,
       "body": "hatchback",
@@ -18113,6 +18523,16 @@
     },
     {
       "make": "Citroën",
+      "model": "Dyane 6-400",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "Dyane",
       "year": null,
       "body": "hatchback",
@@ -18173,7 +18593,7 @@
     },
     {
       "make": "Citroën",
-      "model": "Ë-Jumper",
+      "model": "E.jumper",
       "year": null,
       "body": null,
       "engine": null,
@@ -18273,6 +18693,16 @@
     },
     {
       "make": "Citroën",
+      "model": "Hy 72",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "HY",
       "year": null,
       "body": null,
@@ -18293,7 +18723,27 @@
     },
     {
       "make": "Citroën",
+      "model": "Hymer",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "I D",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "Id 19 P",
       "year": null,
       "body": "sedan",
       "engine": null,
@@ -18416,6 +18866,16 @@
       "model": "Nemo",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "Nuevo C3 Aircross Hybr",
+      "year": null,
+      "body": "suv",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -18713,6 +19173,16 @@
     },
     {
       "make": "Citroën",
+      "model": "Sun Living",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "Traction",
       "year": null,
       "body": "sedan",
@@ -18726,6 +19196,16 @@
       "model": "U23",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "Visa Club",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -19353,6 +19833,16 @@
     },
     {
       "make": "Fiat",
+      "model": "1010",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "102",
       "year": null,
       "body": "hatchback",
@@ -19384,6 +19874,46 @@
     {
       "make": "Fiat",
       "model": "1200",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "124 Bc",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "124 Special",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "124 Spider 1800",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "124 Spider 2000",
       "year": null,
       "body": "convertible",
       "engine": null,
@@ -19823,7 +20353,27 @@
     },
     {
       "make": "Fiat",
+      "model": "230 Cemac",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "230 L",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "230 Rotec 590",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -19873,6 +20423,16 @@
     },
     {
       "make": "Fiat",
+      "model": "230L",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "238",
       "year": null,
       "body": null,
@@ -19886,6 +20446,16 @@
       "model": "244",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "244",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -19913,6 +20483,16 @@
     },
     {
       "make": "Fiat",
+      "model": "280-Weinsberg",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "280",
       "year": null,
       "body": null,
@@ -19924,6 +20504,26 @@
     {
       "make": "Fiat",
       "model": "280",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "290 L",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "290 Uak",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -20003,7 +20603,37 @@
     },
     {
       "make": "Fiat",
+      "model": "500 Giardiniera",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "500 L Berlina",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "500 L",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "500 Lounge",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -20016,6 +20646,16 @@
       "model": "500 X",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "500-110F",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -20283,6 +20923,16 @@
     },
     {
       "make": "Fiat",
+      "model": "503",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "508",
       "year": null,
       "body": "sedan",
@@ -20373,6 +21023,16 @@
     },
     {
       "make": "Fiat",
+      "model": "850 S",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "850",
       "year": null,
       "body": "coupe",
@@ -20394,6 +21054,16 @@
     {
       "make": "Fiat",
       "model": "A 5421",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "A 5881",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -20494,6 +21164,26 @@
     {
       "make": "Fiat",
       "model": "Adria",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Adria",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Adriatik",
       "year": null,
       "body": null,
       "engine": null,
@@ -20783,7 +21473,27 @@
     },
     {
       "make": "Fiat",
+      "model": "Alfa Spider",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Argenta",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Arto 69",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -20823,6 +21533,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Auto-Roller 15",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Auto-Roller",
       "year": null,
       "body": "hatchback",
@@ -20836,6 +21556,16 @@
       "model": "Auto",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Autoroller Garage P",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -20864,6 +21594,16 @@
     {
       "make": "Fiat",
       "model": "B 524",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "B544/BC544",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -20973,6 +21713,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Burstner T585",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Burstner",
       "year": null,
       "body": null,
@@ -21013,9 +21763,29 @@
     },
     {
       "make": "Fiat",
+      "model": "Carioca 15P",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Carthago",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Challenger 141",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -21073,6 +21843,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Concorde",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Coral",
       "year": null,
       "body": "hatchback",
@@ -21103,7 +21883,37 @@
     },
     {
       "make": "Fiat",
+      "model": "Cs 544",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Cs 544K",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Dethleffs A5881",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Dethleffs T 5841",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -21943,6 +22753,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Eg/Df 001",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Egea Hatchback",
       "year": null,
       "body": null,
@@ -22614,6 +23434,26 @@
     {
       "make": "Fiat",
       "model": "Eura Mobil",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Euramobil",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Explorer Z",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -23803,6 +24643,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Frankia",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Freemont",
       "year": null,
       "body": "hatchback",
@@ -23826,6 +24676,26 @@
       "model": "Fullback",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Genesis",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Gigant 600",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -23863,7 +24733,37 @@
     },
     {
       "make": "Fiat",
+      "model": "Granduca 64",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Granduca 67",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Granduca Garage",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Granduca",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -23893,9 +24793,39 @@
     },
     {
       "make": "Fiat",
+      "model": "Hobby 690 Ges",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Hobby",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Hobby",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Home-Car",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -23923,7 +24853,47 @@
     },
     {
       "make": "Fiat",
+      "model": "Hymer B644",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Hymer Camp 544",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Hymer Cs 544",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Hymer CS544K",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Hymer-Mobil",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -23953,6 +24923,16 @@
     },
     {
       "make": "Fiat",
+      "model": "I 5841",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Idea",
       "year": null,
       "body": "mpv",
@@ -23964,6 +24944,16 @@
     {
       "make": "Fiat",
       "model": "Joint",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Knaus Traveller",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -23994,6 +24984,26 @@
     {
       "make": "Fiat",
       "model": "Lancia Ypsilon",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Liberty 641/A",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Liberty 662 Ti",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -24443,6 +25453,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Mageo",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Marea",
       "year": null,
       "body": "sedan",
@@ -24833,7 +25853,37 @@
     },
     {
       "make": "Fiat",
+      "model": "Moncayo",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Mooveo",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Multipla",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Oklahoma",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -24853,7 +25903,27 @@
     },
     {
       "make": "Fiat",
+      "model": "P200",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "P210",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "P600",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -25336,6 +26406,16 @@
       "model": "Pilote",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Pilote",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -26213,6 +27293,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Rapido AF5",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Rapido",
       "year": null,
       "body": null,
@@ -26264,6 +27354,16 @@
     {
       "make": "Fiat",
       "model": "Riviera GT",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Roadcar 600",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -26853,6 +27953,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Spider 850",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Spider",
       "year": null,
       "body": "convertible",
@@ -26893,6 +28003,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Sunlight A72",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Sunlight",
       "year": null,
       "body": null,
@@ -26923,6 +28043,16 @@
     },
     {
       "make": "Fiat",
+      "model": "T 605",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "T 615",
       "year": null,
       "body": "hatchback",
@@ -26933,7 +28063,37 @@
     },
     {
       "make": "Fiat",
+      "model": "T 6501 B",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "T 6541",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "T585",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "T615",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -28303,6 +29463,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Traveller",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Trigano FI1",
       "year": null,
       "body": "hatchback",
@@ -28316,6 +29486,16 @@
       "model": "Trigano",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Ts 6249",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -29193,6 +30373,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Weinsberg Meteor 580",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Weinsberg",
       "year": null,
       "body": "hatchback",
@@ -29216,6 +30406,16 @@
       "model": "X1/9",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Zehf",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -29303,6 +30503,16 @@
     },
     {
       "make": "Ford",
+      "model": "2 D",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "20 M",
       "year": null,
       "body": "sedan",
@@ -29316,6 +30526,16 @@
       "model": "26M",
       "year": null,
       "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "3 Window",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -29426,6 +30646,26 @@
       "model": "91A",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "A Ford Roadster",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "A Ford Tudor",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -29563,6 +30803,16 @@
     },
     {
       "make": "Ford",
+      "model": "B-Roadster",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "B",
       "year": null,
       "body": "sedan",
@@ -29604,6 +30854,16 @@
     {
       "make": "Ford",
       "model": "Benimar",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Bronco 2",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -29773,6 +31033,16 @@
     },
     {
       "make": "Ford",
+      "model": "Cabriolet",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Capri",
       "year": null,
       "body": "coupe",
@@ -29873,6 +31143,26 @@
     },
     {
       "make": "Ford",
+      "model": "Consul Corsair",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Consul Cortina 1500",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Consul",
       "year": null,
       "body": "sedan",
@@ -29894,6 +31184,16 @@
     {
       "make": "Ford",
       "model": "Corsair",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Cortina 1600 E",
       "year": null,
       "body": "sedan",
       "engine": null,
@@ -30103,6 +31403,16 @@
     },
     {
       "make": "Ford",
+      "model": "Crestline Sunliner",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Crestline",
       "year": null,
       "body": "sedan",
@@ -30143,6 +31453,16 @@
     },
     {
       "make": "Ford",
+      "model": "Custom 500 Ranch Wagon",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Custom Line",
       "year": null,
       "body": "sedan",
@@ -30173,6 +31493,16 @@
     },
     {
       "make": "Ford",
+      "model": "D0807",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "D0910",
       "year": null,
       "body": null,
@@ -30193,6 +31523,26 @@
     },
     {
       "make": "Ford",
+      "model": "De Luxe Business",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "De Luxe Fordor",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "De Luxe",
       "year": null,
       "body": "convertible",
@@ -30206,6 +31556,16 @@
       "model": "Deluxe V8",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "E-150",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -30253,6 +31613,16 @@
     },
     {
       "make": "Ford",
+      "model": "E-450",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "E150",
       "year": null,
       "body": "hatchback",
@@ -30264,6 +31634,26 @@
     {
       "make": "Ford",
       "model": "E250",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Econoline 200",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Econoline E250",
       "year": null,
       "body": null,
       "engine": null,
@@ -30373,9 +31763,29 @@
     },
     {
       "make": "Ford",
+      "model": "Escort 1300 GT",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Escort Cosworth",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Escort RS1600",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -31293,6 +32703,26 @@
     },
     {
       "make": "Ford",
+      "model": "F-1",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "F-100 Ranger",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "F-100",
       "year": null,
       "body": null,
@@ -31423,6 +32853,16 @@
     },
     {
       "make": "Ford",
+      "model": "F1 Pick-Up",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "F1",
       "year": null,
       "body": null,
@@ -31434,6 +32874,46 @@
     {
       "make": "Ford",
       "model": "F10",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "F100 Pickup",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "F150 Raptor R",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "F150XL",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "F350XLT",
       "year": null,
       "body": null,
       "engine": null,
@@ -31483,6 +32963,26 @@
     },
     {
       "make": "Ford",
+      "model": "Fairlane 500 Victoria",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Fairlane Sunliner",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Fairlane",
       "year": null,
       "body": "sedan",
@@ -31503,6 +33003,26 @@
     },
     {
       "make": "Ford",
+      "model": "Falcon Futura",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Falcon Sprint",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Falcon",
       "year": null,
       "body": "sedan",
@@ -31514,6 +33034,16 @@
     {
       "make": "Ford",
       "model": "Festiva",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Fiesta 1.3I",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -33613,6 +35143,16 @@
     },
     {
       "make": "Ford",
+      "model": "Fmcy",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Focus 4 Kapı",
       "year": null,
       "body": null,
@@ -34695,6 +36235,16 @@
       "make": "Ford",
       "model": "Fordor",
       "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Fordor",
+      "year": null,
       "body": "sedan",
       "engine": null,
       "fuel": null,
@@ -34746,6 +36296,36 @@
       "model": "Fusion",
       "year": null,
       "body": "mpv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Galaxie Country",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Galaxie Fairlane 500",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Galaxie Ltd",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -34816,6 +36396,16 @@
       "model": "Gran Torino",
       "year": null,
       "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Granada 2600 GL",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -35003,6 +36593,16 @@
     },
     {
       "make": "Ford",
+      "model": "Liberty Ti 574",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Lightning",
       "year": null,
       "body": null,
@@ -35023,6 +36623,16 @@
     },
     {
       "make": "Ford",
+      "model": "Lincoln Mark",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Lincoln Town Car",
       "year": null,
       "body": "sedan",
@@ -35034,6 +36644,16 @@
     {
       "make": "Ford",
       "model": "Lincoln",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Ltd Brougham",
       "year": null,
       "body": "sedan",
       "engine": null,
@@ -35126,6 +36746,26 @@
       "model": "Model 40",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Model A Roadster",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Model A Speedster",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -36093,9 +37733,109 @@
     },
     {
       "make": "Ford",
+      "model": "Mustang 289",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang 3",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang 302 Boss",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang Boss 302",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang Cobra/Svt",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang GT Saleen",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Mustang Mach-E",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang MACH1",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang Shelby GT 350",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang Shelby GT 500",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang Shelby GT",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -36203,9 +37943,39 @@
     },
     {
       "make": "Ford",
+      "model": "Pick-Up F1",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Pick-Up",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Pick",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Pickup",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -36246,6 +38016,16 @@
       "model": "Prefect",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Prefekt",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -36295,6 +38075,16 @@
       "make": "Ford",
       "model": "Ranchero GT",
       "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Ranchero GT",
+      "year": null,
       "body": "pickup",
       "engine": null,
       "fuel": null,
@@ -36314,6 +38104,16 @@
     {
       "make": "Ford",
       "model": "Ranchero",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Ranchwagon",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -36363,6 +38163,36 @@
     },
     {
       "make": "Ford",
+      "model": "Rimor ABF61S3",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Rimor AGF77S3",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Rimor ARF50P3",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Rimor ARF54S3",
       "year": null,
       "body": "hatchback",
@@ -36376,6 +38206,26 @@
       "model": "Rimor",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Rimor",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Riviera",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -36553,6 +38403,16 @@
     },
     {
       "make": "Ford",
+      "model": "Sirio 592 P",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Skyliner",
       "year": null,
       "body": "coupe",
@@ -36603,6 +38463,16 @@
     },
     {
       "make": "Ford",
+      "model": "Standard Fordor",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Street Ka",
       "year": null,
       "body": "convertible",
@@ -36643,6 +38513,16 @@
     },
     {
       "make": "Ford",
+      "model": "T350",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Taunus 12M",
       "year": null,
       "body": "sedan",
@@ -36666,6 +38546,16 @@
       "model": "Taunus 17M",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Taunus 2.0L",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -37253,6 +39143,16 @@
     },
     {
       "make": "Ford",
+      "model": "Tessoro 481",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Thames",
       "year": null,
       "body": null,
@@ -37263,9 +39163,39 @@
     },
     {
       "make": "Ford",
+      "model": "Thunderbird Super",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "Thunderbird",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Torino 500",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Torino Cobra",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -37356,6 +39286,26 @@
       "model": "Town",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Transit / Tourneo Connect",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Transit 190EF",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -38113,7 +40063,7 @@
     },
     {
       "make": "Ford",
-      "model": "Transit/Tourneo Connect",
+      "model": "Transit TT",
       "year": null,
       "body": null,
       "engine": null,
@@ -39634,6 +41584,16 @@
     {
       "make": "Ford",
       "model": "Welcome",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Westfalia Nugget",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -41653,7 +43613,7 @@
     },
     {
       "make": "Honda",
-      "model": "Africa-Twin",
+      "model": "Africa Twin",
       "year": null,
       "body": null,
       "engine": null,
@@ -41686,6 +43646,16 @@
       "model": "Airwave",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "Amigo",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -42203,6 +44173,26 @@
     },
     {
       "make": "Honda",
+      "model": "CB1000GT",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CB1000R-9",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CB1000R",
       "year": null,
       "body": null,
@@ -42303,6 +44293,16 @@
     },
     {
       "make": "Honda",
+      "model": "CB1100SF X11",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CB1100SF",
       "year": null,
       "body": null,
@@ -42364,6 +44364,16 @@
     {
       "make": "Honda",
       "model": "CB125T",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CB1300 Super Four",
       "year": null,
       "body": null,
       "engine": null,
@@ -43013,6 +45023,16 @@
     },
     {
       "make": "Honda",
+      "model": "CB750G",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CB750K",
       "year": null,
       "body": null,
@@ -43363,6 +45383,16 @@
     },
     {
       "make": "Honda",
+      "model": "CBR1000RR-5",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CBR1000RR-SC57",
       "year": null,
       "body": null,
@@ -43403,6 +45433,26 @@
     },
     {
       "make": "Honda",
+      "model": "CBR1000S2",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CBR1000SA",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CBR1000SP",
       "year": null,
       "body": null,
@@ -43433,7 +45483,17 @@
     },
     {
       "make": "Honda",
-      "model": "CBR1100XX-SC35",
+      "model": "CBR1100X-4",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CBR1100XX SC35",
       "year": null,
       "body": null,
       "engine": null,
@@ -43444,6 +45504,16 @@
     {
       "make": "Honda",
       "model": "CBR1100XX",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CBR1100XXV",
       "year": null,
       "body": null,
       "engine": null,
@@ -43683,6 +45753,16 @@
     },
     {
       "make": "Honda",
+      "model": "CBR600FY",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CBR600R",
       "year": null,
       "body": null,
@@ -43804,6 +45884,16 @@
     {
       "make": "Honda",
       "model": "CBR900RR Fireblade",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CBR900RR-3",
       "year": null,
       "body": null,
       "engine": null,
@@ -44106,6 +46196,16 @@
       "model": "CG125B",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CG2",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -46403,6 +48503,16 @@
     },
     {
       "make": "Honda",
+      "model": "Cr-V Exl",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "Cr-V Touring",
       "year": null,
       "body": "hatchback",
@@ -46644,6 +48754,16 @@
     {
       "make": "Honda",
       "model": "CRF1000D2",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CRF1000L Africa Twin",
       "year": null,
       "body": null,
       "engine": null,
@@ -47123,6 +49243,16 @@
     },
     {
       "make": "Honda",
+      "model": "CX400C",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CX400E",
       "year": null,
       "body": null,
@@ -47403,6 +49533,16 @@
     },
     {
       "make": "Honda",
+      "model": "E NP1",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "E:N1",
       "year": null,
       "body": "hatchback",
@@ -47464,6 +49604,16 @@
     {
       "make": "Honda",
       "model": "Eve Pax",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "EVF9018",
       "year": null,
       "body": null,
       "engine": null,
@@ -47576,6 +49726,16 @@
       "model": "Fit",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "FJS400A",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -48053,6 +50213,16 @@
     },
     {
       "make": "Honda",
+      "model": "GL1500C Valkyrie",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "GL1500C",
       "year": null,
       "body": null,
@@ -48133,7 +50303,27 @@
     },
     {
       "make": "Honda",
+      "model": "GL1800 Gold Wing",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "GL1800 Goldwing",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "GL1800 Trike",
       "year": null,
       "body": null,
       "engine": null,
@@ -48533,6 +50723,16 @@
     },
     {
       "make": "Honda",
+      "model": "HR",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "Insight Touring",
       "year": null,
       "body": "hatchback",
@@ -48636,6 +50836,16 @@
       "model": "Jazz",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "JC05",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -48804,6 +51014,16 @@
     {
       "make": "Honda",
       "model": "MB50",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "MBX125F",
       "year": null,
       "body": null,
       "engine": null,
@@ -49453,6 +51673,16 @@
     },
     {
       "make": "Honda",
+      "model": "NM4-02",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "NPS50",
       "year": null,
       "body": null,
@@ -49923,6 +52153,16 @@
     },
     {
       "make": "Honda",
+      "model": "NT700V/VA",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "NT700V",
       "year": null,
       "body": null,
@@ -50144,6 +52384,16 @@
     {
       "make": "Honda",
       "model": "PA50",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "Pacific Coast",
       "year": null,
       "body": null,
       "engine": null,
@@ -50446,16 +52696,6 @@
       "model": "Prelude",
       "year": null,
       "body": "coupe",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Honda",
-      "model": "Prologue EX",
-      "year": null,
-      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -51123,7 +53363,7 @@
     },
     {
       "make": "Honda",
-      "model": "Shadow VT1100C2",
+      "model": "Shadow-VT1100C2",
       "year": null,
       "body": null,
       "engine": null,
@@ -51783,6 +54023,16 @@
     },
     {
       "make": "Honda",
+      "model": "V-HH4",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "V45 Magna",
       "year": null,
       "body": null,
@@ -51846,6 +54096,16 @@
       "model": "Valkyrie",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "Vamos",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -52753,6 +55013,16 @@
     },
     {
       "make": "Honda",
+      "model": "VT750CA",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "VT750CS",
       "year": null,
       "body": null,
@@ -52944,6 +55214,16 @@
     {
       "make": "Honda",
       "model": "VTX1800C",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "VTX1800R",
       "year": null,
       "body": null,
       "engine": null,
@@ -56213,6 +58493,16 @@
     },
     {
       "make": "Hyundai",
+      "model": "H350",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
       "model": "Iload",
       "year": null,
       "body": null,
@@ -57363,6 +59653,16 @@
     },
     {
       "make": "Hyundai",
+      "model": "Santa FE Se",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
       "model": "Santa Fe",
       "year": null,
       "body": null,
@@ -57633,6 +59933,26 @@
     },
     {
       "make": "Hyundai",
+      "model": "Tuscon",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
+      "model": "Universe",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
       "model": "Veloster",
       "year": null,
       "body": "hatchback",
@@ -57656,6 +59976,16 @@
       "model": "Veracruz",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
+      "model": "XG 350",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -57856,6 +60186,16 @@
       "model": "G37",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Infiniti",
+      "model": "G37S",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -58393,16 +60733,6 @@
     },
     {
       "make": "Isuzu",
-      "model": "D Max",
-      "year": null,
-      "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Isuzu",
       "model": "D-Max N60",
       "year": null,
       "body": null,
@@ -58414,6 +60744,16 @@
     {
       "make": "Isuzu",
       "model": "D-Max Pickup",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Isuzu",
+      "model": "D-Max",
       "year": null,
       "body": null,
       "engine": null,
@@ -61863,6 +64203,16 @@
     },
     {
       "make": "Land Rover",
+      "model": "Minerva",
+      "year": null,
+      "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Land Rover",
       "model": "Range Rover Evoque Convertible",
       "year": null,
       "body": null,
@@ -62154,6 +64504,16 @@
     {
       "make": "Land Rover",
       "model": "Santana 88",
+      "year": null,
+      "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Land Rover",
+      "model": "Serie",
       "year": null,
       "body": "suv",
       "engine": null,
@@ -62783,6 +65143,16 @@
     },
     {
       "make": "Lexus",
+      "model": "SC300",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Lexus",
       "model": "TX",
       "year": null,
       "body": "suv",
@@ -62954,6 +65324,16 @@
     {
       "make": "Mazda",
       "model": "Axela",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mazda",
+      "model": "Az-3",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -63893,6 +66273,16 @@
     },
     {
       "make": "Mazda",
+      "model": "Miata MX-5 U9",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mazda",
       "model": "Millenia",
       "year": null,
       "body": "hatchback",
@@ -64033,6 +66423,16 @@
     },
     {
       "make": "Mazda",
+      "model": "R100",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mazda",
       "model": "Roadster",
       "year": null,
       "body": "convertible",
@@ -64086,6 +66486,16 @@
       "model": "RX-8",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mazda",
+      "model": "Savanna",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -64533,6 +66943,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "1229",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "123 C",
       "year": null,
       "body": "coupe",
@@ -64583,6 +67003,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "123C",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "124 C",
       "year": null,
       "body": "coupe",
@@ -64616,6 +67046,16 @@
       "model": "126 C",
       "year": null,
       "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "129",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -65263,7 +67703,27 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "190SL Roadster",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "1922",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "1926",
       "year": null,
       "body": null,
       "engine": null,
@@ -65286,6 +67746,16 @@
       "model": "1931",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "200 CLK",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -65533,6 +68003,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "209",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "210 D",
       "year": null,
       "body": null,
@@ -65546,6 +68026,16 @@
       "model": "210 D",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "210 K",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -65673,6 +68163,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "215",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "216",
       "year": null,
       "body": null,
@@ -65774,6 +68274,16 @@
     {
       "make": "Mercedes-Benz",
       "model": "220 SE",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "220 Seb/C",
       "year": null,
       "body": "convertible",
       "engine": null,
@@ -66313,6 +68823,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "2640",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "2641",
       "year": null,
       "body": null,
@@ -66433,6 +68953,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "280 SL/8",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "280 SL",
       "year": null,
       "body": "convertible",
@@ -66466,6 +68996,16 @@
       "model": "280",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "280SL/8",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -66683,7 +69223,7 @@
     },
     {
       "make": "Mercedes-Benz",
-      "model": "300 SL Roadster",
+      "model": "300 SL 24",
       "year": null,
       "body": "convertible",
       "engine": null,
@@ -66693,7 +69233,7 @@
     },
     {
       "make": "Mercedes-Benz",
-      "model": "300 SL-24",
+      "model": "300 SL Roadster",
       "year": null,
       "body": "convertible",
       "engine": null,
@@ -66786,6 +69326,26 @@
       "model": "3000",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "300DT",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "300TD Turbo",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -67153,9 +69713,39 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "320 SL",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "320 Te",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "320",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "350 Gd Turbo",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -67673,6 +70263,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "463 D",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "463",
       "year": null,
       "body": null,
@@ -67746,6 +70346,16 @@
       "model": "500",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "507",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -67843,6 +70453,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "519",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "560 SEC",
       "year": null,
       "body": "coupe",
@@ -67856,6 +70476,16 @@
       "model": "560 SEL",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "560 SL Roadster",
+      "year": null,
+      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -67933,6 +70563,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "601 D 28",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "608",
       "year": null,
       "body": null,
@@ -67993,6 +70633,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "614 D",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "614",
       "year": null,
       "body": null,
@@ -68016,6 +70666,16 @@
       "model": "616 CDI",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "616 CDI",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -68053,6 +70713,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "639",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "709 D",
       "year": null,
       "body": null,
@@ -68064,6 +70734,16 @@
     {
       "make": "Mercedes-Benz",
       "model": "709",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "709D-Ka",
       "year": null,
       "body": null,
       "engine": null,
@@ -68113,6 +70793,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "811D",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "812",
       "year": null,
       "body": null,
@@ -68144,6 +70834,16 @@
     {
       "make": "Mercedes-Benz",
       "model": "814 D",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "814 Da",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -68194,6 +70894,16 @@
     {
       "make": "Mercedes-Benz",
       "model": "818",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "822",
       "year": null,
       "body": null,
       "engine": null,
@@ -68313,6 +71023,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Acros",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "Actros",
       "year": null,
       "body": null,
@@ -68383,6 +71103,26 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Arca",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Arm",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "Arocs",
       "year": null,
       "body": null,
@@ -68413,9 +71153,29 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Atomic",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "Automet",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Autostar",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -68433,7 +71193,27 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Axor",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "B-Class",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Ba",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -69493,9 +72273,9 @@
     },
     {
       "make": "Mercedes-Benz",
-      "model": "Cabriolet",
+      "model": "Capacity",
       "year": null,
-      "body": "hatchback",
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -69623,6 +72403,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Concorde",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "Conecto",
       "year": null,
       "body": null,
@@ -69643,9 +72433,29 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Cs",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "D",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Daimler",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -70923,6 +73733,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "E12",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "E15",
       "year": null,
       "body": null,
@@ -71333,6 +74153,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Karmann",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "Kerstner",
       "year": null,
       "body": null,
@@ -71586,6 +74416,16 @@
       "model": "Lak",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Levoyageur",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -71913,6 +74753,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "O614D",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "O815D",
       "year": null,
       "body": null,
@@ -71944,6 +74794,16 @@
     {
       "make": "Mercedes-Benz",
       "model": "Oh",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "OH1628L",
       "year": null,
       "body": null,
       "engine": null,
@@ -72043,6 +74903,26 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Sel",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Skl",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "SL",
       "year": null,
       "body": "roadster",
@@ -72093,6 +74973,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Smart",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "Sprinter",
       "year": null,
       "body": null,
@@ -72113,6 +75003,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Sunset",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "T-Class",
       "year": null,
       "body": null,
@@ -72124,6 +75024,16 @@
     {
       "make": "Mercedes-Benz",
       "model": "T-Class",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Tabbert",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -72154,6 +75064,16 @@
     {
       "make": "Mercedes-Benz",
       "model": "Travego",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "U400",
       "year": null,
       "body": null,
       "engine": null,
@@ -72225,6 +75145,16 @@
       "make": "Mercedes-Benz",
       "model": "Vaneo",
       "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Vaneo",
+      "year": null,
       "body": "hatchback",
       "engine": null,
       "fuel": null,
@@ -72286,6 +75216,16 @@
       "model": "Westfalia",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "Westfalia",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -73573,6 +76513,16 @@
     },
     {
       "make": "Mini",
+      "model": "1000 Mayfair Automatic",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mini",
       "model": "1000 Special Deluxe",
       "year": null,
       "body": "hatchback",
@@ -73933,6 +76883,16 @@
     },
     {
       "make": "Mini",
+      "model": "Mk",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mini",
       "model": "Paceman",
       "year": null,
       "body": "suv",
@@ -74203,9 +77163,29 @@
     },
     {
       "make": "Mitsubishi",
+      "model": "Emeraude",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
       "model": "Endeavor",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
+      "model": "Evolution",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -74394,6 +77374,16 @@
     {
       "make": "Mitsubishi",
       "model": "L400",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
+      "model": "Lancer Evo 4",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -74933,6 +77923,16 @@
     },
     {
       "make": "Nissan",
+      "model": "300 ZX",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
       "model": "300",
       "year": null,
       "body": "hatchback",
@@ -74944,6 +77944,16 @@
     {
       "make": "Nissan",
       "model": "300ZX",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
+      "model": "350 GT",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -75463,6 +78473,16 @@
     },
     {
       "make": "Nissan",
+      "model": "Aura",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
       "model": "Avenir",
       "year": null,
       "body": "hatchback",
@@ -75623,6 +78643,16 @@
     },
     {
       "make": "Nissan",
+      "model": "Datsun",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
       "model": "Diesel",
       "year": null,
       "body": null,
@@ -75643,6 +78673,16 @@
     },
     {
       "make": "Nissan",
+      "model": "E-FK10",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
       "model": "E-NV200",
       "year": null,
       "body": null,
@@ -75654,6 +78694,16 @@
     {
       "make": "Nissan",
       "model": "Elgrand",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
+      "model": "Fairlady Z Version",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -75713,6 +78763,16 @@
     },
     {
       "make": "Nissan",
+      "model": "Gf-S15",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
       "model": "Gloria",
       "year": null,
       "body": "sedan",
@@ -75733,6 +78793,16 @@
     },
     {
       "make": "Nissan",
+      "model": "Infiniti G35",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
       "model": "Infiniti",
       "year": null,
       "body": "hatchback",
@@ -75746,6 +78816,16 @@
       "model": "Interstar",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
+      "model": "Juke SL",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -76036,6 +79116,16 @@
       "model": "Laurel",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
+      "model": "Leaf S",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -77473,6 +80563,16 @@
     },
     {
       "make": "Nissan",
+      "model": "Pathfinder Se",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
       "model": "Pathfinder",
       "year": null,
       "body": "hatchback",
@@ -77523,7 +80623,7 @@
     },
     {
       "make": "Nissan",
-      "model": "Pick-Up",
+      "model": "Pick Up",
       "year": null,
       "body": null,
       "engine": null,
@@ -78483,6 +81583,16 @@
     },
     {
       "make": "Nissan",
+      "model": "S15",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
       "model": "Safari",
       "year": null,
       "body": "hatchback",
@@ -78543,7 +81653,27 @@
     },
     {
       "make": "Nissan",
-      "model": "Skyline GT R",
+      "model": "Skyline GT-R",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
+      "model": "Skyline Gtr",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
+      "model": "Skyline R32",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -78584,6 +81714,16 @@
     {
       "make": "Nissan",
       "model": "Sunny",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
+      "model": "Sx 200",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -78986,6 +82126,16 @@
       "model": "Antara",
       "year": null,
       "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Ascona -CC",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -81323,6 +84473,16 @@
     },
     {
       "make": "Opel",
+      "model": "Commodore A",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
       "model": "Commodore",
       "year": null,
       "body": "sedan",
@@ -82763,6 +85923,16 @@
     },
     {
       "make": "Opel",
+      "model": "Frontera Sport",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
       "model": "Frontera",
       "year": null,
       "body": "suv",
@@ -82776,6 +85946,16 @@
       "model": "Grandland",
       "year": null,
       "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "GT-L",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -82966,6 +86146,46 @@
       "model": "Karl",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Manta 1900",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Manta A",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Manta B",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Manta Gsi Exclusive",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -83246,6 +86466,26 @@
       "model": "Monza",
       "year": null,
       "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Movano Jpm",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Movano Multicab",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -83833,6 +87073,16 @@
     },
     {
       "make": "Opel",
+      "model": "Rekord 1700",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
       "model": "Rekord",
       "year": null,
       "body": "sedan",
@@ -83856,6 +87106,16 @@
       "model": "Rocks-E",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "S",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -83896,6 +87156,16 @@
       "model": "Speedster",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Super Six",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -85104,6 +88374,26 @@
     {
       "make": "Peugeot",
       "model": "104",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
+      "model": "104GL",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
+      "model": "106 Xsi",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -86673,6 +89963,16 @@
     },
     {
       "make": "Peugeot",
+      "model": "207 CC",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "207",
       "year": null,
       "body": "hatchback",
@@ -86813,7 +90113,27 @@
     },
     {
       "make": "Peugeot",
+      "model": "230 L",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "230L",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
+      "model": "280 L",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -88953,6 +92273,16 @@
     },
     {
       "make": "Peugeot",
+      "model": "406 V6",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "406",
       "year": null,
       "body": "sedan",
@@ -89723,6 +93053,16 @@
     },
     {
       "make": "Peugeot",
+      "model": "Adriatik",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "Auto Sleepers",
       "year": null,
       "body": null,
@@ -89896,6 +93236,16 @@
       "model": "E-5008",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
+      "model": "E-Ludix",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -90933,7 +94283,27 @@
     },
     {
       "make": "Peugeot",
+      "model": "Pilote",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "Pm-01",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
+      "model": "Pulsion Evo",
       "year": null,
       "body": null,
       "engine": null,
@@ -91233,6 +94603,16 @@
     },
     {
       "make": "Peugeot",
+      "model": "Vivaro",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "Vogue",
       "year": null,
       "body": null,
@@ -91403,6 +94783,16 @@
     },
     {
       "make": "Renault",
+      "model": "4 Tl",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
       "model": "4",
       "year": null,
       "body": "hatchback",
@@ -91416,6 +94806,16 @@
       "model": "4CV",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "5 Alpine Turbo",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -91506,6 +94906,16 @@
       "model": "Alliance",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "Alpine V6 GT",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -93133,6 +96543,16 @@
     },
     {
       "make": "Renault",
+      "model": "D210",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
       "model": "D280",
       "year": null,
       "body": null,
@@ -93216,6 +96636,16 @@
       "model": "Extra",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "F",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -98213,6 +101643,16 @@
     },
     {
       "make": "Renault",
+      "model": "R05",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
       "model": "R11",
       "year": 1983,
       "body": null,
@@ -98987,6 +102427,16 @@
       "year": 1990,
       "body": null,
       "engine": "1.6 L",
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "R15",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
       "fuel": null,
       "transmission": null,
       "trim": null
@@ -99386,6 +102836,16 @@
       "model": "R365",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "R4 Clan",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -99993,9 +103453,39 @@
     },
     {
       "make": "Renault",
+      "model": "Rimor ADR98F3",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
       "model": "Rodeo",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "Rt 6204",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "Rt 6614",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -100013,7 +103503,27 @@
     },
     {
       "make": "Renault",
+      "model": "Rt 7014",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
       "model": "S130-11",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "S135",
       "year": null,
       "body": null,
       "engine": null,
@@ -100613,6 +104123,16 @@
     },
     {
       "make": "Renault",
+      "model": "T520",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
       "model": "Talisman",
       "year": null,
       "body": null,
@@ -100822,6 +104342,16 @@
       "trim": null
     },
     {
+      "make": "SEAT",
+      "model": "850 D",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
       "make": "Seat",
       "model": "Alhambra",
       "year": null,
@@ -100972,6 +104502,16 @@
       "trim": null
     },
     {
+      "make": "SEAT",
+      "model": "Ibiza 1",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
       "make": "Seat",
       "model": "Ibiza",
       "year": null,
@@ -101026,6 +104566,16 @@
       "model": "Inca",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "SEAT",
+      "model": "Leon Sporttourer",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -103905,7 +107455,7 @@
       "make": "Smart",
       "model": "Cabrio",
       "year": null,
-      "body": "convertible",
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -104114,6 +107664,16 @@
     {
       "make": "Smart",
       "model": "Roadster Brabus",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Smart",
+      "model": "Roadster-Coupe Brabus",
       "year": null,
       "body": "convertible",
       "engine": null,
@@ -104453,6 +108013,16 @@
     },
     {
       "make": "Subaru",
+      "model": "1600",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Subaru",
       "model": "1800",
       "year": null,
       "body": null,
@@ -104693,6 +108263,16 @@
     },
     {
       "make": "Subaru",
+      "model": "G3X Justy",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Subaru",
       "model": "Gft",
       "year": null,
       "body": "hatchback",
@@ -104724,6 +108304,16 @@
     {
       "make": "Subaru",
       "model": "Gsr",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Subaru",
+      "model": "Impreza Outback",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -104793,6 +108383,16 @@
     },
     {
       "make": "Subaru",
+      "model": "Outback Limited",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Subaru",
       "model": "Outback",
       "year": null,
       "body": null,
@@ -104823,9 +108423,29 @@
     },
     {
       "make": "Subaru",
+      "model": "Rex",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Subaru",
       "model": "RX Turbo",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Subaru",
+      "model": "Sambar",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -104914,6 +108534,16 @@
     {
       "make": "Subaru",
       "model": "Wagon",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Subaru",
+      "model": "Wrx Sti Type Ra",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -105083,6 +108713,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "Ae",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "AE50",
       "year": null,
       "body": null,
@@ -105184,6 +108824,16 @@
     {
       "make": "Suzuki",
       "model": "AN400A",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "AN400Z",
       "year": null,
       "body": null,
       "engine": null,
@@ -105494,6 +109144,16 @@
     {
       "make": "Suzuki",
       "model": "Djebel 250",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "Djebel",
       "year": null,
       "body": null,
       "engine": null,
@@ -105883,6 +109543,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "DR650S",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "DR650SE",
       "year": null,
       "body": null,
@@ -105924,6 +109594,16 @@
     {
       "make": "Suzuki",
       "model": "DR800S",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "DS250",
       "year": null,
       "body": null,
       "engine": null,
@@ -106034,6 +109714,16 @@
     {
       "make": "Suzuki",
       "model": "FR80",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "Freewind",
       "year": null,
       "body": null,
       "engine": null,
@@ -106164,6 +109854,16 @@
     {
       "make": "Suzuki",
       "model": "GN250F",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "GN400",
       "year": null,
       "body": null,
       "engine": null,
@@ -106393,6 +110093,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "GS550E",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "GS650",
       "year": null,
       "body": null,
@@ -106433,6 +110143,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "GSF1200 Bandit",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "GSF1200",
       "year": null,
       "body": null,
@@ -106454,6 +110174,16 @@
     {
       "make": "Suzuki",
       "model": "GSF1200K1",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "GSF1200N",
       "year": null,
       "body": null,
       "engine": null,
@@ -106583,6 +110313,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "GSF600SU",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "GSF600U",
       "year": null,
       "body": null,
@@ -106644,6 +110384,16 @@
     {
       "make": "Suzuki",
       "model": "GSF650SA",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "GSF650SU",
       "year": null,
       "body": null,
       "engine": null,
@@ -106803,6 +110553,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "GSX-R1000K2",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "GSX-R1000K7",
       "year": null,
       "body": null,
@@ -106903,6 +110663,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "GSX-R750U1",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "GSX-R750U2",
       "year": null,
       "body": null,
@@ -106934,6 +110704,16 @@
     {
       "make": "Suzuki",
       "model": "GSX-S1000F",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "GSX-S1000GT",
       "year": null,
       "body": null,
       "engine": null,
@@ -107073,6 +110853,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "GSX1100S",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "GSX1200",
       "year": null,
       "body": null,
@@ -107154,6 +110944,16 @@
     {
       "make": "Suzuki",
       "model": "GSX1300RA",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "GSX1300RK8",
       "year": null,
       "body": null,
       "engine": null,
@@ -107653,6 +111453,36 @@
     },
     {
       "make": "Suzuki",
+      "model": "Intruder LC1500",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "Intruder M800",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "Intruder Volusia",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "Intruder",
       "year": null,
       "body": null,
@@ -107894,6 +111724,16 @@
     {
       "make": "Suzuki",
       "model": "Nex Crossover",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "NJ42A",
       "year": null,
       "body": null,
       "engine": null,
@@ -108173,6 +112013,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "RMX450Z",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "RMX50",
       "year": null,
       "body": null,
@@ -108274,6 +112124,16 @@
     {
       "make": "Suzuki",
       "model": "Samurai",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "Santana",
       "year": null,
       "body": "convertible",
       "engine": null,
@@ -108426,6 +112286,16 @@
       "model": "Sj",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "SJ40",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -108714,6 +112584,16 @@
     {
       "make": "Suzuki",
       "model": "SV650UA",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "SV650XA",
       "year": null,
       "body": null,
       "engine": null,
@@ -110403,6 +114283,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "UH125G",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "UH200",
       "year": null,
       "body": null,
@@ -110484,6 +114374,16 @@
     {
       "make": "Suzuki",
       "model": "UZ50",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "V-DD51T",
       "year": null,
       "body": null,
       "engine": null,
@@ -111903,6 +115803,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "VS51B",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "VS600",
       "year": null,
       "body": null,
@@ -111983,6 +115893,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "VX51L",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "VX800",
       "year": null,
       "body": null,
@@ -112053,6 +115973,16 @@
     },
     {
       "make": "Suzuki",
+      "model": "VZR1800K6-Yay",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
       "model": "VZR1800N",
       "year": null,
       "body": null,
@@ -112094,6 +116024,16 @@
     {
       "make": "Suzuki",
       "model": "WVA8",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "WVB1",
       "year": null,
       "body": null,
       "engine": null,
@@ -115043,6 +118983,16 @@
     },
     {
       "make": "Toyota",
+      "model": "BJ42",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Blade",
       "year": null,
       "body": "hatchback",
@@ -117103,6 +121053,26 @@
     },
     {
       "make": "Toyota",
+      "model": "Celica GT-S",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Celica Rally",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Celica",
       "year": null,
       "body": "coupe",
@@ -117166,6 +121136,16 @@
       "model": "Commuter",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Corolla AE86",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -119213,6 +123193,16 @@
     },
     {
       "make": "Toyota",
+      "model": "Hilux 2.4D",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Hilux Champ",
       "year": null,
       "body": null,
@@ -121113,6 +125103,16 @@
     },
     {
       "make": "Toyota",
+      "model": "Land Cruiser 250 Td",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Land Cruiser Prado",
       "year": null,
       "body": null,
@@ -121164,6 +125164,26 @@
     {
       "make": "Toyota",
       "model": "Land Cruiser",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Landcruiser 3",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Landcruiser 300",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -121273,6 +125293,16 @@
     },
     {
       "make": "Toyota",
+      "model": "MR2 Roadster Vvti",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "MR2",
       "year": null,
       "body": "convertible",
@@ -121306,6 +125336,16 @@
       "model": "OX4X",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Paseo 1.5I",
+      "year": null,
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -121453,6 +125493,16 @@
     },
     {
       "make": "Toyota",
+      "model": "Probox",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Progres",
       "year": null,
       "body": "hatchback",
@@ -121493,7 +125543,27 @@
     },
     {
       "make": "Toyota",
+      "model": "RAV4 2",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "RAV4 Prime",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "RAV4 Xle",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -122645,6 +126715,16 @@
       "make": "Toyota",
       "model": "Tacoma",
       "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Tacoma",
+      "year": null,
       "body": "hatchback",
       "engine": null,
       "fuel": null,
@@ -122706,6 +126786,16 @@
       "model": "Trueno",
       "year": null,
       "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Tundra C",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -122954,6 +127044,16 @@
     {
       "make": "Toyota",
       "model": "Voxy",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Will Cypha",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -124123,6 +128223,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "23",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "241",
       "year": null,
       "body": "hatchback",
@@ -124154,6 +128264,16 @@
     {
       "make": "Volkswagen",
       "model": "28",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "2DSEDAN 1300-11/2400",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -124583,9 +128703,29 @@
     },
     {
       "make": "Volkswagen",
+      "model": "C0 550",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Cabrio",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Cabriolet 1200",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -125923,6 +130063,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Campingwagen",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Caravelle",
       "year": null,
       "body": null,
@@ -125934,6 +130084,16 @@
     {
       "make": "Volkswagen",
       "model": "Caravelle",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Carthago",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -128313,6 +132473,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Id Polo",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Id. Buzz Cargo",
       "year": null,
       "body": null,
@@ -128393,9 +132563,29 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Id.buzz 4MOTION Lr",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Iltis",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Jetta LS",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -129913,6 +134103,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Karmann Ghia 1200",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Karmann Ghia",
       "year": null,
       "body": "coupe",
@@ -129924,6 +134124,16 @@
     {
       "make": "Volkswagen",
       "model": "Kasten",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Kombiwagen 1600-23/2400",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -129963,7 +134173,37 @@
     },
     {
       "make": "Volkswagen",
+      "model": "LT31",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Lupo",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Meyers Manx",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Passat GL",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -133503,6 +137743,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Sedan",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Sharan",
       "year": null,
       "body": "mpv",
@@ -133534,6 +137784,26 @@
     {
       "make": "Volkswagen",
       "model": "T-Sportr T32 Comm Pro",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "T4 Multivan",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "T5 4MOTION",
       "year": null,
       "body": null,
       "engine": null,
@@ -133576,6 +137846,16 @@
       "model": "Tayron",
       "year": null,
       "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Tge",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -135503,6 +139783,26 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Typ 18",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Typ 21",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Type 3",
       "year": null,
       "body": "sedan",
@@ -135524,6 +139824,16 @@
     {
       "make": "Volkswagen",
       "model": "Vanagon",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Variant 1600",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -135763,6 +140073,26 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Vw 1300 Avkortad",
+      "year": null,
+      "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Westfalia California",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Westfalia",
       "year": null,
       "body": null,
@@ -135784,6 +140114,26 @@
     {
       "make": "Volkswagen",
       "model": "WG2211",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Winnebago Rialta",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "X-Cursion 500 Mq",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -135993,6 +140343,16 @@
     },
     {
       "make": "Volvo",
+      "model": "780 Bertone",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
       "model": "780",
       "year": null,
       "body": "sedan",
@@ -136023,7 +140383,27 @@
     },
     {
       "make": "Volvo",
+      "model": "854-582 T-5R",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
       "model": "8700",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "88",
       "year": null,
       "body": null,
       "engine": null,
@@ -136056,6 +140436,16 @@
       "model": "9500",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "960 Auto",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -136133,7 +140523,27 @@
     },
     {
       "make": "Volvo",
+      "model": "B10",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
       "model": "B10B",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "B10M-4X2-75T",
       "year": null,
       "body": null,
       "engine": null,
@@ -136166,6 +140576,16 @@
       "model": "B12",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "B12",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -136213,7 +140633,27 @@
     },
     {
       "make": "Volvo",
+      "model": "B18",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
       "model": "B57-60",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "B57",
       "year": null,
       "body": null,
       "engine": null,
@@ -136413,6 +140853,16 @@
     },
     {
       "make": "Volvo",
+      "model": "Duet 210",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
       "model": "Duett",
       "year": null,
       "body": "hatchback",
@@ -136454,6 +140904,16 @@
     {
       "make": "Volvo",
       "model": "EX40",
+      "year": null,
+      "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "EX60",
       "year": null,
       "body": "suv",
       "engine": null,
@@ -136803,6 +141263,16 @@
     },
     {
       "make": "Volvo",
+      "model": "FM104",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
       "model": "FM11",
       "year": null,
       "body": null,
@@ -136824,6 +141294,16 @@
     {
       "make": "Volvo",
       "model": "FM13",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "FM64R",
       "year": null,
       "body": null,
       "engine": null,
@@ -136963,6 +141443,16 @@
     },
     {
       "make": "Volvo",
+      "model": "M+V50",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
       "model": "Metago",
       "year": null,
       "body": null,
@@ -137053,9 +141543,29 @@
     },
     {
       "make": "Volvo",
+      "model": "Nl",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
       "model": "P 18",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "P121",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,

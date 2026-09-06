@@ -64,6 +64,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Alfa Romeo",
+    "model": "155 V6 E2",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
     "model": "155",
     "body": "sedan",
     "years": [],
@@ -528,6 +543,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Alfa Romeo",
+    "model": "ALFA164",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
     "model": "Alfasud Sprint",
     "body": "hatchback",
     "years": [],
@@ -678,6 +708,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Alfa Romeo",
+    "model": "Giuletta",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
     "model": "Giulia 1300 Ti",
     "body": "sedan",
     "years": [],
@@ -708,6 +753,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Alfa Romeo",
+    "model": "Giulia 1600 Super",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
     "model": "Giulia 1600",
     "body": "sedan",
     "years": [],
@@ -725,6 +785,51 @@ export const vehicleCatalog=[
     "make": "Alfa Romeo",
     "model": "Giulia GT Junior",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
+    "model": "Giulia GT",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
+    "model": "Giulia Quadrifoglio Verde",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
+    "model": "Giulia Spider Veloce",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -1094,6 +1199,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Alfa Romeo",
+    "model": "GT 1600 Junior",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
+    "model": "GT Junior 1300",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
     "model": "GT Junior 1600",
     "body": "coupe",
     "years": [],
@@ -1155,6 +1290,36 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Alfa Romeo",
     "model": "GTV 2000",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
+    "model": "Gtv 6 2",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Alfa Romeo",
+    "model": "Gtv V6 24V",
     "body": "coupe",
     "years": [],
     "engines": [],
@@ -1439,8 +1604,68 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Audi",
+    "model": "100 LS",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Audi",
+    "model": "100 S4",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Audi",
     "model": "100",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Audi",
+    "model": "100AV.-Quat",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Audi",
+    "model": "200 5T",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -1514,8 +1739,38 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Audi",
+    "model": "80 GL",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Audi",
     "model": "80",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Audi",
+    "model": "89",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -3993,6 +4248,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Audi",
+    "model": "Ad",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Audi",
     "model": "Ai",
     "body": "hatchback",
     "years": [],
@@ -4010,6 +4280,21 @@ export const vehicleCatalog=[
     "make": "Audi",
     "model": "Allroad",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Audi",
+    "model": "Cabrio",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -10040,6 +10325,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "BMW",
+    "model": "F900RA2",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "BMW",
     "model": "F900XR A2",
     "years": [],
     "engines": [],
@@ -11914,6 +12213,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "BMW",
+    "model": "R1200 Gsadventure",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "BMW",
     "model": "R1200 Nine-T",
     "years": [],
     "engines": [],
@@ -11957,6 +12270,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "BMW",
     "model": "R1200C",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "BMW",
+    "model": "R1200CL",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -12348,6 +12675,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "BMW",
+    "model": "R21",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "BMW",
     "model": "R25/3",
     "years": [],
     "engines": [],
@@ -12516,7 +12857,7 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "BMW",
-    "model": "R60-5",
+    "model": "R60 2",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -12530,7 +12871,7 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "BMW",
-    "model": "R60/2",
+    "model": "R60/5",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -13021,6 +13362,36 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "BMW",
     "model": "S1000XR",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "BMW",
+    "model": "Serie X1",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "BMW",
+    "model": "X-Reihe",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -13821,8 +14192,53 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "BMW",
+    "model": "XDRIVE30D",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "BMW",
     "model": "XM",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "BMW",
+    "model": "Z 3 Roadster",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "BMW",
+    "model": "Z 4",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -13898,6 +14314,21 @@ export const vehicleCatalog=[
     "make": "Citroën",
     "model": "11 Bl Sport",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "11 Bl",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -14059,6 +14490,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "280L",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Citroën",
     "model": "290",
@@ -14075,8 +14521,38 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
+    "model": "290",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
     "model": "5 Cv",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "743",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -14146,6 +14622,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "Ak",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Citroën",
     "model": "Allied",
@@ -14178,6 +14669,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Citroën",
     "model": "Ami 6",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "Ami 8",
     "body": "sedan",
     "years": [],
     "engines": [],
@@ -14251,6 +14757,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
+    "model": "Aycd Acadiane",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
     "model": "Az 2CV",
     "body": "sedan",
     "years": [],
@@ -14268,6 +14789,20 @@ export const vehicleCatalog=[
     "make": "Citroën",
     "model": "Az A2",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Citroën",
+    "model": "Azu 2CV",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -14328,6 +14863,20 @@ export const vehicleCatalog=[
     "make": "Citroën",
     "model": "B14G",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Citroën",
+    "model": "Berlingo 1.9D",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -14446,6 +14995,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
+    "model": "Bx 14 Re",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "Bx 16V",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
     "model": "BX",
     "body": "hatchback",
     "years": [],
@@ -14462,6 +15041,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Citroën",
     "model": "C 35",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "C Crosser",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -14629,21 +15223,6 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
-    "model": "C-Crosser",
-    "body": "hatchback",
-    "years": [],
-    "engines": [],
-    "fuels": [],
-    "transmissions": [],
-    "trims": [],
-    "engineDetails": [],
-    "provenance": [
-      "VehiclesDB"
-    ]
-  },
-  {
-    "type": "Otomobil",
-    "make": "Citroën",
     "model": "C-Elysee",
     "body": "sedan",
     "years": [],
@@ -14794,6 +15373,21 @@ export const vehicleCatalog=[
     "make": "Citroën",
     "model": "C3 Pluriel",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "C3-1",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -15473,6 +16067,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
+    "model": "CX20RE",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
     "model": "Dethleffs",
     "body": "hatchback",
     "years": [],
@@ -15592,6 +16201,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
+    "model": "Dyane 6-400",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
     "model": "Dyane",
     "body": "hatchback",
     "years": [],
@@ -15681,7 +16305,7 @@ export const vehicleCatalog=[
   {
     "type": "Kamyon",
     "make": "Citroën",
-    "model": "Ë-Jumper",
+    "model": "E.jumper",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -15837,6 +16461,20 @@ export const vehicleCatalog=[
   {
     "type": "Panelvan",
     "make": "Citroën",
+    "model": "Hy 72",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Citroën",
     "model": "HY",
     "years": [],
     "engines": [],
@@ -15866,7 +16504,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
+    "model": "Hymer",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
     "model": "I D",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "Id 19 P",
     "body": "sedan",
     "years": [],
     "engines": [],
@@ -16056,6 +16724,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
+    "model": "Nuevo C3 Aircross Hybr",
+    "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
     "model": "Possl",
     "body": "hatchback",
     "years": [],
@@ -16158,6 +16841,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Citroën",
+    "model": "Sun Living",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
     "model": "Traction",
     "body": "sedan",
     "years": [],
@@ -16174,6 +16872,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Citroën",
     "model": "U23",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "Visa Club",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -16873,6 +17586,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "1010",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "102",
     "body": "hatchback",
     "years": [],
@@ -16918,6 +17646,66 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "1200",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "124 Bc",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "124 Special",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "124 Spider 1800",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "124 Spider 2000",
     "body": "convertible",
     "years": [],
     "engines": [],
@@ -17200,7 +17988,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "230 Cemac",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "230 L",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "230 Rotec 590",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -17271,6 +18089,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "230L",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Fiat",
     "model": "238",
@@ -17288,6 +18121,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Fiat",
     "model": "244",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "244",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -17328,6 +18176,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "280-Weinsberg",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Fiat",
     "model": "280",
@@ -17345,6 +18208,36 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "280",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "290 L",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "290 Uak",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -17462,7 +18355,52 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "500 Giardiniera",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "500 L Berlina",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "500 L",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "500 Lounge",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -17479,6 +18417,21 @@ export const vehicleCatalog=[
     "make": "Fiat",
     "model": "500 X",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "500-110F",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -18050,6 +19003,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "503",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "508",
     "body": "sedan",
     "years": [],
@@ -18185,6 +19153,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "850 S",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "850",
     "body": "coupe",
     "years": [],
@@ -18216,6 +19199,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "A 5421",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "A 5881",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -18379,6 +19377,35 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Adria",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Fiat",
+    "model": "Adriatik",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Adriatik",
     "body": "hatchback",
     "years": [],
@@ -18441,7 +19468,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Alfa Spider",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Argenta",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Arto 69",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -18499,6 +19556,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Auto-Roller 15",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Auto-Roller",
     "body": "hatchback",
     "years": [],
@@ -18515,6 +19587,21 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Fiat",
     "model": "Auto",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Autoroller Garage P",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -18559,6 +19646,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "B 524",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "B544/BC544",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -18720,6 +19822,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Burstner T585",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Fiat",
     "model": "Burstner",
@@ -18778,9 +19895,39 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Carioca 15P",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Fiat",
     "model": "Carthago",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Challenger 141",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -18868,6 +20015,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Concorde",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Coral",
     "body": "hatchback",
     "years": [],
@@ -18913,7 +20075,52 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Cs 544",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Cs 544K",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Dethleffs A5881",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Dethleffs T 5841",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -19197,6 +20404,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Fiat",
     "model": "E-Doblo",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Eg/Df 001",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -20040,6 +21262,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Euramobil",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Explorer Z",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Fiorino Panorama",
     "years": [],
     "engines": [
@@ -20222,6 +21474,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Frankia",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Freemont",
     "body": "hatchback",
     "years": [],
@@ -20253,6 +21520,36 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Fiat",
     "model": "Fullback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Genesis",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Gigant 600",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -20311,7 +21608,52 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Granduca 64",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Granduca 67",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Granduca Garage",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Granduca",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -20354,9 +21696,54 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Hobby 690 Ges",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Fiat",
     "model": "Hobby",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Hobby",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Home-Car",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -20400,7 +21787,67 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Hymer B644",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Hymer Camp 544",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Hymer Cs 544",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Hymer CS544K",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Hymer-Mobil",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -20444,6 +21891,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "I 5841",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Idea",
     "body": "mpv",
     "years": [],
@@ -20460,6 +21922,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "Joint",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Knaus Traveller",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -20505,6 +21982,36 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "Lancia Ypsilon",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Liberty 641/A",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Liberty 662 Ti",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -20692,6 +22199,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Mageo",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Marea",
     "body": "sedan",
     "years": [],
@@ -20768,7 +22290,52 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Moncayo",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Mooveo",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Multipla",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Oklahoma",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -20798,7 +22365,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "P200",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "P210",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "P600",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -21000,6 +22597,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Pilote",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Punto Abarth",
     "body": "hatchback",
     "years": [],
@@ -21186,6 +22798,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Rapido AF5",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Fiat",
     "model": "Rapido",
@@ -21263,6 +22890,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "Riviera GT",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Roadcar 600",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -21416,6 +23058,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Spider 850",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Spider",
     "body": "convertible",
     "years": [],
@@ -21473,6 +23130,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Sunlight A72",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Fiat",
     "model": "Sunlight",
@@ -21518,6 +23190,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "T 605",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "T 615",
     "body": "hatchback",
     "years": [],
@@ -21533,7 +23220,52 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "T 6501 B",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "T 6541",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "T585",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "T615",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -21690,6 +23422,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Traveller",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Trigano FI1",
     "body": "hatchback",
     "years": [],
@@ -21706,6 +23453,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Fiat",
     "model": "Trigano",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Ts 6249",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -21805,6 +23567,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Weinsberg Meteor 580",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Weinsberg",
     "body": "hatchback",
     "years": [],
@@ -21837,6 +23614,21 @@ export const vehicleCatalog=[
     "make": "Fiat",
     "model": "X1/9",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Zehf",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -21969,6 +23761,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "2 D",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "20 M",
     "body": "sedan",
     "years": [],
@@ -21986,6 +23793,21 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "26M",
     "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "3 Window",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -22149,6 +23971,36 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "91A",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "A Ford Roadster",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "A Ford Tudor",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -22375,6 +24227,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "B-Roadster",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "B",
     "body": "sedan",
     "years": [],
@@ -22433,6 +24300,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Ford",
     "model": "Benimar",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Bronco 2",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -22755,6 +24637,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Cabriolet",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Capri",
     "body": "coupe",
     "years": [],
@@ -22902,6 +24799,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Consul Corsair",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Consul Cortina 1500",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Consul",
     "body": "sedan",
     "years": [],
@@ -22933,6 +24860,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Ford",
     "model": "Corsair",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Cortina 1600 E",
     "body": "sedan",
     "years": [],
     "engines": [],
@@ -23062,6 +25004,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Crestline Sunliner",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Crestline",
     "body": "sedan",
     "years": [],
@@ -23122,6 +25079,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Custom 500 Ranch Wagon",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Custom Line",
     "body": "sedan",
     "years": [],
@@ -23166,6 +25138,20 @@ export const vehicleCatalog=[
   {
     "type": "Kamyon",
     "make": "Ford",
+    "model": "D0807",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Ford",
     "model": "D0910",
     "years": [],
     "engines": [],
@@ -23181,6 +25167,36 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Ford",
     "model": "D400",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "De Luxe Business",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "De Luxe Fordor",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -23211,6 +25227,20 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "Deluxe V8",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "E-150",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -23281,6 +25311,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "E-450",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "E150",
     "body": "hatchback",
     "years": [],
@@ -23297,6 +25342,35 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Ford",
     "model": "E250",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Econoline 200",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "Econoline E250",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -23459,8 +25533,38 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Escort 1300 GT",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Escort Cosworth",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Escort RS1600",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -23678,6 +25782,34 @@ export const vehicleCatalog=[
   {
     "type": "Panelvan",
     "make": "Ford",
+    "model": "F-1",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "F-100 Ranger",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
     "model": "F-100",
     "years": [],
     "engines": [],
@@ -23864,6 +25996,20 @@ export const vehicleCatalog=[
   {
     "type": "Panelvan",
     "make": "Ford",
+    "model": "F1 Pick-Up",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
     "model": "F1",
     "years": [],
     "engines": [],
@@ -23879,6 +26025,62 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Ford",
     "model": "F10",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "F100 Pickup",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "F150 Raptor R",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "F150XL",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Ford",
+    "model": "F350XLT",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -23948,6 +26150,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Fairlane 500 Victoria",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Fairlane Sunliner",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Fairlane",
     "body": "sedan",
     "years": [],
@@ -23978,6 +26210,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Falcon Futura",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Falcon Sprint",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Falcon",
     "body": "sedan",
     "years": [],
@@ -23994,6 +26256,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Ford",
     "model": "Festiva",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Fiesta 1.3I",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -24395,6 +26672,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Ford",
     "model": "Flex",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Fmcy",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -25106,6 +27398,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "Fordor",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Ford",
     "model": "Fordor",
@@ -25185,6 +27491,51 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "Fusion",
     "body": "mpv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Galaxie Country",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Galaxie Fairlane 500",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Galaxie Ltd",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -25304,6 +27655,21 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "Gran Torino",
     "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Granada 2600 GL",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -25625,6 +27991,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Liberty Ti 574",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Ford",
     "model": "Lightning",
@@ -25656,6 +28037,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Lincoln Mark",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Lincoln Town Car",
     "body": "sedan",
     "years": [],
@@ -25672,6 +28068,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Ford",
     "model": "Lincoln",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Ltd Brougham",
     "body": "sedan",
     "years": [],
     "engines": [],
@@ -25808,6 +28219,36 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "Model 40",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Model A Roadster",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Model A Speedster",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -26148,8 +28589,158 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Mustang 289",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang 3",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang 302 Boss",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang Boss 302",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang Cobra/Svt",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang GT Saleen",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Mustang Mach-E",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang MACH1",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang Shelby GT 350",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang Shelby GT 500",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Mustang Shelby GT",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -26307,10 +28898,52 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "Pick-Up F1",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Ford",
     "model": "Pick-Up",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Ford",
+    "model": "Pick",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "Pickup",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -26384,6 +29017,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Prefekt",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Probe",
     "body": "coupe",
     "years": [],
@@ -26441,6 +29089,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "Ranchero GT",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Ford",
     "model": "Ranchero GT",
@@ -26473,6 +29135,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Ford",
     "model": "Ranchero",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Ranchwagon",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -26544,6 +29221,51 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Rimor ABF61S3",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Rimor AGF77S3",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Rimor ARF50P3",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Rimor ARF54S3",
     "body": "hatchback",
     "years": [],
@@ -26560,6 +29282,36 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Ford",
     "model": "Rimor",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Rimor",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Riviera",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -26841,6 +29593,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Sirio 592 P",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Skyliner",
     "body": "coupe",
     "years": [],
@@ -26916,6 +29683,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Standard Fordor",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Street Ka",
     "body": "convertible",
     "years": [],
@@ -26975,6 +29757,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "T350",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Taunus 12M",
     "body": "sedan",
     "years": [],
@@ -27007,6 +29804,21 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "Taunus 17M",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Taunus 2.0L",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -27160,6 +29972,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Tessoro 481",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Ford",
     "model": "Thames",
@@ -27176,8 +30003,53 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "Thunderbird Super",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "Thunderbird",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Torino 500",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Torino Cobra",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -27309,6 +30181,34 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "Town",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "Transit / Tourneo Connect",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Ford",
+    "model": "Transit 190EF",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -27490,7 +30390,7 @@ export const vehicleCatalog=[
   {
     "type": "Panelvan",
     "make": "Ford",
-    "model": "Transit/Tourneo Connect",
+    "model": "Transit TT",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -27720,6 +30620,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Ford",
     "model": "Welcome",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Westfalia Nugget",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -28581,7 +31496,7 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
-    "model": "Africa-Twin",
+    "model": "Africa Twin",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -28625,6 +31540,20 @@ export const vehicleCatalog=[
     "make": "Honda",
     "model": "Airwave",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Honda",
+    "model": "Amigo",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -29354,6 +32283,34 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "CB1000GT",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "CB1000R-9",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "CB1000R",
     "years": [],
     "engines": [],
@@ -29494,6 +32451,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "CB1100SF X11",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "CB1100SF",
     "years": [],
     "engines": [],
@@ -29579,6 +32550,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "CB125T",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "CB1300 Super Four",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -30488,6 +33473,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "CB750G",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "CB750K",
     "years": [],
     "engines": [],
@@ -30978,6 +33977,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "CBR1000RR-5",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "CBR1000RR-SC57",
     "years": [],
     "engines": [],
@@ -31034,6 +34047,34 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "CBR1000S2",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "CBR1000SA",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "CBR1000SP",
     "years": [],
     "engines": [],
@@ -31076,7 +34117,21 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
-    "model": "CBR1100XX-SC35",
+    "model": "CBR1100X-4",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "CBR1100XX SC35",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -31091,6 +34146,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "CBR1100XX",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "CBR1100XXV",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -31426,6 +34495,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "CBR600FY",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "CBR600R",
     "years": [],
     "engines": [],
@@ -31595,6 +34678,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "CBR900RR Fireblade",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "CBR900RR-3",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -32015,6 +35112,21 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "CG125B",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Honda",
+    "model": "CG2",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -33167,6 +36279,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Honda",
+    "model": "Cr-V Exl",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Honda",
     "model": "Cr-V Touring",
     "body": "hatchback",
     "years": [],
@@ -33557,6 +36684,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "CRF1000D2",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "CRF1000L Africa Twin",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -34231,6 +37372,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "CX400C",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "CX400E",
     "years": [],
     "engines": [],
@@ -34626,6 +37781,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Honda",
+    "model": "E NP1",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Honda",
     "model": "E:N1",
     "body": "hatchback",
     "years": [],
@@ -34717,6 +37887,20 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Honda",
     "model": "Eve Pax",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "EVF9018",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -34872,6 +38056,20 @@ export const vehicleCatalog=[
     "make": "Honda",
     "model": "Fit",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "FJS400A",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -35545,6 +38743,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "GL1500C Valkyrie",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "GL1500C",
     "years": [],
     "engines": [],
@@ -35657,7 +38869,35 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "GL1800 Gold Wing",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "GL1800 Goldwing",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "GL1800 Trike",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -36259,6 +39499,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Honda",
+    "model": "HR",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Honda",
     "model": "Insight Touring",
     "body": "hatchback",
     "years": [],
@@ -36432,6 +39687,20 @@ export const vehicleCatalog=[
     "make": "Honda",
     "model": "Jazz",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "JC05",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -36673,6 +39942,20 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Honda",
     "model": "MB50",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "MBX125F",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -36965,7 +40248,7 @@ export const vehicleCatalog=[
     ]
   },
   {
-    "type": "Motosiklet",
+    "type": "Otomobil",
     "make": "Honda",
     "model": "Mtx",
     "years": [],
@@ -37576,6 +40859,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "Nighthawk",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "NM4-02",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -38248,6 +41545,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "NT700V/VA",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "NT700V",
     "years": [],
     "engines": [],
@@ -38562,6 +41873,20 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Honda",
     "model": "PA50",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "Pacific Coast",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -38987,21 +42312,6 @@ export const vehicleCatalog=[
     "make": "Honda",
     "model": "Prelude",
     "body": "coupe",
-    "years": [],
-    "engines": [],
-    "fuels": [],
-    "transmissions": [],
-    "trims": [],
-    "engineDetails": [],
-    "provenance": [
-      "VehiclesDB"
-    ]
-  },
-  {
-    "type": "Otomobil",
-    "make": "Honda",
-    "model": "Prologue EX",
-    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -39949,7 +43259,7 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
-    "model": "Shadow VT1100C2",
+    "model": "Shadow-VT1100C2",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -40885,6 +44195,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Honda",
+    "model": "V-HH4",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Motosiklet",
     "make": "Honda",
     "model": "V45 Magna",
@@ -40972,6 +44297,21 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "Valkyrie",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Honda",
+    "model": "Vamos",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -42247,6 +45587,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "VT750CA",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "VT750CS",
     "years": [],
     "engines": [],
@@ -42514,6 +45868,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "VTX1800C",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "VTX1800R",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -44833,6 +48201,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Hyundai",
+    "model": "H350",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Hyundai",
     "model": "Iload",
@@ -46090,6 +49473,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Hyundai",
+    "model": "Santa FE Se",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Hyundai",
     "model": "Santa Fe",
     "years": [],
     "engines": [
@@ -46593,6 +49991,35 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Hyundai",
+    "model": "Tuscon",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otobüs",
+    "make": "Hyundai",
+    "model": "Universe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Hyundai",
     "model": "Veloster",
     "body": "hatchback",
     "years": [],
@@ -46625,6 +50052,21 @@ export const vehicleCatalog=[
     "make": "Hyundai",
     "model": "Veracruz",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Hyundai",
+    "model": "XG 350",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -46925,6 +50367,21 @@ export const vehicleCatalog=[
     "make": "Infiniti",
     "model": "G37",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Infiniti",
+    "model": "G37S",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -47794,20 +51251,6 @@ export const vehicleCatalog=[
   {
     "type": "Panelvan",
     "make": "Isuzu",
-    "model": "D Max",
-    "years": [],
-    "engines": [],
-    "fuels": [],
-    "transmissions": [],
-    "trims": [],
-    "engineDetails": [],
-    "provenance": [
-      "VehiclesDB"
-    ]
-  },
-  {
-    "type": "Panelvan",
-    "make": "Isuzu",
     "model": "D-Max N60",
     "years": [],
     "engines": [],
@@ -47941,6 +51384,20 @@ export const vehicleCatalog=[
     "engineDetails": [],
     "provenance": [
       "InformationCar"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Isuzu",
+    "model": "D-Max",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
     ]
   },
   {
@@ -51351,6 +54808,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Land Rover",
+    "model": "Minerva",
+    "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Land Rover",
     "model": "Range Rover Evoque Convertible",
     "years": [],
     "engines": [
@@ -51962,6 +55434,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Land Rover",
     "model": "Santana 88",
+    "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Land Rover",
+    "model": "Serie",
     "body": "suv",
     "years": [],
     "engines": [],
@@ -53151,6 +56638,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Lexus",
+    "model": "SC300",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Lexus",
     "model": "TX",
     "body": "suv",
     "years": [],
@@ -53407,6 +56909,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Mazda",
     "model": "Axela",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mazda",
+    "model": "Az-3",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -55189,6 +58706,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mazda",
+    "model": "Miata MX-5 U9",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mazda",
     "model": "Millenia",
     "body": "hatchback",
     "years": [],
@@ -55427,6 +58959,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mazda",
+    "model": "R100",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mazda",
     "model": "Roadster",
     "body": "convertible",
     "years": [],
@@ -55504,6 +59051,21 @@ export const vehicleCatalog=[
     "make": "Mazda",
     "model": "RX-8",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mazda",
+    "model": "Savanna",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -55879,7 +59441,7 @@ export const vehicleCatalog=[
     ]
   },
   {
-    "type": "Kamyon",
+    "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "1117",
     "years": [],
@@ -55893,7 +59455,7 @@ export const vehicleCatalog=[
     ]
   },
   {
-    "type": "Panelvan",
+    "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "112",
     "years": [],
@@ -56149,6 +59711,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
+    "model": "1229",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
     "model": "123 C",
@@ -56225,6 +59801,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
+    "model": "123C",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
     "model": "124 C",
     "body": "coupe",
     "years": [],
@@ -56272,6 +59863,21 @@ export const vehicleCatalog=[
     "make": "Mercedes-Benz",
     "model": "126 C",
     "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "129",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -57204,9 +60810,38 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "190SL Roadster",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Mercedes-Benz",
     "model": "1922",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
+    "model": "1926",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -57235,6 +60870,21 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Mercedes-Benz",
     "model": "1931",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "200 CLK",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -57596,6 +61246,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "209",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Mercedes-Benz",
     "model": "210 D",
@@ -57614,6 +61279,20 @@ export const vehicleCatalog=[
     "make": "Mercedes-Benz",
     "model": "210 D",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Mercedes-Benz",
+    "model": "210 K",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -57800,6 +61479,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "215",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Mercedes-Benz",
     "model": "216",
@@ -57952,6 +61646,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Mercedes-Benz",
     "model": "220 SE",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "220 Seb/C",
     "body": "convertible",
     "years": [],
     "engines": [],
@@ -58741,6 +62450,20 @@ export const vehicleCatalog=[
   {
     "type": "Kamyon",
     "make": "Mercedes-Benz",
+    "model": "2640",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
     "model": "2641",
     "years": [],
     "engines": [],
@@ -58917,6 +62640,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
+    "model": "280 SL/8",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
     "model": "280 SL",
     "body": "convertible",
     "years": [],
@@ -58964,6 +62702,21 @@ export const vehicleCatalog=[
     "make": "Mercedes-Benz",
     "model": "280",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "280SL/8",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -59288,7 +63041,7 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
-    "model": "300 SL Roadster",
+    "model": "300 SL 24",
     "body": "convertible",
     "years": [],
     "engines": [],
@@ -59303,7 +63056,7 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
-    "model": "300 SL-24",
+    "model": "300 SL Roadster",
     "body": "convertible",
     "years": [],
     "engines": [],
@@ -59438,6 +63191,35 @@ export const vehicleCatalog=[
     "make": "Mercedes-Benz",
     "model": "3000",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "300DT",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Mercedes-Benz",
+    "model": "300TD Turbo",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -59884,7 +63666,7 @@ export const vehicleCatalog=[
     ]
   },
   {
-    "type": "Kamyon",
+    "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "318",
     "years": [],
@@ -59974,8 +63756,53 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
+    "model": "320 SL",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "320 Te",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
     "model": "320",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "350 Gd Turbo",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -60413,7 +64240,7 @@ export const vehicleCatalog=[
     ]
   },
   {
-    "type": "Kamyon",
+    "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "411",
     "years": [],
@@ -60735,6 +64562,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "463 D",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Mercedes-Benz",
     "model": "463",
@@ -60843,6 +64685,20 @@ export const vehicleCatalog=[
     "make": "Mercedes-Benz",
     "model": "500",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
+    "model": "507",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -60983,6 +64839,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
+    "model": "519",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
     "model": "560 SEC",
     "body": "coupe",
     "years": [],
@@ -61000,6 +64871,21 @@ export const vehicleCatalog=[
     "make": "Mercedes-Benz",
     "model": "560 SEL",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "560 SL Roadster",
+    "body": "convertible",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -61116,6 +65002,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "601 D 28",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Mercedes-Benz",
     "model": "608",
@@ -61201,6 +65102,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "614 D",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "614",
@@ -61232,6 +65148,21 @@ export const vehicleCatalog=[
     "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "616 CDI",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "616 CDI",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -61286,6 +65217,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "639",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "709 D",
@@ -61303,6 +65249,20 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Mercedes-Benz",
     "model": "709",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
+    "model": "709D-Ka",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -61372,6 +65332,20 @@ export const vehicleCatalog=[
   {
     "type": "Kamyon",
     "make": "Mercedes-Benz",
+    "model": "811D",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
     "model": "812",
     "years": [],
     "engines": [],
@@ -61415,6 +65389,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Mercedes-Benz",
     "model": "814 D",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "814 Da",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -61486,6 +65475,20 @@ export const vehicleCatalog=[
     "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "818",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
+    "model": "822",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -61654,6 +65657,20 @@ export const vehicleCatalog=[
   {
     "type": "Kamyon",
     "make": "Mercedes-Benz",
+    "model": "Acros",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
     "model": "Actros",
     "years": [],
     "engines": [],
@@ -61754,6 +65771,36 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Arca",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Arm",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Mercedes-Benz",
     "model": "Arocs",
@@ -61799,7 +65846,36 @@ export const vehicleCatalog=[
   {
     "type": "Otobüs",
     "make": "Mercedes-Benz",
+    "model": "Atomic",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otobüs",
+    "make": "Mercedes-Benz",
     "model": "Automet",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Autostar",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -61827,7 +65903,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
+    "model": "Axor",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
     "model": "B-Class",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Ba",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -62025,10 +66131,9 @@ export const vehicleCatalog=[
     ]
   },
   {
-    "type": "Otomobil",
+    "type": "Otobüs",
     "make": "Mercedes-Benz",
-    "model": "Cabriolet",
-    "body": "hatchback",
+    "model": "Capacity",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -62217,6 +66322,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Concorde",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "Conecto",
@@ -62248,8 +66368,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
+    "model": "Cs",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
     "model": "D",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Mercedes-Benz",
+    "model": "Daimler",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -62371,6 +66520,20 @@ export const vehicleCatalog=[
     "make": "Mercedes-Benz",
     "model": "E-Class",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otobüs",
+    "make": "Mercedes-Benz",
+    "model": "E12",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -62980,6 +67143,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Karmann",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Mercedes-Benz",
     "model": "Kerstner",
@@ -63336,6 +67514,21 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Mercedes-Benz",
     "model": "Lak",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Levoyageur",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -63807,6 +68000,20 @@ export const vehicleCatalog=[
   {
     "type": "Otobüs",
     "make": "Mercedes-Benz",
+    "model": "O614D",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otobüs",
+    "make": "Mercedes-Benz",
     "model": "O815D",
     "years": [],
     "engines": [],
@@ -63850,6 +68057,20 @@ export const vehicleCatalog=[
     "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "Oh",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otobüs",
+    "make": "Mercedes-Benz",
+    "model": "OH1628L",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -63996,6 +68217,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
+    "model": "Sel",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Skl",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
     "model": "SL",
     "body": "roadster",
     "years": [],
@@ -64069,6 +68320,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Smart",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "Sprinter",
@@ -64097,6 +68363,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otobüs",
+    "make": "Mercedes-Benz",
+    "model": "Sunset",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Mercedes-Benz",
     "model": "T-Class",
@@ -64114,6 +68394,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Mercedes-Benz",
     "model": "T-Class",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Tabbert",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -64157,6 +68452,20 @@ export const vehicleCatalog=[
     "type": "Otobüs",
     "make": "Mercedes-Benz",
     "model": "Travego",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
+    "model": "U400",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -64243,6 +68552,20 @@ export const vehicleCatalog=[
     "make": "Mercedes-Benz",
     "model": "V-Class",
     "body": "mpv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Mercedes-Benz",
+    "model": "Vaneo",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -64344,6 +68667,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Mercedes-Benz",
     "model": "Westfalia",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "Westfalia",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -67157,6 +71495,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mini",
+    "model": "1000 Mayfair Automatic",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mini",
     "model": "1000 Special Deluxe",
     "body": "hatchback",
     "years": [],
@@ -67842,6 +72195,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mini",
+    "model": "Mk",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mini",
     "model": "Paceman",
     "body": "suv",
     "years": [],
@@ -68288,8 +72656,38 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mitsubishi",
+    "model": "Emeraude",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mitsubishi",
     "model": "Endeavor",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mitsubishi",
+    "model": "Evolution",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -68613,6 +73011,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Mitsubishi",
     "model": "L400",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mitsubishi",
+    "model": "Lancer Evo 4",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -69443,6 +73856,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Nissan",
+    "model": "300 ZX",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
     "model": "300",
     "body": "hatchback",
     "years": [],
@@ -69459,6 +73887,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Nissan",
     "model": "300ZX",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "350 GT",
     "body": "coupe",
     "years": [],
     "engines": [],
@@ -69672,6 +74115,21 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Nissan",
     "model": "Atleon",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "Aura",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -69917,6 +74375,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "Datsun",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Nissan",
     "model": "Diesel",
@@ -69946,6 +74419,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "E-FK10",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Nissan",
     "model": "E-NV200",
@@ -69963,6 +74451,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Nissan",
     "model": "Elgrand",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "Fairlady Z Version",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -70052,6 +74555,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Nissan",
+    "model": "Gf-S15",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
     "model": "Gloria",
     "body": "sedan",
     "years": [],
@@ -70082,6 +74600,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Nissan",
+    "model": "Infiniti G35",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
     "model": "Infiniti",
     "body": "hatchback",
     "years": [],
@@ -70098,6 +74631,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Nissan",
     "model": "Interstar",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "Juke SL",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -70692,6 +75240,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Nissan",
+    "model": "Leaf S",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
     "model": "Leaf",
     "body": "hatchback",
     "years": [],
@@ -71224,6 +75787,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Nissan",
+    "model": "Pathfinder Se",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
     "model": "Pathfinder",
     "body": "hatchback",
     "years": [],
@@ -71297,7 +75875,7 @@ export const vehicleCatalog=[
   {
     "type": "Panelvan",
     "make": "Nissan",
-    "model": "Pick-Up",
+    "model": "Pick Up",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -72065,6 +76643,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Nissan",
+    "model": "S15",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
     "model": "Safari",
     "body": "hatchback",
     "years": [],
@@ -72154,7 +76747,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Nissan",
-    "model": "Skyline GT R",
+    "model": "Skyline GT-R",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "Skyline Gtr",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "Skyline R32",
     "body": "coupe",
     "years": [],
     "engines": [],
@@ -72215,6 +76838,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Nissan",
     "model": "Sunny",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "Sx 200",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -72894,6 +77532,21 @@ export const vehicleCatalog=[
     "make": "Opel",
     "model": "Antara",
     "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
+    "model": "Ascona -CC",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -73903,6 +78556,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Opel",
+    "model": "Commodore A",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
     "model": "Commodore",
     "body": "sedan",
     "years": [],
@@ -74323,6 +78991,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Opel",
+    "model": "Frontera Sport",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Opel",
     "model": "Frontera",
@@ -74342,6 +79024,21 @@ export const vehicleCatalog=[
     "make": "Opel",
     "model": "Grandland",
     "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
+    "model": "GT-L",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -74725,6 +79422,66 @@ export const vehicleCatalog=[
     "make": "Opel",
     "model": "Karl",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
+    "model": "Manta 1900",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
+    "model": "Manta A",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
+    "model": "Manta B",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
+    "model": "Manta Gsi Exclusive",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -75312,6 +80069,34 @@ export const vehicleCatalog=[
   {
     "type": "Panelvan",
     "make": "Opel",
+    "model": "Movano Jpm",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Opel",
+    "model": "Movano Multicab",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Opel",
     "model": "Movano",
     "years": [],
     "engines": [],
@@ -75408,6 +80193,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Opel",
+    "model": "Rekord 1700",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
     "model": "Rekord",
     "body": "sedan",
     "years": [],
@@ -75439,6 +80239,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Opel",
     "model": "Rocks-E",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
+    "model": "S",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -75499,6 +80314,21 @@ export const vehicleCatalog=[
     "make": "Opel",
     "model": "Speedster",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Opel",
+    "model": "Super Six",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -75721,6 +80551,36 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Peugeot",
     "model": "104",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Peugeot",
+    "model": "104GL",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Peugeot",
+    "model": "106 Xsi",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -76214,6 +81074,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Peugeot",
+    "model": "207 CC",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Peugeot",
     "model": "207",
     "body": "hatchback",
     "years": [],
@@ -76501,7 +81376,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Peugeot",
+    "model": "230 L",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Peugeot",
     "model": "230L",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Peugeot",
+    "model": "280 L",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -77585,6 +82490,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Peugeot",
+    "model": "406 V6",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Peugeot",
     "model": "406",
     "body": "sedan",
     "years": [],
@@ -78047,6 +82967,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Peugeot",
+    "model": "Adriatik",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Peugeot",
     "model": "Auto Sleepers",
@@ -78292,6 +83227,20 @@ export const vehicleCatalog=[
     "make": "Peugeot",
     "model": "E-5008",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Peugeot",
+    "model": "E-Ludix",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -78835,9 +83784,38 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Peugeot",
+    "model": "Pilote",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Motosiklet",
     "make": "Peugeot",
     "model": "Pm-01",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Peugeot",
+    "model": "Pulsion Evo",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -79258,6 +84236,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Peugeot",
+    "model": "Vivaro",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Peugeot",
     "model": "Vogue",
@@ -79510,6 +84502,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Renault",
+    "model": "4 Tl",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
     "model": "4",
     "body": "hatchback",
     "years": [],
@@ -79527,6 +84534,21 @@ export const vehicleCatalog=[
     "make": "Renault",
     "model": "4CV",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
+    "model": "5 Alpine Turbo",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -79660,6 +84682,21 @@ export const vehicleCatalog=[
     "make": "Renault",
     "model": "Alliance",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
+    "model": "Alpine V6 GT",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -80547,6 +85584,20 @@ export const vehicleCatalog=[
   {
     "type": "Kamyon",
     "make": "Renault",
+    "model": "D210",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Renault",
     "model": "D280",
     "years": [],
     "engines": [],
@@ -80664,6 +85715,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Renault",
     "model": "Extra",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
+    "model": "F",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -81998,6 +87064,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Renault",
+    "model": "R05",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
     "model": "R11",
     "generation": "R11",
     "years": [
@@ -82065,6 +87146,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Renault",
+    "model": "R15",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
     "model": "R19",
     "generation": "R19",
     "years": [
@@ -82099,6 +87195,21 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Renault",
     "model": "R365",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
+    "model": "R4 Clan",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -82203,8 +87314,53 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Renault",
+    "model": "Rimor ADR98F3",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
     "model": "Rodeo",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
+    "model": "Rt 6204",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
+    "model": "Rt 6614",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -82231,9 +87387,38 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Renault",
+    "model": "Rt 7014",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Renault",
     "model": "S130-11",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Renault",
+    "model": "S135",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -82546,6 +87731,20 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Renault",
     "model": "T",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Renault",
+    "model": "T520",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -82918,6 +88117,21 @@ export const vehicleCatalog=[
   },
   {
     "type": "Otomobil",
+    "make": "SEAT",
+    "model": "850 D",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
     "make": "Seat",
     "model": "Alhambra",
     "years": [],
@@ -83199,6 +88413,21 @@ export const vehicleCatalog=[
   },
   {
     "type": "Otomobil",
+    "make": "SEAT",
+    "model": "Ibiza 1",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
     "make": "Seat",
     "model": "Ibiza",
     "years": [],
@@ -83304,6 +88533,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "SEAT",
     "model": "Inca",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "SEAT",
+    "model": "Leon Sporttourer",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -85764,7 +91008,7 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Smart",
     "model": "Cabrio",
-    "body": "convertible",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -86107,6 +91351,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Smart",
     "model": "Roadster Brabus",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Smart",
+    "model": "Roadster-Coupe Brabus",
     "body": "convertible",
     "years": [],
     "engines": [],
@@ -86707,6 +91966,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Subaru",
+    "model": "1600",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Subaru",
     "model": "1800",
@@ -87122,6 +92396,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Subaru",
+    "model": "G3X Justy",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Subaru",
     "model": "Gft",
     "body": "hatchback",
     "years": [],
@@ -87168,6 +92457,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Subaru",
     "model": "Gsr",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Subaru",
+    "model": "Impreza Outback",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -87279,6 +92583,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Subaru",
+    "model": "Outback Limited",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Subaru",
     "model": "Outback",
     "years": [],
     "engines": [
@@ -87331,8 +92650,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Subaru",
+    "model": "Rex",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Subaru",
     "model": "RX Turbo",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Subaru",
+    "model": "Sambar",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -87467,6 +92815,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Subaru",
     "model": "Wagon",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Subaru",
+    "model": "Wrx Sti Type Ra",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -87725,6 +93088,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "Ae",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "AE50",
     "years": [],
     "engines": [],
@@ -87869,6 +93246,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "AN400A",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "AN400Z",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -88323,6 +93714,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "Djebel 250",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "Djebel",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -88868,6 +94273,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "DR650S",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "DR650SE",
     "years": [],
     "engines": [],
@@ -88925,6 +94344,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "DR800S",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "DS250",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -89086,6 +94519,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "FR80",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "Freewind",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -89270,6 +94717,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "GN250F",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "GN400",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -89593,6 +95054,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "GS550E",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "GS650",
     "years": [],
     "engines": [],
@@ -89649,6 +95124,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "GSF1200 Bandit",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "GSF1200",
     "years": [],
     "engines": [],
@@ -89678,6 +95167,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "GSF1200K1",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "GSF1200N",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -89859,6 +95362,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "GSF600SU",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "GSF600U",
     "years": [],
     "engines": [],
@@ -89944,6 +95461,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "GSF650SA",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "GSF650SU",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -90167,6 +95698,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "GSX-R1000K2",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "GSX-R1000K7",
     "years": [],
     "engines": [],
@@ -90307,6 +95852,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "GSX-R750U1",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "GSX-R750U2",
     "years": [],
     "engines": [],
@@ -90350,6 +95909,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "GSX-S1000F",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "GSX-S1000GT",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -90545,6 +96118,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "GSX1100S",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "GSX1200",
     "years": [],
     "engines": [],
@@ -90658,6 +96245,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "GSX1300RA",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "GSX1300RK8",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -91359,6 +96960,48 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "Intruder LC1500",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "Intruder M800",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "Intruder Volusia",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "Intruder",
     "years": [],
     "engines": [],
@@ -91720,6 +97363,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "Nex Crossover",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "NJ42A",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -92109,6 +97766,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "RMX450Z",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Suzuki",
     "model": "RMX50",
@@ -92255,6 +97926,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Suzuki",
     "model": "Samurai",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Suzuki",
+    "model": "Santana",
     "body": "convertible",
     "years": [],
     "engines": [],
@@ -92472,6 +98158,21 @@ export const vehicleCatalog=[
     "make": "Suzuki",
     "model": "Sj",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Suzuki",
+    "model": "SJ40",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -92886,6 +98587,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "SV650UA",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "SV650XA",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -93571,6 +99286,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "UH125G",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "UH200",
     "years": [],
     "engines": [],
@@ -93684,6 +99413,20 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Suzuki",
     "model": "UZ50",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Suzuki",
+    "model": "V-DD51T",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -94272,6 +100015,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "VS51B",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "VS600",
     "years": [],
     "engines": [],
@@ -94384,6 +100141,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "VX51L",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "VX800",
     "years": [],
     "engines": [],
@@ -94482,6 +100253,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Suzuki",
+    "model": "VZR1800K6-Yay",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
     "model": "VZR1800N",
     "years": [],
     "engines": [],
@@ -94541,6 +100326,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "WVA8",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "WVB1",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -96014,6 +101813,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Toyota",
+    "model": "BJ42",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Toyota",
     "model": "Blade",
@@ -96583,6 +102396,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Toyota",
+    "model": "Celica GT-S",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
+    "model": "Celica Rally",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
     "model": "Celica",
     "body": "coupe",
     "years": [],
@@ -96674,6 +102517,21 @@ export const vehicleCatalog=[
     "make": "Toyota",
     "model": "Commuter",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
+    "model": "Corolla AE86",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -97971,6 +103829,20 @@ export const vehicleCatalog=[
   {
     "type": "Panelvan",
     "make": "Toyota",
+    "model": "Hilux 2.4D",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Toyota",
     "model": "Hilux Champ",
     "years": [],
     "engines": [],
@@ -98371,6 +104243,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Toyota",
+    "model": "Land Cruiser 250 Td",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
     "model": "Land Cruiser Prado",
     "years": [],
     "engines": [
@@ -98452,6 +104339,36 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Toyota",
     "model": "Land Cruiser",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
+    "model": "Landcruiser 3",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
+    "model": "Landcruiser 300",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -98615,6 +104532,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Toyota",
+    "model": "MR2 Roadster Vvti",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
     "model": "MR2",
     "body": "convertible",
     "years": [],
@@ -98660,6 +104592,21 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Toyota",
     "model": "OX4X",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
+    "model": "Paseo 1.5I",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -98894,6 +104841,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Toyota",
+    "model": "Probox",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
     "model": "Progres",
     "body": "hatchback",
     "years": [],
@@ -98954,7 +104916,37 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Toyota",
+    "model": "RAV4 2",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
     "model": "RAV4 Prime",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
+    "model": "RAV4 Xle",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -99360,6 +105352,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Toyota",
+    "model": "Tacoma",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Toyota",
     "model": "Tacoma",
@@ -99454,6 +105460,20 @@ export const vehicleCatalog=[
     "make": "Toyota",
     "model": "Trueno",
     "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Toyota",
+    "model": "Tundra C",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -99904,6 +105924,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Toyota",
     "model": "Voxy",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
+    "model": "Will Cypha",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -100717,6 +106752,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volkswagen",
+    "model": "23",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
     "model": "241",
     "body": "hatchback",
     "years": [],
@@ -100763,6 +106813,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Volkswagen",
     "model": "28",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "2DSEDAN 1300-11/2400",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -101107,8 +107172,38 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volkswagen",
+    "model": "C0 550",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
     "model": "Cabrio",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Cabriolet 1200",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -101241,6 +107336,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Campingwagen",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Volkswagen",
     "model": "Caravelle",
@@ -101258,6 +107368,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Volkswagen",
     "model": "Caravelle",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Carthago",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -101975,6 +108100,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Id Polo",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Volkswagen",
     "model": "Id. Buzz Cargo",
@@ -102095,8 +108235,38 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volkswagen",
+    "model": "Id.buzz 4MOTION Lr",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
     "model": "Iltis",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Jetta LS",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -102506,6 +108676,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volkswagen",
+    "model": "Karmann Ghia 1200",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
     "model": "Karmann Ghia",
     "body": "coupe",
     "years": [],
@@ -102522,6 +108707,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Volkswagen",
     "model": "Kasten",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Kombiwagen 1600-23/2400",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -102577,9 +108777,53 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Volkswagen",
+    "model": "LT31",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Volkswagen",
     "model": "Lupo",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Meyers Manx",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Passat GL",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -103851,6 +110095,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volkswagen",
+    "model": "Sedan",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
     "model": "Sharan",
     "body": "mpv",
     "years": [],
@@ -103910,6 +110169,35 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volkswagen",
+    "model": "T4 Multivan",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Volkswagen",
+    "model": "T5 4MOTION",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
     "model": "Taigo",
     "body": "suv",
     "years": [],
@@ -103956,6 +110244,20 @@ export const vehicleCatalog=[
     "make": "Volkswagen",
     "model": "Tayron",
     "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Volkswagen",
+    "model": "Tge",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -104400,6 +110702,36 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volkswagen",
+    "model": "Typ 18",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Typ 21",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
     "model": "Type 3",
     "body": "sedan",
     "years": [],
@@ -104431,6 +110763,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Volkswagen",
     "model": "Vanagon",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Variant 1600",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -104500,6 +110847,36 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Vw 1300 Avkortad",
+    "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Westfalia California",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Volkswagen",
     "model": "Westfalia",
@@ -104532,6 +110909,36 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Volkswagen",
     "model": "WG2211",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Winnebago Rialta",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "X-Cursion 500 Mq",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -104845,6 +111252,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volvo",
+    "model": "780 Bertone",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volvo",
     "model": "780",
     "body": "sedan",
     "years": [],
@@ -104887,9 +111309,38 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Volvo",
+    "model": "854-582 T-5R",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Volvo",
     "model": "8700",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Volvo",
+    "model": "88",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -104933,6 +111384,21 @@ export const vehicleCatalog=[
     "type": "Otobüs",
     "make": "Volvo",
     "model": "9500",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volvo",
+    "model": "960 Auto",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -105045,9 +111511,38 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Volvo",
+    "model": "B10",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otobüs",
     "make": "Volvo",
     "model": "B10B",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Volvo",
+    "model": "B10M-4X2-75T",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -105090,6 +111585,21 @@ export const vehicleCatalog=[
     "type": "Otobüs",
     "make": "Volvo",
     "model": "B12",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volvo",
+    "model": "B12",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -105157,9 +111667,38 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Volvo",
+    "model": "B18",
+    "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Volvo",
     "model": "B57-60",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Volvo",
+    "model": "B57",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -105444,6 +111983,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volvo",
+    "model": "Duet 210",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volvo",
     "model": "Duett",
     "body": "hatchback",
     "years": [],
@@ -105505,6 +112059,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Volvo",
     "model": "EX40",
+    "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volvo",
+    "model": "EX60",
     "body": "suv",
     "years": [],
     "engines": [],
@@ -105996,6 +112565,20 @@ export const vehicleCatalog=[
   {
     "type": "Kamyon",
     "make": "Volvo",
+    "model": "FM104",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Volvo",
     "model": "FM11",
     "years": [],
     "engines": [],
@@ -106025,6 +112608,20 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Volvo",
     "model": "FM13",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Volvo",
+    "model": "FM64R",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -106221,6 +112818,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Volvo",
+    "model": "M+V50",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Volvo",
     "model": "Metago",
@@ -106347,10 +112959,39 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Kamyon",
+    "make": "Volvo",
+    "model": "Nl",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Volvo",
     "model": "P 18",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volvo",
+    "model": "P121",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],
