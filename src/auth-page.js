@@ -1,6 +1,7 @@
 import { getCurrentUser, signIn, signUp, resetPassword } from './lib/auth.js';
 import { supabaseConfigured } from './lib/supabase.js';
 import { hasAuthCaptcha, mountAuthCaptcha, resetAuthCaptcha } from './lib/auth-captcha.js';
+import './lib/signup-phone-verification.js';
 
 const mode = document.body.dataset.authPage;
 const content = document.querySelector('#authContent');
@@ -123,7 +124,7 @@ function renderSignup() {
     <h1 id="authTitle">Ücretsiz kayıt ol</h1>
     <p class="auth-intro">İlan ver, parça talep et ve satıcılarla iletişim kur.</p>
     <div id="authMessage" class="auth-message" hidden></div>
-    <form id="signupPageForm" class="auth-form">
+    <form id="signupForm" class="auth-form">
       <div class="form-grid"><label>Ad<input name="firstName" required autocomplete="given-name" placeholder="Ad"></label><label>Soyad<input name="lastName" required autocomplete="family-name" placeholder="Soyad"></label></div>
       <div class="form-grid"><label>Telefon<input name="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx"></label><label>E-posta<input name="email" type="email" required autocomplete="email" placeholder="ornek@mail.com"></label></div>
       <div class="form-grid"><label>Şifre<input name="password" type="password" required minlength="6" autocomplete="new-password" placeholder="En az 6 karakter"></label><label>Şifre tekrar<input name="confirm" type="password" required minlength="6" autocomplete="new-password" placeholder="Şifreyi tekrar yaz"></label></div>
@@ -133,7 +134,7 @@ function renderSignup() {
     </form>
     <div class="auth-switch">Zaten hesabın var mı? <a href="/giris">Giriş yap</a></div>`;
 
-  const form = document.querySelector('#signupPageForm');
+  const form = document.querySelector('#signupForm');
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const data = new FormData(form);
