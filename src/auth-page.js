@@ -1,6 +1,7 @@
 import { getCurrentUser, signIn, signUp, resetPassword } from './lib/auth.js';
 import { supabaseConfigured } from './lib/supabase.js';
 import { hasAuthCaptcha, mountAuthCaptcha, resetAuthCaptcha } from './lib/auth-captcha.js';
+import './lib/otp-length-fix.js';
 import './lib/signup-phone-verification.js';
 
 const mode = document.body.dataset.authPage;
