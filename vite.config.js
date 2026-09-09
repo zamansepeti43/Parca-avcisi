@@ -19,7 +19,9 @@ export default defineConfig({
         hesapBilgileri: 'hesap-bilgileri.html',
         ayarlar: 'ayarlar.html',
         yardimDestek: 'yardim-destek.html',
-        ilanVer: 'ilan-ver.html'
+        ilanVer: 'ilan-ver.html',
+        gizlilik: 'gizlilik.html',
+        kullanimSartlari: 'kullanim-sartlari.html'
       }
     }
   }
