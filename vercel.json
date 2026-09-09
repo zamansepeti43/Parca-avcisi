@@ -25,6 +25,8 @@
     { "source": "/ayarlar", "destination": "/ayarlar.html" },
     { "source": "/yardim-destek", "destination": "/yardim-destek.html" },
     { "source": "/ilan-ver", "destination": "/ilan-ver.html" },
+    { "source": "/gizlilik", "destination": "/gizlilik.html" },
+    { "source": "/kullanim-sartlari", "destination": "/kullanim-sartlari.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
