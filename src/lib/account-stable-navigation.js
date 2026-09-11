@@ -71,7 +71,15 @@ async function renderAccountCenter(pane, visiblePane) {
   modal.setAttribute('aria-hidden', 'true');
   if (typeof window.__openAccountCenter !== 'function') await import('./account-center.js');
   if (typeof window.__openAccountCenter !== 'function') throw new Error('Hesap modülü hazır değil.');
-  await window.__openAccountCenter(pane);
+
+  const previousPaneOnly = window.__parcaAccountPaneOnly;
+  window.__parcaAccountPaneOnly = true;
+  try {
+    await window.__openAccountCenter(pane);
+  } finally {
+    window.__parcaAccountPaneOnly = previousPaneOnly;
+  }
+
   const rawHtml = content.innerHTML;
   if (!rawHtml || content.querySelector('.pane-loading')) throw new Error('Hesap içeriği hazırlanamadı.');
   const html = extractPaneContent(rawHtml);
