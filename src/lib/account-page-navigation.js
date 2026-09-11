@@ -17,19 +17,11 @@ const normalizePane = (value) => String(value || '').trim();
 function navigateToPane(pane) {
   const route = PANE_ROUTES[normalizePane(pane)];
   if (!route) return false;
+  if (typeof window.__navigateAccountRoute === 'function') return window.__navigateAccountRoute(route);
   window.location.assign(route);
   return true;
 }
 
-// Account-center menu items become real pages instead of opening the large modal.
-document.addEventListener('click', (event) => {
-  const item = event.target.closest?.('.account-menu [data-pane]');
-  if (!item) return;
-  const pane = normalizePane(item.dataset.pane);
-  if (!PANE_ROUTES[pane]) return;
-  event.preventDefault();
-  event.stopImmediatePropagation();
-  navigateToPane(pane);
-}, true);
-
+// Do not intercept clicks here. The account transition guard must see the same
+// click first so it can keep the current screen painted until the next pane is ready.
 window.__accountPageNavigation = { navigateToPane, routes: PANE_ROUTES };
