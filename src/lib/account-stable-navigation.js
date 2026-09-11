@@ -16,14 +16,78 @@ const ACCOUNT_ROUTES = {
 const ROUTE_TO_PANE = Object.fromEntries(Object.entries(ACCOUNT_ROUTES).map(([pane, route]) => [route, pane]));
 let busy = false;
 
-function normalize(path = window.location.pathname) {
-  return path.replace(/\/+$/, '') || '/';
-}
+function normalize(path = window.location.pathname) { return path.replace(/\/+$/, '') || '/'; }
 
 function setActivePane(pane) {
   const menu = document.querySelector('#accountRouteMount .account-menu');
   if (!menu) return;
   menu.querySelectorAll('[data-pane]').forEach((item) => item.classList.toggle('active', item.dataset.pane === pane));
+}
+
+function ensureModal() {
+  let modal = document.querySelector('#appModal');
+  if (modal) return modal;
+  modal = document.createElement('div');
+  modal.id = 'appModal';
+  modal.className = 'app-modal';
+  modal.setAttribute('aria-hidden', 'true');
+  modal.innerHTML = '<div class="modal-card account-wide" role="dialog" aria-modal="true"><button class="modal-close" data-close-modal aria-label="Kapat">×</button><div id="modalContent"></div></div>';
+  modal.style.visibility = 'hidden';
+  modal.style.pointerEvents = 'none';
+  document.body.appendChild(modal);
+  return modal;
+}
+
+function createCover() {
+  const main = document.querySelector('.account-route-main');
+  if (!main) return null;
+  const cover = document.createElement('div');
+  cover.className = 'pa-account-stable-cover';
+  cover.style.cssText = 'position:fixed;inset:60px 0 92px;z-index:9998;overflow:auto;background:#0b0d10;color:#eef1f4;pointer-events:none;-webkit-overflow-scrolling:touch;';
+  const snapshot = main.cloneNode(true);
+  snapshot.removeAttribute('id');
+  snapshot.querySelectorAll('[id]').forEach((node) => node.removeAttribute('id'));
+  snapshot.querySelectorAll('a,button,input,select,textarea').forEach((node) => node.setAttribute('tabindex', '-1'));
+  cover.appendChild(snapshot);
+  document.body.appendChild(cover);
+  return cover;
+}
+
+async function renderSavedVehicles(visiblePane) {
+  const cover = createCover();
+  visiblePane.style.visibility = 'hidden';
+  try {
+    await import('./saved-vehicles-ui.js');
+    if (typeof window.__openSavedVehicles !== 'function') throw new Error('Araçlarım modülü hazır değil.');
+    await window.__openSavedVehicles();
+    if (!visiblePane.children.length) throw new Error('Araçlarım içeriği hazırlanamadı.');
+  } finally {
+    visiblePane.style.visibility = '';
+    cover?.remove();
+  }
+}
+
+async function renderAccountCenter(pane, visiblePane) {
+  const modal = ensureModal();
+  const content = modal.querySelector('#modalContent');
+  if (!content) throw new Error('Hesap içerik alanı hazır değil.');
+  modal.style.visibility = 'hidden';
+  modal.style.pointerEvents = 'none';
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden', 'true');
+  const open = window.__openAccountCenter;
+  if (typeof open !== 'function') {
+    await import('./account-center.js');
+  }
+  if (typeof window.__openAccountCenter !== 'function') throw new Error('Hesap modülü hazır değil.');
+  await window.__openAccountCenter(pane);
+  const html = content.innerHTML;
+  if (!html || content.querySelector('.pane-loading')) throw new Error('Hesap içeriği hazırlanamadı.');
+  visiblePane.innerHTML = html;
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden', 'true');
+  modal.style.visibility = 'hidden';
+  modal.style.pointerEvents = 'none';
 }
 
 async function renderAccountPane(route, { replace = false } = {}) {
@@ -35,80 +99,38 @@ async function renderAccountPane(route, { replace = false } = {}) {
 
   busy = true;
   const oldUrl = normalize();
-  const modal = document.querySelector('#appModal');
-  const modalContent = document.querySelector('#modalContent');
-  const previousModalStyle = modal ? { visibility: modal.style.visibility, pointerEvents: modal.style.pointerEvents } : null;
   try {
     if (!replace) history.pushState({}, '', route);
-
-    if (pane === 'araclarim') {
-      const stage = document.createElement('div');
-      stage.id = 'pa-account-stage';
-      stage.style.cssText = 'position:fixed;left:-10000px;top:0;width:1px;height:1px;overflow:hidden;visibility:hidden;pointer-events:none;';
-      stage.innerHTML = '<div class="account-pane"></div>';
-      document.body.prepend(stage);
-      try {
-        await import('./saved-vehicles-ui.js');
-        if (typeof window.__openSavedVehicles === 'function') await window.__openSavedVehicles();
-        const stagedPane = stage.querySelector('.account-pane');
-        if (!stagedPane?.children.length) throw new Error('Araçlarım içeriği hazırlanamadı.');
-        visiblePane.innerHTML = stagedPane.innerHTML;
-      } finally {
-        stage.remove();
-      }
-    } else {
-      const open = window.__openAccountCenter;
-      if (typeof open !== 'function' || !modalContent) throw new Error('Hesap içeriği hazır değil.');
-
-      if (modal) {
-        modal.style.visibility = 'hidden';
-        modal.style.pointerEvents = 'none';
-      }
-      await open(pane);
-      const html = modalContent.innerHTML;
-      if (!html || modalContent.querySelector('.pane-loading')) throw new Error('Hesap içeriği hazırlanamadı.');
-      visiblePane.innerHTML = html;
-      if (modal) {
-        modal.classList.remove('show');
-        modal.setAttribute('aria-hidden', 'true');
-      }
-    }
-
+    if (pane === 'araclarim') await renderSavedVehicles(visiblePane);
+    else await renderAccountCenter(pane, visiblePane);
     setActivePane(pane);
     window.dispatchEvent(new CustomEvent('parca:account-pane-changed', { detail: { pane, route } }));
+    window.scrollTo({ top: 0, behavior: 'instant' });
   } catch (error) {
     history.replaceState({}, '', oldUrl);
     console.warn('[Parça Avcısı] hesap sekmesi geçişi başarısız', error);
   } finally {
-    if (modal && previousModalStyle) {
-      modal.style.visibility = previousModalStyle.visibility;
-      modal.style.pointerEvents = previousModalStyle.pointerEvents;
-      modal.classList.remove('show');
-      modal.setAttribute('aria-hidden', 'true');
-    }
+    document.querySelectorAll('.pa-account-stable-cover').forEach((node) => node.remove());
+    visiblePane.style.visibility = '';
     busy = false;
   }
 }
 
 function install() {
   window.addEventListener('click', (event) => {
-    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = event.target?.closest?.('#accountRouteMount .account-menu [data-pane]');
     if (!target) return;
     const route = ACCOUNT_ROUTES[target.dataset.pane];
-    if (!route || normalize(route) === normalize()) return;
+    if (!route) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     void renderAccountPane(route);
   }, true);
 
-  window.addEventListener('popstate', (event) => {
+  window.addEventListener('popstate', () => {
     const route = normalize();
-    const pane = ROUTE_TO_PANE[route];
-    if (!pane) return;
-    event.stopImmediatePropagation?.();
-    const mount = document.querySelector('#accountRouteMount');
-    if (!mount?.querySelector('.account-pane')) return;
+    if (!ROUTE_TO_PANE[route]) return;
     void renderAccountPane(route, { replace: true });
   });
 }
