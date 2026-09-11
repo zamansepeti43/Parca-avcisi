@@ -53,6 +53,7 @@ async function renderSavedVehicles(visiblePane, hasCached) {
   if (hasCached) return;
   await window.__openSavedVehicles();
   if (!visiblePane.children.length) throw new Error('Araçlarım içeriği hazırlanamadı.');
+  paneCache.set('araclarim', visiblePane.innerHTML);
 }
 async function renderAccountCenter(pane, visiblePane) {
   const modal = ensureModal();
@@ -95,7 +96,7 @@ async function renderAccountPane(route, { replace = false } = {}) {
     history.replaceState({}, '', oldUrl);
     console.warn('[Parça Avcısı] hesap sekmesi geçişi başarısız', error);
   } finally {
-    // Legacy cleanup only; no transition cover is created anymore.
+    // No cloned transition layer: the account page always has exactly one visible pane.
     document.querySelectorAll('.pa-account-stable-cover').forEach((node) => node.remove());
     visiblePane.style.visibility = '';
     busy = false;
