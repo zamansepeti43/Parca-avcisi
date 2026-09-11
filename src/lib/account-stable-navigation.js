@@ -46,10 +46,16 @@ function ensureModal() {
   document.body.appendChild(modal);
   return modal;
 }
+function extractPaneContent(html) {
+  const template = document.createElement('template');
+  template.innerHTML = html;
+  const pane = template.content.querySelector('.account-shell .account-pane, .account-pane');
+  if (!pane) return html;
+  return pane.innerHTML;
+}
 async function renderSavedVehicles(visiblePane, hasCached) {
   await import('./saved-vehicles-ui.js');
   if (typeof window.__openSavedVehicles !== 'function') throw new Error('Araçlarım modülü hazır değil.');
-  // Cached content stays visible: do not replace it with the legacy loading state.
   if (hasCached) return;
   await window.__openSavedVehicles();
   if (!visiblePane.children.length) throw new Error('Araçlarım içeriği hazırlanamadı.');
@@ -66,8 +72,10 @@ async function renderAccountCenter(pane, visiblePane) {
   if (typeof window.__openAccountCenter !== 'function') await import('./account-center.js');
   if (typeof window.__openAccountCenter !== 'function') throw new Error('Hesap modülü hazır değil.');
   await window.__openAccountCenter(pane);
-  const html = content.innerHTML;
-  if (!html || content.querySelector('.pane-loading')) throw new Error('Hesap içeriği hazırlanamadı.');
+  const rawHtml = content.innerHTML;
+  if (!rawHtml || content.querySelector('.pane-loading')) throw new Error('Hesap içeriği hazırlanamadı.');
+  const html = extractPaneContent(rawHtml);
+  if (!html) throw new Error('Hesap içerik alanı boş.');
   paneCache.set(pane, html);
   visiblePane.innerHTML = html;
   modal.classList.remove('show');
@@ -96,7 +104,6 @@ async function renderAccountPane(route, { replace = false } = {}) {
     history.replaceState({}, '', oldUrl);
     console.warn('[Parça Avcısı] hesap sekmesi geçişi başarısız', error);
   } finally {
-    // No cloned transition layer: the account page always has exactly one visible pane.
     document.querySelectorAll('.pa-account-stable-cover').forEach((node) => node.remove());
     visiblePane.style.visibility = '';
     busy = false;
