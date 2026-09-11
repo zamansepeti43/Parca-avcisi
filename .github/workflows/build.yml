@@ -15,14 +15,17 @@ permissions:
 
 jobs:
   build:
-    name: Install, generate SEO assets and build
+    name: Install, validate and build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
+          cache: npm
+      - run: npm ci
+      - name: Lint JavaScript
+        run: npm run lint
       - name: Generate core SEO sitemap
         run: npm run seo:sitemap
       - name: Validate core sitemap
