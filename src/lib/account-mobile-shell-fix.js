@@ -1,3 +1,5 @@
+import './account-stable-navigation.js';
+
 /* Keep account routes as one stable mobile app surface. */
 const ACCOUNT_ORDER = ['profilim','araclarim','ilanlarim','taleplerim','mesajlarim','favorilerim','kayitli-aramalar','bildirimler','musterilerim','hesap-bilgileri','ayarlar','yardim'];
 
