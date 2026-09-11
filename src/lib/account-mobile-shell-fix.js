@@ -99,6 +99,29 @@ function normalizeAccountMenu(menu) {
   restoreAccountMenuScroll(menu);
 }
 
+function enforceSingleAccountShell() {
+  const mount = document.querySelector('#accountRouteMount');
+  if (!mount) return;
+  const shells = [...mount.querySelectorAll('.account-shell')];
+  if (shells.length <= 1) return;
+
+  const rootShell = shells[0];
+  for (const nestedShell of shells.slice(1)) {
+    const nestedPane = nestedShell.querySelector(':scope > .account-pane') || nestedShell.querySelector('.account-pane');
+    const parentPane = nestedShell.closest('.account-pane');
+    if (nestedPane && parentPane && parentPane !== nestedPane) {
+      parentPane.innerHTML = nestedPane.innerHTML;
+    }
+    nestedShell.remove();
+  }
+
+  const remaining = mount.querySelectorAll('.account-shell');
+  if (remaining.length > 1) {
+    for (const extra of [...remaining].slice(1)) extra.remove();
+  }
+  normalizeAccountMenu(rootShell.querySelector('.account-menu'));
+}
+
 function ensureMobileNav() {
   if (!document.body.classList.contains('account-page-runtime')) return;
   ensureStyles();
@@ -137,6 +160,7 @@ function apply() {
   if (applying || !document.body.classList.contains('account-page-runtime')) return;
   applying = true;
   try {
+    enforceSingleAccountShell();
     ensureMobileNav();
     normalizeAccountMenu(document.querySelector('.account-page-runtime #accountRouteMount .account-menu'));
   } finally {
