@@ -28,7 +28,7 @@ function setActivePane(pane) {
 
 async function renderAccountPane(route, { replace = false } = {}) {
   const pane = ROUTE_TO_PANE[normalize(route)];
-  if (!pane || busy || normalize() === normalize(route)) return;
+  if (!pane || busy || (!replace && normalize() === normalize(route))) return;
   const mount = document.querySelector('#accountRouteMount');
   const visiblePane = mount?.querySelector('.account-pane');
   if (!visiblePane) return;
@@ -39,7 +39,7 @@ async function renderAccountPane(route, { replace = false } = {}) {
   const modalContent = document.querySelector('#modalContent');
   const previousModalStyle = modal ? { visibility: modal.style.visibility, pointerEvents: modal.style.pointerEvents } : null;
   try {
-    history[replace ? 'replaceState' : 'pushState']({}, '', route);
+    if (!replace) history.pushState({}, '', route);
 
     if (pane === 'araclarim') {
       const stage = document.createElement('div');
