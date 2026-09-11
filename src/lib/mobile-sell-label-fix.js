@@ -8,7 +8,7 @@
     @media (max-width: 760px) {
       .mobile-nav #mobileSell small,
       .mobile-nav .account-mobile-sell small {
-        top: 61px !important;
+        top: 55px !important;
         bottom: auto !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
