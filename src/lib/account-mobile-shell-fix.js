@@ -1,13 +1,15 @@
 import './account-stable-navigation.js';
 
-/* Keep account routes as one stable mobile app surface. */
+/*
+ * Account routes use one DOM shell. This module is only responsible for the
+ * mobile navigation and keeping the visible account menu ordered. It must not
+ * keep references to #appModal or wrap __openAccountCenter: doing so can bring
+ * a detached/stale account screen back into the document after a route change.
+ */
 const ACCOUNT_ORDER = ['profilim','araclarim','ilanlarim','taleplerim','mesajlarim','favorilerim','kayitli-aramalar','bildirimler','musterilerim','hesap-bilgileri','ayarlar','yardim'];
-
 const STYLE_ID = 'account-mobile-shell-fix-css';
-let accountModal = null;
-let accountCenterBridgeInstalled = false;
-let accountCenterBridgeTimer = null;
 let accountMenuScrollLeft = 0;
+let applying = false;
 
 function ensureStyles() {
   if (document.getElementById(STYLE_ID)) return;
@@ -32,20 +34,14 @@ function ensureStyles() {
       body.has-account-mobile-nav .account-mobile-nav a:active{transform:scale(.94)!important;}
       body.has-account-mobile-nav .account-mobile-nav a small{font:700 9px/1.1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;white-space:nowrap!important;}
       body.has-account-mobile-nav .account-mobile-nav a.active{color:#f6c21d!important;}
-      body.has-account-mobile-nav .account-mobile-nav a.active::after{
-        content:"";position:absolute;bottom:1px;width:18px;height:3px;border-radius:99px;background:#f6b900;
-      }
+      body.has-account-mobile-nav .account-mobile-nav a.active::after{content:"";position:absolute;bottom:1px;width:18px;height:3px;border-radius:99px;background:#f6b900;}
       body.has-account-mobile-nav .account-mobile-nav .account-mobile-sell{
         position:relative!important;margin-top:-21px!important;align-self:start!important;min-height:62px!important;height:62px!important;width:62px!important;
         justify-self:center!important;border:5px solid #0b0e12!important;border-radius:50%!important;background:#f6b900!important;color:#11151a!important;
         box-shadow:0 8px 24px rgba(0,0,0,.42),0 0 0 1px rgba(246,185,0,.24)!important;font-size:30px!important;
       }
-      body.has-account-mobile-nav .account-mobile-nav .account-mobile-sell::before{
-        content:"";position:absolute;inset:-3px;border:1px solid rgba(255,255,255,.85);border-radius:50%;pointer-events:none;
-      }
-      body.has-account-mobile-nav .account-mobile-nav .account-mobile-sell small{
-        color:#aeb7c0!important;position:absolute!important;top:66px!important;font-size:9px!important;
-      }
+      body.has-account-mobile-nav .account-mobile-nav .account-mobile-sell::before{content:"";position:absolute;inset:-3px;border:1px solid rgba(255,255,255,.85);border-radius:50%;pointer-events:none;}
+      body.has-account-mobile-nav .account-mobile-nav .account-mobile-sell small{color:#aeb7c0!important;position:absolute!important;top:66px!important;font-size:9px!important;}
       html[data-pa-theme="light"] body.has-account-mobile-nav .account-mobile-nav{background:rgba(255,255,255,.96)!important;border-color:#dfe4e8!important;box-shadow:0 14px 36px rgba(28,36,44,.16)!important;}
       html[data-pa-theme="light"] body.has-account-mobile-nav .account-mobile-nav a{color:#66717b!important;}
       html[data-pa-theme="light"] body.has-account-mobile-nav .account-mobile-nav a.active{color:#b17f00!important;}
@@ -53,7 +49,6 @@ function ensureStyles() {
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-nav{background:rgba(15,20,26,.96)!important;border-color:#2b333d!important;}
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-nav a{color:#aeb7c0!important;}
       html[data-pa-theme="dark"] body.has-account-mobile-nav .account-mobile-nav a.active{color:#f6c21d!important;}
-
       body.account-page-runtime #accountRouteMount .account-menu{
         position:sticky!important;top:60px!important;z-index:40!important;margin-bottom:14px!important;
         background:#10151b!important;box-shadow:0 8px 20px rgba(0,0,0,.18)!important;
@@ -63,40 +58,6 @@ function ensureStyles() {
     @media (min-width:761px){.account-mobile-nav{display:none!important;}}
   `;
   document.head.appendChild(style);
-}
-
-function rememberFirstAccountModal() {
-  if (!accountModal) {
-    const candidate = document.querySelector('#appModal');
-    if (candidate) accountModal = candidate;
-  }
-}
-
-function ensureAccountCenterBridge() {
-  rememberFirstAccountModal();
-  const open = window.__openAccountCenter;
-  if (typeof open !== 'function' || accountCenterBridgeInstalled) return;
-  const bridged = async (...args) => {
-    if (accountModal) {
-      const current = document.querySelector('#appModal');
-      if (current && current !== accountModal) current.remove();
-      if (!document.body.contains(accountModal)) document.body.appendChild(accountModal);
-    }
-    return open(...args);
-  };
-  bridged.__parcaAccountCenterBridge = true;
-  window.__openAccountCenter = bridged;
-  accountCenterBridgeInstalled = true;
-  if (accountCenterBridgeTimer) {
-    window.clearInterval(accountCenterBridgeTimer);
-    accountCenterBridgeTimer = null;
-  }
-}
-
-function ensureAccountCenterBridgeEventually() {
-  ensureAccountCenterBridge();
-  if (accountCenterBridgeInstalled || accountCenterBridgeTimer) return;
-  accountCenterBridgeTimer = window.setInterval(() => ensureAccountCenterBridge(), 100);
 }
 
 function ensureVehiclesTab(menu) {
@@ -173,10 +134,14 @@ function bindMobileNav(nav) {
 }
 
 function apply() {
-  if (!document.body.classList.contains('account-page-runtime')) return;
-  ensureAccountCenterBridgeEventually();
-  normalizeAccountMenu(document.querySelector('.account-page-runtime #accountRouteMount .account-menu'));
-  ensureMobileNav();
+  if (applying || !document.body.classList.contains('account-page-runtime')) return;
+  applying = true;
+  try {
+    ensureMobileNav();
+    normalizeAccountMenu(document.querySelector('.account-page-runtime #accountRouteMount .account-menu'));
+  } finally {
+    applying = false;
+  }
 }
 
 const observer = new MutationObserver(() => apply());
