@@ -11,8 +11,15 @@ import { getMyProfile, getProfilesByIds, updateProfile } from './profile.js';
 import { getMyPartRequests, getMyRespondedRequests, getPartRequestById, setPartRequestStatus, REQUEST_STATUS_LABELS } from './part-requests.js';
 import { supabase, supabaseConfigured } from './supabase.js';
 
-const modal = document.querySelector('#appModal');
-const content = document.querySelector('#modalContent');
+let modal = document.querySelector('#appModal');
+let content = document.querySelector('#modalContent');
+
+function refreshMountRefs() {
+  const liveModal = document.querySelector('#appModal');
+  const liveContent = document.querySelector('#modalContent');
+  if (liveModal) modal = liveModal;
+  if (liveContent) content = liveContent;
+}
 
 let currentPane = 'profilim';
 let currentTab = 'all';
@@ -83,6 +90,7 @@ function showError(message) {
 function loadingHtml() { return '<div class="pane-loading">Yükleniyor…</div>'; }
 
 async function openAccountCenter(pane) {
+  refreshMountRefs();
   const user = await getCurrentUser().catch(() => null);
   if (!user) {
     if (window.__openAuth) window.__openAuth();
@@ -90,6 +98,7 @@ async function openAccountCenter(pane) {
   }
   currentPane = pane || 'profilim';
   me = user.id;
+  if (!modal || !content) throw new Error('Hesap alanı yüklenemedi.');
   modal.classList.add('show');
   modal.setAttribute('aria-hidden', 'false');
   modal.querySelector('.modal-card').classList.add('account-wide');
@@ -531,7 +540,7 @@ function renderYardim() {
   const faq = [
     ['Nasıl ilan veririm?', 'Sağ üstteki “+ İlan Ver” butonuna dokun. Fotoğraftan otomatik taslak veya manuel form ile ilanını hazırla; önizlemeden sonra yayınla.'],
     ['İlanımı nasıl düzenlerim?', 'Hesabım → İlanlarım bölümünden ilanının yanındaki Düzenle butonuyla içerik ve fiyatını güncelleyebilirsin.'],
-    ['İlanımı nasıl yayınlar, durdurur veya kaldırırım?', 'İlanlarım bölümünde duruma göre Yayınla, Durdur, Satıldı veya Sil seçenekleri görünür.'],
+    ['İlanımı nasıl yayınlar, durdur veya kaldırırım?', 'İlanlarım bölümünde duruma göre Yayınla, Durdur, Satıldı veya Sil seçenekleri görünür.'],
     ['Satıcıyla nasıl iletişim kurarım?', 'İlan detayındaki “Satıcıyla iletişim başlat” butonuyla mesaj yazabilirsin. Konuşmaların Hesabım → Mesajlarım bölümünde listelenir.'],
     ['Favoriler ne işe yarar?', 'İlan kartlarındaki kalp simgesiyle ilanları favorilere ekleyebilirsin. Listene Hesabım → Favorilerim bölümünden ulaşırsın.'],
     ['Kayıtlı aramalar nasıl çalışır?', 'Hesabım → Kayıtlı Aramalarım bölümünden arama kriterlerini kaydedip bildirimleri açabilirsin; uygun yeni ilan çıktığında haberin olur.'],
