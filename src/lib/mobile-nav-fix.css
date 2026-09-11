@@ -1,14 +1,25 @@
 @media (max-width: 640px) {
-  body { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
-  .mobile-nav { position:fixed;left:0;right:0;bottom:0;width:100%;height:calc(78px + env(safe-area-inset-bottom));padding:7px 8px calc(7px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;gap:3px;z-index:9999;background:rgba(9,11,14,.985);border-top:1px solid #30363e;box-shadow:0 -12px 32px rgba(0,0,0,.32);backdrop-filter:blur(18px)}
-  .mobile-nav a,.mobile-nav > button { width:100%;height:58px;min-width:0;margin:0;padding:7px 2px 5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:0;border-radius:13px;background:transparent;color:#8d949d;text-decoration:none;font-size:21px;line-height:1;-webkit-tap-highlight-color:transparent }
-  .mobile-nav a:active,.mobile-nav > button:active { transform:scale(.96) }
-  .mobile-nav small { display:block;margin:0;padding:0;color:#8d949d;font-size:9px;line-height:1;font-weight:700;white-space:nowrap;transform:none }
-  .mobile-nav a[href="#top"],.mobile-nav a[href="#top"] small { color:#f1f3f5 }
-  .mobile-nav > button[data-open-categories] { color:#aeb5bd;background:transparent;box-shadow:none }
-  .mobile-nav #mobileSell { width:58px;height:58px;justify-self:center;align-self:center;padding:0;margin:0;border-radius:50%;background:var(--gold);color:#111;font-size:27px;box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 4px rgba(9,11,14,.98) }
-  .mobile-nav #mobileSell small { position:absolute;transform:translateY(34px);color:#aeb5bd;font-size:8px;font-weight:700 }
-  .mobile-nav #favoriteLink,.mobile-nav #accountLink { color:#8d949d }
+  body { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  .mobile-nav { position:fixed;left:10px;right:10px;bottom:8px;width:auto;height:78px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;gap:2px;z-index:9999;background:rgba(12,16,21,.96);border:1px solid rgba(255,255,255,.10);border-radius:24px;box-shadow:0 16px 42px rgba(0,0,0,.48),0 0 0 1px rgba(246,185,0,.025);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+  .mobile-nav a,.mobile-nav > button { position:relative;width:100%;height:60px;min-width:0;margin:0;padding:7px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:0;border-radius:17px;background:transparent;color:#89939d;text-decoration:none;font:700 10px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent;transition:transform .16s ease,background .16s ease,color .16s ease }
+  .mobile-nav a:active,.mobile-nav > button:active { transform:scale(.94) }
+  .mobile-nav a[aria-current="page"] { color:#f6b900;background:rgba(246,185,0,.085) }
+  .mobile-nav a[aria-current="page"]::after { content:"";position:absolute;bottom:4px;width:4px;height:4px;border-radius:50%;background:#f6b900;box-shadow:0 0 10px rgba(246,185,0,.65) }
+  .mobile-nav-icon { width:24px;height:24px;display:grid;place-items:center }
+  .mobile-nav-icon svg { width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round }
+  .mobile-nav small { display:block;margin:0;padding:0;color:inherit;font:800 9px/1.1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;white-space:nowrap;letter-spacing:.01em }
+  .mobile-nav #mobileSell { width:64px;height:64px;justify-self:center;align-self:center;padding:0;margin:-24px 0 0;border-radius:50%;background:#f6b900;color:#101318;border:4px solid #0c1015;font-size:0;box-shadow:0 9px 25px rgba(0,0,0,.45),0 0 0 1px rgba(246,185,0,.35),0 0 24px rgba(246,185,0,.18) }
+  .mobile-nav #mobileSell::before { content:"";position:absolute;inset:4px;border:1px solid rgba(255,255,255,.30);border-radius:50%;pointer-events:none }
+  .mobile-nav .mobile-nav-plus { display:grid;place-items:center;width:100%;height:100%;font:300 39px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transform:translateY(-1px) }
+  .mobile-nav #mobileSell small { position:absolute;transform:translateY(51px);color:#aeb7c0;font-size:8px;font-weight:800 }
+  .mobile-nav #favoriteLink,.mobile-nav #accountLink { color:#89939d }
+  .mobile-nav #favoriteLink[aria-current="page"],.mobile-nav #accountLink[aria-current="page"] { color:#f6b900 }
+  html[data-pa-theme="light"] .mobile-nav { background:rgba(255,255,255,.96);border-color:#e0e4e8;box-shadow:0 14px 34px rgba(20,28,36,.18),0 0 0 1px rgba(0,0,0,.02) }
+  html[data-pa-theme="light"] .mobile-nav a,html[data-pa-theme="light"] .mobile-nav > button { color:#66717b }
+  html[data-pa-theme="light"] .mobile-nav a[aria-current="page"] { color:#b17f00;background:rgba(242,181,0,.11) }
+  html[data-pa-theme="light"] .mobile-nav a[aria-current="page"]::after { background:#c08b00 }
+  html[data-pa-theme="light"] .mobile-nav #mobileSell { border-color:#fff;color:#111;background:#f2b500 }
+  html[data-pa-theme="light"] .mobile-nav #mobileSell small { color:#66717b }
 
   .site-header .nav-wrap { position:relative;min-height:68px;height:68px;display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;gap:7px;padding:0 10px;box-sizing:border-box }
   .site-header .menu-trigger { display:inline-flex!important;grid-column:1;grid-row:1;width:38px;height:38px;padding:0;margin:0;z-index:5;align-items:center;justify-content:center }
