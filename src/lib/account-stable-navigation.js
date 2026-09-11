@@ -1,57 +1,38 @@
 const ACCOUNT_ROUTES = {
-  profilim: '/profilim',
-  araclarim: '/araclarim',
-  ilanlarim: '/ilanlarim',
-  taleplerim: '/taleplerim',
-  mesajlarim: '/mesajlarim',
-  favorilerim: '/favorilerim',
-  'kayitli-aramalar': '/kayitli-aramalarim',
-  bildirimler: '/bildirimler',
-  musterilerim: '/musterilerim',
-  'hesap-bilgileri': '/hesap-bilgileri',
-  ayarlar: '/ayarlar',
-  yardim: '/yardim-destek',
+  profilim: '/profilim', araclarim: '/araclarim', ilanlarim: '/ilanlarim', taleplerim: '/taleplerim',
+  mesajlarim: '/mesajlarim', favorilerim: '/favorilerim', 'kayitli-aramalar': '/kayitli-aramalarim',
+  bildirimler: '/bildirimler', musterilerim: '/musterilerim', 'hesap-bilgileri': '/hesap-bilgileri',
+  ayarlar: '/ayarlar', yardim: '/yardim-destek',
 };
-
 const ROUTE_TO_PANE = Object.fromEntries(Object.entries(ACCOUNT_ROUTES).map(([pane, route]) => [route, pane]));
 const PANE_TITLES = {
-  profilim: 'Profilim',
-  araclarim: 'Araçlarım',
-  ilanlarim: 'İlanlarım',
-  taleplerim: 'Taleplerim',
-  mesajlarim: 'Mesajlarım',
-  favorilerim: 'Favorilerim',
-  'kayitli-aramalar': 'Kayıtlı Aramalarım',
-  bildirimler: 'Bildirimler',
-  musterilerim: 'Müşterilerim',
-  'hesap-bilgileri': 'Hesap Bilgileri',
-  ayarlar: 'Ayarlar',
-  yardim: 'Yardım & Destek',
+  profilim: 'Profilim', araclarim: 'Araçlarım', ilanlarim: 'İlanlarım', taleplerim: 'Taleplerim',
+  mesajlarim: 'Mesajlarım', favorilerim: 'Favorilerim', 'kayitli-aramalar': 'Kayıtlı Aramalarım',
+  bildirimler: 'Bildirimler', musterilerim: 'Müşterilerim', 'hesap-bilgileri': 'Hesap Bilgileri',
+  ayarlar: 'Ayarlar', yardim: 'Yardım & Destek',
 };
 let busy = false;
+const paneCache = new Map();
 
 function normalize(path = window.location.pathname) { return path.replace(/\/+$/, '') || '/'; }
-
 function setActivePane(pane) {
   const menu = document.querySelector('#accountRouteMount .account-menu');
   if (!menu) return;
   menu.querySelectorAll('[data-pane]').forEach((item) => item.classList.toggle('active', item.dataset.pane === pane));
 }
-
 function instantPaneHtml(pane) {
   const title = PANE_TITLES[pane] || 'Hesabım';
-  return '<div class="account-pane-head"><h2>' + title + '</h2></div>'
-    + '<div class="pa-account-instant-content" aria-hidden="true">'
-    + '<div class="pa-account-skeleton pa-account-skeleton-title"></div>'
-    + '<div class="pa-account-skeleton"></div>'
-    + '<div class="pa-account-skeleton pa-account-skeleton-short"></div>'
-    + '</div>';
+  return '<div class="account-pane-head"><h2>' + title + '</h2></div><div class="pa-account-instant-content" aria-hidden="true"><div class="pa-account-skeleton pa-account-skeleton-title"></div><div class="pa-account-skeleton"></div><div class="pa-account-skeleton pa-account-skeleton-short"></div></div>';
 }
-
 function showInstantPane(visiblePane, pane) {
+  const cached = paneCache.get(pane);
+  if (cached) {
+    visiblePane.innerHTML = cached;
+    return true;
+  }
   visiblePane.innerHTML = instantPaneHtml(pane);
+  return false;
 }
-
 function ensureModal() {
   let modal = document.querySelector('#appModal');
   if (modal) return modal;
@@ -65,36 +46,14 @@ function ensureModal() {
   document.body.appendChild(modal);
   return modal;
 }
-
-function createCover() {
-  const main = document.querySelector('.account-route-main');
-  if (!main) return null;
-  const cover = document.createElement('div');
-  cover.className = 'pa-account-stable-cover';
-  cover.style.cssText = 'position:fixed;inset:60px 0 92px;z-index:9998;overflow:auto;background:#0b0d10;color:#eef1f4;pointer-events:none;-webkit-overflow-scrolling:touch;';
-  const snapshot = main.cloneNode(true);
-  snapshot.removeAttribute('id');
-  snapshot.querySelectorAll('[id]').forEach((node) => node.removeAttribute('id'));
-  snapshot.querySelectorAll('a,button,input,select,textarea').forEach((node) => node.setAttribute('tabindex', '-1'));
-  cover.appendChild(snapshot);
-  document.body.appendChild(cover);
-  return cover;
+async function renderSavedVehicles(visiblePane, hasCached) {
+  await import('./saved-vehicles-ui.js');
+  if (typeof window.__openSavedVehicles !== 'function') throw new Error('Araçlarım modülü hazır değil.');
+  // Cached content stays visible: do not replace it with the legacy loading state.
+  if (hasCached) return;
+  await window.__openSavedVehicles();
+  if (!visiblePane.children.length) throw new Error('Araçlarım içeriği hazırlanamadı.');
 }
-
-async function renderSavedVehicles(visiblePane) {
-  const cover = createCover();
-  visiblePane.style.visibility = 'hidden';
-  try {
-    await import('./saved-vehicles-ui.js');
-    if (typeof window.__openSavedVehicles !== 'function') throw new Error('Araçlarım modülü hazır değil.');
-    await window.__openSavedVehicles();
-    if (!visiblePane.children.length) throw new Error('Araçlarım içeriği hazırlanamadı.');
-  } finally {
-    visiblePane.style.visibility = '';
-    cover?.remove();
-  }
-}
-
 async function renderAccountCenter(pane, visiblePane) {
   const modal = ensureModal();
   const content = modal.querySelector('#modalContent');
@@ -103,37 +62,31 @@ async function renderAccountCenter(pane, visiblePane) {
   modal.style.pointerEvents = 'none';
   modal.classList.remove('show');
   modal.setAttribute('aria-hidden', 'true');
-  const open = window.__openAccountCenter;
-  if (typeof open !== 'function') await import('./account-center.js');
+  if (typeof window.__openAccountCenter !== 'function') await import('./account-center.js');
   if (typeof window.__openAccountCenter !== 'function') throw new Error('Hesap modülü hazır değil.');
   await window.__openAccountCenter(pane);
   const html = content.innerHTML;
   if (!html || content.querySelector('.pane-loading')) throw new Error('Hesap içeriği hazırlanamadı.');
+  paneCache.set(pane, html);
   visiblePane.innerHTML = html;
   modal.classList.remove('show');
   modal.setAttribute('aria-hidden', 'true');
   modal.style.visibility = 'hidden';
   modal.style.pointerEvents = 'none';
 }
-
 async function renderAccountPane(route, { replace = false } = {}) {
   const pane = ROUTE_TO_PANE[normalize(route)];
   if (!pane || busy || (!replace && normalize() === normalize(route))) return;
   const mount = document.querySelector('#accountRouteMount');
   const visiblePane = mount?.querySelector('.account-pane');
   if (!visiblePane) return;
-
   busy = true;
   const oldUrl = normalize();
   try {
     if (!replace) history.pushState({}, '', route);
-
-    // Make the interaction feel native: URL, active tab and visible target change
-    // in the same frame. Data hydration continues asynchronously underneath.
     setActivePane(pane);
-    showInstantPane(visiblePane, pane);
-
-    if (pane === 'araclarim') await renderSavedVehicles(visiblePane);
+    const hasCached = showInstantPane(visiblePane, pane);
+    if (pane === 'araclarim') await renderSavedVehicles(visiblePane, hasCached);
     else await renderAccountCenter(pane, visiblePane);
     setActivePane(pane);
     window.dispatchEvent(new CustomEvent('parca:account-pane-changed', { detail: { pane, route } }));
@@ -142,12 +95,12 @@ async function renderAccountPane(route, { replace = false } = {}) {
     history.replaceState({}, '', oldUrl);
     console.warn('[Parça Avcısı] hesap sekmesi geçişi başarısız', error);
   } finally {
+    // Legacy cleanup only; no transition cover is created anymore.
     document.querySelectorAll('.pa-account-stable-cover').forEach((node) => node.remove());
     visiblePane.style.visibility = '';
     busy = false;
   }
 }
-
 function install() {
   window.addEventListener('click', (event) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -159,13 +112,11 @@ function install() {
     event.stopImmediatePropagation();
     void renderAccountPane(route);
   }, true);
-
   window.addEventListener('popstate', () => {
     const route = normalize();
     if (!ROUTE_TO_PANE[route]) return;
     void renderAccountPane(route, { replace: true });
   });
 }
-
 install();
 window.__accountStableNavigation = { renderAccountPane, routes: ACCOUNT_ROUTES };
