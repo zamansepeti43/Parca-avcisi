@@ -11,7 +11,7 @@
   .mobile-nav #mobileSell { width:64px;height:64px;justify-self:center;align-self:center;padding:0;margin:-24px 0 0;border-radius:50%;background:#f6b900;color:#101318;border:4px solid #0c1015;font-size:0;box-shadow:0 9px 25px rgba(0,0,0,.45),0 0 0 1px rgba(246,185,0,.35),0 0 24px rgba(246,185,0,.18) }
   .mobile-nav #mobileSell::before { content:"";position:absolute;inset:4px;border:1px solid rgba(255,255,255,.30);border-radius:50%;pointer-events:none }
   .mobile-nav .mobile-nav-plus { display:grid;place-items:center;width:100%;height:100%;font:300 39px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transform:translateY(-1px) }
-  .mobile-nav #mobileSell small { position:absolute;transform:translateY(51px);color:#aeb7c0;font-size:8px;font-weight:800 }
+  .mobile-nav #mobileSell small { position:absolute;left:50%;bottom:13px;transform:translate(-50%,100%);color:#aeb7c0;font-size:8px;font-weight:800;white-space:nowrap }
   .mobile-nav #favoriteLink,.mobile-nav #accountLink { color:#89939d }
   .mobile-nav #favoriteLink[aria-current="page"],.mobile-nav #accountLink[aria-current="page"] { color:#f6b900 }
   html[data-pa-theme="light"] .mobile-nav { background:rgba(255,255,255,.96);border-color:#e0e4e8;box-shadow:0 14px 34px rgba(20,28,36,.18),0 0 0 1px rgba(0,0,0,.02) }
