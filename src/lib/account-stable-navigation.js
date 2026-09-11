@@ -35,9 +35,10 @@ async function renderAccountPane(route, { replace = false } = {}) {
 
   busy = true;
   const oldUrl = normalize();
+  const modal = document.querySelector('#appModal');
+  const modalContent = document.querySelector('#modalContent');
+  const previousModalStyle = modal ? { visibility: modal.style.visibility, pointerEvents: modal.style.pointerEvents } : null;
   try {
-    // Change the URL without reloading or rebuilding the body. The existing account
-    // shell stays on screen for the entire async render.
     history[replace ? 'replaceState' : 'pushState']({}, '', route);
 
     if (pane === 'araclarim') {
@@ -57,15 +58,20 @@ async function renderAccountPane(route, { replace = false } = {}) {
       }
     } else {
       const open = window.__openAccountCenter;
-      const modalContent = document.querySelector('#modalContent');
       if (typeof open !== 'function' || !modalContent) throw new Error('Hesap içeriği hazır değil.');
 
-      // account-center renders into the hidden modal. We copy only the finished
-      // pane after the async data load, so the user never sees its loading state.
+      if (modal) {
+        modal.style.visibility = 'hidden';
+        modal.style.pointerEvents = 'none';
+      }
       await open(pane);
       const html = modalContent.innerHTML;
       if (!html || modalContent.querySelector('.pane-loading')) throw new Error('Hesap içeriği hazırlanamadı.');
       visiblePane.innerHTML = html;
+      if (modal) {
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+      }
     }
 
     setActivePane(pane);
@@ -74,13 +80,17 @@ async function renderAccountPane(route, { replace = false } = {}) {
     history.replaceState({}, '', oldUrl);
     console.warn('[Parça Avcısı] hesap sekmesi geçişi başarısız', error);
   } finally {
+    if (modal && previousModalStyle) {
+      modal.style.visibility = previousModalStyle.visibility;
+      modal.style.pointerEvents = previousModalStyle.pointerEvents;
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+    }
     busy = false;
   }
 }
 
 function install() {
-  // Window-capture runs before main.js document-capture listeners, so the legacy
-  // full-page boot path never gets a chance to blank the screen.
   window.addEventListener('click', (event) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = event.target?.closest?.('#accountRouteMount .account-menu [data-pane]');
