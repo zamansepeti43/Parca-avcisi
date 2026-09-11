@@ -29,7 +29,13 @@ root.innerHTML = `
     <section class="section benefits"><div class="container benefit-grid"><article><b>⌕</b><strong>Kolay arama</strong><span>Aradığın parçayı hızlıca bul.</span></article><article><b>◇</b><strong>Geniş ürün yelpazesi</strong><span>Sıfır, 2. el ve çıkma seçenekleri.</span></article><article><b>₺</b><strong>Uygun fiyat</strong><span>Farklı satıcıları karşılaştır.</span></article><article><b>✓</b><strong>Güvenli alışveriş</strong><span>Satıcı profillerini incele.</span></article><article><b>⚡</b><strong>Hızlı iletişim</strong><span>Satıcıya doğrudan ulaş.</span></article></div></section>
   </main>
   <footer><div class="container footer-inner"><div><a class="brand" href="#top"><img class="brand-mark" src="${footerBrandLogo}" alt="Parça Avcısı" width="34" height="34"><span>PARÇA <strong>AVCISI</strong></span></a><p>Aradığın her parça Parça Avcısı'nda.</p></div><div class="footer-links"><a href="#ilanlar">İlanlar</a><a href="#ilanlar">Kategoriler</a><a href="#aracini-sec">Araç Seç</a></div><span>© 2026 Parça Avcısı</span></div></footer>
-  <nav class="mobile-nav" aria-label="Mobil menü"><a href="#top">⌂<small>Ana Sayfa</small></a><button type="button" data-open-categories aria-expanded="false" aria-controls="catMenu">▦<small>Kategoriler</small></button><button id="mobileSell" type="button">+<small>İlan Ver</small></button><a href="#favorilerim" id="favoriteLink">♡<small>Favoriler</small></a><a href="#hesabim" id="accountLink">◉<small id="accountLabel">Hesabım</small></a></nav><div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <nav class="mobile-nav" aria-label="Mobil menü">
+    <a href="#top" data-mobile-nav="home" aria-label="Ana Sayfa" aria-current="page"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8v9.2a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><small>Ana Sayfa</small></a>
+    <a href="#ilanlar" data-mobile-nav="search" aria-label="Parça ara"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg></span><small>Ara</small></a>
+    <button id="mobileSell" type="button" aria-label="İlan ver"><span class="mobile-nav-plus" aria-hidden="true">+</span><small>İlan Ver</small></button>
+    <a href="#favorilerim" id="favoriteLink" data-mobile-nav="favorites" aria-label="Favoriler"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.8 8.7c0 5.3-8.8 10.3-8.8 10.3S3.2 14 3.2 8.7A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"/></svg></span><small>Favoriler</small></a>
+    <a href="#hesabim" id="accountLink" data-mobile-nav="account" aria-label="Hesabım"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6"/></svg></span><small id="accountLabel">Hesabım</small></a>
+  </nav><div class="toast" id="toast" role="status" aria-live="polite"></div>
 `;
 
 document.querySelectorAll('main > .section:not(.vehicle-section)').forEach((section) => { section.style.contentVisibility = 'auto'; section.style.containIntrinsicSize = '1px 620px'; });
@@ -41,6 +47,12 @@ function setSearchMode(mode){searchMode=mode==='requests'?'requests':'listings';
 function search(query){searchInput.value=query;if(searchMode==='requests'){if(window.__searchRequests){window.__searchRequests(query);return;}setSearchMode('listings');}if(window.__hideArayanSection)window.__hideArayanSection();if(listingView())listingView().search(query);document.querySelector('#ilanlar').scrollIntoView({behavior:'smooth',block:'start'});}
 document.querySelectorAll('[data-search-mode]').forEach(tab=>tab.addEventListener('click',()=>setSearchMode(tab.dataset.searchMode)));
 (function restoreSearchMode(){try{if(localStorage.getItem(SEARCH_MODE_KEY)==='requests')setSearchMode('requests');}catch{}})();
+
+document.querySelector('[data-mobile-nav="search"]')?.addEventListener('click',(event)=>{event.preventDefault();document.querySelector('#searchInput')?.focus({preventScroll:true});document.querySelector('#ilanlar')?.scrollIntoView({behavior:'smooth',block:'start'});});
+
+document.querySelectorAll('[data-mobile-nav]').forEach((item)=>item.addEventListener('click',()=>{document.querySelectorAll('[data-mobile-nav]').forEach((navItem)=>navItem.removeAttribute('aria-current'));item.setAttribute('aria-current','page');}));
+
+document.querySelector('[data-mobile-nav="home"]')?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 const vehicleCatalogReady=import('./lib/vehicle-catalog.js').then(({getMakes,getModels,getYears})=>{
   const renderMakes = (selected = makeSelect.value) => {
