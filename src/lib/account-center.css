@@ -46,4 +46,7 @@ html[data-pa-theme="light"] .chat-bubble.received{background:#e2e6e9!important;c
   html[data-pa-theme="dark"] body.account-page-runtime #accountRouteMount .account-menu button.danger{background:#261719!important;color:#ef8585!important;border-color:#553236!important;}
 }
 
-@media(prefers-reduced-motion:reduce){.pa-account-skeleton{animation:none}}
+/* The route shell owns the only account tab strip. Account-center content can be rendered inside its pane, so never show a nested copy. */
+body.account-page-runtime #accountRouteMount > .account-shell > .account-pane > .account-shell > .account-menu{display:none!important;}
+body.account-page-runtime #accountRouteMount > .account-shell > .account-pane > .account-shell{display:block!important;}
+body.account-page-runtime #accountRouteMount > .account-shell > .account-pane > .account-shell > .account-pane{min-width:0!important;width:100%!important;}
