@@ -14,6 +14,20 @@ const ACCOUNT_ROUTES = {
 };
 
 const ROUTE_TO_PANE = Object.fromEntries(Object.entries(ACCOUNT_ROUTES).map(([pane, route]) => [route, pane]));
+const PANE_TITLES = {
+  profilim: 'Profilim',
+  araclarim: 'Araçlarım',
+  ilanlarim: 'İlanlarım',
+  taleplerim: 'Taleplerim',
+  mesajlarim: 'Mesajlarım',
+  favorilerim: 'Favorilerim',
+  'kayitli-aramalar': 'Kayıtlı Aramalarım',
+  bildirimler: 'Bildirimler',
+  musterilerim: 'Müşterilerim',
+  'hesap-bilgileri': 'Hesap Bilgileri',
+  ayarlar: 'Ayarlar',
+  yardim: 'Yardım & Destek',
+};
 let busy = false;
 
 function normalize(path = window.location.pathname) { return path.replace(/\/+$/, '') || '/'; }
@@ -22,6 +36,20 @@ function setActivePane(pane) {
   const menu = document.querySelector('#accountRouteMount .account-menu');
   if (!menu) return;
   menu.querySelectorAll('[data-pane]').forEach((item) => item.classList.toggle('active', item.dataset.pane === pane));
+}
+
+function instantPaneHtml(pane) {
+  const title = PANE_TITLES[pane] || 'Hesabım';
+  return '<div class="account-pane-head"><h2>' + title + '</h2></div>'
+    + '<div class="pa-account-instant-content" aria-hidden="true">'
+    + '<div class="pa-account-skeleton pa-account-skeleton-title"></div>'
+    + '<div class="pa-account-skeleton"></div>'
+    + '<div class="pa-account-skeleton pa-account-skeleton-short"></div>'
+    + '</div>';
+}
+
+function showInstantPane(visiblePane, pane) {
+  visiblePane.innerHTML = instantPaneHtml(pane);
 }
 
 function ensureModal() {
@@ -76,9 +104,7 @@ async function renderAccountCenter(pane, visiblePane) {
   modal.classList.remove('show');
   modal.setAttribute('aria-hidden', 'true');
   const open = window.__openAccountCenter;
-  if (typeof open !== 'function') {
-    await import('./account-center.js');
-  }
+  if (typeof open !== 'function') await import('./account-center.js');
   if (typeof window.__openAccountCenter !== 'function') throw new Error('Hesap modülü hazır değil.');
   await window.__openAccountCenter(pane);
   const html = content.innerHTML;
@@ -101,6 +127,12 @@ async function renderAccountPane(route, { replace = false } = {}) {
   const oldUrl = normalize();
   try {
     if (!replace) history.pushState({}, '', route);
+
+    // Make the interaction feel native: URL, active tab and visible target change
+    // in the same frame. Data hydration continues asynchronously underneath.
+    setActivePane(pane);
+    showInstantPane(visiblePane, pane);
+
     if (pane === 'araclarim') await renderSavedVehicles(visiblePane);
     else await renderAccountCenter(pane, visiblePane);
     setActivePane(pane);
