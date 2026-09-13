@@ -23984,6 +23984,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Ford",
+    "model": "A 1928",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
     "model": "A Ford Roadster",
     "body": "convertible",
     "years": [],
@@ -24030,6 +24045,21 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "A",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "A1931",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -26011,6 +26041,21 @@ export const vehicleCatalog=[
     "type": "Panelvan",
     "make": "Ford",
     "model": "F1",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "F1",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -37219,6 +37264,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Honda",
     "model": "CT200",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Honda",
+    "model": "CT50",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -52585,6 +52644,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Jeep",
+    "model": "Wrangler Unlimited Sport",
+    "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Jeep",
     "model": "Wrangler Unlimited",
@@ -60973,6 +61047,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Mercedes-Benz",
     "model": "200 TE",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mercedes-Benz",
+    "model": "200TD",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -72285,6 +72374,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mitsubishi",
+    "model": "3000GT SL",
+    "body": "coupe",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mitsubishi",
     "model": "Airtrek",
     "body": "hatchback",
     "years": [],
@@ -78980,6 +79084,20 @@ export const vehicleCatalog=[
     "make": "Opel",
     "model": "Diplomat",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Opel",
+    "model": "Expert",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -90947,7 +91065,52 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Smart",
+    "model": "#1 Brabus",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Smart",
     "model": "#1",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Smart",
+    "model": "#3 Brabus",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Smart",
+    "model": "#3 Pro",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -105324,6 +105487,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Toyota",
+    "model": "Supra Turbo",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
     "model": "Supra",
     "body": "coupe",
     "years": [],
@@ -107628,6 +107806,21 @@ export const vehicleCatalog=[
     "make": "Volkswagen",
     "model": "Fox",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Fusca 1300",
+    "body": "sedan",
     "years": [],
     "engines": [],
     "fuels": [],

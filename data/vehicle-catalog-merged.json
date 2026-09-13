@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-12",
+  "version": "2026-09-13",
   "scope": "TR-first vehicle catalog",
   "policy": "No inferred fitment; explicit source provenance is preserved.",
   "sources": [
@@ -25,9 +25,9 @@
     }
   ],
   "counts": {
-    "records": 6825,
+    "records": 6838,
     "makes": 39,
-    "models": 5110
+    "models": 5122
   },
   "records": [
     {
@@ -24013,6 +24013,21 @@
     {
       "type": "Otomobil",
       "make": "Ford",
+      "model": "A 1928",
+      "body": "hatchback",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Ford",
       "model": "A Ford Roadster",
       "body": "convertible",
       "years": [],
@@ -24059,6 +24074,21 @@
       "make": "Ford",
       "model": "A",
       "body": "sedan",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Ford",
+      "model": "A1931",
+      "body": "hatchback",
       "years": [],
       "engines": [],
       "fuels": [],
@@ -26040,6 +26070,21 @@
       "type": "Panelvan",
       "make": "Ford",
       "model": "F1",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Ford",
+      "model": "F1",
+      "body": "hatchback",
       "years": [],
       "engines": [],
       "fuels": [],
@@ -37248,6 +37293,20 @@
       "type": "Motosiklet",
       "make": "Honda",
       "model": "CT200",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Honda",
+      "model": "CT50",
       "years": [],
       "engines": [],
       "fuels": [],
@@ -52614,6 +52673,21 @@
       ]
     },
     {
+      "type": "Otomobil",
+      "make": "Jeep",
+      "model": "Wrangler Unlimited Sport",
+      "body": "suv",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
       "type": "Panelvan",
       "make": "Jeep",
       "model": "Wrangler Unlimited",
@@ -61002,6 +61076,21 @@
       "type": "Otomobil",
       "make": "Mercedes-Benz",
       "model": "200 TE",
+      "body": "hatchback",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Mercedes-Benz",
+      "model": "200TD",
       "body": "hatchback",
       "years": [],
       "engines": [],
@@ -72314,6 +72403,21 @@
     {
       "type": "Otomobil",
       "make": "Mitsubishi",
+      "model": "3000GT SL",
+      "body": "coupe",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Mitsubishi",
       "model": "Airtrek",
       "body": "hatchback",
       "years": [],
@@ -79009,6 +79113,20 @@
       "make": "Opel",
       "model": "Diplomat",
       "body": "sedan",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Panelvan",
+      "make": "Opel",
+      "model": "Expert",
       "years": [],
       "engines": [],
       "fuels": [],
@@ -90976,7 +91094,52 @@
     {
       "type": "Otomobil",
       "make": "Smart",
+      "model": "#1 Brabus",
+      "body": "hatchback",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Smart",
       "model": "#1",
+      "body": "hatchback",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Smart",
+      "model": "#3 Brabus",
+      "body": "hatchback",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Smart",
+      "model": "#3 Pro",
       "body": "hatchback",
       "years": [],
       "engines": [],
@@ -105353,6 +105516,21 @@
     {
       "type": "Otomobil",
       "make": "Toyota",
+      "model": "Supra Turbo",
+      "body": "hatchback",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Toyota",
       "model": "Supra",
       "body": "coupe",
       "years": [],
@@ -107657,6 +107835,21 @@
       "make": "Volkswagen",
       "model": "Fox",
       "body": "hatchback",
+      "years": [],
+      "engines": [],
+      "fuels": [],
+      "transmissions": [],
+      "trims": [],
+      "engineDetails": [],
+      "provenance": [
+        "VehiclesDB"
+      ]
+    },
+    {
+      "type": "Otomobil",
+      "make": "Volkswagen",
+      "model": "Fusca 1300",
+      "body": "sedan",
       "years": [],
       "engines": [],
       "fuels": [],

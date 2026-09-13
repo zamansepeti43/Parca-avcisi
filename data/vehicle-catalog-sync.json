@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-12T07:58:10.825Z",
+  "generatedAt": "2026-09-13T08:22:44.343Z",
   "sourceFiles": [
     "data/vehicle-catalog-merged.json"
   ],
   "counts": {
     "brands": 36,
-    "models": 5110,
-    "engineVariants": 13097,
-    "trims": 14217,
-    "vehicles": 14217
+    "models": 5122,
+    "engineVariants": 13110,
+    "trims": 14230,
+    "vehicles": 14230
   },
   "vehicles": [
     {
@@ -30653,6 +30653,16 @@
     },
     {
       "make": "Ford",
+      "model": "A 1928",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
       "model": "A Ford Roadster",
       "year": null,
       "body": "convertible",
@@ -30686,6 +30696,16 @@
       "model": "A",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "A1931",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -32866,6 +32886,16 @@
       "model": "F1",
       "year": null,
       "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "F1",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -49143,6 +49173,16 @@
     },
     {
       "make": "Honda",
+      "model": "CT50",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CT90",
       "year": null,
       "body": null,
@@ -61553,6 +61593,16 @@
     },
     {
       "make": "Jeep",
+      "model": "Wrangler Unlimited Sport",
+      "year": null,
+      "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Jeep",
       "model": "Wrangler Unlimited",
       "year": null,
       "body": null,
@@ -67814,6 +67864,16 @@
     {
       "make": "Mercedes-Benz",
       "model": "200 TE",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "200TD",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -76943,6 +77003,16 @@
     },
     {
       "make": "Mitsubishi",
+      "model": "3000GT SL",
+      "year": null,
+      "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
       "model": "Airtrek",
       "year": null,
       "body": "hatchback",
@@ -85916,6 +85986,16 @@
       "model": "Diplomat",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Opel",
+      "model": "Expert",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -107413,7 +107493,37 @@
     },
     {
       "make": "Smart",
+      "model": "#1 Brabus",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Smart",
       "model": "#1",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Smart",
+      "model": "#3 Brabus",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Smart",
+      "model": "#3 Pro",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -126693,6 +126803,16 @@
     },
     {
       "make": "Toyota",
+      "model": "Supra Turbo",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Supra",
       "year": null,
       "body": "coupe",
@@ -130236,6 +130356,16 @@
       "model": "Fox",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Fusca 1300",
+      "year": null,
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
