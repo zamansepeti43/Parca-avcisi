@@ -1,6 +1,6 @@
 // AUTO-GENERATED. DO NOT HAND-EDIT.
 // Source: https://www.sifirarababul.com/markalar
-// Refreshed: 2026-09-14T07:58:59.629Z
+// Refreshed: 2026-09-21T08:02:58.898Z
 export const turkeyCurrentModelRegistry = [
   {
     "make": "Alfa Romeo",
@@ -588,12 +588,12 @@ export const turkeyCurrentModelRegistry = [
       "EC40",
       "EC40 BLACK EDITION",
       "EX30",
-      "EX30 ( ULTRA (150hp Elektrik) ), ₺2.347.670",
+      "EX30 ( Ultra P4 Long Range ), ₺2.485.390",
       "EX30 CROSS COUNTRY",
       "EX40",
       "EX40 BLACK EDITION",
-      "modeli, ₺2.347.670",
-      "SUV tercihi ₺2.347.670",
+      "modeli, ₺2.485.390",
+      "SUV tercihi ₺2.485.390",
       "V60",
       "XC60",
       "XC60 BLACK EDITION",
