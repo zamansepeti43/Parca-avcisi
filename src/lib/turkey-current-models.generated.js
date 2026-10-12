@@ -1,13 +1,13 @@
 // AUTO-GENERATED. DO NOT HAND-EDIT.
 // Source: https://www.sifirarababul.com/markalar
-// Refreshed: 2026-10-05T09:15:45.188Z
+// Refreshed: 2026-10-12T09:27:40.865Z
 export const turkeyCurrentModelRegistry = [
   {
     "make": "Alfa Romeo",
     "models": [
       "Junior Elettrica",
+      "Junior Elettrica ( Core ), ₺2.124.500",
       "Junior Ibrida",
-      "Junior Ibrida ( Ibrida ), ₺2.124.500",
       "modeli, ₺2.124.500",
       "SUV tercihi ₺2.124.500",
       "Tonale"
@@ -18,14 +18,20 @@ export const turkeyCurrentModelRegistry = [
     "make": "Audi",
     "models": [
       "A3",
+      "A3 ( A3 Sportback TFSI 110 kW Advanced S tronic ), ₺3.614.620",
       "A5",
+      "A6",
       "A6 e-tron",
       "A8",
-      "modeli, ₺3.735.780",
-      "Q2",
-      "Q2 ( Q2 35 TFSI 150 hp Advanced S tronic PI ), ₺3.735.780",
+      "e-tron GT",
+      "modeli, ₺3.614.620",
+      "Q3",
+      "Q4 e-tron",
+      "Q5",
+      "Q6 e-tron",
       "Q7",
-      "SUV tercihi ₺3.735.780"
+      "Q8",
+      "SUV tercihi ₺4.832.660"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -33,7 +39,7 @@ export const turkeyCurrentModelRegistry = [
     "make": "BMW",
     "models": [
       "120",
-      "120 ( Sport Line ), ₺4.037.800",
+      "120 ( Sport Line ), ₺4.079.500",
       "220 Gran Coupé",
       "220i Active Tourer",
       "230e xDrive Active Tourer",
@@ -65,8 +71,8 @@ export const turkeyCurrentModelRegistry = [
       "M4 Competition Coupé M xDrive",
       "M5 Sedan",
       "M5 Touring",
-      "modeli, ₺4.037.800",
-      "SUV tercihi ₺4.261.800",
+      "modeli, ₺4.079.500",
+      "SUV tercihi ₺4.304.800",
       "X1 M35i xDrive",
       "X1 sDrive20i",
       "X1 xDrive25e",
@@ -108,15 +114,15 @@ export const turkeyCurrentModelRegistry = [
     "make": "Citroen",
     "models": [
       "Ami",
-      "Ami ( Ami ), ₺600.000",
+      "Ami ( Ami Buggy ), ₺605.000",
       "Berlingo",
       "C3 Aircross",
       "C4",
       "C4 X",
       "C5 Aircross",
       "ë-C3",
-      "modeli, ₺600.000",
-      "SUV tercihi ₺2.230.000"
+      "modeli, ₺605.000",
+      "SUV tercihi ₺2.280.000"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -125,9 +131,9 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Formentor",
       "Leon",
-      "Leon ( e TSI ACT VZ-Line ), ₺3.079.150",
-      "modeli, ₺3.079.150",
-      "SUV tercihi ₺3.775.000",
+      "Leon ( e TSI ACT Impulse ), ₺2.755.000",
+      "modeli, ₺2.755.000",
+      "SUV tercihi ₺2.860.000",
       "Terramar"
     ],
     "source": "SifirArabaBul-2026"
@@ -150,9 +156,9 @@ export const turkeyCurrentModelRegistry = [
       "DS 7",
       "modeli, ₺3.326.450",
       "N°4",
-      "N°4 ( N°4 Pallas BlueHDi 130 Otomatik ), ₺3.326.450",
+      "N°4 ( N4 Pallas Blue HDi ), ₺3.326.450",
       "N°8",
-      "SUV tercihi ₺3.326.450"
+      "SUV tercihi ₺4.443.950"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -176,10 +182,10 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Focus",
       "Kuga",
-      "modeli, ₺2.305.800",
+      "modeli, ₺1.998.700",
       "Puma",
-      "Puma ( Titanium ), ₺2.305.800",
-      "SUV tercihi ₺2.305.800",
+      "Puma ( ST-Line ), ₺1.998.700",
+      "SUV tercihi ₺1.998.700",
       "Tourneo"
     ],
     "source": "SifirArabaBul-2026"
@@ -190,10 +196,10 @@ export const turkeyCurrentModelRegistry = [
       "CR-V",
       "HR-V",
       "Jazz",
-      "Jazz ( Crosstar ), ₺2.600.000",
-      "modeli, ₺2.600.000",
+      "Jazz ( Crosstar ), ₺2.665.000",
+      "modeli, ₺2.665.000",
       "Prelude",
-      "SUV tercihi ₺2.740.000",
+      "SUV tercihi ₺2.820.000",
       "ZR-V"
     ],
     "source": "SifirArabaBul-2026"
@@ -203,17 +209,18 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Bayon",
       "INSTER",
+      "IONIQ 3",
       "IONIQ 5",
-      "IONIQ 5 N",
       "IONIQ 6",
       "IONIQ 9",
       "i20",
-      "i20 ( Jump GSR2C & E-Call ), ₺1.562.000",
+      "i20 ( Jump GSR2C & E-Call ), ₺1.582.000",
       "i30",
       "Kona",
-      "modeli, ₺1.562.000",
+      "modeli, ₺1.582.000",
       "Santa Fe",
-      "SUV tercihi ₺1.640.000",
+      "STARIA",
+      "SUV tercihi ₺1.670.000",
       "Tucson"
     ],
     "source": "SifirArabaBul-2026"
@@ -236,10 +243,11 @@ export const turkeyCurrentModelRegistry = [
       "EV3",
       "EV6",
       "EV9",
-      "modeli, ₺1.435.000",
+      "modeli, ₺1.460.000",
       "Niro",
       "Picanto",
-      "Picanto ( Cool ), ₺1.435.000",
+      "Picanto ( Cool ), ₺1.460.000",
+      "Seltos",
       "Sorento",
       "Sportage",
       "Stonic",
@@ -253,11 +261,11 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Discovery",
       "Discovery Sport",
-      "modeli, ₺8.199.950",
+      "modeli, ₺8.165.960",
       "Range Rover Evoque",
-      "Range Rover Evoque ( S ), ₺8.199.950",
+      "Range Rover Evoque ( S ), ₺8.165.960",
       "Range Rover Velar",
-      "SUV tercihi ₺8.199.950"
+      "SUV tercihi ₺8.165.960"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -265,13 +273,13 @@ export const turkeyCurrentModelRegistry = [
     "make": "Lexus",
     "models": [
       "LBX",
-      "LBX ( LBX Elegant ), ₺3.380.000",
+      "LBX ( LBX ), ₺3.220.000",
       "LM",
-      "modeli, ₺3.380.000",
+      "modeli, ₺3.220.000",
       "NX",
       "RX",
       "RX Performans",
-      "SUV tercihi ₺3.380.000"
+      "SUV tercihi ₺3.220.000"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -279,12 +287,10 @@ export const turkeyCurrentModelRegistry = [
     "make": "Mercedes-Benz",
     "models": [
       "A 200",
-      "A 200 ( AMG ), ₺3.320.000",
-      "C 43 4MATIC",
-      "C 63 S E PERFORMANCE",
-      "C 63 S E PERFORMANCE Estate",
+      "A 200 ( AMG ), ₺3.420.500",
       "C 200 4MATIC",
       "C 200 4MATIC All-Terrain",
+      "C 400 4MATIC",
       "CLA 200+",
       "CLA 220 4MATIC",
       "CLA 220 4MATIC Shooting Brake",
@@ -297,7 +303,7 @@ export const turkeyCurrentModelRegistry = [
       "EQA 250+",
       "EQE 280",
       "EQE 350 4MATIC",
-      "EQS 450 4MATIC",
+      "EQS 500 4MATIC",
       "G 63",
       "G 450 d",
       "G 500",
@@ -305,9 +311,7 @@ export const turkeyCurrentModelRegistry = [
       "GLA 200",
       "GLB 200+",
       "GLB 220 4MATIC",
-      "GLC 43 4MATIC",
       "GLC 43 4MATIC Coupé",
-      "GLC 63 S E PERFORMANCE",
       "GLC 63 S E PERFORMANCE Coupé",
       "GLC 180",
       "GLC 180 Coupé",
@@ -323,12 +327,12 @@ export const turkeyCurrentModelRegistry = [
       "Mercedes-Maybach GLS 600",
       "Mercedes-Maybach S 580",
       "Mercedes-Maybach SL 680",
-      "modeli, ₺3.320.000",
+      "modeli, ₺3.420.500",
       "S 450 d 4MATIC L",
       "S 500 4MATIC L",
       "SL 43",
       "SL 63 4MATIC+",
-      "SUV tercihi ₺4.477.000"
+      "SUV tercihi ₺4.612.000"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -337,10 +341,10 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "HS",
       "MG7",
-      "modeli, ₺2.655.000",
-      "SUV tercihi ₺2.655.000",
+      "modeli, ₺2.685.000",
+      "SUV tercihi ₺2.685.000",
       "ZS",
-      "ZS ( ZS Hybrid+ Luxury Cam Tavanlı ), ₺2.655.000"
+      "ZS ( Hybrid+ Luxury Cam Tavanlı ), ₺2.685.000"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -368,11 +372,11 @@ export const turkeyCurrentModelRegistry = [
     "make": "Nissan",
     "models": [
       "Juke",
-      "modeli, ₺1.429.300",
+      "modeli, ₺1.438.000",
       "Qashqai",
-      "SUV tercihi ₺2.328.700",
+      "SUV tercihi ₺2.351.600",
       "Townstar",
-      "Townstar ( L1 Visia ), ₺1.429.300",
+      "Townstar ( L1 Visia ), ₺1.438.000",
       "Townstar Combi",
       "X-Trail"
     ],
@@ -442,8 +446,8 @@ export const turkeyCurrentModelRegistry = [
     "make": "Porsche",
     "models": [
       "911",
-      "911 ( Carrera ), ₺8.452.120",
-      "modeli, ₺8.452.120"
+      "911 ( Carrera ), ₺8.752.150",
+      "modeli, ₺8.752.150"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -470,12 +474,12 @@ export const turkeyCurrentModelRegistry = [
     "make": "Seat",
     "models": [
       "Arona",
-      "Arona ( EcoTSI FR ), ₺1.853.150",
       "Ateca",
       "Ibiza",
+      "Ibiza ( TSI Style Plus ), ₺1.985.000",
       "Leon",
-      "modeli, ₺1.853.150",
-      "SUV tercihi ₺1.853.150"
+      "modeli, ₺1.985.000",
+      "SUV tercihi ₺2.050.000"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -503,6 +507,7 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Crosstrek",
       "Crosstrek ( Xclusive ), ₺3.919.900",
+      "Forester",
       "modeli, ₺3.919.900",
       "SUV tercihi ₺3.919.900"
     ],
@@ -511,12 +516,12 @@ export const turkeyCurrentModelRegistry = [
   {
     "make": "Suzuki",
     "models": [
-      "modeli, ₺2.063.000",
+      "modeli, ₺2.109.000",
       "S-Cross",
-      "SUV tercihi ₺2.063.000",
+      "SUV tercihi ₺2.183.000",
       "Swift",
-      "Vitara",
-      "Vitara ( Standart ), ₺2.063.000"
+      "Swift ( Standart ), ₺2.109.000",
+      "Vitara"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -550,13 +555,13 @@ export const turkeyCurrentModelRegistry = [
       "Corolla Hybrid",
       "Hilux",
       "Land Cruiser Prado",
-      "modeli, ₺1.439.000",
+      "modeli, ₺1.475.000",
       "Proace",
       "Proace City",
       "Proace City Cargo",
-      "Proace City Cargo ( D Vision ), ₺1.439.000",
+      "Proace City Cargo ( D Vision ), ₺1.475.000",
       "Proace Verso",
-      "SUV tercihi ₺2.797.000",
+      "SUV tercihi ₺2.820.000",
       "Toyota C-HR Hybrid",
       "Yaris Cross Hybrid",
       "Yaris Hybrid"
@@ -569,13 +574,13 @@ export const turkeyCurrentModelRegistry = [
       "Golf",
       "Golf GTI",
       "Golf R",
-      "modeli, ₺2.165.000",
+      "modeli, ₺2.292.000",
       "Passat",
-      "SUV tercihi ₺2.165.000",
+      "SUV tercihi ₺2.292.000",
       "T-Cross",
       "T-Roc",
       "Taigo",
-      "Taigo ( Life TSI 95 ), ₺2.165.000",
+      "Taigo ( Life TSI 95 ), ₺2.292.000",
       "Tayron",
       "Tiguan",
       "Touareg"
@@ -588,12 +593,12 @@ export const turkeyCurrentModelRegistry = [
       "EC40",
       "EC40 BLACK EDITION",
       "EX30",
-      "EX30 ( Ultra P4 Long Range ), ₺2.485.390",
+      "EX30 ( ULTRA ), ₺2.347.670",
       "EX30 CROSS COUNTRY",
       "EX40",
       "EX40 BLACK EDITION",
-      "modeli, ₺2.485.390",
-      "SUV tercihi ₺2.485.390",
+      "modeli, ₺2.347.670",
+      "SUV tercihi ₺2.347.670",
       "V60",
       "XC60",
       "XC60 BLACK EDITION",
