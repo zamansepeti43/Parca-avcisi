@@ -1,58 +1,23 @@
 {
-  "generated_at": "2026-10-14T08:48:15.591Z",
+  "generated_at": "2026-10-15T08:23:08.169Z",
   "source": "ParcaAvcisi vehicle-catalog-merged.json",
   "parca_avcisi": {
-    "marka_sayisi": 39,
-    "model_sayisi": 5186,
+    "marka_sayisi": 37,
+    "model_sayisi": 415,
     "motor_sayisi": 798,
     "donanim_paket_sayisi": 1624,
     "motor_veya_versiyon_sayisi": 2422,
-    "kasa_govde_sayisi": 10,
+    "kasa_govde_sayisi": 0,
     "yil_sayisi": 59,
-    "kayit_sayisi": 6917
+    "kayit_sayisi": 1723
   },
   "variant_quality_audit": {
     "valve_distinction_family_count": 0,
     "valve_distinction_families": [],
     "ambiguous_valve_label_count": 0,
     "ambiguous_valve_labels": [],
-    "duplicate_model_label_family_count": 6,
+    "duplicate_model_label_family_count": 1,
     "duplicate_model_labels": [
-      {
-        "family": "HYUNDAİ|SANTA FE",
-        "labels": [
-          "Santa Fe",
-          "Santa FE"
-        ]
-      },
-      {
-        "family": "MAZDA|MAZDA6",
-        "labels": [
-          "Mazda6",
-          "MAZDA6"
-        ]
-      },
-      {
-        "family": "SSANGYONG|XLV",
-        "labels": [
-          "Xlv",
-          "XLV"
-        ]
-      },
-      {
-        "family": "SUBARU|BRZ",
-        "labels": [
-          "Brz",
-          "BRZ"
-        ]
-      },
-      {
-        "family": "SUBARU|XV",
-        "labels": [
-          "Xv",
-          "XV"
-        ]
-      },
       {
         "family": "TOYOTA|RAV4",
         "labels": [
