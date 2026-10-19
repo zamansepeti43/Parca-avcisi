@@ -1,6 +1,6 @@
 // AUTO-GENERATED. DO NOT HAND-EDIT.
 // Source: https://www.sifirarababul.com/markalar
-// Refreshed: 2026-10-12T09:27:40.865Z
+// Refreshed: 2026-10-19T07:56:29.740Z
 export const turkeyCurrentModelRegistry = [
   {
     "make": "Alfa Romeo",
@@ -516,11 +516,11 @@ export const turkeyCurrentModelRegistry = [
   {
     "make": "Suzuki",
     "models": [
-      "modeli, ₺2.109.000",
+      "modeli, ₺2.079.000",
       "S-Cross",
-      "SUV tercihi ₺2.183.000",
+      "SUV tercihi ₺2.178.000",
       "Swift",
-      "Swift ( Standart ), ₺2.109.000",
+      "Swift ( Life (Tek Renk) ), ₺2.079.000",
       "Vitara"
     ],
     "source": "SifirArabaBul-2026"
