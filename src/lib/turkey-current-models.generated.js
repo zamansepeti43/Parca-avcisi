@@ -1,6 +1,6 @@
 // AUTO-GENERATED. DO NOT HAND-EDIT.
 // Source: https://www.sifirarababul.com/markalar
-// Refreshed: 2026-10-26T07:56:24.856Z
+// Refreshed: 2026-11-02T09:41:13.508Z
 export const turkeyCurrentModelRegistry = [
   {
     "make": "Alfa Romeo",
@@ -143,9 +143,9 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Jogger",
       "Logan",
-      "modeli, ₺1.460.000",
+      "Logan ( Essential ), ₺1.328.000",
+      "modeli, ₺1.328.000",
       "Sandero",
-      "Sandero ( Expression ), ₺1.460.000",
       "Sandero Stepway"
     ],
     "source": "SifirArabaBul-2026"
@@ -195,11 +195,11 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "CR-V",
       "HR-V",
+      "HR-V ( Elegance ), ₺2.600.000",
       "Jazz",
-      "Jazz ( Crosstar ), ₺2.665.000",
-      "modeli, ₺2.665.000",
+      "modeli, ₺2.600.000",
       "Prelude",
-      "SUV tercihi ₺2.820.000",
+      "SUV tercihi ₺2.600.000",
       "ZR-V"
     ],
     "source": "SifirArabaBul-2026"
@@ -209,18 +209,18 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Bayon",
       "INSTER",
+      "INSTER ( Standart Menzil Dynamic ), ₺1.520.000",
       "IONIQ 3",
       "IONIQ 5",
       "IONIQ 6",
       "IONIQ 9",
       "i20",
-      "i20 ( Jump GSR2C & E-Call ), ₺1.582.000",
       "i30",
       "Kona",
-      "modeli, ₺1.582.000",
+      "modeli, ₺1.520.000",
       "Santa Fe",
       "STARIA",
-      "SUV tercihi ₺1.670.000",
+      "SUV tercihi ₺1.520.000",
       "Tucson"
     ],
     "source": "SifirArabaBul-2026"
@@ -251,7 +251,7 @@ export const turkeyCurrentModelRegistry = [
       "Sorento",
       "Sportage",
       "Stonic",
-      "SUV tercihi ₺1.960.000",
+      "SUV tercihi ₺1.855.000",
       "XCeed"
     ],
     "source": "SifirArabaBul-2026"
@@ -341,10 +341,10 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "HS",
       "MG7",
-      "modeli, ₺2.685.000",
-      "SUV tercihi ₺2.685.000",
+      "modeli, ₺2.349.000",
+      "SUV tercihi ₺2.349.000",
       "ZS",
-      "ZS ( Hybrid+ Luxury Cam Tavanlı ), ₺2.685.000"
+      "ZS ( Hybrid+ Luxury Cam Tavanlı ), ₺2.349.000"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -374,7 +374,7 @@ export const turkeyCurrentModelRegistry = [
       "Juke",
       "modeli, ₺1.438.000",
       "Qashqai",
-      "SUV tercihi ₺2.351.600",
+      "SUV tercihi ₺2.036.700",
       "Townstar",
       "Townstar ( L1 Visia ), ₺1.438.000",
       "Townstar Combi",
@@ -400,7 +400,7 @@ export const turkeyCurrentModelRegistry = [
       "Astra",
       "Combo",
       "Combo Cargo",
-      "Combo Cargo ( Edition ), ₺1.330.000",
+      "Combo Cargo ( Edition ), ₺1.190.000",
       "Combo Elektrik",
       "Corsa",
       "Corsa Elektrik",
@@ -408,7 +408,7 @@ export const turkeyCurrentModelRegistry = [
       "Frontera Elektrik",
       "Grandland",
       "Grandland Elektrik",
-      "modeli, ₺1.330.000",
+      "modeli, ₺1.190.000",
       "Mokka",
       "Movano",
       "SUV tercihi ₺1.895.000",
@@ -490,15 +490,15 @@ export const turkeyCurrentModelRegistry = [
       "Enyaq",
       "Enyaq Coupé",
       "Fabia",
-      "Fabia ( Premium ), ₺2.009.900",
+      "Fabia ( Premium ), ₺1.877.900",
       "Kamiq",
       "Karoq",
       "Kodiaq",
-      "modeli, ₺2.009.900",
+      "modeli, ₺1.877.900",
       "Octavia",
       "Scala",
       "Superb",
-      "SUV tercihi ₺2.149.900"
+      "SUV tercihi ₺1.962.700"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -518,7 +518,7 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "modeli, ₺2.079.000",
       "S-Cross",
-      "SUV tercihi ₺2.178.000",
+      "SUV tercihi ₺2.133.000",
       "Swift",
       "Swift ( Life (Tek Renk) ), ₺2.079.000",
       "Vitara"
@@ -555,13 +555,13 @@ export const turkeyCurrentModelRegistry = [
       "Corolla Hybrid",
       "Hilux",
       "Land Cruiser Prado",
-      "modeli, ₺1.475.000",
+      "modeli, ₺1.216.000",
       "Proace",
       "Proace City",
       "Proace City Cargo",
-      "Proace City Cargo ( D Vision ), ₺1.475.000",
+      "Proace City Cargo ( D Vision ), ₺1.216.000",
       "Proace Verso",
-      "SUV tercihi ₺2.820.000",
+      "SUV tercihi ₺2.360.000",
       "Toyota C-HR Hybrid",
       "Yaris Cross Hybrid",
       "Yaris Hybrid"
