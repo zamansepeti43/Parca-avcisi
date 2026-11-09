@@ -1,13 +1,13 @@
 // AUTO-GENERATED. DO NOT HAND-EDIT.
 // Source: https://www.sifirarababul.com/markalar
-// Refreshed: 2026-11-02T09:41:13.508Z
+// Refreshed: 2026-11-09T09:57:53.673Z
 export const turkeyCurrentModelRegistry = [
   {
     "make": "Alfa Romeo",
     "models": [
       "Junior Elettrica",
-      "Junior Elettrica ( Core ), ₺2.124.500",
       "Junior Ibrida",
+      "Junior Ibrida ( Core ), ₺2.124.500",
       "modeli, ₺2.124.500",
       "SUV tercihi ₺2.124.500",
       "Tonale"
@@ -18,20 +18,20 @@ export const turkeyCurrentModelRegistry = [
     "make": "Audi",
     "models": [
       "A3",
-      "A3 ( A3 Sportback TFSI 110 kW Advanced S tronic ), ₺3.614.620",
+      "A3 ( A3 Sportback TFSI 110 kW Advanced S tronic ), ₺3.614.616",
       "A5",
       "A6",
       "A6 e-tron",
       "A8",
       "e-tron GT",
-      "modeli, ₺3.614.620",
+      "modeli, ₺3.614.616",
       "Q3",
       "Q4 e-tron",
       "Q5",
       "Q6 e-tron",
       "Q7",
       "Q8",
-      "SUV tercihi ₺4.832.660"
+      "SUV tercihi ₺4.832.664"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -102,11 +102,12 @@ export const turkeyCurrentModelRegistry = [
   {
     "make": "Chery",
     "models": [
-      "modeli, ₺2.220.000",
-      "SUV tercihi ₺2.220.000",
+      "modeli, ₺1.999.900",
+      "SUV tercihi ₺1.999.900",
+      "Tiggo",
       "Tiggo 7",
-      "Tiggo 7 ( Comfort ), ₺2.220.000",
-      "Tiggo 8"
+      "Tiggo 8",
+      "Tiggo 8 ( Comfort4x21.6 TGDI 145hp 7DCT ), ₺1.999.900"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -180,11 +181,13 @@ export const turkeyCurrentModelRegistry = [
   {
     "make": "Ford",
     "models": [
+      "Capri",
+      "Explorer",
       "Focus",
       "Kuga",
       "modeli, ₺1.998.700",
       "Puma",
-      "Puma ( ST-Line ), ₺1.998.700",
+      "Puma ( ST-Line Black Edition ), ₺1.998.700",
       "SUV tercihi ₺1.998.700",
       "Tourneo"
     ],
@@ -246,12 +249,12 @@ export const turkeyCurrentModelRegistry = [
       "modeli, ₺1.460.000",
       "Niro",
       "Picanto",
-      "Picanto ( Cool ), ₺1.460.000",
+      "Picanto ( Feel ), ₺1.460.000",
       "Seltos",
       "Sorento",
       "Sportage",
       "Stonic",
-      "SUV tercihi ₺1.855.000",
+      "SUV tercihi ₺1.830.000",
       "XCeed"
     ],
     "source": "SifirArabaBul-2026"
@@ -261,11 +264,11 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Discovery",
       "Discovery Sport",
-      "modeli, ₺8.165.960",
+      "modeli, ₺8.166.254",
       "Range Rover Evoque",
-      "Range Rover Evoque ( S ), ₺8.165.960",
+      "Range Rover Evoque ( S ), ₺8.166.254",
       "Range Rover Velar",
-      "SUV tercihi ₺8.165.960"
+      "SUV tercihi ₺8.166.254"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -340,11 +343,11 @@ export const turkeyCurrentModelRegistry = [
     "make": "MG",
     "models": [
       "HS",
+      "HS ( Premium ), ₺2.385.000",
       "MG7",
-      "modeli, ₺2.349.000",
-      "SUV tercihi ₺2.349.000",
-      "ZS",
-      "ZS ( Hybrid+ Luxury Cam Tavanlı ), ₺2.349.000"
+      "modeli, ₺2.385.000",
+      "SUV tercihi ₺2.385.000",
+      "ZS"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -353,7 +356,7 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "Cooper 3 Kapı",
       "Cooper 5 Kapı",
-      "Cooper 5 Kapı ( Favoured ), ₺3.364.900",
+      "Cooper 5 Kapı ( Favoured ), ₺3.432.200",
       "Cooper S 3 Kapı",
       "Cooper S Cabrio",
       "Countryman C",
@@ -361,8 +364,8 @@ export const turkeyCurrentModelRegistry = [
       "John Cooper Works",
       "John Cooper Works Cabrio",
       "John Cooper Works Countryman ALL4",
-      "modeli, ₺3.364.900",
-      "SUV tercihi ₺3.921.300",
+      "modeli, ₺3.432.200",
+      "SUV tercihi ₺3.999.900",
       "Tamamen Elektrikli Countryman E",
       "Tamamen Elektrikli Countryman SE ALL4"
     ],
@@ -374,7 +377,7 @@ export const turkeyCurrentModelRegistry = [
       "Juke",
       "modeli, ₺1.438.000",
       "Qashqai",
-      "SUV tercihi ₺2.036.700",
+      "SUV tercihi ₺1.580.000",
       "Townstar",
       "Townstar ( L1 Visia ), ₺1.438.000",
       "Townstar Combi",
@@ -411,7 +414,7 @@ export const turkeyCurrentModelRegistry = [
       "modeli, ₺1.190.000",
       "Mokka",
       "Movano",
-      "SUV tercihi ₺1.895.000",
+      "SUV tercihi ₺1.770.000",
       "Vivaro",
       "Vivaro Cargo",
       "Vivaro City Van",
@@ -446,8 +449,14 @@ export const turkeyCurrentModelRegistry = [
     "make": "Porsche",
     "models": [
       "911",
-      "911 ( Carrera ), ₺8.752.150",
-      "modeli, ₺8.752.150"
+      "Cayenne",
+      "Cayenne Electric",
+      "Macan",
+      "Macan ( Macan ), ₺8.752.146",
+      "modeli, ₺8.752.146",
+      "Panamera",
+      "SUV tercihi ₺8.752.146",
+      "Taycan"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -490,15 +499,15 @@ export const turkeyCurrentModelRegistry = [
       "Enyaq",
       "Enyaq Coupé",
       "Fabia",
-      "Fabia ( Premium ), ₺1.877.900",
+      "Fabia ( Premium ), ₺1.772.700",
       "Kamiq",
       "Karoq",
       "Kodiaq",
-      "modeli, ₺1.877.900",
+      "modeli, ₺1.772.700",
       "Octavia",
       "Scala",
       "Superb",
-      "SUV tercihi ₺1.962.700"
+      "SUV tercihi ₺1.962.800"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -518,7 +527,7 @@ export const turkeyCurrentModelRegistry = [
     "models": [
       "modeli, ₺2.079.000",
       "S-Cross",
-      "SUV tercihi ₺2.133.000",
+      "SUV tercihi ₺2.178.000",
       "Swift",
       "Swift ( Life (Tek Renk) ), ₺2.079.000",
       "Vitara"
@@ -529,9 +538,9 @@ export const turkeyCurrentModelRegistry = [
     "make": "Tesla",
     "models": [
       "Model Y",
-      "Model Y ( Model Y Arkadan Çekiş ), ₺2.474.980",
-      "modeli, ₺2.474.980",
-      "SUV tercihi ₺2.474.980"
+      "Model Y ( Model Y Arkadan Çekiş ), ₺2.474.985",
+      "modeli, ₺2.474.985",
+      "SUV tercihi ₺2.474.985"
     ],
     "source": "SifirArabaBul-2026"
   },
@@ -539,7 +548,7 @@ export const turkeyCurrentModelRegistry = [
     "make": "Togg",
     "models": [
       "modeli, ₺1.884.980",
-      "SUV tercihi ₺1.909.050",
+      "SUV tercihi ₺1.909.048",
       "T10F",
       "T10F ( V1 Standart Menzil ), ₺1.884.980",
       "T10X"
@@ -561,7 +570,7 @@ export const turkeyCurrentModelRegistry = [
       "Proace City Cargo",
       "Proace City Cargo ( D Vision ), ₺1.216.000",
       "Proace Verso",
-      "SUV tercihi ₺2.360.000",
+      "SUV tercihi ₺2.290.000",
       "Toyota C-HR Hybrid",
       "Yaris Cross Hybrid",
       "Yaris Hybrid"
@@ -574,13 +583,14 @@ export const turkeyCurrentModelRegistry = [
       "Golf",
       "Golf GTI",
       "Golf R",
-      "modeli, ₺2.292.000",
+      "ID.4",
+      "modeli, ₺2.292.100",
       "Passat",
-      "SUV tercihi ₺2.292.000",
+      "SUV tercihi ₺2.292.100",
       "T-Cross",
       "T-Roc",
       "Taigo",
-      "Taigo ( Life TSI 95 ), ₺2.292.000",
+      "Taigo ( Life TSI 95 ), ₺2.292.100",
       "Tayron",
       "Tiguan",
       "Touareg"
