@@ -1,23 +1,30 @@
 {
-  "generated_at": "2026-11-09T11:41:30.030Z",
+  "generated_at": "2026-11-10T11:19:19.986Z",
   "source": "ParcaAvcisi vehicle-catalog-merged.json",
   "parca_avcisi": {
     "marka_sayisi": 39,
-    "model_sayisi": 5186,
+    "model_sayisi": 5668,
     "motor_sayisi": 798,
     "donanim_paket_sayisi": 1624,
     "motor_veya_versiyon_sayisi": 2422,
     "kasa_govde_sayisi": 10,
     "yil_sayisi": 59,
-    "kayit_sayisi": 6917
+    "kayit_sayisi": 7431
   },
   "variant_quality_audit": {
     "valve_distinction_family_count": 0,
     "valve_distinction_families": [],
     "ambiguous_valve_label_count": 0,
     "ambiguous_valve_labels": [],
-    "duplicate_model_label_family_count": 6,
+    "duplicate_model_label_family_count": 9,
     "duplicate_model_labels": [
+      {
+        "family": "FİAT|DOBLO",
+        "labels": [
+          "Doblo",
+          "Doblò"
+        ]
+      },
       {
         "family": "HYUNDAİ|SANTA FE",
         "labels": [
@@ -30,6 +37,20 @@
         "labels": [
           "Mazda6",
           "MAZDA6"
+        ]
+      },
+      {
+        "family": "RENAULT|MEGANE",
+        "labels": [
+          "Megane",
+          "Mégane"
+        ]
+      },
+      {
+        "family": "SEAT|LEON",
+        "labels": [
+          "Leon",
+          "León"
         ]
       },
       {
