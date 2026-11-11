@@ -4949,7 +4949,7 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Audi",
-    "model": "Q4",
+    "model": "Q4 e-tron",
     "body": "suv",
     "years": [],
     "engines": [],
@@ -5045,7 +5045,7 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Audi",
-    "model": "Q6",
+    "model": "Q6 e-tron",
     "body": "suv",
     "years": [],
     "engines": [],
@@ -12707,7 +12707,7 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "BMW",
-    "model": "R12 Ninet",
+    "model": "R12 nineT",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -15188,6 +15188,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "Aircross",
+    "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Panelvan",
     "make": "Citroën",
     "model": "Ak",
@@ -15458,6 +15473,21 @@ export const vehicleCatalog=[
     "make": "Citroën",
     "model": "B14G",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Citroën",
+    "model": "Basalt",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -20332,6 +20362,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Fiat",
+    "model": "Argo",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
     "model": "Arto 69",
     "body": "hatchback",
     "years": [],
@@ -20571,6 +20616,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "B654",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Bambina",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -23496,6 +23556,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Mobi",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Fiat",
     "model": "Mobilvetta",
@@ -23865,6 +23940,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Fiat",
     "model": "Pilote",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Fiat",
+    "model": "Pulse",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -27399,6 +27489,21 @@ export const vehicleCatalog=[
     "make": "Ford",
     "model": "Elite",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Ford",
+    "model": "Endura",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -34434,6 +34539,21 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Otomobil",
+    "make": "Honda",
+    "model": "Avancier",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Motosiklet",
     "make": "Honda",
     "model": "Ax-1",
@@ -40684,7 +40804,7 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Honda",
-    "model": "E:N1",
+    "model": "e:N1",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -40714,7 +40834,7 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Honda",
-    "model": "E:NY1",
+    "model": "e:Ny1",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -40729,7 +40849,7 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Honda",
-    "model": "E",
+    "model": "e",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -48313,6 +48433,20 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "VT400",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "VT500",
     "years": [],
     "engines": [],
@@ -49742,6 +49876,34 @@ export const vehicleCatalog=[
   {
     "type": "Motosiklet",
     "make": "Honda",
+    "model": "XR190",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
+    "model": "XR190L",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Honda",
     "model": "XR200R",
     "years": [],
     "engines": [],
@@ -51153,7 +51315,7 @@ export const vehicleCatalog=[
     ]
   },
   {
-    "type": "Panelvan",
+    "type": "Kamyon",
     "make": "Hyundai",
     "model": "H350",
     "years": [],
@@ -51185,6 +51347,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Hyundai",
     "model": "HB20",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Hyundai",
+    "model": "HB20S",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -51840,6 +52017,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Hyundai",
+    "model": "i25",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Hyundai",
     "model": "i30 CW",
     "years": [],
     "engines": [
@@ -52215,6 +52407,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Hyundai",
     "model": "i30",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Hyundai",
+    "model": "i35",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -52641,6 +52848,21 @@ export const vehicleCatalog=[
     "make": "Hyundai",
     "model": "Stellar",
     "body": "sedan",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Hyundai",
+    "model": "TB",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -54934,6 +55156,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Panelvan",
+    "make": "Isuzu",
+    "model": "Ippon",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Kamyon",
     "make": "Isuzu",
     "model": "JCR",
@@ -55498,6 +55734,20 @@ export const vehicleCatalog=[
     "make": "Jeep",
     "model": "CJ-5",
     "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Jeep",
+    "model": "CJ-7",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -58424,6 +58674,20 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Land Rover",
     "model": "FC",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Land Rover",
+    "model": "Freelander",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -69962,6 +70226,20 @@ export const vehicleCatalog=[
   {
     "type": "Kamyon",
     "make": "Mercedes-Benz",
+    "model": "Accelo",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Mercedes-Benz",
     "model": "Actros",
     "years": [],
     "engines": [],
@@ -71067,7 +71345,7 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mercedes-Benz",
-    "model": "Eqt",
+    "model": "EQT",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -76824,6 +77102,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mitsubishi",
+    "model": "380",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mitsubishi",
     "model": "Airtrek",
     "body": "hatchback",
     "years": [],
@@ -77507,6 +77800,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mitsubishi",
+    "model": "i",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mitsubishi",
     "model": "Jeep",
     "body": "hatchback",
     "years": [],
@@ -77854,6 +78162,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Mitsubishi",
+    "model": "Magna",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Mitsubishi",
     "model": "Minica",
     "body": "hatchback",
     "years": [],
@@ -78131,6 +78454,20 @@ export const vehicleCatalog=[
     "make": "Mitsubishi",
     "model": "Pajero Pinin",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Panelvan",
+    "make": "Mitsubishi",
+    "model": "Pajero Sport",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -80140,6 +80477,21 @@ export const vehicleCatalog=[
     "make": "Nissan",
     "model": "Juke",
     "body": "suv",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Nissan",
+    "model": "Kait",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -92085,6 +92437,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Renault",
+    "model": "Kwid",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
     "model": "Laguna",
     "body": "hatchback",
     "years": [],
@@ -93011,6 +93378,21 @@ export const vehicleCatalog=[
     "make": "Renault",
     "model": "Nn",
     "body": "convertible",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Renault",
+    "model": "Oroch",
+    "body": "hatchback",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -97970,6 +98352,21 @@ export const vehicleCatalog=[
   },
   {
     "type": "Otomobil",
+    "make": "SsangYong",
+    "model": "Stavic",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
     "make": "Ssangyong",
     "model": "Tivoli",
     "years": [],
@@ -98764,6 +99161,21 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Subaru",
     "model": "Levorg",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Subaru",
+    "model": "Liberty",
     "body": "hatchback",
     "years": [],
     "engines": [],
@@ -100237,6 +100649,20 @@ export const vehicleCatalog=[
     "type": "Motosiklet",
     "make": "Suzuki",
     "model": "DL800U",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Motosiklet",
+    "make": "Suzuki",
+    "model": "DR-Z250",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -113332,6 +113758,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Toyota",
+    "model": "Tarago",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Toyota",
     "model": "Tercel",
     "body": "hatchback",
     "years": [],
@@ -115664,6 +116105,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Kamyon",
+    "make": "Volkswagen",
+    "model": "Constellation",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Volkswagen",
     "model": "Corrado",
@@ -115712,6 +116167,20 @@ export const vehicleCatalog=[
     "make": "Volkswagen",
     "model": "CrossPolo",
     "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Volkswagen",
+    "model": "Delivery",
     "years": [],
     "engines": [],
     "fuels": [],
@@ -117145,6 +117614,20 @@ export const vehicleCatalog=[
     ]
   },
   {
+    "type": "Kamyon",
+    "make": "Volkswagen",
+    "model": "Meteor",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
     "type": "Otomobil",
     "make": "Volkswagen",
     "model": "Meyers Manx",
@@ -118465,6 +118948,21 @@ export const vehicleCatalog=[
   {
     "type": "Otomobil",
     "make": "Volkswagen",
+    "model": "Saveiro",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
     "model": "Scirocco",
     "years": [],
     "engines": [
@@ -119391,6 +119889,21 @@ export const vehicleCatalog=[
     "engineDetails": [],
     "provenance": [
       "ParcaAvcisiLegacy"
+    ]
+  },
+  {
+    "type": "Otomobil",
+    "make": "Volkswagen",
+    "model": "Virtus",
+    "body": "hatchback",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
     ]
   },
   {
@@ -122736,6 +123249,34 @@ export const vehicleCatalog=[
     "type": "Kamyon",
     "make": "Volvo",
     "model": "VHD",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Volvo",
+    "model": "VM",
+    "years": [],
+    "engines": [],
+    "fuels": [],
+    "transmissions": [],
+    "trims": [],
+    "engineDetails": [],
+    "provenance": [
+      "VehiclesDB"
+    ]
+  },
+  {
+    "type": "Kamyon",
+    "make": "Volvo",
+    "model": "VMX",
     "years": [],
     "engines": [],
     "fuels": [],

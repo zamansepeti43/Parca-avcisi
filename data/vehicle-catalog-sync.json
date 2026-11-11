@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-11-10T11:19:18.784Z",
+  "generatedAt": "2026-11-11T11:05:44.477Z",
   "sourceFiles": [
     "data/vehicle-catalog-merged.json"
   ],
   "counts": {
     "brands": 36,
-    "models": 5681,
-    "engineVariants": 13703,
-    "trims": 14823,
-    "vehicles": 14823
+    "models": 5715,
+    "engineVariants": 13740,
+    "trims": 14860,
+    "vehicles": 14860
   },
   "vehicles": [
     {
@@ -5393,7 +5393,7 @@
     },
     {
       "make": "Audi",
-      "model": "Q4",
+      "model": "Q4 e-tron",
       "year": null,
       "body": "suv",
       "engine": null,
@@ -5443,7 +5443,7 @@
     },
     {
       "make": "Audi",
-      "model": "Q6",
+      "model": "Q6 e-tron",
       "year": null,
       "body": "suv",
       "engine": null,
@@ -13753,7 +13753,7 @@
     },
     {
       "make": "BMW",
-      "model": "R12 Ninet",
+      "model": "R12 nineT",
       "year": null,
       "body": null,
       "engine": null,
@@ -15323,6 +15323,16 @@
     },
     {
       "make": "Citroën",
+      "model": "Aircross",
+      "year": null,
+      "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
       "model": "Ak",
       "year": null,
       "body": null,
@@ -15506,6 +15516,16 @@
       "model": "B14G",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Citroën",
+      "model": "Basalt",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -22053,6 +22073,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Argo",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Arto 69",
       "year": null,
       "body": "hatchback",
@@ -22214,6 +22244,16 @@
     {
       "make": "Fiat",
       "model": "B654",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Bambina",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -26663,6 +26703,16 @@
     },
     {
       "make": "Fiat",
+      "model": "Mobi",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
       "model": "Mobilvetta",
       "year": null,
       "body": null,
@@ -27264,6 +27314,16 @@
     {
       "make": "Fiat",
       "model": "Pilote",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Fiat",
+      "model": "Pulse",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -33016,6 +33076,16 @@
       "model": "Elite",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Ford",
+      "model": "Endura",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -45593,6 +45663,16 @@
     },
     {
       "make": "Honda",
+      "model": "Avancier",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "Ax-1",
       "year": null,
       "body": null,
@@ -51483,7 +51563,7 @@
     },
     {
       "make": "Honda",
-      "model": "E:N1",
+      "model": "e:N1",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -51503,7 +51583,7 @@
     },
     {
       "make": "Honda",
-      "model": "E:NY1",
+      "model": "e:Ny1",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -51513,7 +51593,7 @@
     },
     {
       "make": "Honda",
-      "model": "E",
+      "model": "e",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -56833,6 +56913,16 @@
     },
     {
       "make": "Honda",
+      "model": "VT400",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "VT500",
       "year": null,
       "body": null,
@@ -57844,6 +57934,26 @@
     {
       "make": "Honda",
       "model": "XR125L",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "XR190",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "XR190L",
       "year": null,
       "body": null,
       "engine": null,
@@ -60503,6 +60613,16 @@
     },
     {
       "make": "Hyundai",
+      "model": "HB20S",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
       "model": "Iload",
       "year": null,
       "body": null,
@@ -61323,6 +61443,16 @@
     },
     {
       "make": "Hyundai",
+      "model": "i25",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
       "model": "i30 CW",
       "year": null,
       "body": null,
@@ -61494,6 +61624,16 @@
     {
       "make": "Hyundai",
       "model": "i30",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
+      "model": "i35",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -61776,6 +61916,16 @@
       "model": "Stellar",
       "year": null,
       "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Hyundai",
+      "model": "TB",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -63203,6 +63353,16 @@
     },
     {
       "make": "Isuzu",
+      "model": "Ippon",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Isuzu",
       "model": "JCR",
       "year": null,
       "body": null,
@@ -63596,6 +63756,16 @@
       "model": "CJ-5",
       "year": null,
       "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Jeep",
+      "model": "CJ-7",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -66654,6 +66824,16 @@
     {
       "make": "Land Rover",
       "model": "FC",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Land Rover",
+      "model": "Freelander",
       "year": null,
       "body": null,
       "engine": null,
@@ -73943,6 +74123,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Accelo",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "Actros",
       "year": null,
       "body": null,
@@ -76813,7 +77003,7 @@
     },
     {
       "make": "Mercedes-Benz",
-      "model": "Eqt",
+      "model": "EQT",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -80023,6 +80213,16 @@
     },
     {
       "make": "Mitsubishi",
+      "model": "380",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
       "model": "Airtrek",
       "year": null,
       "body": "hatchback",
@@ -80453,6 +80653,16 @@
     },
     {
       "make": "Mitsubishi",
+      "model": "i",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
       "model": "Jeep",
       "year": null,
       "body": "hatchback",
@@ -80653,6 +80863,16 @@
     },
     {
       "make": "Mitsubishi",
+      "model": "Magna",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
       "model": "Minica",
       "year": null,
       "body": "hatchback",
@@ -80836,6 +81056,16 @@
       "model": "Pajero Pinin",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
+      "model": "Pajero Sport",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -82446,6 +82676,16 @@
       "model": "Juke",
       "year": null,
       "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Nissan",
+      "model": "Kait",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -101913,6 +102153,16 @@
     },
     {
       "make": "Renault",
+      "model": "Kwid",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
       "model": "Laguna",
       "year": null,
       "body": "hatchback",
@@ -105676,6 +105926,16 @@
       "model": "Nn",
       "year": null,
       "body": "convertible",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Renault",
+      "model": "Oroch",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -112102,6 +112362,16 @@
       "trim": null
     },
     {
+      "make": "SsangYong",
+      "model": "Stavic",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
       "make": "Ssangyong",
       "model": "Tivoli",
       "year": null,
@@ -112574,6 +112844,16 @@
     {
       "make": "Subaru",
       "model": "Levorg",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Subaru",
+      "model": "Liberty",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -113574,6 +113854,16 @@
     {
       "make": "Suzuki",
       "model": "DL800U",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Suzuki",
+      "model": "DR-Z250",
       "year": null,
       "body": null,
       "engine": null,
@@ -132153,6 +132443,16 @@
     },
     {
       "make": "Toyota",
+      "model": "Tarago",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Tercel",
       "year": null,
       "body": "hatchback",
@@ -135713,6 +136013,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Constellation",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Corrado",
       "year": null,
       "body": "coupe",
@@ -135746,6 +136056,16 @@
       "model": "CrossPolo",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Delivery",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -139873,6 +140193,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Meteor",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Meyers Manx",
       "year": null,
       "body": "convertible",
@@ -143463,6 +143793,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Saveiro",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Scirocco",
       "year": null,
       "body": null,
@@ -145893,6 +146233,16 @@
     },
     {
       "make": "Volkswagen",
+      "model": "Virtus",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volkswagen",
       "model": "Vw 1300 Avkortad",
       "year": null,
       "body": "convertible",
@@ -148074,6 +148424,26 @@
     {
       "make": "Volvo",
       "model": "VHD",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "VM",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Volvo",
+      "model": "VMX",
       "year": null,
       "body": null,
       "engine": null,
