@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-11-11T11:05:44.477Z",
+  "generatedAt": "2026-11-12T11:24:22.471Z",
   "sourceFiles": [
     "data/vehicle-catalog-merged.json"
   ],
   "counts": {
     "brands": 36,
-    "models": 5715,
-    "engineVariants": 13740,
-    "trims": 14860,
-    "vehicles": 14860
+    "models": 5729,
+    "engineVariants": 13754,
+    "trims": 14874,
+    "vehicles": 14874
   },
   "vehicles": [
     {
@@ -19303,7 +19303,7 @@
     },
     {
       "make": "Citroën",
-      "model": "Mehari",
+      "model": "Méhari",
       "year": null,
       "body": null,
       "engine": null,
@@ -19313,7 +19313,7 @@
     },
     {
       "make": "Citroën",
-      "model": "Mehari",
+      "model": "Méhari",
       "year": null,
       "body": "convertible",
       "engine": null,
@@ -50843,6 +50843,16 @@
     },
     {
       "make": "Honda",
+      "model": "CRF230F",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "CRF250 Rally",
       "year": null,
       "body": null,
@@ -51184,6 +51194,16 @@
     {
       "make": "Honda",
       "model": "CTX1300A",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "CTX200 Bushlander",
       "year": null,
       "body": null,
       "engine": null,
@@ -52863,6 +52883,16 @@
     },
     {
       "make": "Honda",
+      "model": "MB-8",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "Mb",
       "year": null,
       "body": null,
@@ -53303,6 +53333,16 @@
     },
     {
       "make": "Honda",
+      "model": "NAVi",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
       "model": "NB50",
       "year": null,
       "body": null,
@@ -53694,6 +53734,16 @@
     {
       "make": "Honda",
       "model": "NS-1",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Honda",
+      "model": "NS125F",
       "year": null,
       "body": null,
       "engine": null,
@@ -77083,6 +77133,16 @@
     },
     {
       "make": "Mercedes-Benz",
+      "model": "Evito",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mercedes-Benz",
       "model": "Evolve",
       "year": null,
       "body": null,
@@ -81323,6 +81383,16 @@
     },
     {
       "make": "Mitsubishi",
+      "model": "Verada",
+      "year": null,
+      "body": "sedan",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Mitsubishi",
       "model": "Xforce",
       "year": null,
       "body": "hatchback",
@@ -82236,16 +82306,6 @@
       "model": "D22",
       "year": null,
       "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Nissan",
-      "model": "Datsun Fairlady",
-      "year": null,
-      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -97333,6 +97393,16 @@
     },
     {
       "make": "Peugeot",
+      "model": "Elyseo 100",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "Elyseo 125",
       "year": null,
       "body": null,
@@ -97354,6 +97424,16 @@
     {
       "make": "Peugeot",
       "model": "Elyseo",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
+      "model": "Elystar 125",
       "year": null,
       "body": null,
       "engine": null,
@@ -98483,6 +98563,16 @@
     },
     {
       "make": "Peugeot",
+      "model": "Satelis 125",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "Satelis",
       "year": null,
       "body": null,
@@ -98573,6 +98663,16 @@
     },
     {
       "make": "Peugeot",
+      "model": "Sum Up 125",
+      "year": null,
+      "body": null,
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
       "model": "SV125",
       "year": null,
       "body": null,
@@ -98616,6 +98716,16 @@
       "model": "Traveller",
       "year": null,
       "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Peugeot",
+      "model": "Trekker 100",
+      "year": null,
+      "body": null,
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -130733,6 +130843,16 @@
     },
     {
       "make": "Toyota",
+      "model": "Lexcen",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Lite Ace",
       "year": null,
       "body": null,
@@ -132223,6 +132343,16 @@
     },
     {
       "make": "Toyota",
+      "model": "Rukus",
+      "year": null,
+      "body": "hatchback",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
       "model": "Rumion",
       "year": null,
       "body": "hatchback",
@@ -132316,6 +132446,16 @@
       "model": "Soarer",
       "year": null,
       "body": "coupe",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Toyota",
+      "model": "Spacia",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
