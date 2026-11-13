@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-11-12T11:24:22.471Z",
+  "generatedAt": "2026-11-13T11:07:14.310Z",
   "sourceFiles": [
     "data/vehicle-catalog-merged.json"
   ],
   "counts": {
     "brands": 36,
-    "models": 5729,
-    "engineVariants": 13754,
-    "trims": 14874,
-    "vehicles": 14874
+    "models": 5700,
+    "engineVariants": 13725,
+    "trims": 14845,
+    "vehicles": 14845
   },
   "vehicles": [
     {
@@ -1173,7 +1173,7 @@
     },
     {
       "make": "Alfa Romeo",
-      "model": "Sz",
+      "model": "SZ",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -1314,16 +1314,6 @@
     {
       "make": "Audi",
       "model": "60",
-      "year": null,
-      "body": "sedan",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Audi",
-      "model": "80 Cd",
       "year": null,
       "body": "sedan",
       "engine": null,
@@ -5514,16 +5504,6 @@
     {
       "make": "Audi",
       "model": "Quattro",
-      "year": null,
-      "body": "coupe",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Audi",
-      "model": "R 8",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -12063,16 +12043,6 @@
     },
     {
       "make": "BMW",
-      "model": "C-1",
-      "year": null,
-      "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "BMW",
       "model": "C1-200",
       "year": null,
       "body": null,
@@ -12484,16 +12454,6 @@
     {
       "make": "BMW",
       "model": "F900R",
-      "year": null,
-      "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "BMW",
-      "model": "F900RA2",
       "year": null,
       "body": null,
       "engine": null,
@@ -13773,16 +13733,6 @@
     },
     {
       "make": "BMW",
-      "model": "R1200 Gsadventure",
-      "year": null,
-      "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "BMW",
       "model": "R1200 Nine-T",
       "year": null,
       "body": null,
@@ -15043,16 +14993,6 @@
     },
     {
       "make": "BMW",
-      "model": "Z 4",
-      "year": null,
-      "body": "convertible",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "BMW",
       "model": "Z Series",
       "year": null,
       "body": "convertible",
@@ -15164,16 +15104,6 @@
     {
       "make": "Citroën",
       "model": "11B",
-      "year": null,
-      "body": "sedan",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Citroën",
-      "model": "11BL",
       "year": null,
       "body": "sedan",
       "engine": null,
@@ -15356,16 +15286,6 @@
       "model": "Allied",
       "year": null,
       "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Citroën",
-      "model": "AMI8",
-      "year": null,
-      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -18863,16 +18783,6 @@
     },
     {
       "make": "Citroën",
-      "model": "DS 4",
-      "year": null,
-      "body": "hatchback",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Citroën",
       "model": "DS 7 Crossback",
       "year": null,
       "body": "suv",
@@ -20336,6 +20246,16 @@
       "model": "Spring",
       "year": null,
       "body": "suv",
+      "engine": null,
+      "fuel": null,
+      "transmission": null,
+      "trim": null
+    },
+    {
+      "make": "Dacia",
+      "model": "Striker",
+      "year": null,
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -32113,16 +32033,6 @@
     },
     {
       "make": "Ford",
-      "model": "Capri 1600GT",
-      "year": null,
-      "body": "hatchback",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Ford",
       "model": "Capri 1600XL",
       "year": null,
       "body": "hatchback",
@@ -32134,16 +32044,6 @@
     {
       "make": "Ford",
       "model": "Capri 2",
-      "year": null,
-      "body": "coupe",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Ford",
-      "model": "Capri 2000 GT",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -32226,16 +32126,6 @@
       "model": "Capri Turbo",
       "year": null,
       "body": "hatchback",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Ford",
-      "model": "Capri Xr 2",
-      "year": null,
-      "body": "convertible",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -33196,16 +33086,6 @@
       "model": "Escort MK2",
       "year": null,
       "body": "sedan",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Ford",
-      "model": "Escort Mkii",
-      "year": null,
-      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -39873,16 +39753,6 @@
     },
     {
       "make": "Ford",
-      "model": "Ranchwagon",
-      "year": null,
-      "body": "hatchback",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Ford",
       "model": "Ranger",
       "year": null,
       "body": null,
@@ -45523,16 +45393,6 @@
     },
     {
       "make": "Honda",
-      "model": "Africatwin",
-      "year": null,
-      "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Honda",
       "model": "AFS1102SH",
       "year": null,
       "body": null,
@@ -51093,16 +50953,6 @@
     },
     {
       "make": "Honda",
-      "model": "Crx Delsol",
-      "year": null,
-      "body": "convertible",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Honda",
       "model": "Crx Si",
       "year": null,
       "body": "hatchback",
@@ -53073,16 +52923,6 @@
     },
     {
       "make": "Honda",
-      "model": "Moto Compo",
-      "year": null,
-      "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Honda",
       "model": "Motocompo NCZ50",
       "year": null,
       "body": null,
@@ -54093,7 +53933,7 @@
     },
     {
       "make": "Honda",
-      "model": "Nsx",
+      "model": "NSX",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -67883,16 +67723,6 @@
     },
     {
       "make": "Lexus",
-      "model": "Sc 300",
-      "year": null,
-      "body": "coupe",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Lexus",
       "model": "SC",
       "year": null,
       "body": "convertible",
@@ -72023,16 +71853,6 @@
     },
     {
       "make": "Mercedes-Benz",
-      "model": "280SL/8",
-      "year": null,
-      "body": "convertible",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Mercedes-Benz",
       "model": "290 GD",
       "year": null,
       "body": null,
@@ -72756,16 +72576,6 @@
       "model": "320",
       "year": null,
       "body": "convertible",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Mercedes-Benz",
-      "model": "320CE",
-      "year": null,
-      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -78193,7 +78003,7 @@
     },
     {
       "make": "Mercedes-Benz",
-      "model": "Slr",
+      "model": "SLR",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -78203,7 +78013,7 @@
     },
     {
       "make": "Mercedes-Benz",
-      "model": "Sls",
+      "model": "SLS",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -81423,16 +81233,6 @@
     },
     {
       "make": "Nissan",
-      "model": "100 NX",
-      "year": null,
-      "body": "convertible",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Nissan",
       "model": "100",
       "year": null,
       "body": "hatchback",
@@ -81513,27 +81313,7 @@
     },
     {
       "make": "Nissan",
-      "model": "240SX",
-      "year": null,
-      "body": "convertible",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Nissan",
       "model": "240Z",
-      "year": null,
-      "body": "coupe",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Nissan",
-      "model": "280 ZX",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -81564,16 +81344,6 @@
     {
       "make": "Nissan",
       "model": "300 ZX Turbo",
-      "year": null,
-      "body": "coupe",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Nissan",
-      "model": "300 ZX",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -82245,7 +82015,7 @@
       "make": "Nissan",
       "model": "Cefiro",
       "year": null,
-      "body": "hatchback",
+      "body": "sedan",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -85454,16 +85224,6 @@
     {
       "make": "Nissan",
       "model": "Skyline GT-R",
-      "year": null,
-      "body": "coupe",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Nissan",
-      "model": "Skyline Gtr",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -112693,7 +112453,7 @@
     },
     {
       "make": "Subaru",
-      "model": "Brz",
+      "model": "BRZ",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -113073,7 +112833,7 @@
     },
     {
       "make": "Subaru",
-      "model": "Svx",
+      "model": "SVX",
       "year": null,
       "body": "coupe",
       "engine": null,
@@ -113163,7 +112923,7 @@
     },
     {
       "make": "Subaru",
-      "model": "Wrx",
+      "model": "WRX",
       "year": null,
       "body": "sedan",
       "engine": null,
@@ -113203,9 +112963,9 @@
     },
     {
       "make": "Subaru",
-      "model": "Xv",
+      "model": "XV",
       "year": null,
-      "body": "suv",
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -116453,16 +116213,6 @@
     },
     {
       "make": "Suzuki",
-      "model": "Gsxr 1100",
-      "year": null,
-      "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Suzuki",
       "model": "Gsxr 1100L",
       "year": null,
       "body": null,
@@ -116494,16 +116244,6 @@
     {
       "make": "Suzuki",
       "model": "Gsxr 400R",
-      "year": null,
-      "body": null,
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Suzuki",
-      "model": "Gsxr 750J",
       "year": null,
       "body": null,
       "engine": null,
@@ -116974,16 +116714,6 @@
     {
       "make": "Suzuki",
       "model": "Lj",
-      "year": null,
-      "body": "convertible",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Suzuki",
-      "model": "LJ80",
       "year": null,
       "body": "convertible",
       "engine": null,
@@ -117676,16 +117406,6 @@
       "model": "Sj",
       "year": null,
       "body": "convertible",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Suzuki",
-      "model": "SJ40",
-      "year": null,
-      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -124503,7 +124223,7 @@
     },
     {
       "make": "Toyota",
-      "model": "Bb",
+      "model": "bB",
       "year": null,
       "body": "hatchback",
       "engine": null,
@@ -130703,9 +130423,9 @@
     },
     {
       "make": "Toyota",
-      "model": "Ist",
+      "model": "iQ",
       "year": null,
-      "body": "hatchback",
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -130713,9 +130433,9 @@
     },
     {
       "make": "Toyota",
-      "model": "iQ",
+      "model": "ist",
       "year": null,
-      "body": "coupe",
+      "body": "hatchback",
       "engine": null,
       "fuel": null,
       "transmission": null,
@@ -146414,16 +146134,6 @@
     {
       "make": "Volkswagen",
       "model": "VW1200",
-      "year": null,
-      "body": "sedan",
-      "engine": null,
-      "fuel": null,
-      "transmission": null,
-      "trim": null
-    },
-    {
-      "make": "Volkswagen",
-      "model": "VW1500",
       "year": null,
       "body": "sedan",
       "engine": null,

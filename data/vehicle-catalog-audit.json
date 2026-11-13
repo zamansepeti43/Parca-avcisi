@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-11-12T11:24:23.171Z",
+  "generated_at": "2026-11-13T11:07:15.445Z",
   "source": "ParcaAvcisi vehicle-catalog-merged.json",
   "parca_avcisi": {
     "marka_sayisi": 39,
-    "model_sayisi": 5716,
+    "model_sayisi": 5687,
     "motor_sayisi": 798,
     "donanim_paket_sayisi": 1624,
     "motor_veya_versiyon_sayisi": 2422,
     "kasa_govde_sayisi": 10,
     "yil_sayisi": 59,
-    "kayit_sayisi": 7482
+    "kayit_sayisi": 7453
   },
   "variant_quality_audit": {
     "valve_distinction_family_count": 0,
     "valve_distinction_families": [],
     "ambiguous_valve_label_count": 0,
     "ambiguous_valve_labels": [],
-    "duplicate_model_label_family_count": 9,
+    "duplicate_model_label_family_count": 7,
     "duplicate_model_labels": [
       {
         "family": "FİAT|DOBLO",
@@ -58,20 +58,6 @@
         "labels": [
           "Xlv",
           "XLV"
-        ]
-      },
-      {
-        "family": "SUBARU|BRZ",
-        "labels": [
-          "Brz",
-          "BRZ"
-        ]
-      },
-      {
-        "family": "SUBARU|XV",
-        "labels": [
-          "Xv",
-          "XV"
         ]
       },
       {
