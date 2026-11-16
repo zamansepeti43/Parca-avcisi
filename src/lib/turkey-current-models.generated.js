@@ -1,6 +1,6 @@
 // AUTO-GENERATED. DO NOT HAND-EDIT.
 // Source: https://www.sifirarababul.com/markalar
-// Refreshed: 2026-11-09T09:57:53.673Z
+// Refreshed: 2026-11-16T09:57:08.956Z
 export const turkeyCurrentModelRegistry = [
   {
     "make": "Alfa Romeo",
@@ -375,11 +375,11 @@ export const turkeyCurrentModelRegistry = [
     "make": "Nissan",
     "models": [
       "Juke",
-      "modeli, ₺1.438.000",
+      "modeli, ₺1.442.400",
       "Qashqai",
       "SUV tercihi ₺1.580.000",
       "Townstar",
-      "Townstar ( L1 Visia ), ₺1.438.000",
+      "Townstar ( L1 Visia ), ₺1.442.400",
       "Townstar Combi",
       "X-Trail"
     ],
@@ -572,6 +572,7 @@ export const turkeyCurrentModelRegistry = [
       "Proace Verso",
       "SUV tercihi ₺2.290.000",
       "Toyota C-HR Hybrid",
+      "Yaris",
       "Yaris Cross Hybrid",
       "Yaris Hybrid"
     ],
