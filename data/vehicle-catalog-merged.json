@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-17",
+  "version": "2026-11-18",
   "scope": "TR-first vehicle catalog",
   "policy": "No inferred fitment; explicit source provenance is preserved.",
   "sources": [
@@ -69489,7 +69489,7 @@
       ]
     },
     {
-      "type": "Otobüs",
+      "type": "Kamyon",
       "make": "Mercedes-Benz",
       "model": "609 D",
       "years": [],

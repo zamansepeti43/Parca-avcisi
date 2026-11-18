@@ -69460,7 +69460,7 @@ export const vehicleCatalog=[
     ]
   },
   {
-    "type": "Otobüs",
+    "type": "Kamyon",
     "make": "Mercedes-Benz",
     "model": "609 D",
     "years": [],
