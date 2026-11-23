@@ -1,6 +1,6 @@
 // AUTO-GENERATED. DO NOT HAND-EDIT.
 // Source: https://www.sifirarababul.com/markalar
-// Refreshed: 2026-11-16T09:57:08.956Z
+// Refreshed: 2026-11-23T10:56:45.685Z
 export const turkeyCurrentModelRegistry = [
   {
     "make": "Alfa Romeo",
