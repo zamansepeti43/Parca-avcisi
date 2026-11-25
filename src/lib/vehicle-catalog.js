@@ -113610,7 +113610,7 @@ export const vehicleCatalog=[
     "type": "Otomobil",
     "make": "Toyota",
     "model": "Supra Turbo",
-    "body": "hatchback",
+    "body": "coupe",
     "years": [],
     "engines": [],
     "fuels": [],

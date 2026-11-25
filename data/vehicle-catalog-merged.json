@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-24",
+  "version": "2026-11-25",
   "scope": "TR-first vehicle catalog",
   "policy": "No inferred fitment; explicit source provenance is preserved.",
   "sources": [
@@ -113639,7 +113639,7 @@
       "type": "Otomobil",
       "make": "Toyota",
       "model": "Supra Turbo",
-      "body": "hatchback",
+      "body": "coupe",
       "years": [],
       "engines": [],
       "fuels": [],

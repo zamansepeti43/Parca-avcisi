@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T13:50:53.701Z",
+  "generatedAt": "2026-11-25T13:03:41.241Z",
   "sourceFiles": [
     "data/vehicle-catalog-merged.json"
   ],
@@ -132355,7 +132355,7 @@
       "make": "Toyota",
       "model": "Supra Turbo",
       "year": null,
-      "body": "hatchback",
+      "body": "coupe",
       "engine": null,
       "fuel": null,
       "transmission": null,
